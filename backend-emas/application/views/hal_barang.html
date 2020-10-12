@@ -323,7 +323,8 @@
                                               </tr>
                                             </tbody>
                                           </table>
-                                    </div>
+									</div>
+								
 									
                                       <div class="row">
                                           <div class="col-md-1" style="margin-top: 5px;">
@@ -335,14 +336,18 @@
                                           <div class="col-md-1" style="margin-top: 5px;">
                                             <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-danger">Hapus</a>
                                           </div>
-                                          <div class="col-md-2" style="margin-top: 5px;">
+                                          <div class="col-md-2" style="margin-top: 5px; margin-left: 100px;">
                                               <form action="">
                                                 <input type="text" class="form-control" placeholder="Cari">
                                               </form>
                                            
                                           </div>
                                          
-                                      </div>
+									  </div>
+									</div>
+
+									<!-- modal tambah -->
+
                                       <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                           <div class="modal-content">
@@ -368,16 +373,25 @@
                                                        </div>
                                                        <div class="form-group">
                                                            <label for="">Kelompok</label>
-                                                           <input type="text" class="form-control" placeholder="kelompok">
-                                                           <button style="float: right; clear: both;">ss</button>
+														   <input type="text" class="form-control " placeholder="kelompok">
+														   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#kelompok">
+															<i class="fa fa-search-plus"></i>
+														   </button>
+                                                    
                                                        </div>
                                                        <div class="form-group">
                                                            <label for="">Lokasi</label>
                                                            <input type="text" class="form-control" placeholder="Lokasi">
-                                                       </div>
+														   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#lokasi">
+															<i class="fa fa-search-plus"></i>
+														   </button>
+													   </div>
                                                        <div class="form-group">
                                                            <label for="">Sales</label>
-                                                           <input type="text" class="form-control" placeholder="Sales">
+														   <input type="text" class="form-control" placeholder="Sales">
+														   <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#sales">
+															<i class="fa fa-search-plus"></i>
+														   </button>
                                                        </div>
                                                        <div class="form-group">
                                                            <label for="">Ongkos</label>
@@ -417,15 +431,104 @@
                                                         </select>
                                                        </div>
                                                     </div>
-                                                    <div class="col-md-5">
-                                                       <div style="margin-top: 200%;">
-                                                           <img src="../assets/assets/avatars/user.jpg" alt="" width="100">
+                                                    <div class="col-md-5 center">
+													   <div style="margin-top: 200%;">
+														   <img src="../assets/assets/avatars/user.jpg" alt="Foto" width="100"><br>
                                                            <button type="button" class="btn btn-primary">Cam</button>
                                                        </div>
                                                     </div>
                                                 </form>
                                                 </div>
-                                            </div>
+											</div>
+
+											<!-- modal kelompok -->
+
+											<div class="modal fade" id="kelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-sm">
+												  <div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+															<span aria-hidden="true">&times;</span>
+														  </button>
+													  <h5 class="modal-title center" id="exampleModalLabel">Kelompok</h5>
+													</div>
+													<div class="modal-body">
+													  <br><br><br>
+													  <div class="row">
+														  <div class="col-md-7">
+															  <div class="form-group">
+																  <input type="text" class="form-control">
+															  </div>
+														  </div>
+														  <div class="col-md-2">
+															<button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+														  </div>
+														  <div class="col-md-2">
+															<button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+														  </div>
+													  </div>
+													  
+													</div>
+												  </div>
+												</div>
+											  </div>
+
+											  <!-- modal lokasi -->
+
+											  <div class="modal fade" id="lokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-sm">
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <h5 class="modal-title center" id="exampleModalLabel">Lokasi</h5>
+													</div>
+													<div class="modal-body">
+														<br><br><br>
+														<div class="row">
+															<div class="col-md-7">
+																<div class="form-group">
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+															<div class="col-md-2">
+															  <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+															</div>
+															<div class="col-md-2">
+															  <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+															</div>
+														</div>
+													</div>
+												  </div>
+												</div>
+											  </div>
+
+											  <!-- sales -->
+
+											  <div class="modal fade" id="sales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+												<div class="modal-dialog modal-sm">
+												  <div class="modal-content">
+													<div class="modal-header">
+													  <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+													</div>
+													<div class="modal-body">
+														<br><br><br>
+														<div class="row">
+															<div class="col-md-7">
+																<div class="form-group">
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+															<div class="col-md-2">
+															  <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+															</div>
+															<div class="col-md-2">
+															  <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+															</div>
+														</div>
+													</div>
+												  </div>
+												</div>
+											  </div>
+
                                             <div class="modal-footer">
                                                 <div class="row">
                                                     <div class="col-md-4">
@@ -444,7 +547,7 @@
                                           </div>
                                         </div>
                                       </div>
-                                </div>
+                                
                             
 
 								<!-- PAGE CONTENT ENDS -->
