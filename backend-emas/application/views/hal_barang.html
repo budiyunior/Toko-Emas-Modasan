@@ -59,7 +59,21 @@
 							LOGO
 						</small>
 					</a>
+                    <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
+						<span class="sr-only">Toggle user menu</span>
 
+						<img src="../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+					</button>
+
+					<button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
+						<span class="sr-only">Toggle sidebar</span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+					</button>
 					
 				</div>
 
@@ -313,13 +327,13 @@
 									
                                       <div class="row">
                                           <div class="col-md-1" style="margin-top: 5px;">
-                                            <button type="button" class="btn btn-primary">Tambah</button>
+                                            <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary">Tambah</a>
                                           </div>
                                           <div class="col-md-1" style="margin-top: 5px;">
-                                            <button type="button" class="btn btn-success">Edit</button>
+                                            <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-success">Edit</a>
                                           </div>
                                           <div class="col-md-1" style="margin-top: 5px;">
-                                            <button type="button" class="btn btn-danger">Hapus</button>
+                                            <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-danger">Hapus</a>
                                           </div>
                                           <div class="col-md-2" style="margin-top: 5px;">
                                               <form action="">
@@ -328,6 +342,107 @@
                                            
                                           </div>
                                          
+                                      </div>
+                                      <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                              </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                       <div class="form-group">
+                                                           <label for="">Tanggal</label>
+                                                           <input type="date" class="form-control">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Kode</label>
+                                                           <input type="text" class="form-control" placeholder="Kode">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Nama</label>
+                                                           <input type="text" class="form-control" placeholder="Nama">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Kelompok</label>
+                                                           <input type="text" class="form-control" placeholder="kelompok">
+                                                           <button style="float: right; clear: both;">ss</button>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Lokasi</label>
+                                                           <input type="text" class="form-control" placeholder="Lokasi">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Sales</label>
+                                                           <input type="text" class="form-control" placeholder="Sales">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Ongkos</label>
+                                                           <input type="text" class="form-control" placeholder="Ongkos">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Berat</label>
+                                                           <input type="text" class="form-control" placeholder="Berat">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Kadar</label>
+                                                           <select class="form-control" required name="metode">
+                                                            <option value="">Pilih </option>
+                                                            <option name="Indomaret">Indomaret</option>
+                                                            <option name="Alfamart" >Alfamart</option>
+                                                        </select>
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Harga Beli</label>
+                                                           <input type="text" class="form-control" placeholder="Harga Beli">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Harga Jual</label>
+                                                           <input type="text" class="form-control" placeholder="Harga Jual">
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Foto</label>
+                                                           <input type="text" class="form-control" placeholder="Foto">
+
+                                                       </div>
+                                                       <div class="form-group">
+                                                           <label for="">Status</label>
+                                                           <select class="form-control" required name="metode">
+                                                            <option value="">Pilih </option>
+                                                            <option name="Indomaret">Indomaret</option>
+                                                            <option name="Alfamart" >Alfamart</option>
+                                                        </select>
+                                                       </div>
+                                                    </div>
+                                                    <div class="col-md-5">
+                                                       <div style="margin-top: 200%;">
+                                                           <img src="../assets/assets/avatars/user.jpg" alt="" width="100">
+                                                           <button type="button" class="btn btn-primary">Cam</button>
+                                                       </div>
+                                                    </div>
+                                                </form>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="row">
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-primary">Simpan</button>
+                                                    </div>
+                                                    <div class="col-md-4">
+                                                        <button type="button" class="btn btn-success">Cetak Barcode</button>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                                                    </div>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                          </div>
+                                        </div>
                                       </div>
                                 </div>
                             
