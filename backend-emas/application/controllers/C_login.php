@@ -87,7 +87,10 @@ class C_Login extends CI_Controller
                 $data['logged_in'] = TRUE;
                 $this->session->set_userdata($data);
                 if ($admin['fc_kdposisi'] == '1') {
-                    redirect('C_Home');
+                    echo "<script>
+                    alert('Anda Berhasil Login ');
+                    window.location.href = '" . base_url('C_home') . "';
+                </script>";
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">posisi anda tidak di temukan!</div>');
                     redirect('C_Login');
