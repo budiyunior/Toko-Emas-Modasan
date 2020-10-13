@@ -337,7 +337,7 @@
 											class="btn btn-primary">Tambah</a>
 									</div>
 									<div class="col-md-1" style="margin-top: 5px;">
-										<a href="" data-toggle="modal" data-target="#tambah"
+										<a href="" data-toggle="modal" data-target="#edit"
 											class="btn btn-success">Edit</a>
 									</div>
 									<div class="col-md-1" style="margin-top: 5px;">
@@ -357,7 +357,7 @@
 
 							<div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel"
 								aria-hidden="true">
-								<div class="modal-dialog modal-lg">
+								<div class="modal-dialog ">
 									<div class="modal-content">
 										<div class="modal-header">
 											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -366,7 +366,7 @@
 										</div>
 										<div class="modal-body">
 											<div class="row">
-												<div class="col-md-7">
+												<div class="col-md-8">
 													<div class="form-group row">
 														<label for="" class="col-sm-3 col-form-label">Tanggal</label>
 														<div class="col-sm-7">
@@ -390,7 +390,7 @@
 														<div class="col-sm-7">
 															<input type="text" class="form-control" placeholder="kelompok">
 														</div>
-														<button class="btn btn-primary btn-sm" data-toggle="modal"
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
 															data-target="#kelompok">
 															<i class="fa fa-search-plus"></i>
 														</button>
@@ -400,7 +400,7 @@
 														<div class="col-sm-7">
 															<input type="text" class="form-control" placeholder="Lokasi">
 														</div>
-														<button class="btn btn-primary btn-sm" data-toggle="modal"
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
 														data-target="#lokasi">
 														<i class="fa fa-search-plus"></i>
 													</button>
@@ -410,7 +410,7 @@
 														<div class="col-sm-7">
 															<input type="text" class="form-control" placeholder="Sales">
 														</div>
-														<button class="btn btn-primary btn-sm" data-toggle="modal"
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
 															data-target="#sales">
 															<i class="fa fa-search-plus"></i>
 														</button>
@@ -467,7 +467,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-5 center">
+												<div class="col-md-4 center">
 													<div style="margin-top: 200%;">
 														<img src="../assets/assets/avatars/user.jpg" alt="Foto"
 															width="100"><br>
@@ -496,11 +496,11 @@
 																	<input type="text" class="form-control">
 																</div>
 															</div>
-															<div class="col-md-2">
+															<div class="col-md-2" style="margin-top: 5px;">
 																<button class="btn btn-primary btn-sm"><i
 																		class="fa fa-plus"></i></button>
 															</div>
-															<div class="col-md-2">
+															<div class="col-md-2" style="margin-top: 5px;">
 																<button class="btn btn-primary btn-sm"><i
 																		class="fa fa-minus"></i></button>
 															</div>
@@ -530,10 +530,10 @@
 																</div>
 															</div>
 															<div class="col-md-2">
-																<button class="btn btn-primary btn-sm"><i
+																<button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i
 																		class="fa fa-plus"></i></button>
 															</div>
-															<div class="col-md-2">
+															<div class="col-md-2" style="margin-top: 5px;">
 																<button class="btn btn-primary btn-sm"><i
 																		class="fa fa-minus"></i></button>
 															</div>
@@ -561,10 +561,10 @@
 																</div>
 															</div>
 															<div class="col-md-2">
-																<button class="btn btn-primary btn-sm"><i
+																<button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i
 																		class="fa fa-plus"></i></button>
 															</div>
-															<div class="col-md-2">
+															<div class="col-md-2" style="margin-top: 5px;">
 																<button class="btn btn-primary btn-sm"><i
 																		class="fa fa-minus"></i></button>
 															</div>
@@ -579,10 +579,10 @@
 												<div class="col-md-4" style="margin-top: 5px;">
 													<button type="button" class="btn btn-primary">Simpan</button>
 												</div>
-												<div class="col-md-4" style="margin-top: 5px;">
+												<div class="col-md-3" style="margin-top: 5px;">
 													<button type="button" class="btn btn-success">Cetak Barcode</button>
 												</div>
-												<div class="col-md-3" style="margin-top: 5px;">
+												<div class="col-md-1" style="margin-top: 5px;">
 													<button type="button" class="btn btn-danger"
 														data-dismiss="modal">Keluar</button>
 												</div>
@@ -594,7 +594,246 @@
 								</div>
 							</div>
 
+							<!-- Modal Edit -->
 
+							<div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel"
+								aria-hidden="true">
+								<div class="modal-dialog ">
+									<div class="modal-content">
+										<div class="modal-header">
+											<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+											</button>
+										</div>
+										<div class="modal-body">
+											<div class="row">
+												<div class="col-md-8">
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Tanggal</label>
+														<div class="col-sm-7">
+															<input type="date" class="form-control">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Kode</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Kode">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Nama</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Nama">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Kelompok</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="kelompok">
+														</div>
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
+															data-target="#editkelompok">
+															<i class="fa fa-search-plus"></i>
+														</button>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Lokasi</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Lokasi">
+														</div>
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
+														data-target="#editlokasi">
+														<i class="fa fa-search-plus"></i>
+													</button>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Sales</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Sales">
+														</div>
+														<button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal"
+															data-target="#editsales">
+															<i class="fa fa-search-plus"></i>
+														</button>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Ongkos</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Ongkos">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Berat</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Berat">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Kadar</label>
+														<div class="col-sm-7">
+															<select class="form-control" required name="metode">
+																<option value="">Pilih </option>
+																<option name="Indomaret">Indomaret</option>
+																<option name="Alfamart">Alfamart</option>
+															</select>
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Harga Beli</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control"placeholder="Harga Beli">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Harga Jual</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control"placeholder="Harga Jual">
+														</div>
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Foto</label>
+														<div class="col-sm-7">
+															<input type="text" class="form-control" placeholder="Foto">
+														</div>
+
+													</div>
+													<div class="form-group row">
+														<label for="" class="col-sm-3 col-form-label">Status</label>
+														<div class="col-sm-7">
+															<select class="form-control" required name="metode">
+																<option value="">Pilih </option>
+																<option name="Indomaret">Indomaret</option>
+																<option name="Alfamart">Alfamart</option>
+															</select>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-4 center">
+													<div style="margin-top: 200%;">
+														<img src="../assets/assets/avatars/user.jpg" alt="Foto"
+															width="100"><br>
+														<button type="button" class="btn btn-primary">Cam</button>
+													</div>
+												</div>
+												</form>
+											</div>
+										</div>
+
+										<!-- modal kelompok -->
+
+										<div class="modal fade" id="editkelompok" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title center" id="exampleModalLabel">Kelompok
+														</h5>
+													</div>
+													<div class="modal-body">
+														<br><br><br>
+														<div class="row">
+															<div class="col-md-7">
+																<div class="form-group">
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-plus"></i></button>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-minus"></i></button>
+															</div>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- modal lokasi -->
+
+										<div class="modal fade" id="editlokasi" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title center" id="exampleModalLabel">Lokasi
+														</h5>
+													</div>
+													<div class="modal-body">
+														<br><br><br>
+														<div class="row">
+															<div class="col-md-7">
+																<div class="form-group">
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-plus"></i></button>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-minus"></i></button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<!-- sales -->
+
+										<div class="modal fade" id="editsales" tabindex="-1"
+											aria-labelledby="exampleModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-sm">
+												<div class="modal-content">
+													<div class="modal-header">
+														<h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+													</div>
+													<div class="modal-body">
+														<br><br><br>
+														<div class="row">
+															<div class="col-md-7">
+																<div class="form-group">
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-plus"></i></button>
+															</div>
+															<div class="col-md-2" style="margin-top: 5px;">
+																<button class="btn btn-primary btn-sm"><i
+																		class="fa fa-minus"></i></button>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="modal-footer">
+											<div class="row" style="position: center;">
+												<div class="col-md-4" style="margin-top: 5px;">
+													<button type="button" class="btn btn-primary">Simpan</button>
+												</div>
+												<div class="col-md-3" style="margin-top: 5px;">
+													<button type="button" class="btn btn-success">Cetak Barcode</button>
+												</div>
+												<div class="col-md-1" style="margin-top: 5px;">
+													<button type="button" class="btn btn-danger"
+														data-dismiss="modal">Keluar</button>
+												</div>
+											</div>
+
+
+										</div>
+									</div>
+								</div>
+							</div>
 
 							<!-- PAGE CONTENT ENDS -->
 						</div><!-- /.col -->
