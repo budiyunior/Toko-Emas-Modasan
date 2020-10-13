@@ -58,21 +58,22 @@
                                             <i class="ace-icon fa fa-coffee green"></i>
                                             Please Enter Your Account
                                         </h4>
+                                        <h4><?= $this->session->flashdata('message') ?></h4>
 
                                         <div class="space-6"></div>
 
-                                        <form>
+                                        <form action="<?= base_url('C_login/action_login') ?>" method="post">
                                             <fieldset>
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="text" class="form-control" name="fv_username" placeholder="Username" />
+                                                        <input type="text" class="form-control" name="fv_username" placeholder="Username..." />
                                                         <i class="ace-icon fa fa-user"></i>
                                                     </span>
                                                 </label>
 
                                                 <label class="block clearfix">
                                                     <span class="block input-icon input-icon-right">
-                                                        <input type="password" name="" class="form-control" placeholder="Password" />
+                                                        <input type="password" name="fv_password" class="form-control" placeholder="Password..." />
                                                         <i class="ace-icon fa fa-lock"></i>
                                                     </span>
                                                 </label>

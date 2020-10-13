@@ -15,7 +15,7 @@ class M_login extends CI_Model
     {
         return $this->db->get_where($table, $where2);
     }
-    function iduser($fv_username)
+    function admin($fv_username)
     {
         $query = $this->db->query("SELECT * FROM admin WHERE fv_username='$fv_username'");
         return $query->result();
