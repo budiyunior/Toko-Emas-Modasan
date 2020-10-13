@@ -216,15 +216,11 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Tambah Penjualan</h5>
-          <button type="button" class="close" data-dismiss="modal">
-            <span aria-hidden="true">&times;</span>
-          </button>
         </div>
         <div class="modal-body">
             <div class="page-header">
                 <h1>
                     Logo
-                    
                 </h1>
                 <div class="card-body"></div>
                 <div class="row">
@@ -247,12 +243,12 @@
                              <div class="row">
                                 <div class="col-md-1" style="margin-top: 5px;">
                                   
-                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
                                     +
                                   </button>
                                   
                                   <!-- Modal -->
-                                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -325,6 +321,50 @@
                       </tr>
                     </thead>
                   </table>
+                  <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+                        
+                    </button>
+  
+                  <!-- Modal -->
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Pencarian</h5>
+                                        <div class="col-md-5" style="margin-top: 30px;">
+                                            <form action="">
+                                              <input type="text" class="form-control" placeholder="Cari">
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <button type="button" class="btn btn-primary"> Tampilkan</button>
+                                    </div>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                          <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nama</th>
+                                            <th scope="col">Harga</th>
+                                            <th scope="col">Jenis</th>
+                                            <th scope="col">Kelompok</th>
+                                            <th scope="col">Berat</th>
+                                            <th scope="col">Kadar</th>
+                                            <th scope="col">Status</th>
+                                          </tr>
+                                        </thead>
+                                      </table>
+                                      
+                                    <div class="modal-footer">
+                                        <div class="page-header">
+                                            <button type="button" class="right btn btn-primary">Pilih</button>
+                                    </div><!-- /.page-header -->
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
         </div>
                             <div class="card-body"></div>
                             <div class="row">
