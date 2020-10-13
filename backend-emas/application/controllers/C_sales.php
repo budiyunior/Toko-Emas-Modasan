@@ -11,6 +11,7 @@ class C_sales extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('M_menu');
+        $this->load->model('M_sales');
     }
 
 
@@ -18,6 +19,7 @@ class C_sales extends CI_Controller
     {
         $data['title'] = "Sales";
         $data['menu'] = $this->M_menu->get_menu();
+        $data['sales'] = $this->M_sales->get_sales();
         $this->load->view('admin/v_sales', $data);
     }
 }
