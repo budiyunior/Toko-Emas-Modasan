@@ -95,78 +95,15 @@
                 ace.settings.check('sidebar', 'fixed')
             } catch (e) {}
         </script>
-
-
         <ul class="nav nav-list">
+        <?php foreach($menu as $me): ?>
             <li class=" active hover">
                 <a href="<?php echo base_url('C_barang') ?>">
                     <i class="menu-icon fa fa-inbox"></i>
-                    <span class="menu-text"> Barang </span>
+                    <span class="menu-text"> <?= $me->nama_menu ?></span>
                 </a>
             </li>
-
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-users"></i>
-                    <span class="menu-text">
-                        Pelanggan
-                    </span>
-                </a>
-            </li>
-
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-user"></i>
-                    <span class="menu-text">
-                        Sales
-                    </span>
-                </a>
-            </li>
-
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-bar-chart"></i>
-                    <span class="menu-text">
-                        Penjualan
-                    </span>
-                </a>
-            </li>
-
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-pie-chart"></i>
-                    <span class="menu-text">
-                        Pembelian
-                    </span>
-                </a>
-            </li>
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-cart-plus"></i>
-                    <span class="menu-text">
-                        Lap. Jual
-                    </span>
-                </a>
-            </li>
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-cart-arrow-down"></i>
-                    <span class="menu-text">
-                        Lap. Beli
-                    </span>
-                </a>
-            </li>
-            <li class="hover">
-                <a href="#" class="dropdown-toggle">
-                    <i class="menu-icon fa fa-cog"></i>
-                    <span class="menu-text">
-                        Pengaturan
-                    </span>
-                </a>
-            </li>
-
-
-
+        <?php endforeach; ?>
         </ul><!-- /.nav-list -->
 
         <!-- #section:basics/sidebar.layout.minimize -->
