@@ -158,7 +158,7 @@
                                         <td><?= $s->fc_email ?></td>
                                         <td><?= $s->fc_hp ?></td>
                                         <td><?= $s->fc_aktif ?></td>
-                                        <td><?= $s->fc_kdposisi ?></td>
+                                        <td><?= $s->fv_mposisi ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
