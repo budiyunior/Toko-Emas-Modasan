@@ -136,11 +136,8 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th class="center">
-                                            <label class="pos-rel">
-                                                <input type="checkbox" class="ace" />
-                                                <span class="lbl"></span>
-                                            </label>
+                                        <th class="check">
+                                            <input type="checkbox" />
                                         </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
@@ -155,14 +152,11 @@
                                     <?php $i = 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input type="checkbox" class="ace" />
-                                                    <span class="lbl"></span>
-                                                </label>
+                                            <td class="check">
+                                                <input type="checkbox" />
                                             </td>
                                             <th scope="col"><?= $i++ ?></th>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td class="id" scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_email ?></td>
                                             <td scope="row"><?= $s->fc_hp ?></td>
@@ -185,7 +179,7 @@
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></button>
+                                <button type="button" class="btn btn-danger" id="btnSubmit" ><i class="fa fa-trash"> Hapus</i></button>
                             </div>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>

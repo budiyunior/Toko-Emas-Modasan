@@ -201,26 +201,30 @@
             ]
         });
 
-        //we put a container before our table and append TableTools element to it
-        $(tableTools_obj.fnContainer()).appendTo($('.tableTools-container'));
+        $(document).ready(function() {
 
-        //also add tooltips to table tools buttons
-        //addding tooltips directly to "A" buttons results in buttons disappearing (weired! don't know why!)
-        //so we add tooltips to the "DIV" child after it becomes inserted
-        //flash objects inside table tools buttons are inserted with some delay (100ms) (for some reason)
-        setTimeout(function() {
-            $(tableTools_obj.fnContainer()).find('a.DTTT_button').each(function() {
-                var div = $(this).find('> div');
-                if (div.length > 0) div.tooltip({
-                    container: 'body'
-                });
-                else $(this).tooltip({
-                    container: 'body'
-                });
-            });
-        }, 200)
+            $('#btnSubmit').click(function() {
+
+                $('.row-select input:checked').each(function() {
+                    var id;
+                    id = $(this).closest('tr').find('.id').html();
+                    // name = $(this).closest('tr').find('.name').html();
+
+                    alert('ID: ' + id );
+                })
+
+            })
 
 
+            $('#btnSelectAll').click(function() {
+
+                $('.row-select input').each(function() {
+                    $(this).prop('checked', true);
+                })
+
+            })
+
+        })
 
     });
 </script>
