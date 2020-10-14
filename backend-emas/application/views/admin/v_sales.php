@@ -198,7 +198,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form method="post" action="" enctype="multipart/form-data">
+                                    <form method="post" action="<?= base_url('C_sales/save') ?>" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group row">
                                                 <label for="kode" class="col-sm-2 col-form-label">Kode</label>
