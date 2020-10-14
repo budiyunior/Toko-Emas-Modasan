@@ -136,6 +136,12 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th class="center">
+                                            <label class="pos-rel">
+                                                <input type="checkbox" class="ace" />
+                                                <span class="lbl"></span>
+                                            </label>
+                                        </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
                                         <th scope="col">Nama</th>
@@ -149,6 +155,12 @@
                                     <?php $i = 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
+                                            <td class="center">
+                                                <label class="pos-rel">
+                                                    <input type="checkbox" class="ace" />
+                                                    <span class="lbl"></span>
+                                                </label>
+                                            </td>
                                             <th scope="col"><?= $i++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
