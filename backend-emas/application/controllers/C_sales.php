@@ -19,7 +19,9 @@ class C_sales extends CI_Controller
     {
         $data['title'] = "Sales";
         $data['menu'] = $this->M_menu->get_menu();
-        $data['sales'] = $this->M_sales->get_sales();
+        $data['sales'] = $this->M_sales->get();
         $this->load->view('admin/v_sales', $data);
     }
+
+
 }

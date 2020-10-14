@@ -3,13 +3,10 @@
         <!-- #section:basics/footer -->
         <div class="footer-content">
             <span class="bigger-120">
-                <span class="blue bolder">Ace</span>
-                Application &copy; 2013-2014
+                <span class="blue bolder">Toko Emas</span>
+                Modasan &copy; 2020
             </span>
-
-
         </div>
-
         <!-- /section:basics/footer -->
     </div>
 </div>

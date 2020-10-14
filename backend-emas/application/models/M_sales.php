@@ -22,6 +22,24 @@ class M_sales extends CI_Model
         return $this->db->get($this->tabel)->result();
     }
 
+    // public function get()
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('t_sales');
+    //     $this->db->join('tm_posisi', 'tm_posisi.fc_kdposisi = t_sales.fc_kdposisi');
+    //     $query = $this->db->get();
+    //     return $query;
+    // }
+
+    public function get()
+    {
+        $this->db->select('*');
+        $this->db->from('t_sales', 'tm_posisi');
+        $this->db->join('tm_posisi', 'tm_posisi.fc_kdposisi = t_sales.fc_kdposisi');
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
     public function save_sales()
     {
         $post = $this->input->post();
