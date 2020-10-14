@@ -149,16 +149,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i=0; $i++;
+                                    <?php $i=1;
                                     foreach($sales as $s): ?>
                                     <tr>
-                                        <th scope="row"><?= $i ?></th>
-                                        <td><?= $s->fc_salesid ?></td>
-                                        <td><?= $s->fv_nama ?></td>
-                                        <td><?= $s->fc_email ?></td>
-                                        <td><?= $s->fc_hp ?></td>
-                                        <td><?= $s->fc_aktif ?></td>
-                                        <td><?= $s->fv_mposisi ?></td>
+                                        <th scope="col"><?= $i++ ?></th>
+                                        <td scope="row"><?= $s->fc_salesid ?></td>
+                                        <td scope="row"><?= $s->fv_nama ?></td>
+                                        <td scope="row"><?= $s->fc_email ?></td>
+                                        <td scope="row"><?= $s->fc_hp ?></td>
+                                        <td scope="row"><?= $s->fc_aktif ?></td>
+                                        <td scope="row"><?= $s->fv_mposisi ?></td>
                                     </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -169,14 +169,14 @@
                     <div class="center">
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah">Tambah </button>
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i class="fa fa-plus"> Tambah</i></button>
 
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit">Edit </button>
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-danger">Hapus</button>
+                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></button>
                             </div>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
@@ -198,39 +198,41 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
-                                    <form>
+                                    <form method="post" action="" enctype="multipart/form-data">
                                         <div class="modal-body">
                                             <div class="form-group row">
                                                 <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="kode" placeholder="Kode">
+                                                    <input type="text" name="fc_salesid" class="form-control" id="kode" placeholder="Kode">
+                                                    <?= form_error('fc_salesid', '<small class="text-danger pl-3">', '</small>') ?>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="nama" placeholder="Nama">
+                                                    <input type="text" class="form-control" name="fv_nama" id="nama" placeholder="Nama">
+                                                    <?= form_error('fv_nama', '<small class="text-danger pl-3">', '</small>') ?>
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="email" placeholder="Email">
+                                                    <input type="text" class="form-control" name="fc_email" id="email" placeholder="Email">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="no.hp" placeholder="No.hp">
+                                                    <input type="text" class="form-control" name="fc_hp" id="no.hp" placeholder="No.hp">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="" class="col-sm-2 col-form-label">Sales</label>
                                                 <div class="col-sm-7">
-                                                    <select class="form-control" required name="metode">
-                                                        <option value="">Pilih </option>
-                                                        <option name="Indomaret"> Janda </option>
-                                                        <option name="Alfamart"> Duda </option>
+                                                    <select class="form-control" name="fc_aktif">
+                                                        <option>--Pilih--</option>
+                                                        <option value="Y">Aktif</option>
+                                                        <option value="N">Tidak Aktif</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -238,19 +240,19 @@
                                                 <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
                                                     Lahir</label>
                                                 <div class="col-sm-7">
-                                                    <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                                    <input type="date" name="fd_tgllahir" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
                                                 <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" id="jabatan" placeholder="Jabatan">
+                                                    <input type="text" class="form-control" name="fc_kdposisi" id="jabatan" placeholder="Jabatan">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <div class="col-md-1" style="margin-top: 5px">
-                                                <button type="button" class="btn btn-primary">Simpan</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"> Simpan</i></button>
                                             </div>
                                         </div>
                                     </form>
