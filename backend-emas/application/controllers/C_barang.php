@@ -25,4 +25,5 @@ class C_barang extends CI_Controller
 
         $this->load->view('admin/v_barang', $data);
     }
+
 }

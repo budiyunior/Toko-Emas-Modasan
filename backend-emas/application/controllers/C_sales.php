@@ -15,11 +15,13 @@ class C_sales extends CI_Controller
     }
 
 
-    public function index()
+    public function index($id_sales = null)
     {
         $data['title'] = "Sales";
         $data['menu'] = $this->M_menu->get_menu();
         $data['sales'] = $this->M_sales->get();
+        $data['sales2'] = $this->M_sales->get_by_id($id_sales);
+        $data['sales3'] = $this->M_sales->get();
         $data['jabatan'] = $this->M_sales->get_jabatan();
         $this->load->view('admin/v_sales', $data);
     }

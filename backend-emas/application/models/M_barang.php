@@ -13,6 +13,7 @@ class M_barang extends CI_Model
         return $this->db->get($this->tabel)->result();
     }
 
+<<<<<<< Updated upstream
 
     public function get_sales()
     {
@@ -26,5 +27,12 @@ class M_barang extends CI_Model
     public function get_kelompok()
     {
         return $this->db->get($this->tbkelompok)->result();
+=======
+    public function save_barang()
+    {
+        $post = $this->input->post();
+        $this->fn_id = $post['fn_id'];
+        $this->fd_date = $post['fc_barcode'];
+>>>>>>> Stashed changes
     }
 }
