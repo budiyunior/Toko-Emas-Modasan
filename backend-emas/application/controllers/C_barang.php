@@ -17,7 +17,7 @@ class C_barang extends CI_Controller
     {
         $data['title'] = "Barang";
         $data['menu'] = $this->M_menu->get_menu();
-        // $data['barang'] = $this->M_sales->get();
+
         $this->load->view('admin/v_barang', $data);
     }
 }
