@@ -125,9 +125,6 @@
                 <h1>
                     Sales
                     <button type="button" class="pull-right btn btn-primary">Refresh</button>
-
-
-
                 </h1>
             </div><!-- /.page-header -->
 

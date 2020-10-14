@@ -19,7 +19,7 @@
             <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
                 <span class="sr-only">Toggle user menu</span>
 
-                <img src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                <img src="../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
             </button>
 
             <button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
@@ -82,41 +82,627 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    try {
-        ace.settings.check('main-container', 'fixed')
-    } catch (e) {}
-</script>
-
-<!-- #section:basics/sidebar.horizontal -->
-<div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
     <script type="text/javascript">
         try {
-            ace.settings.check('sidebar', 'fixed')
+            ace.settings.check('main-container', 'fixed')
         } catch (e) {}
     </script>
-    <ul class="nav nav-list">
-        <?php foreach ($menu as $me) : ?>
-            <li class="hover">
-                <a href="<?php echo $me->link_menu ?>">
-                    <i class="menu-icon <?= $me->icon_class ?>"></i>
-                    <span class="menu-text"> <?= $me->nama_menu ?></span>
-                </a>
-            </li>
-        <?php endforeach; ?>
-    </ul><!-- /.nav-list -->
 
-    <!-- #section:basics/sidebar.layout.minimize -->
+    <!-- #section:basics/sidebar.horizontal -->
+    <div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
+        <script type="text/javascript">
+            try {
+                ace.settings.check('sidebar', 'fixed')
+            } catch (e) {}
+        </script>
+        <ul class="nav nav-list">
+            <?php foreach ($menu as $me) : ?>
+                <li class="hover">
+                    <a href="<?php echo $me->link_menu ?>">
+                        <i class="menu-icon <?= $me->icon_class ?>"></i>
+                        <span class="menu-text"> <?= $me->nama_menu ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul><!-- /.nav-list -->
 
-    <!-- /section:basics/sidebar.layout.minimize -->
-    <script type="text/javascript">
-        try {
-            ace.settings.check('sidebar', 'collapsed')
-        } catch (e) {}
-    </script>
-</div>
+        <!-- #section:basics/sidebar.layout.minimize -->
+
+        <!-- /section:basics/sidebar.layout.minimize -->
+        <script type="text/javascript">
+            try {
+                ace.settings.check('sidebar', 'collapsed')
+            } catch (e) {}
+        </script>
+    </div>
+    <div class="main-content-inner">
+        <div class="page-content">
+
+            <!-- /section:settings.box -->
+            <div class="page-header">
+
+
+                <div class="row">
+                    <div class="col-md-1">
+                        <h2 style="color: #07A1C8;">
+                            Barang
+                        </h2>
+                    </div>
+                    <form action="" method=""></form>
+                    <div class="col-md-2">
+                        <label>Jenis</label>
+                        <select class="form-control" required name="metode">
+                            <option value="">Pilih </option>
+                            <option name="Indomaret">Indomaret</option>
+                            <option name="Alfamart">Alfamart</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Kelompok</label>
+                        <select class="form-control" required name="metode">
+                            <option value="">Pilih </option>
+                            <option name="Indomaret">Indomaret</option>
+                            <option name="Alfamart">Alfamart</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Lokasi</label>
+                        <select class="form-control" required name="metode">
+                            <option value="">Pilih </option>
+                            <option name="Indomaret">Indomaret</option>
+                            <option name="Alfamart">Alfamart</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Sales</label>
+                        <select class="form-control" required name="metode">
+                            <option value="">Pilih </option>
+                            <option name="Indomaret">Indomaret</option>
+                            <option name="Alfamart">Alfamart</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <label>Status</label>
+                        <select class="form-control" required name="metode">
+                            <option value="">Pilih </option>
+                            <option name="Indomaret">Indomaret</option>
+                            <option name="Alfamart">Alfamart</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <br>
+                        <button type="button" class="btn btn-primary">Refresh</button>
+                    </div>
+                    </form>
+                </div>
+
+            </div><!-- /.page-header -->
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- PAGE CONTENT BEGINS -->
 
 
 
-<?php $this->load->view('partials/footer.php') ?>
-<?php $this->load->view('partials/js.php') ?>
+                    <div class="center">
+                        <div class="table-responsive">
+                            <table class="table table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">No</th>
+                                        <th scope="col">Kode</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Kelompok</th>
+                                        <th scope="col">Lokasi</th>
+                                        <th scope="col">Berag Gram</th>
+                                        <th scope="col">Kadar %</th>
+                                        <th scope="col">Harga Beli</th>
+                                        <th scope="col">Sales</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Tanggal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>192819</td>
+                                        <td>Honda</td>
+                                        <td>satu</td>
+                                        <td>Malang</td>
+                                        <td>192 Gram</td>
+                                        <td>92%</td>
+                                        <td>10.000</td>
+                                        <td>hos</td>
+                                        <td>Baik</td>
+                                        <td>10-10-2020</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-1" style="margin-top: 5px;">
+                                <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary">Tambah</a>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 5px;">
+                                <a href="" data-toggle="modal" data-target="#edit" class="btn btn-success">Edit</a>
+                            </div>
+                            <div class="col-md-1" style="margin-top: 5px;">
+                                <a href="" class="btn btn-danger">Hapus</a>
+                            </div>
+                            <div class="col-md-2" style="margin-top: 5px;">
+                                <form action="">
+                                    <input type="text" class="form-control" placeholder="Cari">
+                                </form>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- modal tambah -->
+
+                    <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Tanggal</label>
+                                                <div class="col-sm-7">
+                                                    <input type="date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kode</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Kode">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Nama</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Nama">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kelompok</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="kelompok">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#kelompok">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Lokasi</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Lokasi">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#lokasi">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Sales</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Sales">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#sales">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Ongkos</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Ongkos">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Berat</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Berat">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kadar</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" required name="metode">
+                                                        <option value="">Pilih </option>
+                                                        <option name="Indomaret">Indomaret</option>
+                                                        <option name="Alfamart">Alfamart</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Harga Beli">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Harga Jual">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Foto</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Foto">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Status</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" required name="metode">
+                                                        <option value="">Pilih </option>
+                                                        <option name="Indomaret">Indomaret</option>
+                                                        <option name="Alfamart">Alfamart</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            <div style="margin-top: 140%;">
+                                                <div style="margin-bottom: 10px;">
+                                                    <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                                </div>
+                                                <button type="button" class="btn btn-primary">Cam</button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- modal kelompok -->
+
+                                <div class="modal fade" id="kelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Kelompok
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- modal lokasi -->
+
+                                <div class="modal fade" id="lokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Lokasi
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- sales -->
+
+                                <div class="modal fade" id="sales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="row">
+                                        <div class="col-md-4" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                        <div class="col-md-3" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-success">Cetak Barcode</button>
+                                        </div>
+                                        <div class="col-md-1" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal Edit -->
+
+                    <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Tanggal</label>
+                                                <div class="col-sm-7">
+                                                    <input type="date" class="form-control">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kode</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Kode">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Nama</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Nama">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kelompok</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="kelompok">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Lokasi</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Lokasi">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Sales</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Sales">
+                                                </div>
+                                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
+                                                    <i class="fa fa-search-plus"></i>
+                                                </button>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Ongkos</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Ongkos">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Berat</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Berat">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kadar</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" required name="metode">
+                                                        <option value="">Pilih </option>
+                                                        <option name="Indomaret">Indomaret</option>
+                                                        <option name="Alfamart">Alfamart</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Harga Beli">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Harga Jual">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Foto</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" placeholder="Foto">
+                                                </div>
+
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Status</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" required name="metode">
+                                                        <option value="">Pilih </option>
+                                                        <option name="Indomaret">Indomaret</option>
+                                                        <option name="Alfamart">Alfamart</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4 center">
+                                            <div style="margin-top: 140%;">
+                                                <div style="margin-bottom: 10px;">
+                                                    <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                                </div>
+                                                <button type="button" class="btn btn-primary">Cam</button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <!-- modal kelompok -->
+
+                                <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Kelompok
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- modal lokasi -->
+
+                                <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Lokasi
+                                                </h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- sales -->
+
+                                <div class="modal fade" id="editsales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <br><br><br>
+                                                <div class="row">
+                                                    <div class="col-md-7">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                                    </div>
+                                                    <div class="col-md-2" style="margin-top: 5px;">
+                                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <div class="row" style="position: center;">
+                                        <div class="col-md-4" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-primary">Simpan</button>
+                                        </div>
+                                        <div class="col-md-3" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-success">Cetak Barcode</button>
+                                        </div>
+                                        <div class="col-md-1" style="margin-top: 5px;">
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PAGE CONTENT ENDS -->
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.page-content -->
+    </div>
+    <?php $this->load->view('partials/footer.php') ?>
+    <?php $this->load->view('partials/js.php') ?>
