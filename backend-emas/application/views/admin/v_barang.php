@@ -209,7 +209,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <th scope="col"><?= $i++ ?></th>
-                                            <td scope="row"><?= $s->fn_id ?></td>
+                                            <td scope="row"><?= $s->fn_barcode ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang?></td>
                                             <td scope="row"><?= $s->fc_kdkelompok ?></td>
                                             <td scope="row"><?= $s->fc_kdlokasi ?></td>
