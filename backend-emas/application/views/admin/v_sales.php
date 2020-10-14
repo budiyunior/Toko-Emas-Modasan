@@ -149,17 +149,17 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i=1;
-                                    foreach($sales as $s): ?>
-                                    <tr>
-                                        <th scope="col"><?= $i++ ?></th>
-                                        <td scope="row"><?= $s->fc_salesid ?></td>
-                                        <td scope="row"><?= $s->fv_nama ?></td>
-                                        <td scope="row"><?= $s->fc_email ?></td>
-                                        <td scope="row"><?= $s->fc_hp ?></td>
-                                        <td scope="row"><?= $s->fc_aktif ?></td>
-                                        <td scope="row"><?= $s->fv_mposisi ?></td>
-                                    </tr>
+                                    <?php $i = 1;
+                                    foreach ($sales as $s) : ?>
+                                        <tr>
+                                            <th scope="col"><?= $i++ ?></th>
+                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fv_nama ?></td>
+                                            <td scope="row"><?= $s->fc_email ?></td>
+                                            <td scope="row"><?= $s->fc_hp ?></td>
+                                            <td scope="row"><?= $s->fc_aktif ?></td>
+                                            <td scope="row"><?= $s->fv_mposisi ?></td>
+                                        </tr>
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
@@ -217,7 +217,7 @@
                                             <div class="form-group row">
                                                 <label for="email" class="col-sm-2 col-form-label">Email</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" name="fc_email" id="email" placeholder="Email">
+                                                    <input type="email" class="form-control" name="fc_email" id="email" placeholder="Email">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
@@ -246,7 +246,12 @@
                                             <div class="form-group row">
                                                 <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" name="fc_kdposisi" id="jabatan" placeholder="Jabatan">
+                                                    <select class="form-control" name="fc_kdposisi">
+                                                        <option>--Pilih Jabatan--</option>
+                                                        <?php foreach ($jabatan as $k) : ?>
+                                                            <option value="<?= $k->fc_kdposisi ?>"><?= $k->fv_mposisi ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

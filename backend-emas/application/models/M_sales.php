@@ -22,6 +22,11 @@ class M_sales extends CI_Model
         return $this->db->get($this->tabel)->result();
     }
 
+    public function get_jabatan()
+    {
+        return $this->db->get('tm_posisi')->result();
+    }
+
     // public function get()
     // {
     //     $this->db->select('*');
