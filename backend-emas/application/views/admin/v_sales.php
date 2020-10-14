@@ -326,7 +326,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="col-md-1" style="margin-top: 5px">
-                                                <button type="button" class="btn btn-primary">Simpan</button>
+                                                <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
                                             </div>
                                         </div>
                                 </div>

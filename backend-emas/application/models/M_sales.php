@@ -5,17 +5,17 @@ class M_sales extends CI_Model
 {
     private $tabel = "t_sales";
 
-    // public function rules()
-    // {
-    //     return [
-    //         [
-    //             'field' => 'fc_salesid',
-    //             'label' => 'Id Sales',
-    //             'rules' => 'required'
-    //         ],
+    public function rules()
+    {
+        return [
+            [
+                'field' => 'fc_salesid',
+                'label' => 'Id Sales',
+                'rules' => 'required'
+            ],
 
-    //     ];
-    // }
+        ];
+    }
 
     public function get_sales()
     {
