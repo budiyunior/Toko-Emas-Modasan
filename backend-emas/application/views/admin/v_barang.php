@@ -210,16 +210,16 @@
                                         <tr>
                                             <th scope="col"><?= $i++ ?></th>
                                             <td scope="row"><?= $s->fn_barcode ?></td>
-                                            <td scope="row"><?= $s->fv_nmbarang?></td>
+                                            <td scope="row"><?= $s->fv_nmbarang ?></td>
                                             <td scope="row"><?= $s->fc_kdkelompok ?></td>
                                             <td scope="row"><?= $s->fc_kdlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
                                             <td scope="row"><?= $s->fm_hargabeli ?></td>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
-                                            <td scope="row"><?= $s->fc_sts?></td>
-                                            <td scope="row"><?= $s->fd_date?></td>
-                                            
+                                            <td scope="row"><?= $s->fc_sts ?></td>
+                                            <td scope="row"><?= $s->fd_date ?></td>
+
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -281,7 +281,12 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" placeholder="kelompok">
+                                                    <select class="form-control " required name="metode">
+                                                        <?php $i = 1;
+                                                        foreach ($kelompok as $k) : ?>
+                                                            <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                                 <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#kelompok">
                                                     <i class="fa fa-search-plus"></i>
@@ -290,7 +295,12 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" placeholder="Lokasi">
+                                                    <select class="form-control " required name="metode">
+                                                        <?php $i = 1;
+                                                        foreach ($lokasi as $l) : ?>
+                                                            <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                                 <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#lokasi">
                                                     <i class="fa fa-search-plus"></i>
@@ -299,7 +309,12 @@
                                             <div class="form-group row">
                                                 <label for="" class="col-sm-3 col-form-label">Sales</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" class="form-control" placeholder="Sales">
+                                                    <select class="form-control " required name="metode">
+                                                        <?php $i = 1;
+                                                        foreach ($sales as $s) : ?>
+                                                            <option name="<?= $s->fv_nama ?>"><?= $s->fv_nama ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                                 <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#sales">
                                                     <i class="fa fa-search-plus"></i>
@@ -379,7 +394,35 @@
                                                 </h5>
                                             </div>
                                             <div class="modal-body">
-                                                <br><br><br>
+
+                                                <div class="row">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <!-- <tr>
+                                                                <th class="check">
+                                                                    <input type="checkbox" />
+                                                                </th>
+                                                                <th class="check">
+                                                                    <input type="checkbox" />
+                                                                </th>
+                                                            </tr> -->
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php $i = 1;
+                                                            foreach ($sales as $s) : ?>
+                                                                <tr>
+                                                                    <td ><?= $s->fv_nama ?></td>
+                                                                
+                                                                    <td >
+                                                                        <button class="btn btn-xs btn-info">
+                                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                                                        </button>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                                 <div class="row">
                                                     <div class="col-md-7">
                                                         <div class="form-group">
