@@ -260,50 +260,57 @@
 												<div class="modal-body">
 													<div class="row">
 														<div class="col-xs-12">
-															<form>
+														<form method="post" action="<?= base_url('C_pelanggan/save') ?>" enctype="multipart/form-data">
 																<div class="col-md-12">
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">Kode</label>
+																		<label for="" class="col-sm-4 col-form-label">Kode</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="fc_kdpel" class="form-control" id="" placeholder="">
+																			<?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">Nama</label>
+																		<label for="" class="col-sm-4 col-form-label">Nama</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="fv_nmpelanggan" class="form-control" id="" placeholder="">
+																			<?= form_error('fv_nmpelanggan', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">Alamat</label>
+																		<label for="" class="col-sm-4 col-form-label">Alamat</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="f_alamat" class="form-control" id="" placeholder="">
+																			<?= form_error('f_alamat', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">No Hp</label>
+																		<label for="" class="col-sm-4 col-form-label">No Hp</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="fc_telp" class="form-control" id="" placeholder="">
+																			<?= form_error('fc_telp', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">No KTP</label>
+																		<label for="" class="col-sm-4 col-form-label">No KTP</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="fc_noktp" class="form-control" id="" placeholder="">
+																			<?= form_error('fc_noktp', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																	<div class="form-group row">
-																		<label for="inputPassword" class="col-sm-4 col-form-label">Keterangan</label>
+																		<label for="" class="col-sm-4 col-form-label">Keterangan</label>
 																		<div class="col-sm-8">
-																			<input type="text" class="form-control" id="inputPassword" placeholder="">
+																			<input type="text" name="f_keterangan" class="form-control" id="" placeholder="">
+																			<?= form_error('f_keterangan', '<small class="text-danger pl-3">', '</small>') ?>
 																		</div>
 																	</div>
 																</div>
+																<button type="submit" class="btn btn-primary ">Simpan</button>
 															</form>
 														</div>
 													</div>
 
-													<button type="button" class="btn btn-primary ">Simpan</button>
+													
 												</div>
 											</div>
 										</div>
