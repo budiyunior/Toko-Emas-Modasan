@@ -196,7 +196,7 @@
                                         <th scope="col">Nama</th>
                                         <th scope="col">Kelompok</th>
                                         <th scope="col">Lokasi</th>
-                                        <th scope="col">Berag Gram</th>
+                                        <th scope="col">Berat Gram</th>
                                         <th scope="col">Kadar %</th>
                                         <th scope="col">Harga Beli</th>
                                         <th scope="col">Sales</th>
@@ -205,19 +205,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>192819</td>
-                                        <td>Honda</td>
-                                        <td>satu</td>
-                                        <td>Malang</td>
-                                        <td>192 Gram</td>
-                                        <td>92%</td>
-                                        <td>10.000</td>
-                                        <td>hos</td>
-                                        <td>Baik</td>
-                                        <td>10-10-2020</td>
-                                    </tr>
+                                    <?php $i = 1;
+                                    foreach ($barang as $s) : ?>
+                                        <tr>
+                                            <th scope="col"><?= $i++ ?></th>
+                                            <td scope="row"><?= $s->fn_barcode ?></td>
+                                            <td scope="row"><?= $s->fv_nmbarang?></td>
+                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                                            <td scope="row"><?= $s->ff_berat ?></td>
+                                            <td scope="row"><?= $s->fc_kadar ?></td>
+                                            <td scope="row"><?= $s->fm_hargabeli ?></td>
+                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fc_sts?></td>
+                                            <td scope="row"><?= $s->fd_date?></td>
+                                            
+                                        </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
