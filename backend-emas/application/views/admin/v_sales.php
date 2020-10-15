@@ -136,7 +136,7 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th class="check">
+                                        <th class="center">
                                             <input type="checkbox" id="check-all" />
                                         </th>
                                         <th scope="col">No</th>
@@ -154,7 +154,7 @@
                                     foreach ($sales as $s) : ?>
                                         <tr>
                                             <td class="center">
-                                                <input type="checkbox" class="check" id="checkbox-<?php echo $s->fc_salesid ?>" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>" />
+                                                <input type="checkbox" class="check" id="checkbox-<?php echo $s->fc_salesid ?>" name="id[]" value="<?php echo $s->fc_salesid ?>" />
                                             </td>
                                             <th scope="col"><?= $i++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
@@ -165,7 +165,6 @@
                                             <td scope="row"><?= $s->fv_mposisi ?></td>
                                         </tr>
                                     <?php endforeach; ?>
-                                    <?php echo form_close() ?>
                                 </tbody>
                             </table>
                         </div>
@@ -182,8 +181,9 @@
                                     <button type="submit" class="btn btn-success action-update" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px">
-                                    <button type="button" class="btn btn-danger" id="btnSubmit"><i class="fa fa-trash"> Hapus</i></button>
+                                    <button type="button" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales')"><i class="fa fa-trash"> Hapus</i></button>
                                 </div>
+                                <?php echo form_close() ?>
                                 <div class="md-form active-purple active-purple-2 mb-3">
                                 </div>
                         </form>
@@ -349,7 +349,7 @@
 
 
 <?php $this->load->view('partials/footer.php') ?>
-<script>
+<!-- <script>
     $('.action-update').click(function(e) {
         var check = [];
         $('input#checkbox:checked').each(function() {
@@ -380,7 +380,7 @@
             //$(".action-delete").prop('disabled', false);
         }
     });
-</script>
+</script> -->
 <script>
     $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
         $("#check-all").click(function() { // Ketika user men-cek checkbox all
