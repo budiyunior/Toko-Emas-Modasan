@@ -247,6 +247,7 @@
 <script src="<?php echo base_url() ?>assets/docs/assets/js/language/html.js"></script>
 <script src="<?php echo base_url() ?>assets/docs/assets/js/language/css.js"></script>
 <script src="<?php echo base_url() ?>assets/docs/assets/js/language/javascript.js"></script>
+
 </body>
 
 </html>

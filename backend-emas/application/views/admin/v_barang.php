@@ -209,7 +209,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <th scope="col"><?= $i++ ?></th>
-                                            <td scope="row"><?= $s->fn_barcode ?></td>
+                                            <td scope="row"><?= $s->fc_barcode ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang ?></td>
                                             <td scope="row"><?= $s->fc_kdkelompok ?></td>
                                             <td scope="row"><?= $s->fc_kdlokasi ?></td>
@@ -396,32 +396,10 @@
                                             <div class="modal-body">
 
                                                 <div class="row">
-                                                    <table class="table table-bordered">
-                                                        <thead>
-                                                            <!-- <tr>
-                                                                <th class="check">
-                                                                    <input type="checkbox" />
-                                                                </th>
-                                                                <th class="check">
-                                                                    <input type="checkbox" />
-                                                                </th>
-                                                            </tr> -->
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php $i = 1;
-                                                            foreach ($sales as $s) : ?>
-                                                                <tr>
-                                                                    <td ><?= $s->fv_nama ?></td>
-                                                                
-                                                                    <td >
-                                                                        <button class="btn btn-xs btn-info">
-                                                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
-                                                                        </button>
-                                                                    </td>
-                                                                </tr>
-                                                            <?php endforeach; ?>
-                                                        </tbody>
-                                                    </table>
+                                                    <dl>
+                                                        <dt>Server IP:</dt>
+                                                        <dd data-editor-field="server-ip">153.63.213.41</dd>
+                                                    </dl>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-7">
