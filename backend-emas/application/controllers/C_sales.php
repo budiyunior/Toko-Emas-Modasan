@@ -48,4 +48,16 @@ class C_sales extends CI_Controller
 
         }
     }
+
+
+
+    public function delete($id)
+    {
+        {
+            foreach ($_POST['fc_salesid'] as $id) {
+                $this->M_pelanggan->delete($id);
+            }
+            return redirect('C_pelanggan/index');
+        }
+    }
 }
