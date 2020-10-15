@@ -49,15 +49,13 @@ class C_sales extends CI_Controller
         }
     }
 
-
-
-    function delete($id)
+    public function delete()
     {
         {
             foreach ($_POST['id'] as $id) {
                 $this->M_sales->delete($id);
             }
-            return redirect('C_sales');
+            return redirect('C_sales/index');
         }
     }
 }
