@@ -159,13 +159,13 @@
                                     </thead>
                                     <tbody>
                                         <?php echo form_open('C_pelanggan/delete'); ?>
-                                        <?php $i = 1;
-                                        foreach ($pelanggan as $p) : ?>
+                                        <?php $no = $this->uri->segment('3') + 1;
+                                        foreach ($pelanggan->result() as $p) : ?>
                                             <tr>
                                                 <td class="check">
                                                     <input type="checkbox" class="check-item" name="id[]" value="<?php echo $p->fc_kdpel ?>">
                                                 </td>
-                                                <th scope="row"><?= $i++; ?></th>
+                                                <th scope="row"><?= $no++; ?></th>
                                                 <td><?= $p->fc_kdpel; ?></td>
                                                 <td><?= $p->fv_nmpelanggan; ?></td>
                                                 <td><?= $p->f_alamat; ?></td>
@@ -176,7 +176,14 @@
                                     </tbody>
 
                                 </table>
+                                <div class="row">
+                                    <div class="">
+                                        <!--Tampilkan pagination-->
+                                        <?php echo $pagination; ?>
+                                    </div>
+                                </div>
                             </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary">Tambah</a>
@@ -337,5 +344,6 @@
             else // Jika checkbox all tidak diceklis
                 $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
         });
+
     });
 </script>
