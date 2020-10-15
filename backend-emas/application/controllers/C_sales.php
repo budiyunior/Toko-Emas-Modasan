@@ -51,7 +51,7 @@ class C_sales extends CI_Controller
 
 
 
-    public function delete($id)
+    function delete($id)
     {
         {
             foreach ($_POST['id'] as $id) {

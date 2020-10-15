@@ -69,6 +69,6 @@ class M_sales extends CI_Model
     public function delete($id)
     {
         $this->db->where('fc_salesid', $id);
-        $this->db->delete($this->tabel);
+        $this->db->delete('t_sales');
     }
 }

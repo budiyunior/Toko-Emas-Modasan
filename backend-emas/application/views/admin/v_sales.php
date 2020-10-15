@@ -150,13 +150,13 @@
                                 </thead>
                                 <tbody>
                                     <?php echo form_open('C_sales/delete'); ?>
-                                    <?php $i = 1;
+                                    <?php $no = $this->uri->segment('3') + 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
-                                            <td class="center">
-                                                <input type="checkbox" class="check" id="checkbox-<?php echo $s->fc_salesid ?>" name="id[]" value="<?php echo $s->fc_salesid ?>" />
+                                            <td class="check">
+                                                <input type="checkbox" class="check-item" name="id[]" value="<?php echo $s->fc_salesid ?>">
                                             </td>
-                                            <th scope="col"><?= $i++ ?></th>
+                                            <th scope="row"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_email ?></td>
@@ -181,9 +181,9 @@
                                     <button type="submit" class="btn btn-success action-update" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px">
-                                    <button type="button" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales')"><i class="fa fa-trash"> Hapus</i></button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales')"><i class="fa fa-trash"> Hapus</i></button>
                                 </div>
-                                <?php echo form_close() ?>
+                                <?= form_close(); ?>
                                 <div class="md-form active-purple active-purple-2 mb-3">
                                 </div>
                         </form>
@@ -349,45 +349,13 @@
 
 
 <?php $this->load->view('partials/footer.php') ?>
-<!-- <script>
-    $('.action-update').click(function(e) {
-        var check = [];
-        $('input#checkbox:checked').each(function() {
-            check.push($(this).val())
-        });
-        var action = $(this).attr('data-target');
-        window.location.href = action;
-    });
-
-
-    $('#checkbox').change(function() {
-        //uncheck "select all", if one of the listed checkbox item is unchecked
-        if (false == $(this).prop("checked")) { //if this item is unchecked
-            $("#select_all").prop('checked', false); //change "select all" checked status to false
-            $(".action-update").prop('disabled', true);
-            // $(".action-delete").prop('disabled', true);
-        }
-
-        //check "select all" if all checkbox items are checked
-        if ($('#checkbox:checked').length == $('.checkbox').length) {
-            $("#select_all").prop('checked', true);
-            $(".action-update").prop('disabled', false);
-            //$(".action-delete").prop('disabled', false);
-        }
-
-        if ($('#checkbox:checked').length > 0) {
-            $(".action-update").prop('disabled', false);
-            //$(".action-delete").prop('disabled', false);
-        }
-    });
-</script> -->
 <script>
     $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
         $("#check-all").click(function() { // Ketika user men-cek checkbox all
             if ($(this).is(":checked")) // Jika checkbox all diceklis
-                $(".check").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
             else // Jika checkbox all tidak diceklis
-                $(".check").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
         });
     });
 </script>
