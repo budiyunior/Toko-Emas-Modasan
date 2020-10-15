@@ -55,7 +55,7 @@ class C_sales extends CI_Controller
             foreach ($_POST['id'] as $id) {
                 $this->M_sales->delete($id);
             }
-            return redirect('C_sales/index');
+            return redirect('C_sales');
         }
     }
 }

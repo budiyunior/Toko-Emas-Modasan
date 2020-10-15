@@ -154,7 +154,7 @@
                                     foreach ($sales as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?php echo $s->fc_salesid ?>">
+                                                <input type="checkbox" class="check-item" id="sales-<?= $s->fc_salesid ?>" name="id[]" value="<?php echo $s->fc_salesid ?>">
                                             </td>
                                             <th scope="row"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
@@ -175,7 +175,7 @@
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i class="fa fa-plus"> Tambah</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="submit" class="btn btn-success action-update" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
+                                <a href="" class="btn btn-success update-record" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></a>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
                                 <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales')"><i class="fa fa-trash"> Hapus</i></button>
@@ -355,4 +355,7 @@
             });
 
         });
+    $(document).ready(function(){
+
+    })
     </script>
