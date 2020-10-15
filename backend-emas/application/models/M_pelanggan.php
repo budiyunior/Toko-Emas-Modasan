@@ -5,18 +5,24 @@ class M_pelanggan extends CI_Model
 {
     private $tabel = "tm_pelanggan";
 
-    public function get_pelanggan()
+    function list_pelanggan($limit, $start)
     {
-        return $this->db->get($this->tabel)->result();
-    }
-
-    public function get()
-    {
-        $this->db->select('*');
-        $this->db->from('tm_pelanggan');
-        $query = $this->db->get()->result();
+        $query = $this->db->get('tm_pelanggan', $limit, $start);
         return $query;
     }
+
+    // public function get_pelanggan()
+    // {
+    //     return $this->db->get($this->tabel)->result();
+    // }
+
+    // public function get()
+    // {
+    //     $this->db->select('*');
+    //     $this->db->from('tm_pelanggan');
+    //     $query = $this->db->get()->result();
+    //     return $query;
+    // }
 
     public function save_pelanggan()
     {
