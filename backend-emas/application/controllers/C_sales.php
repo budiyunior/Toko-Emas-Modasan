@@ -55,9 +55,9 @@ class C_sales extends CI_Controller
     {
         {
             foreach ($_POST['fc_salesid'] as $id) {
-                $this->M_pelanggan->delete($id);
+                $this->M_sales->delete($id);
             }
-            return redirect('C_pelanggan/index');
+            return redirect('C_sales');
         }
     }
 }
