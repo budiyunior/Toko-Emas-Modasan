@@ -145,7 +145,9 @@
                                     <thead>
                                         <tr>
                                             <th class="check">
-                                                <input type="checkbox" id="check-all">
+                                                <div class="center">
+                                                    <input type="checkbox" id="check-all">
+                                                </div>
                                             </th>
                                             <th scope="col">No </th>
                                             <th scope="col">Kode </th>
@@ -326,3 +328,14 @@
 
 <?php $this->load->view('partials/footer.php') ?>
 <?php $this->load->view('partials/js.php') ?>
+
+<script>
+    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+        $("#check-all").click(function() { // Ketika user men-cek checkbox all
+            if ($(this).is(":checked")) // Jika checkbox all diceklis
+                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+            else // Jika checkbox all tidak diceklis
+                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+        });
+    });
+</script>
