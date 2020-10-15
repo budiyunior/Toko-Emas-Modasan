@@ -152,38 +152,22 @@
                                     <?php $i = 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
-                                            <td class="check">
-                                                <input type="checkbox" />
+                                            <td class="center">
+                                                <input type="checkbox" class="checkbox" id="checkbox-<?php echo $s->fc_salesid ?>" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>" />
                                             </td>
                                             <th scope="col"><?= $i++ ?></th>
-                                            <td class="id" scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_email ?></td>
                                             <td scope="row"><?= $s->fc_hp ?></td>
                                             <td scope="row"><?= $s->fc_aktif ?></td>
                                             <td scope="row"><?= $s->fv_mposisi ?></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($sales as $s) : ?>
-                                            <tr>
-                                                <td class="center">
-                                                    <input type="checkbox" class="checkbox" id="checkbox-<?php echo $s->fc_salesid ?>" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>" />
-                                                </td>
-                                                <th scope="col"><?= $i++ ?></th>
-                                                <td scope="row"><?= $s->fc_salesid ?></td>
-                                                <td scope="row"><?= $s->fv_nama ?></td>
-                                                <td scope="row"><?= $s->fc_email ?></td>
-                                                <td scope="row"><?= $s->fc_hp ?></td>
-                                                <td scope="row"><?= $s->fc_aktif ?></td>
-                                                <td scope="row"><?= $s->fv_mposisi ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
                         </div>
+                    </div>
                     </form>
 
                     <div class="center">
@@ -193,7 +177,7 @@
                                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i class="fa fa-plus"> Tambah</i></button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px">
-                                    <button type="button" class="btn btn-success action-update" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
+                                    <button type="submit" class="btn btn-success action-update" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px">
                                     <button type="button" class="btn btn-danger" id="btnSubmit"><i class="fa fa-trash"> Hapus</i></button>
@@ -363,14 +347,36 @@
 
 
 <?php $this->load->view('partials/footer.php') ?>
-<?php $this->load->view('partials/js.php') ?>
 <script>
-    $('.action-update').click(function(e){
+    $('.action-update').click(function(e) {
         var check = [];
-        $('input#checkbox:checked').each(function(){
-            arr.push($(this).val())
+        $('input#checkbox:checked').each(function() {
+            check.push($(this).val())
         });
-        var action = $(this).attr('data-href') + '/' + arr.join("-");
+        var action = $(this).attr('data-target');
         window.location.href = action;
     });
+
+
+    $('#checkbox').change(function() {
+        //uncheck "select all", if one of the listed checkbox item is unchecked
+        if (false == $(this).prop("checked")) { //if this item is unchecked
+            $("#select_all").prop('checked', false); //change "select all" checked status to false
+            $(".action-update").prop('disabled', true);
+           // $(".action-delete").prop('disabled', true);
+        }
+
+        //check "select all" if all checkbox items are checked
+        if ($('#checkbox:checked').length == $('.checkbox').length) {
+            $("#select_all").prop('checked', true);
+            $(".action-update").prop('disabled', false);
+            //$(".action-delete").prop('disabled', false);
+        }
+
+        if ($('#checkbox:checked').length > 0) {
+            $(".action-update").prop('disabled', false);
+            //$(".action-delete").prop('disabled', false);
+        }
+    });
 </script>
+<?php $this->load->view('partials/js.php') ?>
