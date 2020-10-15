@@ -27,7 +27,11 @@
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
-
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/dataTables.editor.min"></script>
 <!-- ace scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/ace/elements.scroller.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/ace/elements.colorpicker.js"></script>
@@ -210,7 +214,7 @@
                     id = $(this).closest('tr').find('.id').html();
                     // name = $(this).closest('tr').find('.name').html();
 
-                    alert('ID: ' + id );
+                    alert('ID: ' + id);
                 })
 
             })
