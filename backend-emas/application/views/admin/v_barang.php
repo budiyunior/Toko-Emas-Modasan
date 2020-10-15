@@ -396,10 +396,16 @@
                                             <div class="modal-body">
 
                                                 <div class="row">
-                                                    <dl>
-                                                        <dt>Server IP:</dt>
-                                                        <dd data-editor-field="server-ip">153.63.213.41</dd>
-                                                    </dl>
+                                                    <?php $i = 1;
+                                                    foreach ($sales as $s) : ?>
+                                                        <tr>
+                                                            <td>
+                                                                <span class='edit'><?= $s->fv_nama ?></span>
+                                                                <input type='text' class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                                            </td>
+
+                                                        </tr>
+                                                    <?php endforeach; ?>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-7">
