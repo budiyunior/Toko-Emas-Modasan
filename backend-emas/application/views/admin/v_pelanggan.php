@@ -138,12 +138,15 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
                         <div class="center">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr>
+                                            <th class="check">
+                                                <input type="checkbox" id="check-all">
+                                            </th>
                                             <th scope="col">No </th>
                                             <th scope="col">Kode </th>
                                             <th scope="col">Nama </th>
@@ -153,9 +156,13 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php echo form_open('C_pelanggan/delete'); ?>
                                         <?php $i = 1;
                                         foreach ($pelanggan as $p) : ?>
                                             <tr>
+                                                <td class="check">
+                                                    <input type="checkbox" class="check-item" name="id[]" value="<?php echo $p->fc_kdpel ?>">
+                                                </td>
                                                 <th scope="row"><?= $i++; ?></th>
                                                 <td><?= $p->fc_kdpel; ?></td>
                                                 <td><?= $p->fv_nmpelanggan; ?></td>
@@ -176,8 +183,9 @@
                                     <a href="" data-toggle="modal" data-target="#editpelanggan" class="btn btn-success">Edit</a>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-danger">Hapus</a>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')">Hapus</button>
                                 </div>
+                                <?= form_close(); ?>
                                 <div class="col-md-2" style="margin-top: 5px;">
                                     <form action="">
                                         <input type="text" class="form-control" placeholder="Cari">
@@ -193,50 +201,57 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <form>
+                                                        <form method="post" action="<?= base_url('C_pelanggan/save') ?>" enctype="multipart/form-data">
                                                             <div class="col-md-12">
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">Kode</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">Nama</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">Nama</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fv_nmpelanggan" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('fv_nmpelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">Alamat</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">Alamat</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="f_alamat" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('f_alamat', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">No Hp</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">No Hp</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_telp" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('fc_telp', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">No KTP</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">No KTP</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_noktp" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('fc_noktp', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">Keterangan</label>
+                                                                    <label for="" class="col-sm-4 col-form-label">Keterangan</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="f_keterangan" class="form-control" id="" placeholder="">
+                                                                        <?= form_error('f_keterangan', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <button type="submit" class="btn btn-primary ">Simpan</button>
                                                         </form>
                                                     </div>
                                                 </div>
 
-                                                <button type="button" class="btn btn-primary ">Simpan</button>
+
                                             </div>
                                         </div>
                                     </div>

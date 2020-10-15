@@ -18,17 +18,23 @@ class M_pelanggan extends CI_Model
         return $query;
     }
 
-     public function save_pelanggan()
-     {
-         $post = $this->input->post();
-         $this->fc_kdpel = $post['fc_kdpel'];
-         $this->fv_nmpelanggan = $post['fv_nmpelanggan'];
-         $this->f_alamat = $post['f_alamat'];
-         $this->fc_telp = $post['fc_telp'];
-         $this->fc_noktp = $post['fc_noktp'];
-         $this->f_keterangan = $post['f_keterangan'];
-        
+    public function save_pelanggan()
+    {
+        $post = $this->input->post();
+        $this->fc_kdpel = $post['fc_kdpel'];
+        $this->fv_nmpelanggan = $post['fv_nmpelanggan'];
+        $this->f_alamat = $post['f_alamat'];
+        $this->fc_telp = $post['fc_telp'];
+        $this->fc_noktp = $post['fc_noktp'];
+        $this->f_keterangan = $post['f_keterangan'];
 
-         $this->db->insert($this->tabel, $this);
-     }
+
+        $this->db->insert($this->tabel, $this);
+    }
+
+    public function delete($id)
+    {
+        $this->db->where('fc_kdpel', $id);
+        $this->db->delete('tm_pelanggan');
+    }
 }

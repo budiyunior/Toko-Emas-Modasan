@@ -45,4 +45,12 @@ class C_pelanggan extends CI_Controller
 
         }
     }
+
+    function delete()
+    {
+        foreach ($_POST['id'] as $id) {
+            $this->M_pelanggan->delete($id);
+        }
+        return redirect('C_pelanggan/index');
+    }
 }
