@@ -13,6 +13,24 @@ class M_barang extends CI_Model
         return $this->db->get($this->tabel)->result();
     }
 
+<<<<<<< Updated upstream
+=======
+
+    public function get_sales()
+    {
+        return $this->db->get($this->tbsales)->result();
+    }
+
+    public function get_lokasi()
+    {
+        return $this->db->get($this->tblokasi)->result();
+    }
+    public function get_kelompok()
+    {
+        return $this->db->get($this->tbkelompok)->result();
+    }
+
+>>>>>>> Stashed changes
     public function save_barang()
     {
         $post = $this->input->post();
