@@ -363,25 +363,14 @@
 
 
 <?php $this->load->view('partials/footer.php') ?>
-<script type="text/javascript">
-    var checkedValue = document.querySelector('.checklist:checked').value;
-    var checkedValue = $('.checklist:checked').val();
-    var checkedValue = null;
-    var inputElements = document.getElementsByClassName('checklist');
-    for (var i = 0; inputElements[i]; ++i) {
-        if (inputElements[i].checked) {
-            checkedValue = inputElements[i].value;
-            break;
-        }
-    }
-</script>
-
+<?php $this->load->view('partials/js.php') ?>
 <script>
     $('.action-update').click(function(e){
         var check = [];
         $('input#checkbox:checked').each(function(){
-
+            arr.push($(this).val())
         });
+        var action = $(this).attr('data-href') + '/' + arr.join("-");
+        window.location.href = action;
     });
 </script>
-<?php $this->load->view('partials/js.php') ?>
