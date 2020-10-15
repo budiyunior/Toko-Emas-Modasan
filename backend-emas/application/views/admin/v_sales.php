@@ -376,16 +376,6 @@
     }
 </script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-
-        $('#edit').click(function() {
-
-            $('.checklist:checked')
-        })
-    })
-</script>
-
 <script>
     $('.action-update').click(function(e){
         var check = [];
