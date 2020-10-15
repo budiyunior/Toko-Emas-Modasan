@@ -125,12 +125,9 @@
                 <h1>
                     Sales
                     <button type="button" class="pull-right btn btn-primary">Refresh</button>
-
-
-
                 </h1>
             </div><!-- /.page-header -->
-
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
@@ -139,6 +136,9 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
+                                        <th class="check">
+                                            <input type="checkbox" />
+                                        </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
                                         <th scope="col">Nama</th>
@@ -152,8 +152,11 @@
                                     <?php $i = 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
+                                            <td class="check">
+                                                <input type="checkbox" />
+                                            </td>
                                             <th scope="col"><?= $i++ ?></th>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td class="id" scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_email ?></td>
                                             <td scope="row"><?= $s->fc_hp ?></td>
@@ -170,13 +173,12 @@
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambah"><i class="fa fa-plus"> Tambah</i></button>
-
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
+                                <button type="button" class="btn btn-success" id="edit" data-toggle="modal" data-target="#edit"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
-                                <button type="button" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></button>
+                                <button type="button" class="btn btn-danger" id="btnSubmit" ><i class="fa fa-trash"> Hapus</i></button>
                             </div>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
@@ -266,73 +268,75 @@
                         </div>
 
                         <!--MODAL EDIT-->
-                        <div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="staticBackdropLabel"></h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
+                        <?php foreach ($sales3 as $sls) : ?>
+                            <div class="modal fade" id="edit" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
 
-                                    <form>
-                                        <div class="form-group row">
-                                            <label for="kode" class="col-sm-2 col-form-label">Kode</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="kode" placeholder="Kode">
+                                        <form>
+                                            <div class="form-group row">
+                                                <label for="kode" class="col-sm-2 col-form-label">Kode</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" name="fc_salesid" value="<?= $sls->fc_salesid ?>" class="form-control" id="kode" placeholder="Kode">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="nama" placeholder="Nama">
+                                            <div class="form-group row">
+                                                <label for="nama" class="col-sm-2 col-form-label">Nama</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" value="<?= $sls->fv_nama ?>" name="fv_nama" id="nama" placeholder="Nama">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="email" placeholder="Email">
+                                            <div class="form-group row">
+                                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="email" placeholder="Email">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="no.hp" placeholder="No.hp">
+                                            <div class="form-group row">
+                                                <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="no.hp" placeholder="No.hp">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="" class="col-sm-2 col-form-label">Sales</label>
-                                            <div class="col-sm-7">
-                                                <select class="form-control" required name="metode">
-                                                    <option value="">Pilih </option>
-                                                    <option name="Indomaret"> Janda </option>
-                                                    <option name="Alfamart"> Duda </option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-2 col-form-label">Sales</label>
+                                                <div class="col-sm-7">
+                                                    <select class="form-control" required name="metode">
+                                                        <option value="">Pilih </option>
+                                                        <option name="Indomaret"> Janda </option>
+                                                        <option name="Alfamart"> Duda </option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
-                                                Lahir</label>
-                                            <div class="col-sm-7">
-                                                <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                            <div class="form-group row">
+                                                <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
+                                                    Lahir</label>
+                                                <div class="col-sm-7">
+                                                    <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="jabatan" placeholder="Jabatan">
+                                            <div class="form-group row">
+                                                <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" class="form-control" id="jabatan" placeholder="Jabatan">
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <div class="col-md-1" style="margin-top: 5px">
-                                                <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
+                                            <div class="modal-footer">
+                                                <div class="col-md-1" style="margin-top: 5px">
+                                                    <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        </form>
+                        <?php endforeach; ?>
                         <!-- PAGE CONTENT ENDS -->
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -342,4 +346,26 @@
 
 
     <?php $this->load->view('partials/footer.php') ?>
+    <script type="text/javascript">
+        var checkedValue = document.querySelector('.checklist:checked').value;
+        var checkedValue = $('.checklist:checked').val();
+        var checkedValue = null;
+        var inputElements = document.getElementsByClassName('checklist');
+        for (var i = 0; inputElements[i]; ++i) {
+            if (inputElements[i].checked) {
+                checkedValue = inputElements[i].value;
+                break;
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#edit').click(function() {
+
+                $('.checklist:checked')
+            })
+        })
+    </script>
     <?php $this->load->view('partials/js.php') ?>

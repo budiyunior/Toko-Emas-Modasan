@@ -23,6 +23,10 @@
 <script src="<?php echo base_url() ?>assets/assets/js/bootstrap.js"></script>
 
 <!-- page specific plugin scripts -->
+<script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
 
 <!-- ace scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/ace/elements.scroller.js"></script>
@@ -100,6 +104,127 @@
             $(document).triggerHandler('settings.ace.top_menu', ['sidebar_fixed', $sidebar.hasClass('sidebar-fixed')]);
         });
 
+        var oTable1 =
+            $('#dynamic-table')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .dataTable({
+                bAutoWidth: false,
+                "aoColumns": [{
+                        "bSortable": false
+                    },
+                    null, null, null, null, null,
+                    {
+                        "bSortable": false
+                    }
+                ],
+                "aaSorting": [],
+
+                //,
+                //"sScrollY": "200px",
+                //"bPaginate": false,
+
+                //"sScrollX": "100%",
+                //"sScrollXInner": "120%",
+                //"bScrollCollapse": true,
+                //Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+                //you may want to wrap the table inside a "div.dataTables_borderWrap" element
+
+                //"iDisplayLength": 50
+            });
+
+        TableTools.classes.container = "btn-group btn-overlap";
+        TableTools.classes.print = {
+            "body": "DTTT_Print",
+            "info": "tableTools-alert gritter-item-wrapper gritter-info gritter-center white",
+            "message": "tableTools-print-navbar"
+        }
+
+        var tableTools_obj = new $.fn.dataTable.TableTools(oTable1, {
+            "sSwfPath": "../assets/js/dataTables/extensions/TableTools/swf/copy_csv_xls_pdf.swf", //in Ace demo ../assets will be replaced by correct assets path
+
+            "sRowSelector": "td:not(:last-child)",
+            "sRowSelect": "multi",
+            "fnRowSelected": function(row) {
+                //check checkbox when row is selected
+                try {
+                    $(row).find('input[type=checkbox]').get(0).checked = true
+                } catch (e) {}
+            },
+            "fnRowDeselected": function(row) {
+                //uncheck checkbox
+                try {
+                    $(row).find('input[type=checkbox]').get(0).checked = false
+                } catch (e) {}
+            },
+
+            "sSelectedClass": "success",
+            "aButtons": [{
+                    "sExtends": "copy",
+                    "sToolTip": "Copy to clipboard",
+                    "sButtonClass": "btn btn-white btn-primary btn-bold",
+                    "sButtonText": "<i class='fa fa-copy bigger-110 pink'></i>",
+                    "fnComplete": function() {
+                        this.fnInfo('<h3 class="no-margin-top smaller">Table copied</h3>\
+									<p>Copied ' + (oTable1.fnSettings().fnRecordsTotal()) + ' row(s) to the clipboard.</p>',
+                            1500
+                        );
+                    }
+                },
+
+                {
+                    "sExtends": "csv",
+                    "sToolTip": "Export to CSV",
+                    "sButtonClass": "btn btn-white btn-primary  btn-bold",
+                    "sButtonText": "<i class='fa fa-file-excel-o bigger-110 green'></i>"
+                },
+
+                {
+                    "sExtends": "pdf",
+                    "sToolTip": "Export to PDF",
+                    "sButtonClass": "btn btn-white btn-primary  btn-bold",
+                    "sButtonText": "<i class='fa fa-file-pdf-o bigger-110 red'></i>"
+                },
+
+                {
+                    "sExtends": "print",
+                    "sToolTip": "Print view",
+                    "sButtonClass": "btn btn-white btn-primary  btn-bold",
+                    "sButtonText": "<i class='fa fa-print bigger-110 grey'></i>",
+
+                    "sMessage": "<div class='navbar navbar-default'><div class='navbar-header pull-left'><a class='navbar-brand' href='#'><small>Optional Navbar &amp; Text</small></a></div></div>",
+
+                    "sInfo": "<h3 class='no-margin-top'>Print view</h3>\
+									  <p>Please use your browser's print function to\
+									  print this table.\
+									  <br />Press <b>escape</b> when finished.</p>",
+                }
+            ]
+        });
+
+        $(document).ready(function() {
+
+            $('#btnSubmit').click(function() {
+
+                $('.row-select input:checked').each(function() {
+                    var id;
+                    id = $(this).closest('tr').find('.id').html();
+                    // name = $(this).closest('tr').find('.name').html();
+
+                    alert('ID: ' + id );
+                })
+
+            })
+
+
+            $('#btnSelectAll').click(function() {
+
+                $('.row-select input').each(function() {
+                    $(this).prop('checked', true);
+                })
+
+            })
+
+        })
 
     });
 </script>
