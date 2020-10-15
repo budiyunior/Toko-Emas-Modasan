@@ -136,13 +136,9 @@
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
-<<<<<<< Updated upstream
                                         <th class="check">
                                             <input type="checkbox" />
                                         </th>
-=======
-                                        <th class="col">Checklist
->>>>>>> Stashed changes
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
                                         <th scope="col">Nama</th>
@@ -156,22 +152,11 @@
                                     <?php $i = 1;
                                     foreach ($sales as $s) : ?>
                                         <tr>
-<<<<<<< Updated upstream
                                             <td class="check">
                                                 <input type="checkbox" />
                                             </td>
                                             <th scope="col"><?= $i++ ?></th>
                                             <td class="id" scope="row"><?= $s->fc_salesid ?></td>
-=======
-                                            <td class="center">
-                                                <label class="pos-rel">
-                                                    <input class="c-choice__input checkbox" id="cekbok-<?= $s->fc_salesid ?>" type="checkbox" name="fc_salesid[]" value="<?= $s->fc_salesid ?>" />
-                                                    <span class="lbl"></span>
-                                                </label>
-                                            </td>
-                                            <td scope="col"><?= $i++ ?></td>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
->>>>>>> Stashed changes
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_email ?></td>
                                             <td scope="row"><?= $s->fc_hp ?></td>
