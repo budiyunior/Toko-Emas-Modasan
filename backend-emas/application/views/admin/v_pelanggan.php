@@ -92,7 +92,7 @@
     </script>
 
     <!-- #section:basics/sidebar.horizontal -->
-    <div id="sidebar" class="sidebar      h-sidebar                navbar-collapse collapse">
+    <div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
         <script type="text/javascript">
             try {
                 ace.settings.check('sidebar', 'fixed')
@@ -101,14 +101,17 @@
         <ul class="nav nav-list">
             <?php foreach ($menu as $me) : ?>
                 <li class="hover">
-                    <a href="<?php echo $me->link_menu ?>">
-                        <i class="menu-icon <?= $me->icon_class ?>"></i>
+                    <a href="<?php echo base_url($me->link_menu);  ?>">
+                        <i class="menu-icon <?= base_url($me->icon_class);  ?>"></i>
                         <span class="menu-text"> <?= $me->nama_menu ?></span>
                     </a>
                 </li>
             <?php endforeach; ?>
-        </ul>
+        </ul><!-- /.nav-list -->
 
+        <!-- #section:basics/sidebar.layout.minimize -->
+
+        <!-- /section:basics/sidebar.layout.minimize -->
         <!-- /.nav-list -->
 
         <!-- #section:basics/sidebar.layout.minimize -->
