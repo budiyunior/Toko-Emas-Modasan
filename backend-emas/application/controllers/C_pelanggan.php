@@ -39,7 +39,7 @@ class C_pelanggan extends CI_Controller
             // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
             // redirect('');
             echo "<script>
-            alert('Data sales berhasil di tambahkan');
+            alert('Data pelanggan berhasil di tambahkan');
             window.location.href = '" . base_url('C_pelanggan') . "';
         </script>"; //Url tujuan
 
