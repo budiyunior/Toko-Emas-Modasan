@@ -79,7 +79,7 @@ class C_pelanggan extends CI_Controller
             // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
             // redirect('');
             echo "<script>
-            alert('Data sales berhasil di tambahkan');
+            alert('Data pelanggan berhasil di tambahkan');
             window.location.href = '" . base_url('C_pelanggan') . "';
         </script>"; //Url tujuan
 
@@ -108,7 +108,7 @@ class C_pelanggan extends CI_Controller
         // if ($validasi->run() == true) {
         $update_pelanggan->update_pelanggan();
         echo "<script>
-            alert('Data sales berhasil di ubah');
+            alert('Data pelanggan berhasil di ubah');
             window.location.href = '" . base_url('C_pelanggan') . "';
         </script>"; //Url tujuan
         //}
@@ -119,4 +119,26 @@ class C_pelanggan extends CI_Controller
         $data = $this->M_pelanggan->get_by_id2($id);
         echo json_encode($data);
     }
-}
+
+    public function view()
+    {
+        $data['sales'] = $this->M_pelanggan->get();
+        $data['sales3'] = $this->M_pelanggan->get();
+        $data['jabatan'] = $this->M_pelanggan->get_jabatan();
+        $this->load->view('tambahan/v_tablesales', $data);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data = $this->M_pelanggan->search_pelanggan($keyword);
+
+        $hasil = $this->load->view('tambahan/v_tablesales', array('t_sales' => $data), true);
+
+        // Buat sebuah array
+        $callback = array(
+            'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+        );
+        echo json_encode($callback); // konversi varibael $callback menjadi JSON
+    }
+} 

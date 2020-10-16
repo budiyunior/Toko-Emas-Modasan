@@ -164,7 +164,7 @@
                             <label for="Keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="Keterangan" value="<?= $data->f_keterangan ?>" placeholder="Keterangan">
-                        </div>
+                            </div>
                         </div>
                         
                        

@@ -216,9 +216,9 @@
                                                         <form method="post" action="<?= base_url('C_pelanggan/save') ?>" enctype="multipart/form-data">
                                                             <div class="col-md-12">
                                                                 <div class="form-group row">
-                                                                    <label for="" class="col-sm-4 col-form-label">Kode</label>
+                                                                    <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="">
                                                                         <?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
@@ -272,6 +272,9 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Pelanggan</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                        </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
@@ -279,9 +282,9 @@
                                                     <form method="post" action="<?= base_url('C_pelanggan/update') ?>" enctype="multipart/form-data">
                                                             <div class="col-md-12">
                                                                 <div class="form-group row">
-                                                                    <label for="inputPassword" class="col-sm-4 col-form-label">Kode</label>
+                                                                    <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
