@@ -49,13 +49,27 @@ class C_sales extends CI_Controller
         }
     }
 
-    public function delete()
+    public function edit($id_sales = null)
     {
-        {
+        $data['title'] = 'Edit Sales';
+        $data['data'] = $this->M_sales->get_by_id($id_sales);
+        $data['menu'] = $this->M_menu->get_menu();
+        $data['jabatan'] = $this->M_sales->get_jabatan();
+        $this->load->view('admin/v_edit_sales', $data);
+    }
+
+    public function delete()
+    { {
             foreach ($_POST['id'] as $id) {
                 $this->M_sales->delete($id);
             }
             return redirect('C_sales');
         }
+    }
+
+    public function ajax_edit($id)
+    {
+        $data = $this->M_sales->get_by_id2($id);
+        echo json_encode($data);
     }
 }

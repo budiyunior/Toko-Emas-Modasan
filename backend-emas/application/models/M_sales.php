@@ -71,4 +71,10 @@ class M_sales extends CI_Model
         $this->db->where('fc_salesid', $id);
         $this->db->delete('t_sales');
     }
+
+    public function get_by_id2($id)
+    {
+        $this->db->where('fc_salesid', $id);
+        return $this->db->get('t_sales')->row();
+    }
 }
