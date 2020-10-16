@@ -154,8 +154,6 @@
         }
     });
 </script>
-
-
 <script>
     $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
         $("#check-all").click(function() { // Ketika user men-cek checkbox all

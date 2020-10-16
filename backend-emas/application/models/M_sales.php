@@ -63,4 +63,12 @@ class M_sales extends CI_Model
 
         $this->db->insert($this->tabel, $this);
     }
+
+
+
+    public function delete($id)
+    {
+        $this->db->where('fc_salesid', $id);
+        $this->db->delete('t_sales');
+    }
 }

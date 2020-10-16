@@ -7,7 +7,12 @@ class M_menu extends CI_Model
 
     public function get_menu()
     {
-        return $this->db->get($this->tabel)->result();
+        $this->db->select('*');
+        $this->db->from('mainmenu');
+        $this->db->order_by('idmenu');
+        $query = $this->db->get()->result();
+        return $query;
+
     }
 
 }
