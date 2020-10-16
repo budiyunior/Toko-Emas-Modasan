@@ -27,6 +27,8 @@
   <!-- ace settings handler -->
   <script src="<?php echo base_url() ?>assets/assets/js/ace-extra.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
   <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
   <!--[if lte IE 8]>
