@@ -52,22 +52,22 @@ class C_sales extends CI_Controller
 
     public function update()
     {
-        $validasi = $this->form_validation->set_rules('fc_salesid', 'id sales', 'required|is_unique[t_sales.fc_salesid]', [
-            'is_unique' => 'Kode sudah ada',
-            'required' => 'Nama Tidak Boleh Kosong'
-        ]);
-        $validasi = $this->form_validation->set_rules('fv_nama', 'nama', 'required', [
-            'required' => 'Nama Tidak boleh kosong'
-        ]);
+        // $validasi = $this->form_validation->set_rules('fc_salesid', 'id sales', 'required|is_unique[t_sales.fc_salesid]', [
+        //     'is_unique' => 'Kode sudah ada',
+        //     'required' => 'Nama Tidak Boleh Kosong'
+        // ]);
+        // $validasi = $this->form_validation->set_rules('fv_nama', 'nama', 'required', [
+        //     'required' => 'Nama Tidak boleh kosong'
+        // ]);
 
         $update_sales = $this->M_sales;
-        if ($validasi->run() == true) {
+        // if ($validasi->run() == true) {
             $update_sales->update_sales();
             echo "<script>
             alert('Data sales berhasil di ubah');
             window.location.href = '" . base_url('C_sales') . "';
         </script>"; //Url tujuan
-        }
+        //}
     }
 
     public function delete()
