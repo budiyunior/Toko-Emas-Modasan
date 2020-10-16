@@ -154,7 +154,7 @@
                                     foreach ($sales as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" id="sales-<?= $s->fc_salesid ?>" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>">
+                                                <input type="checkbox" class="check-item" id="sales" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>">
                                             </td>
                                             <th scope="row"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
@@ -357,9 +357,6 @@
             });
 
         });
-        $(document).ready(function() {
-
-        })
 
         $('.action-update').click(function(e) {
             e.preventDefault();
