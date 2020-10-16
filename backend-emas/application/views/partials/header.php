@@ -32,7 +32,13 @@
   <!--[if lte IE 8]>
 		<script src="../../assets/assets/js/html5shiv.js"></script>
 		<script src="../../assets/assets/js/respond.js"></script>
-		<![endif]-->
+    <![endif]-->
+
+  <style>
+    .modal {
+      overflow-y: auto;
+    }
+  </style>
 </head>
 
 <body class="no-skin">
