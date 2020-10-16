@@ -93,4 +93,30 @@ class C_pelanggan extends CI_Controller
         }
         return redirect('C_pelanggan/index');
     }
+
+    public function update()
+    {
+        // $validasi = $this->form_validation->set_rules('fc_salesid', 'id sales', 'required|is_unique[t_sales.fc_salesid]', [
+        //     'is_unique' => 'Kode sudah ada',
+        //     'required' => 'Nama Tidak Boleh Kosong'
+        // ]);
+        // $validasi = $this->form_validation->set_rules('fv_nama', 'nama', 'required', [
+        //     'required' => 'Nama Tidak boleh kosong'
+        // ]);
+
+        $update_pelanggan = $this->M_pelanggan;
+        // if ($validasi->run() == true) {
+        $update_pelanggan->update_pelanggan();
+        echo "<script>
+            alert('Data sales berhasil di ubah');
+            window.location.href = '" . base_url('C_pelanggan') . "';
+        </script>"; //Url tujuan
+        //}
+    }
+
+    public function ajax_edit($id)
+    {
+        $data = $this->M_pelanggan->get_by_id2($id);
+        echo json_encode($data);
+    }
 }

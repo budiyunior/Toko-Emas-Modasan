@@ -276,7 +276,7 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                        <form>
+                                                    <form method="post" action="<?= base_url('C_pelanggan/update') ?>" enctype="multipart/form-data">
                                                             <div class="col-md-12">
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Kode</label>
@@ -287,7 +287,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Nama</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="date" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
