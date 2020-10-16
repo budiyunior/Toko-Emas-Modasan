@@ -132,7 +132,7 @@
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="center">
-                        <div class="table-responsive">
+                        <div class="table-responsive" id="view">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -184,10 +184,12 @@
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
                             <div class="col-md-3" style="margin-top: 5px">
-                                <input class="form-control" type="text" placeholder="Cari" aria-label="Search">
+                                <input class="form-control" id="keywoard" type="text" placeholder="Cari Data">
+                            </div>
+                            <div class="col-md-1" style="margin-top: 5px;">
+                                <button type="button" id="btn-search" class="btn btn-secondary">Search</button>
                             </div>
                         </div>
-                        </form>
 
                         <div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -347,10 +349,6 @@
 
     <?php $this->load->view('partials/footer.php') ?>
     <?php $this->load->view('partials/js.php') ?>
-
-
-
-
     <script>
         $(".check-item").on("click", function() {
             if ($(".check-item:checked").length < 2) {
@@ -359,9 +357,6 @@
                 $('.action-update').prop('disabled', true);
             }
         });
-
-        
-
 
         $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
             $("#check-all").click(function() { // Ketika user men-cek checkbox all
