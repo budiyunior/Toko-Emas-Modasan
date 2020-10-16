@@ -26,4 +26,19 @@ class C_barang extends CI_Controller
         $this->load->view('admin/v_barang', $data);
     }
 
+
+    public function save_nmkelompok()
+    {
+        $save_kelompok = $this->M_barang;
+
+        $save_kelompok->save_namakelompok();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        
+        // echo "<script>
+        //     alert('Data sales berhasil di tambahkan');
+        //     window.location.href = '" . base_url('C_barang') . "';
+        // </script>"; //Url tujuan
+
+    }
 }

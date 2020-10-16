@@ -241,10 +241,21 @@
                                 <form action="">
                                     <input type="text" class="form-control" placeholder="Cari">
                                 </form>
-
                             </div>
 
+
+
+
                         </div>
+
+                        <form id="registration-form" method="post" action="<?= base_url('C_barang/save_nmkelompok') ?>"> Enter your name:
+
+                            <input name="fv_nmkelompok" type="text" id="name">
+
+                            <button onclick="enable()">edit</button>
+                            <button onclick="disable()">save</button>
+                        </form>
+
                     </div>
 
                     <!-- modal tambah -->
@@ -735,5 +746,6 @@
             </div><!-- /.row -->
         </div><!-- /.page-content -->
     </div>
+
     <?php $this->load->view('partials/footer.php') ?>
     <?php $this->load->view('partials/js.php') ?>

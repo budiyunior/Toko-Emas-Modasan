@@ -33,4 +33,12 @@ class M_barang extends CI_Model
         $this->fn_id = $post['fn_id'];
         $this->fd_date = $post['fc_barcode'];
     }
+
+    public function save_namakelompok()
+    {
+        $post = $this->input->post();
+        $this->fv_nmkelompok = $post['fv_nmkelompok'];
+        
+        $this->db->insert($this->tbkelompok, $this);
+    }
 }
