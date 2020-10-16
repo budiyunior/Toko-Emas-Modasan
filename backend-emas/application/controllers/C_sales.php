@@ -23,6 +23,7 @@ class C_sales extends CI_Controller
         $data['sales'] = $this->M_sales->get();
         $data['sales3'] = $this->M_sales->get();
         $data['jabatan'] = $this->M_sales->get_jabatan();
+        $data['jabatan2'] = $this->M_sales->get_jabatan();
         $this->load->view('admin/v_sales', $data);
     }
 
@@ -49,13 +50,24 @@ class C_sales extends CI_Controller
         }
     }
 
-    public function edit($id_sales = null)
+    public function update()
     {
-        $data['title'] = 'Edit Sales';
-        $data['data'] = $this->M_sales->get_by_id($id_sales);
-        $data['menu'] = $this->M_menu->get_menu();
-        $data['jabatan'] = $this->M_sales->get_jabatan();
-        $this->load->view('admin/v_edit_sales', $data);
+        $validasi = $this->form_validation->set_rules('fc_salesid', 'id sales', 'required|is_unique[t_sales.fc_salesid]', [
+            'is_unique' => 'Kode sudah ada',
+            'required' => 'Nama Tidak Boleh Kosong'
+        ]);
+        $validasi = $this->form_validation->set_rules('fv_nama', 'nama', 'required', [
+            'required' => 'Nama Tidak boleh kosong'
+        ]);
+
+        $update_sales = $this->M_sales;
+        if ($validasi->run() == true) {
+            $update_sales->update_sales();
+            echo "<script>
+            alert('Data sales berhasil di ubah');
+            window.location.href = '" . base_url('C_sales') . "';
+        </script>"; //Url tujuan
+        }
     }
 
     public function delete()

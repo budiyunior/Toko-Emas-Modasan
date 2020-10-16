@@ -232,7 +232,7 @@
                                                     <select class="form-control" name="fc_aktif">
                                                         <option>--Pilih--</option>
                                                         <option value="Y">Aktif</option>
-                                                        <option value="N">Tidak Aktif</option>
+                                                        <option value="N">Non Aktif</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -276,7 +276,7 @@
                                         </button>
                                     </div>
 
-                                    <form>
+                                    <form method="post" action="<?= base_url('C_sales/update') ?>" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                                             <div class="col-sm-7">
@@ -286,28 +286,28 @@
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fv_nama" id="nama" placeholder="Nama">
+                                                <input type="text" class="form-control" name="fv_nama_edit" id="nama" placeholder="Nama">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="email" placeholder="Email">
+                                                <input type="text" class="form-control" name="fc_email_edit" id="email" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="no.hp" placeholder="No.hp">
+                                                <input type="text" class="form-control" name="fc_hp_edit" id="no.hp" placeholder="No.hp">
                                             </div>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="" class="col-sm-2 col-form-label">Status</label>
+                                            <label for="" class="col-sm-2 col-form-label">Sales</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" required name="metode">
-                                                    <option value="">Pilih </option>
-                                                    <option name="Y"> Aktif </option>
-                                                    <option name="N"> Non Aktif </option>
+                                                <select class="form-control" name="fc_aktif_edit">
+                                                    <option>--Pilih--</option>
+                                                    <option value="Y">Aktif</option>
+                                                    <option value="N">Non Aktif</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -315,18 +315,22 @@
                                             <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
                                                 Lahir</label>
                                             <div class="col-sm-7">
-                                                <input type="date" class="form-control" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                                <input type="date" class="form-control" name="fd_tgllahir_edit" id="tanggal_lahir" placeholder="Tanggal Lahir">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" id="jabatan" placeholder="Jabatan">
+                                                <select class="form-control" name="fc_kdposisi_edit">
+                                                    <?php foreach ($jabatan2 as $k) : ?>
+                                                        <option value="<?= $k->fc_kdposisi ?>"><?= $k->fv_mposisi ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <div class="col-md-1" style="margin-top: 5px">
-                                                <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -370,9 +374,15 @@
                 dataType: "JSON",
                 success: function(result) {
                     $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                    $('[name="fv_nama_edit"]').val(result.fv_nama);
+                    $('[name="fc_email_edit"]').val(result.fc_email);
+                    $('[name="fc_hp_edit"]').val(result.fc_hp);
+                    $('[name="fc_aktif_edit"]').val(result.fc_aktif);
+                    $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
+                    $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
-                    alert('error data');
+                    alert('Data Eror');
                 }
             })
             // $('input.check-item:checked').each(function() {
