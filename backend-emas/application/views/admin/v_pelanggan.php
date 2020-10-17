@@ -344,13 +344,13 @@
 <?php $this->load->view('partials/js.php') ?>
 
 <script>
-    // $(".check-item").on("click", function() {
-    //         if ($(".check-item:checked").length < 2) {
-    //             $('.action-update').prop('disabled', false);
-    //         } else {
-    //             $('.action-update').prop('disabled', true);
-    //         }
-    //     });
+    $(".check-item").on("click", function() {
+            if ($(".check-item:checked").length < 2) {
+                $('.action-update').prop('disabled', false);
+            } else {
+                $('.action-update').prop('disabled', true);
+            }
+        });
 
     // $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
     //     $("#check-all").click(function() { // Ketika user men-cek checkbox all
