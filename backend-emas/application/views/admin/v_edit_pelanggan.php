@@ -130,48 +130,46 @@
                 <div class="col-xs-12">
                     <form>
                         <div class="form-group row">
-                            <label for="Kode" class="col-sm-2 col-form-label">Kode</label>
+                            <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                             <div class="col-sm-7">
-                                <input type="text" value="<?= $data->fc_kdpel ?>" name="fc_kdpel" class="form-control" id="Kode" placeholder="Kode">
+                                <input type="text" value="<?= $data->fc_kdpel ?>" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Nama" class="col-sm-2 col-form-label">Nama</label>
+                            <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" value="<?= $data->fv_nmpelanggan ?>" name="fv_nmpelanggan" id="Nama" placeholder="Nama">
+                                <input type="text" class="form-control" value="<?= $data->fv_nmpelanggan ?>" name="fv_nmpelanggan" id="nama" placeholder="Nama">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="Alamat" class="col-sm-2 col-form-label">Alamat</label>
+                            <label for="no.hp" class="col-sm-2 col-form-label">Alamat</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" value="<?= $data->f_alamat ?>" id="f_alamat" placeholder="Alamat">
+                                <input type="text" class="form-control" id="f_alamat" value="<?= $data->f_alamat ?>" placeholder="Alamat">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="No. Telp" class="col-sm-2 col-form-label">No. Telp</label>
+                            <label for="no.telp" class="col-sm-2 col-form-label">No.telp</label>
                             <div class="col-sm-7">
                                 <input type="text" class="form-control" id="fc_telp" value="<?= $data->fc_telp ?>" placeholder="No. Telp">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="No. Telp" class="col-sm-2 col-form-label">No. Telp</label>
+                            <label for="no.ktp" class="col-sm-2 col-form-label">No. KTP</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="fc_telp" value="<?= $data->fc_telp ?>" placeholder="No. Telp">
+                                <input type="text" class="form-control" id="fc_noktp" value="<?= $data->fc_noktp ?>" placeholder="No. KTP">
                             </div>
                         </div>
-                        
                         <div class="form-group row">
                             <label for="Keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="Keterangan" value="<?= $data->f_keterangan ?>" placeholder="Keterangan">
+                                <input type="text" class="form-control" id="f_keterangan" value="<?= $data->f_keterangan ?>" placeholder="f_keterangan">
+                            </div>
                         </div>
-                        </div>
-                        
-                       
-                        <div class="col-md-1" style="margin-top: 5px; margin-left: 16%;">
+                        <!-- <div class="col-md-1" style="margin-top: 5px; margin-left: 16%;">
                             <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
-                        </div>
+                        </div> -->
                     </form>
+                    <button type="button" class="btn btn-primary ">Simpan</button>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->

@@ -89,4 +89,17 @@ class M_sales extends CI_Model
         $this->db->where('fc_salesid', $id);
         return $this->db->get('t_sales')->row();
     }
+
+    public function search_sales($keyword)
+    {
+        $this->db->like('fc_salesid', $keyword);
+        $this->db->or_like('fv_nama', $keyword);
+        $this->db->or_like('fc_email', $keyword);
+        // $this->db->or_like('telp', $keyword);
+        // $this->db->or_like('alamat', $keyword);
+
+        $result = $this->db->get('t_sales')->result();
+
+        return $result;
+    }
 }
