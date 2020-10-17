@@ -2,6 +2,7 @@
     <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
 </a>
 </div><!-- /.main-container -->
+</div>
 
 <!-- basic scripts -->
 
@@ -21,6 +22,16 @@
     if ('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
 </script>
 <script src="<?php echo base_url() ?>assets/assets/js/bootstrap.js"></script>
+
+<script>
+    function disable() {
+        document.getElementById("name").disabled = true;
+    }
+
+    function enable() {
+        document.getElementById("name").disabled = false;
+    }
+</script>
 
 <!-- page specific plugin scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.js"></script>

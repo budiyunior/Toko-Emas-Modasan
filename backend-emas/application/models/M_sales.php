@@ -64,7 +64,19 @@ class M_sales extends CI_Model
         $this->db->insert($this->tabel, $this);
     }
 
+    public function update_sales()
+    {
+        $post = $this->input->post();
+        $this->fc_salesid = $post['fc_salesid'];
+        $this->fv_nama = $post['fv_nama'];
+        $this->fc_email = $post['fc_email'];
+        $this->fc_hp = $post['fc_hp'];
+        $this->fc_aktif = $post['fc_aktif'];
+        $this->fd_tgllahir = $post['fd_tgllahir'];
+        $this->fc_kdposisi = $post['fc_kdposisi'];
 
+        $this->db->update($this->tabel, $this, array('fc_salesid' => $post['fc_salesid']));
+    }
 
     public function delete($id)
     {
@@ -76,5 +88,18 @@ class M_sales extends CI_Model
     {
         $this->db->where('fc_salesid', $id);
         return $this->db->get('t_sales')->row();
+    }
+
+    public function search_sales($keyword)
+    {
+        $this->db->like('fc_salesid', $keyword);
+        $this->db->or_like('fv_nama', $keyword);
+        $this->db->or_like('fc_email', $keyword);
+        // $this->db->or_like('telp', $keyword);
+        // $this->db->or_like('alamat', $keyword);
+
+        $result = $this->db->get('t_sales')->result();
+
+        return $result;
     }
 }
