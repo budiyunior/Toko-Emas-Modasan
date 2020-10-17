@@ -192,7 +192,7 @@
                                     <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary">Tambah</a>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <a href="" data-toggle="modal" data-target="#editpelanggan" class="btn btn-success">Edit</a>
+                                    <button type="button" class="btn btn-success action-update">Edit</button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')">Hapus</button>
@@ -267,7 +267,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="editpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="editpelanggan" tabindex="-1" >
                                     <div class="modal-dialog ">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -341,21 +341,21 @@
 <?php $this->load->view('partials/js.php') ?>
 
 <script>
-    $(".check-item").on("click", function() {
-            if ($(".check-item:checked").length < 2) {
-                $('.action-update').prop('disabled', false);
-            } else {
-                $('.action-update').prop('disabled', true);
-            }
-        });
+    // $(".check-item").on("click", function() {
+    //         if ($(".check-item:checked").length < 2) {
+    //             $('.action-update').prop('disabled', false);
+    //         } else {
+    //             $('.action-update').prop('disabled', true);
+    //         }
+    //     });
 
-    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-        $("#check-all").click(function() { // Ketika user men-cek checkbox all
-            if ($(this).is(":checked")) // Jika checkbox all diceklis
-                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-            else // Jika checkbox all tidak diceklis
-                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-        });
+    // $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+    //     $("#check-all").click(function() { // Ketika user men-cek checkbox all
+    //         if ($(this).is(":checked")) // Jika checkbox all diceklis
+    //             $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+    //         else // Jika checkbox all tidak diceklis
+    //             $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+    //     });
     
         $('.action-update').click(function(e) {
             e.preventDefault();
