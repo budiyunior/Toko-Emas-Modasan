@@ -114,7 +114,7 @@ class C_pelanggan extends CI_Controller
         //}
     }
 
-    public function ajax_edit($id)
+    public function ajax_edit2($id)
     {
         $data = $this->M_pelanggan->get_by_id2($id);
         echo json_encode($data);

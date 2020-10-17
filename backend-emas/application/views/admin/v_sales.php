@@ -349,6 +349,7 @@
 
     <?php $this->load->view('partials/footer.php') ?>
     <?php $this->load->view('partials/js.php') ?>
+    
     <script>
         $(".check-item").on("click", function() {
             if ($(".check-item:checked").length < 2) {

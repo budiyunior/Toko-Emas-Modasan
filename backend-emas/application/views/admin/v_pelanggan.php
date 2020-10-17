@@ -284,37 +284,37 @@
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Nama</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fv_nmpelanggan" class="form-control" id="inputPassword" placeholder="Nama">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Alamat</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="f_alamat" class="form-control" id="inputPassword" placeholder="Alamat">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">No Hp</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_telp" class="form-control" id="inputPassword" placeholder="No Hp">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">No KTP</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="fc_noktp" class="form-control" id="inputPassword" placeholder="No KTP">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Keterangan</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                        <input type="text" name="f_keterangan" class="form-control" id="inputPassword" placeholder="Keterangan">
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -341,6 +341,14 @@
 <?php $this->load->view('partials/js.php') ?>
 
 <script>
+    $(".check-item").on("click", function() {
+            if ($(".check-item:checked").length < 2) {
+                $('.action-update').prop('disabled', false);
+            } else {
+                $('.action-update').prop('disabled', true);
+            }
+        });
+
     $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
         $("#check-all").click(function() { // Ketika user men-cek checkbox all
             if ($(this).is(":checked")) // Jika checkbox all diceklis
@@ -348,6 +356,37 @@
             else // Jika checkbox all tidak diceklis
                 $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
         });
+    
+        $('.action-update').click(function(e) {
+            e.preventDefault();
+            var arr = [];
+            var checkedValue = $(".check-item:checked").val();
+            console.log('checked', checkedValue);
+            // jQuery.noConflict();
+            $('#editpelanggan').modal('show');
+            $.ajax({
+                url: "<?php echo base_url('C_pelanggan/ajax_edit2/') ?>" + checkedValue,
+                type: "GET",
+                dataType: "JSON",
+                success: function(result) {
+                    $('[name="fc_kdpel"]').val(result.fc_kdpel);
+                    $('[name="fv_nmpelanggan"]').val(result.fv_nmpelanggan);
+                    $('[name="f_alamat"]').val(result.f_alamat);
+                    $('[name="fc_telp"]').val(result.fc_telp);
+                    $('[name="fc_noktp"]').val(result.fc_noktp);
+                    $('[name="f_keterangan"]').val(result.f_keterangan);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Data Eror');
+                }
+            })
+
+            // $('input.check-item:checked').each(function() {
+            //     arr.push($(this).val());
+            // });
+
+            // var action = $(this).attr('data-href') + '/' + arr.join("-");
+            // window.location.href = action;
 
     });
 </script>

@@ -132,7 +132,7 @@
                         <div class="form-group row">
                             <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                             <div class="col-sm-7">
-                                <input type="text" value="<?= $data->fc_salesid ?>" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
+                                <input type="text" value="<?= $data->fc_kdpel ?>" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -148,9 +148,9 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="no.hp" class="col-sm-2 col-form-label">No. hp</label>
+                            <label for="no.telp" class="col-sm-2 col-form-label">No.telp</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="fc_telp" value="<?= $data->fc_telp ?>" placeholder="No.hp">
+                                <input type="text" class="form-control" id="fc_telp" value="<?= $data->fc_telp ?>" placeholder="No. Telp">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -165,10 +165,11 @@
                                 <input type="text" class="form-control" id="f_keterangan" value="<?= $data->f_keterangan ?>" placeholder="f_keterangan">
                             </div>
                         </div>
-                        <div class="col-md-1" style="margin-top: 5px; margin-left: 16%;">
+                        <!-- <div class="col-md-1" style="margin-top: 5px; margin-left: 16%;">
                             <button type="button" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
-                        </div>
+                        </div> -->
                     </form>
+                    <button type="button" class="btn btn-primary ">Simpan</button>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
             </div><!-- /.row -->
