@@ -41,15 +41,25 @@ class M_pelanggan extends CI_Model
     public function update_pelanggan()
     {
         $post = $this->input->post();
-        $this->fc_salesid = $post['fc_kdpel'];
+        $this->fc_kdpel = $post['fc_kdpel'];
         $this->fv_nama = $post['fv_nmpelanggan'];
-        $this->fc_email = $post['f_alamat'];
-        $this->fc_hp = $post['fc_telp'];
-        $this->fc_aktif = $post['fc_aktif'];
-        $this->fd_tgllahir = $post['fc_noktp'];
-        $this->fc_kdposisi = $post['f_keterangan'];
+        $this->f_alamat = $post['f_alamat'];
+        $this->fc_telp = $post['fc_telp'];
+        $this->fc_noktp = $post['fc_noktp'];
+        $this->f_keterangan = $post['f_keterangan'];
 
-        $this->db->update($this->tabel, $this, array('fc_salesid' => $post['fc_salesid']));
+        $this->db->update($this->tabel, $this, array('fc_kdpel' => $post['fc_kdpel']));
+    }
+
+    public function get_by_id($id_pelanggan)
+    {
+        return $this->db->get_where($this->tabel, ["fc_kdpel" => $id_pelanggan])->row();
+    }
+
+    public function get_by_id2($id)
+    {
+        $this->db->where('fc_kdpel', $id);
+        return $this->db->get('tm_pelanggan')->row();
     }
     
     public function delete($id)
