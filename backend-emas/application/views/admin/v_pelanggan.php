@@ -141,7 +141,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                         <div class="center">
                             <div class="table-responsive">
                                 <table class="table table-bordered">

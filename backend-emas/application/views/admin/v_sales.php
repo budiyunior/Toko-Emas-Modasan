@@ -183,12 +183,14 @@
                             <?= form_close(); ?>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
-                            <div class="col-md-3" style="margin-top: 5px">
-                                <input class="form-control" id="keywoard" type="text" placeholder="Cari Data">
-                            </div>
-                            <div class="col-md-1" style="margin-top: 5px;">
-                                <button type="button" id="btn-search" class="btn btn-secondary">Search</button>
-                            </div>
+                            <form>
+                                <div class="col-md-3" style="margin-top: 5px">
+                                    <input class="form-control" id="keywoard" type="text" placeholder="Cari Data">
+                                </div>
+                                <div class="col-md-1" style="margin-top: 5px;">
+                                    <button type="button" id="btn-search" class="btn btn-secondary">Search</button>
+                                </div>
+                            </form>
                         </div>
 
                         <div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -282,31 +284,31 @@
                                         <div class="form-group row">
                                             <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                                             <div class="col-sm-7">
-                                                <input type="text" name="fc_salesid" class="form-control" id="kode" placeholder="Kode">
+                                                <input type="text" name="fc_salesid_edit" class="form-control" id="kode" placeholder="Kode">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fv_nama" id="nama" placeholder="Nama">
+                                                <input type="text" class="form-control" name="fv_nama_edit" id="nama" placeholder="Nama">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fc_email" id="email" placeholder="Email">
+                                                <input type="text" class="form-control" name="fc_email_edit" id="email" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fc_hp" id="no.hp" placeholder="No.hp">
+                                                <input type="text" class="form-control" name="fc_hp_edit" id="no.hp" placeholder="No.hp">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">Sales</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="fc_aktif">
+                                                <select class="form-control" name="fc_aktif_edit">
                                                     <option>--Pilih--</option>
                                                     <option value="Y">Aktif</option>
                                                     <option value="N">Non Aktif</option>
@@ -317,13 +319,13 @@
                                             <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
                                                 Lahir</label>
                                             <div class="col-sm-7">
-                                                <input type="date" class="form-control" name="fd_tgllahir" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                                <input type="date" class="form-control" name="fd_tgllahir_edit" id="tanggal_lahir" placeholder="Tanggal Lahir">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="fc_kdposisi">
+                                                <select class="form-control" name="fc_kdposisi_edit">
                                                     <?php foreach ($jabatan2 as $k) : ?>
                                                         <option value="<?= $k->fc_kdposisi ?>"><?= $k->fv_mposisi ?></option>
                                                     <?php endforeach; ?>
@@ -381,13 +383,13 @@
                 type: "GET",
                 dataType: "JSON",
                 success: function(result) {
-                    $('[name="fc_salesid"]').val(result.fc_salesid);
-                    $('[name="fv_nama"]').val(result.fv_nama);
-                    $('[name="fc_email"]').val(result.fc_email);
-                    $('[name="fc_hp"]').val(result.fc_hp);
-                    $('[name="fc_aktif"]').val(result.fc_aktif);
-                    $('[name="fd_tgllahir"]').val(result.fd_tgllahir);
-                    $('[name="fc_kdposisi"]').val(result.fc_kdposisi);
+                    $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                    $('[name="fv_nama_edit"]').val(result.fv_nama);
+                    $('[name="fc_email_edit"]').val(result.fc_email);
+                    $('[name="fc_hp_edit"]').val(result.fc_hp);
+                    $('[name="fc_aktif_edit"]').val(result.fc_aktif);
+                    $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
+                    $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Data Eror');
@@ -401,4 +403,8 @@
             // var action = $(this).attr('data-href') + '/' + arr.join("-");
             // window.location.href = action;
         });
+    </script>
+    <script>
+        var keyword = document.getElementById('keywoard');
+        var searh
     </script>
