@@ -192,7 +192,7 @@
                                     <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary">Tambah</a>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <a href="" data-toggle="modal" data-target="#editpelanggan" class="btn btn-success">Edit</a>
+                                    <button type="button" class="btn btn-success action-update">Edit</button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')">Hapus</button>
@@ -218,42 +218,42 @@
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
                                                                         <?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="" class="col-sm-4 col-form-label">Nama</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fv_nmpelanggan" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="fv_nmpelanggan" class="form-control" id="" placeholder="Nama">
                                                                         <?= form_error('fv_nmpelanggan', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="" class="col-sm-4 col-form-label">Alamat</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="f_alamat" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="f_alamat" class="form-control" id="" placeholder="Alamat">
                                                                         <?= form_error('f_alamat', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="" class="col-sm-4 col-form-label">No Hp</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_telp" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="fc_telp" class="form-control" id="" placeholder="No Hp">
                                                                         <?= form_error('fc_telp', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="" class="col-sm-4 col-form-label">No KTP</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_noktp" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="fc_noktp" class="form-control" id="" placeholder="No KTP">
                                                                         <?= form_error('fc_noktp', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="" class="col-sm-4 col-form-label">Keterangan</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="f_keterangan" class="form-control" id="" placeholder="">
+                                                                        <input type="text" name="f_keterangan" class="form-control" id="" placeholder="Keterangan">
                                                                         <?= form_error('f_keterangan', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
@@ -267,7 +267,7 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="editpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="editpelanggan" tabindex="-1" >
                                     <div class="modal-dialog ">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -284,45 +284,48 @@
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
+                                                                        <input type="text" name="fc_kdpel_edit" class="form-control" id="kode" placeholder="Kode">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Nama</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fv_nmpelanggan" class="form-control" id="inputPassword" placeholder="Nama">
+                                                                        <input type="text" name="fv_nmpelanggan_edit" class="form-control" id="inputPassword" placeholder="Nama">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Alamat</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="f_alamat" class="form-control" id="inputPassword" placeholder="Alamat">
+                                                                        <input type="text" name="f_alamat_edit" class="form-control" id="inputPassword" placeholder="Alamat">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">No Hp</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_telp" class="form-control" id="inputPassword" placeholder="No Hp">
+                                                                        <input type="text" name="fc_telp_edit" class="form-control" id="inputPassword" placeholder="No Hp">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">No KTP</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_noktp" class="form-control" id="inputPassword" placeholder="No KTP">
+                                                                        <input type="text" name="fc_noktp_edit" class="form-control" id="inputPassword" placeholder="No KTP">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">
                                                                     <label for="inputPassword" class="col-sm-4 col-form-label">Keterangan</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="f_keterangan" class="form-control" id="inputPassword" placeholder="Keterangan">
+                                                                        <input type="text" name="f_keterangan_edit" class="form-control" id="inputPassword" placeholder="Keterangan">
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <div class="modal-footer">
+                                                                <div class="col-md-1" style="margin-top: 5px">
+                                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-edit"> Edit</i></button>
+                                                                </div>
+                                                             </div>
                                                         </form>
                                                     </div>
                                                 </div>
-
-                                                <button type="button" class="btn btn-primary ">Simpan</button>
                                             </div>
                                         </div>
                                     </div>
@@ -349,13 +352,13 @@
             }
         });
 
-    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-        $("#check-all").click(function() { // Ketika user men-cek checkbox all
-            if ($(this).is(":checked")) // Jika checkbox all diceklis
-                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-            else // Jika checkbox all tidak diceklis
-                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-        });
+    // $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+    //     $("#check-all").click(function() { // Ketika user men-cek checkbox all
+    //         if ($(this).is(":checked")) // Jika checkbox all diceklis
+    //             $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+    //         else // Jika checkbox all tidak diceklis
+    //             $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+    //     });
     
         $('.action-update').click(function(e) {
             e.preventDefault();
@@ -369,12 +372,12 @@
                 type: "GET",
                 dataType: "JSON",
                 success: function(result) {
-                    $('[name="fc_kdpel"]').val(result.fc_kdpel);
-                    $('[name="fv_nmpelanggan"]').val(result.fv_nmpelanggan);
-                    $('[name="f_alamat"]').val(result.f_alamat);
-                    $('[name="fc_telp"]').val(result.fc_telp);
-                    $('[name="fc_noktp"]').val(result.fc_noktp);
-                    $('[name="f_keterangan"]').val(result.f_keterangan);
+                    $('[name="fc_kdpel_edit"]').val(result.fc_kdpel);
+                    $('[name="fv_nmpelanggan_edit"]').val(result.fv_nmpelanggan);
+                    $('[name="f_alamat_edit"]').val(result.f_alamat);
+                    $('[name="fc_telp_edit"]').val(result.fc_telp);
+                    $('[name="fc_noktp_edit"]').val(result.fc_noktp);
+                    $('[name="f_keterangan_edit"]').val(result.f_keterangan);
                 },
                 error: function(jqXHR, textStatus, errorThrown) {
                     alert('Data Eror');
