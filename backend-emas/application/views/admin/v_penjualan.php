@@ -178,13 +178,20 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-5">
                                                                 <input type="text" class="form-control" id="inputPassword" placeholder="">
                                                             </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#tambahpelanggan">
-                                                                    <i class=" ace-icon glyphicon glyphicon-plus"></i>
-                                                                </button>
+                                                            <div class="col-sm-3">
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#caripelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-search"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#tambahpelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-plus"></i>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -228,14 +235,12 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
-
                                                             </div>
                                                             <label class="col-sm-3 col-form-label">Subtotal</label>
                                                             <div class="col-sm-8">
                                                                 <input type="text" class="form-control" readonly value="100.000">
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
@@ -244,16 +249,12 @@
                                                                 <input type="text" class="form-control" readonly value="100.000">
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row">
-
                                                             <label class="col-sm-2 col-form-label">Terbilang</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" class="form-control" readonly placeholder="">
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </form>
                                             </div>
@@ -420,7 +421,7 @@
 </div>
 
 <script>
-   
+
 </script>
 
 

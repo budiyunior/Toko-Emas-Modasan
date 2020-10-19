@@ -144,15 +144,14 @@
 
                             <div class="widget-body">
                                 <div class="widget-main">
-
-                                    <div>
-                                        <label for="form-field-8">Mulai Tanggal</label>
-                                        <input type="date" class="form-control">
-                                    </div>
-                                    <div>
-                                        <label for="form-field-9">S/D Tanggal</label>
-                                        <input type="date" class="form-control">
-                                    </div>
+                                    <?php
+                                    $today = date("Y-m-d");
+                                    $yesterday = date("Y-m-d", strtotime("-1 days"));
+                                    ?>
+                                    <label>Mulai Tanggal</label>
+                                    <input type="date" class="form-control" value="<?= $yesterday ?>" />
+                                    <label>S/D Tanggal</label>
+                                    <input type="date" class="form-control" value="<?= $today ?>" />
 
                                 </div>
                             </div>
@@ -197,7 +196,7 @@
                                             <th>Subtotal</th>
                                             <th>Grand Total</th>
                                             <th>Berat</th>
-                                            
+
                                         </tr>
                                     </thead>
                                     <tbody>

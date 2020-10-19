@@ -248,13 +248,7 @@
 
                         </div>
 
-                        <form id="registration-form" method="post" action="<?= base_url('C_barang/save_nmkelompok') ?>"> Enter your name:
 
-                            <input name="fv_nmkelompok" type="text" id="name">
-
-                            <button onclick="enable()">edit</button>
-                            <button onclick="disable()">save</button>
-                        </form>
 
                     </div>
 
@@ -272,9 +266,12 @@
                                     <div class="row">
                                         <div class="col-md-8">
                                             <div class="form-group row">
+                                                <?php
+                                                $tgl = date("Y-m-d");
+                                                ?>
                                                 <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                                 <div class="col-sm-7">
-                                                    <input type="date" class="form-control">
+                                                    <input type="date" class="form-control" value="<?= $tgl ?>">
                                                 </div>
                                             </div>
                                             <div class="form-group row">
