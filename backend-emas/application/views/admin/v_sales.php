@@ -132,7 +132,7 @@
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="center">
-                        <div class="table-responsive" id="view">
+                        <div class="table-responsive" id="tampil">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -185,10 +185,10 @@
                             </div>
                             <form>
                                 <div class="col-md-3" style="margin-top: 5px">
-                                    <input class="form-control" id="keywoard" type="text" placeholder="Cari Data">
+                                    <input class="form-control" name="search" id="search" type="text" placeholder="Cari Data">
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="button" id="btn-search" class="btn btn-secondary">Search</button>
+                                    <button type="button" id="btn-search" name="cari" class="btn btn-secondary">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -351,7 +351,7 @@
 
     <?php $this->load->view('partials/footer.php') ?>
     <?php $this->load->view('partials/js.php') ?>
-    
+
     <script>
         $(".check-item").on("click", function() {
             if ($(".check-item:checked").length < 2) {
@@ -404,7 +404,45 @@
             // window.location.href = action;
         });
     </script>
+    <!-- <script>
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: <?php echo base_url('C_sales/search') ?>,
+                    data: {
+                        search: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#tampil').html(data);
+                    }
+                });
+            });
+        });
+    </script> -->
+
     <script>
         var keyword = document.getElementById('keywoard');
-        var searh
+        var search = document.getElementById('btn-search');
+        var view = document.getElementById('tampil');
+
+        // search.addEventListener('click', function() {
+        //     alert('berhasil');
+        // });
+        keyword.addEventListener('keyup', function() {
+            //objek ajax
+            var ajax = new XMLHttpRequest();
+
+            //cek kesiapan ajax
+            ajax.onreadystatechange = function() {
+                if (ajax.readyState == 4 && ajax.status == 200) {
+                    // view.innerHTML = ajax.responseText
+                    alert('congrats');
+                }
+            }
+
+            ajax.open('POST', '<?php base_url('C_sales/search') ?>'. $ke, true);
+            ajax.send();
+        })
     </script>

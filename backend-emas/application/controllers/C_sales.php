@@ -17,7 +17,6 @@ class C_sales extends CI_Controller
 
     public function index()
     {
-
         $data['title'] = "Sales";
         $data['menu'] = $this->M_menu->get_menu();
         //$data['idsales'] = $this->db->get_where('t_sales', ['fc_salesid' => $id_sales])->row_array();
@@ -25,6 +24,7 @@ class C_sales extends CI_Controller
         $data['sales3'] = $this->M_sales->get();
         $data['jabatan'] = $this->M_sales->get_jabatan();
         $data['jabatan2'] = $this->M_sales->get_jabatan();
+
         $this->load->view('admin/v_sales', $data);
     }
 
@@ -96,15 +96,9 @@ class C_sales extends CI_Controller
 
     public function search()
     {
-        $keyword = $this->input->post('keyword');
-        $data = $this->M_sales->search_sales($keyword);
-
-        $hasil = $this->load->view('tambahan/v_tablesales', array('t_sales' => $data), true);
-
-        // Buat sebuah array
-        $callback = array(
-            'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
-        );
-        echo json_encode($callback); // konversi varibael $callback menjadi JSON
+        if($this->input->post('')) {
+            $data['search'] = $this->input->post('search');
+        }
+        $this->load->view('tambahan/v_tablesales');
     }
 }
