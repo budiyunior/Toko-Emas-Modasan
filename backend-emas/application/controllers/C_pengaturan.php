@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_lapenjualan extends CI_Controller
+class C_pengaturan extends CI_Controller
 {
     public function __construct()
     {
@@ -10,19 +10,15 @@ class C_lapenjualan extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('M_menu');
-        $this->load->model('M_lapenjualan');
-        $this->load->model('M_barang');
-        $this->load->model('M_pelanggan');
+        $this->load->model('M_pengaturan');
     }
 
     public function index()
     {
-        $data['title'] = "Laporan Penjualan";
+        $data['title'] = "Pengaturan";
         $data['menu'] = $this->M_menu->get_menu();
 
 
-        $data['barang'] = $this->M_barang->get_barang();
-
-        $this->load->view('admin/v_lapenjualan', $data);
+        $this->load->view('admin/v_pengaturan', $data);
     }
 }
