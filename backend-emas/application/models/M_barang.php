@@ -18,6 +18,13 @@ class M_barang extends CI_Model
         return $this->db->get($this->tbsales)->result();
     }
 
+    public function get_by_id($id)
+    {
+        $this->db->where('fn_id', $id);
+        return $this->db->get('tm_stock')->row();
+    }
+
+
     public function get_lokasi()
     {
         return $this->db->get($this->tblokasi)->result();
@@ -73,4 +80,27 @@ class M_barang extends CI_Model
 
         print_r($this->upload->display_errors());
     }
+
+    public function update_barang()
+    {
+        $post = $this->input->post();
+        $this->fd_date = $post['fd_date'];
+        // $this->fc_barcode = $post['fc_barcode'];
+        $this->fc_kdstock = $post['fc_kdstock'];
+        $this->fv_nmbarang = $post['fv_nmbarang'];
+        $this->fc_kdkelompok = $post['fc_kdkelompok'];
+        $this->fc_kdlokasi = $post['fc_kdlokasi'];
+        $this->fc_salesid = $post['fc_salesid'];
+        $this->ff_berat = $post['ff_berat'];
+        $this->fc_kadar = $post['fc_kadar'];
+        $this->fm_ongkos = $post['fm_ongkos'];
+        $this->fm_hargabeli = $post['fm_hargabeli'];
+        $this->fm_hargajual = $post['fm_hargajual'];
+        $this->f_foto = $this->uploadImage();
+        $this->fc_sts = $post['fc_sts'];  
+
+        $this->db->insert($this->tabel, $this);
+    }
+
 }
+

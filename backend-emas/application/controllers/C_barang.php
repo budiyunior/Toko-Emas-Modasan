@@ -53,4 +53,10 @@ class C_barang extends CI_Controller
         </script>"; //Url tujuan
 
     }
+
+    public function edit($id)
+    {
+        $data = $this->M_barang->get_by_id($id);
+        echo json_encode($data);
+    }
 }

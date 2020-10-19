@@ -212,7 +212,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item">
+                                                <input type="checkbox" class="check-item" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $i++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -235,10 +235,10 @@
 
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary"><i class="fa fa-plus" > Tambah</i></a>
+                                <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary"><i class="fa fa-plus"> Tambah</i></a>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" data-toggle="modal" data-target="#edit" class="btn btn-success"><i class="fa fa-edit"> Edit</i></a>
+                                <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <a href="" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></a>
@@ -346,8 +346,8 @@
                                                     <div class="col-sm-7">
                                                         <select class="form-control" name="fc_kadar">
                                                             <option value="">Pilih </option>
-                                                            <option name="Indomaret">10</option>
-                                                            <option name="Alfamart">50</option>
+                                                            <option value="10">10</option>
+                                                            <option value="50">50</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -374,9 +374,9 @@
                                                     <label for="" class="col-sm-3 col-form-label">Status</label>
                                                     <div class="col-sm-7">
                                                         <select class="form-control" required name="fc_sts">
-                                                            <option value="">Pilih </option>
-                                                            <option name="Indomaret">Baru</option>
-                                                            <option name="Alfamart">Bekas</option>
+                                                            <option>Pilih </option>
+                                                            <option value="1">Baru</option>
+                                                            <option value="2">Bekas</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -407,11 +407,7 @@
                                 </form>
                             </div>
                         </div>
-
                         <!-- akhir tambah -->
-
-
-
                     </div>
                 </div>
             </div>
@@ -579,7 +575,7 @@
         </div>
         <!-- Modal Edit -->
 
-        <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalupdate" tabindex="-1">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -593,25 +589,26 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                     <div class="col-sm-7">
+                                        <input type="hidden" name="fn_id_edit">
                                         <input type="date" name="fd_date_edit" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Kode</label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="fc_barcode_edit" class="form-control" placeholder="Kode">
+                                        <input type="text" name="fc_kdstock_edit" class="form-control" placeholder="Kode">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Nama</label>
                                     <div class="col-sm-7">
-                                        <input type="text" name="fc_kdstock_edit" class="form-control" placeholder="Nama">
+                                        <input type="text" name="fv_nmbarang_edit" class="form-control" placeholder="Nama">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="" placeholder="kelompok">
+                                        <input type="text" name="fc_kdkelompok_edit" class="form-control" name="" placeholder="kelompok">
                                     </div>
                                     <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
                                         <i class="fa fa-search-plus"></i>
@@ -620,7 +617,7 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Lokasi">
+                                        <input type="text" class="form-control" name="fc_kdlokasi_edit" placeholder="Lokasi">
                                     </div>
                                     <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
                                         <i class="fa fa-search-plus"></i>
@@ -629,7 +626,7 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Sales</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Sales">
+                                        <input type="text" name="fc_salesid_edit" class="form-control" placeholder="Sales">
                                     </div>
                                     <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
                                         <i class="fa fa-search-plus"></i>
@@ -638,51 +635,51 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Ongkos</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Ongkos">
+                                        <input type="text" class="form-control" name="fm_ongkos_edit" placeholder="Ongkos">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Berat</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Berat">
+                                        <input type="text" name="ff_berat_edit" class="form-control" placeholder="Berat">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Kadar</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control" required name="metode">
-                                            <option value="">Pilih </option>
-                                            <option name="Indomaret">10</option>
-                                            <option name="Alfamart">20</option>
+                                        <select class="form-control" required name="fc_kadar_edit">
+                                            <option>Pilih </option>
+                                            <option value="10">10</option>
+                                            <option value="50">50</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Harga Beli">
+                                        <input type="text" name="fm_hargabeli_edit" class="form-control" placeholder="Harga Beli">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Harga Jual">
+                                        <input type="text" name="fm_hargajual_edit" class="form-control" placeholder="Harga Jual">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Foto</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Foto">
+                                        <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
                                     </div>
 
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Status</label>
                                     <div class="col-sm-7">
-                                        <select class="form-control" required name="metode">
-                                            <option value="">Pilih </option>
-                                            <option name="Indomaret">Baru</option>
-                                            <option name="Alfamart">Bekas</option>
+                                        <select class="form-control" required name="fc_sts_edit">
+                                            <option>--Pilih--</option>
+                                            <option value="1">Baru</option>
+                                            <option value="2">Bekas</option>
                                         </select>
                                     </div>
                                 </div>
@@ -813,9 +810,9 @@
 
             $(".check-item").on("click", function() {
                 if ($(".check-item:checked").length < 2) {
-                    $('.action-update').prop('disabled', false);
+                    $('.update').prop('disabled', false);
                 } else {
-                    $('.action-update').prop('disabled', true);
+                    $('.update').prop('disabled', true);
                 }
             });
 
@@ -836,17 +833,25 @@
                 // jQuery.noConflict();
                 $('#modalupdate').modal('show');
                 $.ajax({
-                    url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
+                    url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
                     type: "GET",
                     dataType: "JSON",
                     success: function(result) {
+                        $('[name="fn_id_edit"]').val(result.fn_id);
+                        $('[name="fd_date_edit"]').val(result.fd_date);
+                        $('[name="fc_barcode_edit"]').val(result.fc_barcode);
+                        $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
+                        $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
+                        $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
+                        $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
                         $('[name="fc_salesid_edit"]').val(result.fc_salesid);
-                        $('[name="fv_nama_edit"]').val(result.fv_nama);
-                        $('[name="fc_email_edit"]').val(result.fc_email);
-                        $('[name="fc_hp_edit"]').val(result.fc_hp);
-                        $('[name="fc_aktif_edit"]').val(result.fc_aktif);
-                        $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
-                        $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
+                        $('[name="ff_berat_edit"]').val(result.ff_berat);
+                        $('[name="fc_kadar_edit"]').val(result.fc_kadar);
+                        $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
+                        $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
+                        $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
+                        $('[name="f_foto_edit"]').val(result.f_foto);
+                        $('[name="fc_sts_edit"]').val(result.fc_sts);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Data Eror');
