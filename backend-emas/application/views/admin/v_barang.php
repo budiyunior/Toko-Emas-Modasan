@@ -439,19 +439,32 @@
                         </h5>
                     </div>
                     <div class="modal-body">
-
                         <div class="row">
-                            <?php $i = 1;
-                            foreach ($sales as $s) : ?>
-                                <tr>
-                                    <td>
-                                        <span class='edit'><?= $s->fv_nama ?></span>
-                                        <input type='text' class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                    </td>
+                            <div class="col-md-12">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
 
-                                </tr>
-                            <?php endforeach; ?>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($kelompok as $k) : ?>
+                                            <tr>
+                                    </tbody>
+                                    <td class="check center">
+                                        <input type="checkbox" class="check-item">
+                                    </td>
+                                    <td>
+                                        <input type='text' readonly class='txtedit' data-id='<?= $k->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                    </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                </table>
+                            </div>
                         </div>
+                        <br>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
@@ -465,7 +478,6 @@
                                 <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -481,7 +493,32 @@
                         </h5>
                     </div>
                     <div class="modal-body">
-                        <br><br><br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($sales as $s) : ?>
+                                            <tr>
+                                    </tbody>
+                                    <td class="check center">
+                                        <input type="checkbox" class="check-item">
+                                    </td>
+                                    <td>
+                                        <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                    </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
@@ -509,7 +546,32 @@
                         <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
                     </div>
                     <div class="modal-body">
-                        <br><br><br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table ">
+                                    <thead>
+                                        <tr>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($sales as $s) : ?>
+                                            <tr>
+                                    </tbody>
+                                    <td class="check center">
+                                        <input type="checkbox" class="check-item">
+                                    </td>
+                                    <td>
+                                        <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                    </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <br>
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
