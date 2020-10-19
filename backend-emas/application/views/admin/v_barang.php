@@ -235,13 +235,17 @@
 
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary">Tambah</a>
+                                <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary"><i class="fa fa-plus" > Tambah</i></a>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
+<<<<<<< Updated upstream
                                 <button type="button" class="btn btn-success update">Edit</button>
+=======
+                                <a href="" data-toggle="modal" data-target="#edit" class="btn btn-success"><i class="fa fa-edit"> Edit</i></a>
+>>>>>>> Stashed changes
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" class="btn btn-danger">Hapus</a>
+                                <a href="" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></a>
                             </div>
                             <div class="col-md-2" style="margin-top: 5px;">
                                 <form action="">
@@ -250,9 +254,7 @@
                             </div>
                         </div>
                     </div>
-
                     <!-- modal tambah -->
-
                     <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog ">
                             <div class="modal-content">
@@ -274,11 +276,19 @@
                                                         <input type="date" name="fd_date" class="form-control" value="<?= $tgl ?>">
                                                     </div>
                                                 </div>
+<<<<<<< Updated upstream
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kode</label>
                                                     <div class="col-sm-7">
                                                         <input type="text" name="fc_kdstock" class="form-control" placeholder="Kode">
                                                     </div>
+=======
+                                            </div>
+                                            <div class="form-group row">
+                                                <label for="" class="col-sm-3 col-form-label">Kode</label>
+                                                <div class="col-sm-7">
+                                                    <input type="text" name="" class="form-control" placeholder="Kode">
+>>>>>>> Stashed changes
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Nama</label>
