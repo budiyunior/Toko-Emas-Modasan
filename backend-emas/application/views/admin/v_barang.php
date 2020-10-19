@@ -238,7 +238,7 @@
                                 <a href="" data-toggle="modal" data-target="#tambah" class="btn btn-primary">Tambah</a>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" data-toggle="modal" data-target="#edit" class="btn btn-success">Edit</a>
+                                <button type="button" class="btn btn-success update">Edit</button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <a href="" class="btn btn-danger">Hapus</a>
@@ -519,7 +519,7 @@
         </div>
         <!-- Modal Edit -->
 
-        <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog ">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -533,25 +533,25 @@
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                     <div class="col-sm-7">
-                                        <input type="date" class="form-control">
+                                        <input type="date" name="fd_date_edit" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Kode</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Kode">
+                                        <input type="text" name="fc_barcode_edit" class="form-control" placeholder="Kode">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Nama</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="Nama">
+                                        <input type="text" name="fc_kdstock_edit" class="form-control" placeholder="Nama">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                     <div class="col-sm-7">
-                                        <input type="text" class="form-control" placeholder="kelompok">
+                                        <input type="text" class="form-control" name="" placeholder="kelompok">
                                     </div>
                                     <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
                                         <i class="fa fa-search-plus"></i>
@@ -767,6 +767,38 @@
                         $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
                 });
 
+            });
+            $('.update').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+                // jQuery.noConflict();
+                $('#modalupdate').modal('show');
+                $.ajax({
+                    url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                        $('[name="fv_nama_edit"]').val(result.fv_nama);
+                        $('[name="fc_email_edit"]').val(result.fc_email);
+                        $('[name="fc_hp_edit"]').val(result.fc_hp);
+                        $('[name="fc_aktif_edit"]').val(result.fc_aktif);
+                        $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
+                        $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+                })
+
+                // $('input.check-item:checked').each(function() {
+                //     arr.push($(this).val());
+                // });
+
+                // var action = $(this).attr('data-href') + '/' + arr.join("-");
+                // window.location.href = action;
             });
         </script>
         <?php $this->load->view('partials/footer.php') ?>
