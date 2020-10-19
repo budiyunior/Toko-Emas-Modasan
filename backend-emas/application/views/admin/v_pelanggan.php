@@ -192,7 +192,7 @@
                                     <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary">Tambah</a>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="button" class="btn btn-success action-update">Edit</button>
+                                    <a href="" data-toggle="modal" data-target="#editpelanggan" class="btn btn-success">Edit</a>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')">Hapus</button>
@@ -267,19 +267,19 @@
                                     </div>
                                 </div>
 
-                                <div class="modal fade" id="editpelanggan" tabindex="-1" >
+                                <div class="modal fade" id="editpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog ">
                                         <div class="modal-content">
                                             <div class="modal-header">
                                                 <h5 class="modal-title" id="exampleModalLabel">Edit Pelanggan</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                        </button>
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-xs-12">
-                                                    <form method="post" action="<?= base_url('C_pelanggan/update') ?>" enctype="multipart/form-data">
+                                                        <form method="post" action="<?= base_url('C_pelanggan/update') ?>" enctype="multipart/form-data">
                                                             <div class="col-md-12">
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
@@ -341,52 +341,52 @@
 <?php $this->load->view('partials/js.php') ?>
 
 <script>
-    // $(".check-item").on("click", function() {
-    //         if ($(".check-item:checked").length < 2) {
-    //             $('.action-update').prop('disabled', false);
-    //         } else {
-    //             $('.action-update').prop('disabled', true);
-    //         }
-    //     });
-
-    // $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-    //     $("#check-all").click(function() { // Ketika user men-cek checkbox all
-    //         if ($(this).is(":checked")) // Jika checkbox all diceklis
-    //             $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-    //         else // Jika checkbox all tidak diceklis
-    //             $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-    //     });
-    
-        $('.action-update').click(function(e) {
-            e.preventDefault();
-            var arr = [];
-            var checkedValue = $(".check-item:checked").val();
-            console.log('checked', checkedValue);
-            // jQuery.noConflict();
-            $('#editpelanggan').modal('show');
-            $.ajax({
-                url: "<?php echo base_url('C_pelanggan/ajax_edit2/') ?>" + checkedValue,
-                type: "GET",
-                dataType: "JSON",
-                success: function(result) {
-                    $('[name="fc_kdpel"]').val(result.fc_kdpel);
-                    $('[name="fv_nmpelanggan"]').val(result.fv_nmpelanggan);
-                    $('[name="f_alamat"]').val(result.f_alamat);
-                    $('[name="fc_telp"]').val(result.fc_telp);
-                    $('[name="fc_noktp"]').val(result.fc_noktp);
-                    $('[name="f_keterangan"]').val(result.f_keterangan);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Data Eror');
-                }
-            })
-
-            // $('input.check-item:checked').each(function() {
-            //     arr.push($(this).val());
-            // });
-
-            // var action = $(this).attr('data-href') + '/' + arr.join("-");
-            // window.location.href = action;
-
+    $(".check-item").on("click", function() {
+        if ($(".check-item:checked").length < 2) {
+            $('.action-update').prop('disabled', false);
+        } else {
+            $('.action-update').prop('disabled', true);
+        }
     });
+
+    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+                $("#check-all").click(function() { // Ketika user men-cek checkbox all
+                    if ($(this).is(":checked")) // Jika checkbox all diceklis
+                        $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+                    else // Jika checkbox all tidak diceklis
+                        $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+                });
+
+                $('.action-update').click(function(e) {
+                    e.preventDefault();
+                    var arr = [];
+                    var checkedValue = $(".check-item:checked").val();
+                    console.log('checked', checkedValue);
+                    // jQuery.noConflict();
+                    $('#editpelanggan').modal('show');
+                    $.ajax({
+                        url: "<?php echo base_url('C_pelanggan/ajax_edit2/') ?>" + checkedValue,
+                        type: "GET",
+                        dataType: "JSON",
+                        success: function(result) {
+                            $('[name="fc_kdpel"]').val(result.fc_kdpel);
+                            $('[name="fv_nmpelanggan"]').val(result.fv_nmpelanggan);
+                            $('[name="f_alamat"]').val(result.f_alamat);
+                            $('[name="fc_telp"]').val(result.fc_telp);
+                            $('[name="fc_noktp"]').val(result.fc_noktp);
+                            $('[name="f_keterangan"]').val(result.f_keterangan);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            alert('Data Eror');
+                        }
+                    })
+
+                    // $('input.check-item:checked').each(function() {
+                    //     arr.push($(this).val());
+                    // });
+
+                    // var action = $(this).attr('data-href') + '/' + arr.join("-");
+                    // window.location.href = action;
+
+                });
 </script>

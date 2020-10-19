@@ -37,7 +37,7 @@ class M_pelanggan extends CI_Model
 
         $this->db->insert($this->tabel, $this);
     }
-    
+
     public function update_pelanggan()
     {
         $post = $this->input->post();
@@ -61,7 +61,7 @@ class M_pelanggan extends CI_Model
         $this->db->where('fc_kdpel', $id);
         return $this->db->get('tm_pelanggan')->row();
     }
-    
+
     public function delete($id)
     {
         $this->db->where('fc_kdpel', $id);
