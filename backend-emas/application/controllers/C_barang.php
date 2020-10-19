@@ -39,6 +39,18 @@ class C_barang extends CI_Controller
         //     alert('Data sales berhasil di tambahkan');
         //     window.location.href = '" . base_url('C_barang') . "';
         // </script>"; //Url tujuan
+    }
+
+    public function save_barang(){
+
+        $save_barang = $this->M_barang;
+        $save_barang->save_barang();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        echo "<script>
+            alert('Data Barang berhasil di tambahkan');
+            window.location.href = '" . base_url('C_barang') . "';
+        </script>"; //Url tujuan
 
     }
 }
