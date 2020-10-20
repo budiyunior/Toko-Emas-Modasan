@@ -100,7 +100,7 @@ class M_barang extends CI_Model
         if (!empty($_FILES["f_foto"]["name"])) {
             $this->f_foto = $this->uploadImage();
         } else {
-            $this->f_foto = $post["old_image"];
+            $this->f_foto = $post["f_foto_edit"];
         }
         $this->fc_sts = $post['fc_sts_edit'];  
 

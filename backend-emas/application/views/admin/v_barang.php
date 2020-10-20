@@ -670,9 +670,9 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Foto</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
+                                            <input class="form-control" type="file" name="gambar" />
+                                            <input type="hidden" name="f_foto_edit" />
                                         </div>
-
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Status</label>
