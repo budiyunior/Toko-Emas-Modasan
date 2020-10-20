@@ -670,7 +670,7 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Foto</label>
                                         <div class="col-sm-7">
-                                            <input class="form-control" type="file" name="gambar" />
+                                            <input class="form-control" type="file" name="f_foto" />
                                             <input type="hidden" name="f_foto_edit" />
                                         </div>
                                     </div>
