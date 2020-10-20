@@ -9,4 +9,10 @@ class M_penjualan extends CI_Model
     {
         return $this->db->get($this->tbpelanggan)->result();
     }
+
+    public function get_by_id($id)
+    {
+        $this->db->where('fc_kdpel', $id);
+        return $this->db->get('tm_pelanggan')->row();
+    }
 }

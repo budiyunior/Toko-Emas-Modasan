@@ -137,7 +137,7 @@
                         <button type="button" data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-success"><i class="fa fa-print"> Penjualan</i></button>
 
                         <!-- Modal -->
-                        <div class="modal fade" id="tampilPenjualan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="tampilPenjualan" tabindex="-1">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -172,7 +172,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -334,7 +334,7 @@
                             <!-- PAGE CONTENT ENDS -->
                         </div>
 
-                        <div class="modal fade" id="caripelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="caripelanggan" tabindex="-1">
                             <div class="modal-dialog ">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -348,10 +348,7 @@
                                                         <thead>
                                                             <tr>
                                                                 <th class="center">
-                                                                    <label class="pos-rel">
-                                                                        <input type="checkbox" class="ace" />
-                                                                        <span class="lbl"></span>
-                                                                    </label>
+                                                                    Ceklist
                                                                 </th>
                                                                 <th>
                                                                     Nama Pelanggan
@@ -364,11 +361,11 @@
                                                                 <tr>
                                                                     <td class="center">
                                                                         <label class="pos-rel">
-                                                                            <input type="checkbox" class="ace" />
+                                                                            <input type="checkbox" class="check" value="<?= $p->fc_kdpel ?>" />
                                                                             <span class="lbl"></span>
                                                                         </label>
                                                                     </td>
-                                                                    <td value='<?= $p->fc_kdpel ?>'><?= $p->fv_nmpelanggan ?> </td>
+                                                                    <td><?= $p->fv_nmpelanggan ?> </td>
                                                                 </tr>
                                                             <?php endforeach; ?>
                                                         </tbody>
@@ -378,7 +375,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2" style="margin-top: 5px;">
-                                                <button data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-primary btn-sm">Pilih</button>
+                                                <button type="button" class="btn btn-primary action-select">Pilih</button>
                                             </div>
                                         </div>
                                     </div>
@@ -469,7 +466,24 @@
 </div>
 
 <script>
-
+    $('.action-select').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check:checked").val();
+        console.log('checked', checkedValue);
+        $('#tampilPenjualan').modal('show');
+        $.ajax({
+            url: "<?php echo base_url('C_penjualan/tampil_nama/') ?>" + checkedValue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
+            }
+        })
+    });
 </script>
 
 

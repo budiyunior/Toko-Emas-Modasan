@@ -40,11 +40,15 @@ class C_penjualan extends CI_Controller
         // redirect('');
         echo "<script>
             $('#closemodal').click(function() {
-    $('#tambahpelanggan').modal('hide');
-});
+            $('#tambahpelanggan').modal('hide');
+            });
             alert('Data pelanggan berhasil di tambahkan');
         </script>"; //Url tujuan
+    }
 
-
+    public function tampil_nama($id)
+    {
+        $data = $this->M_penjualan->get_by_id($id);
+        echo json_encode($data);
     }
 }
