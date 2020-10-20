@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        <br>
 
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px;">
@@ -807,71 +807,71 @@
 
             </div>
         </div>
-    </div>
 
-    <script>
-        $('.custom-file-input').on('change', function() {
-            let fileName = $(this).val().split('\\').pop();
-            $(this).next('.custom-file-label').addClass("selected").html(fileName);
-        });
 
-        $(".check-item").on("click", function() {
-            if ($(".check-item:checked").length < 2) {
-                $('.update').prop('disabled', false);
-            } else {
-                $('.update').prop('disabled', true);
-            }
-        });
-
-        $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-            $("#check-all").click(function() { // Ketika user men-cek checkbox all
-                if ($(this).is(":checked")) // Jika checkbox all diceklis
-                    $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-                else // Jika checkbox all tidak diceklis
-                    $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+        <script>
+            $('.custom-file-input').on('change', function() {
+                let fileName = $(this).val().split('\\').pop();
+                $(this).next('.custom-file-label').addClass("selected").html(fileName);
             });
 
-        });
-        $('.update').click(function(e) {
-            e.preventDefault();
-            var arr = [];
-            var checkedValue = $(".check-item:checked").val();
-            console.log('checked', checkedValue);
-            // jQuery.noConflict();
-            $('#modalupdate').modal('show');
-            $.ajax({
-                url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
-                type: "GET",
-                dataType: "JSON",
-                success: function(result) {
-                    $('[name="fn_id_edit"]').val(result.fn_id);
-                    $('[name="fd_date_edit"]').val(result.fd_date);
-                    $('[name="fc_barcode_edit"]').val(result.fc_barcode);
-                    $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
-                    $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
-                    $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
-                    $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
-                    $('[name="fc_salesid_edit"]').val(result.fc_salesid);
-                    $('[name="ff_berat_edit"]').val(result.ff_berat);
-                    $('[name="fc_kadar_edit"]').val(result.fc_kadar);
-                    $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
-                    $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
-                    $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
-                    $('[name="f_foto_edit"]').val(result.f_foto);
-                    $('[name="fc_sts_edit"]').val(result.fc_sts);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Data Eror');
+            $(".check-item").on("click", function() {
+                if ($(".check-item:checked").length < 2) {
+                    $('.update').prop('disabled', false);
+                } else {
+                    $('.update').prop('disabled', true);
                 }
-            })
+            });
 
-            // $('input.check-item:checked').each(function() {
-            //     arr.push($(this).val());
-            // });
+            $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+                $("#check-all").click(function() { // Ketika user men-cek checkbox all
+                    if ($(this).is(":checked")) // Jika checkbox all diceklis
+                        $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+                    else // Jika checkbox all tidak diceklis
+                        $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+                });
 
-            // var action = $(this).attr('data-href') + '/' + arr.join("-");
-            // window.location.href = action;
-        });
-    </script>
-    <?php $this->load->view('partials/footer.php') ?>
-    <?php $this->load->view('partials/js.php') ?>
+            });
+            $('.update').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+                // jQuery.noConflict();
+                $('#modalupdate').modal('show');
+                $.ajax({
+                    url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('[name="fn_id_edit"]').val(result.fn_id);
+                        $('[name="fd_date_edit"]').val(result.fd_date);
+                        $('[name="fc_barcode_edit"]').val(result.fc_barcode);
+                        $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
+                        $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
+                        $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
+                        $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
+                        $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                        $('[name="ff_berat_edit"]').val(result.ff_berat);
+                        $('[name="fc_kadar_edit"]').val(result.fc_kadar);
+                        $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
+                        $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
+                        $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
+                        $('[name="f_foto_edit"]').val(result.f_foto);
+                        $('[name="fc_sts_edit"]').val(result.fc_sts);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+                })
+
+                // $('input.check-item:checked').each(function() {
+                //     arr.push($(this).val());
+                // });
+
+                // var action = $(this).attr('data-href') + '/' + arr.join("-");
+                // window.location.href = action;
+            });
+        </script>
+        <?php $this->load->view('partials/footer.php') ?>
+        <?php $this->load->view('partials/js.php') ?>
