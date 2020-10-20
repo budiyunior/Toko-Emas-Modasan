@@ -47,10 +47,8 @@
                             <small>Welcome,</small>
                             Jason
                         </span>
-
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
-
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
                             <a href="#">
@@ -58,16 +56,13 @@
                                 Settings
                             </a>
                         </li>
-
                         <li>
                             <a href="profile.html">
                                 <i class="ace-icon fa fa-user"></i>
                                 Profile
                             </a>
                         </li>
-
                         <li class="divider"></li>
-
                         <li>
                             <a href="#">
                                 <i class="ace-icon fa fa-power-off"></i>
@@ -76,11 +71,9 @@
                         </li>
                     </ul>
                 </li>
-
                 <!-- /section:basics/navbar.user_menu -->
             </ul>
         </div>
-
     </div>
 </div>
 
