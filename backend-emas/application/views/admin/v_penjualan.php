@@ -351,11 +351,14 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="col-md-12">
-                                                    <table class="table table-bordered ">
+                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                                         <thead>
                                                             <tr>
-                                                                <th class="check center">
-                                                                    <input type="checkbox" class="check-item">
+                                                                <th class="center">
+                                                                    <label class="pos-rel">
+                                                                        <input type="checkbox" class="ace" />
+                                                                        <span class="lbl"></span>
+                                                                    </label>
                                                                 </th>
                                                                 <th>
                                                                     Nama Pelanggan
@@ -366,12 +369,13 @@
                                                             <?php $i = 1;
                                                             foreach ($pelanggan as $p) : ?>
                                                                 <tr>
-                                                                    <td class="check center">
-                                                                        <input type="checkbox" class="check-item">
+                                                                    <td class="center">
+                                                                        <label class="pos-rel">
+                                                                            <input type="checkbox" class="ace" />
+                                                                            <span class="lbl"></span>
+                                                                        </label>
                                                                     </td>
                                                                     <td value='<?= $p->fc_kdpel ?>'><?= $p->fv_nmpelanggan ?> </td>
-                                                                    <!-- <input type='text' readonly class='txtedit' data-id='<?= $p->fc_kdpel ?>' data-field='name' id='<?= $p->fc_kdpel ?>' value='<?= $p->fv_nmpelanggan ?>'> -->
-
                                                                 </tr>
                                                             <?php endforeach; ?>
                                                         </tbody>
