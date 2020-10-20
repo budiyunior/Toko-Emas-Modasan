@@ -137,11 +137,11 @@
                         <button type="button" class="pull-right btn btn-primary">Refresh</button>
                     </h1>
                 </div><!-- /.page-header -->
-<!-- asasasasasasas -->
+                <!-- asasasasasasas -->
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- PAGE CONTENT BEGINS -->
-                        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
                         <div class="center">
                             <div class="table-responsive">
                                 <table class="table table-bordered">
@@ -340,8 +340,7 @@
 </div>
 </div><!-- /.main-content -->
 
-<?php $this->load->view('partials/footer.php') ?>
-<?php $this->load->view('partials/js.php') ?>
+
 
 <script>
     $(".check-item").on("click", function() {
@@ -352,13 +351,15 @@
         }
     });
 
-    // $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-    //     $("#check-all").click(function() { // Ketika user men-cek checkbox all
-    //         if ($(this).is(":checked")) // Jika checkbox all diceklis
-    //             $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-    //         else // Jika checkbox all tidak diceklis
-    //             $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-    //     });
+    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+        $("#check-all").click(function() { // Ketika user men-cek checkbox all
+            if ($(this).is(":checked")) // Jika checkbox all diceklis
+                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+            else // Jika checkbox all tidak diceklis
+                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+        });
+
+    });
 
     $('.action-update').click(function(e) {
         e.preventDefault();
@@ -393,3 +394,5 @@
 
     });
 </script>
+<?php $this->load->view('partials/footer.php') ?>
+<?php $this->load->view('partials/js.php') ?>

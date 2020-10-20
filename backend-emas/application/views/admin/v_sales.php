@@ -354,12 +354,6 @@
             </div><!-- /.page-content -->
         </div>
 
-
-
-
-        <?php $this->load->view('partials/footer.php') ?>
-        <?php $this->load->view('partials/js.php') ?>
-
         <script>
             $(".check-item").on("click", function() {
                 if ($(".check-item:checked").length < 2) {
@@ -412,6 +406,9 @@
                 // window.location.href = action;
             });
         </script>
+
+        <?php $this->load->view('partials/footer.php') ?>
+        <?php $this->load->view('partials/js.php') ?>
         <!-- <script>
         $(document).ready(function() {
             $('#search').on('keyup', function() {
