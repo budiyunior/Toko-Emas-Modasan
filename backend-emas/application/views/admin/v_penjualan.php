@@ -360,7 +360,7 @@
                                                             foreach ($pelanggan as $p) : ?>
                                                                 <tr>
                                                                     <td class="center">
-                                                                        <label class="pos-rel">
+                                                                        <label class="pos-rel check">
                                                                             <input type="checkbox" class="check" value="<?= $p->fc_kdpel ?>" />
                                                                             <span class="lbl"></span>
                                                                         </label>
@@ -375,7 +375,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2" style="margin-top: 5px;">
-                                                <button type="button" class="btn btn-primary action-select">Pilih</button>
+                                                <button type="button" data-dismiss="modal" class="btn btn-primary action-select">Pilih</button>
+                                                <!-- <button type="button" class="btn btn-primary action-select">Pilih</button> -->
                                             </div>
                                         </div>
                                     </div>

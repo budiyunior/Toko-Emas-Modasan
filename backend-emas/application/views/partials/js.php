@@ -38,6 +38,9 @@
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+<!-- page specific plugin scripts -->
+<script src="<?php echo base_url() ?>assets/assets/js/jquery-ui.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/jquery.ui.touch-punch.js"></script>
 
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>

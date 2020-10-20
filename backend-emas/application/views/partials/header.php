@@ -21,6 +21,8 @@
   <!-- text fonts -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/ace-fonts.css" />
 
+
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/jquery-ui.css" />
   <!-- ace styles -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 

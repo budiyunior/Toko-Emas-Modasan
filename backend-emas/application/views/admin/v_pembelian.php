@@ -162,7 +162,7 @@
                                                     </div>
                                                     <div class="col-md-3 ">
                                                         <label for="form-field-9">Transaksi Terdahulu</label>
-                                                        <input type="text" class="form-control">
+                                                        <input id="tags" type="text" class="form-control">
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -343,26 +343,43 @@
         </div>
     </div><!-- /.main-content -->
 
-    <div class="footer">
-        <div class="footer-inner">
-            <!-- #section:basics/footer -->
-            <div class="footer-content">
-                <span class="bigger-120">
-                    <span class="blue bolder">Ace</span>
-                    Application &copy; 2013-2014
-                </span>
 
-
-            </div>
-
-            <!-- /section:basics/footer -->
-        </div>
-    </div>
 
     <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
         <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
     </a>
 </div><!-- /.main-container -->
+
+<script>
+    //autocomplete
+    var availableTags = [
+        "ActionScript",
+        "AppleScript",
+        "Asp",
+        "BASIC",
+        "C",
+        "C++",
+        "Clojure",
+        "COBOL",
+        "ColdFusion",
+        "Erlang",
+        "Fortran",
+        "Groovy",
+        "Haskell",
+        "Java",
+        "JavaScript",
+        "Lisp",
+        "Perl",
+        "PHP",
+        "Python",
+        "Ruby",
+        "Scala",
+        "Scheme"
+    ];
+    $("#tags").autocomplete({
+        source: availableTags
+    });
+</script>
 
 <?php $this->load->view('partials/footer.php') ?>
 <?php $this->load->view('partials/js.php') ?>
