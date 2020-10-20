@@ -466,6 +466,14 @@
 </div>
 
 <script>
+    $(".check").on("click", function() {
+        if ($(".check:checked").length < 2) {
+            $('.action-select').prop('disabled', false);
+        } else {
+            $('.action-select').prop('disabled', true);
+        }
+    });
+
     $('.action-select').click(function(e) {
         e.preventDefault();
         var arr = [];
