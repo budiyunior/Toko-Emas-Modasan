@@ -100,8 +100,8 @@
         <ul class="nav nav-list">
             <?php foreach ($menu as $me) : ?>
                 <li class="hover">
-                    <a href="<?php echo $me->link_menu ?>">
-                        <i class="menu-icon <?= $me->icon_class ?>"></i>
+                    <a href="<?php echo base_url($me->link_menu);  ?>">
+                        <i class="menu-icon <?= base_url($me->icon_class); ?>"></i>
                         <span class="menu-text"> <?= $me->nama_menu ?></span>
                     </a>
                 </li>
@@ -167,6 +167,12 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="">
+                                    <!--Tampilkan pagination-->
+                                    <?php echo $pagination; ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="center">
@@ -347,64 +353,65 @@
             </div><!-- /.page-content -->
         </div>
     </div><!-- /.main-content -->
+</div>
 
 
-    <?php $this->load->view('partials/footer.php') ?>
-    <?php $this->load->view('partials/js.php') ?>
+<?php $this->load->view('partials/footer.php') ?>
+<?php $this->load->view('partials/js.php') ?>
 
-    <script>
-        $(".check-item").on("click", function() {
-            if ($(".check-item:checked").length < 2) {
-                $('.action-update').prop('disabled', false);
-            } else {
-                $('.action-update').prop('disabled', true);
+<script>
+    $(".check-item").on("click", function() {
+        if ($(".check-item:checked").length < 2) {
+            $('.action-update').prop('disabled', false);
+        } else {
+            $('.action-update').prop('disabled', true);
+        }
+    });
+
+    $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+        $("#check-all").click(function() { // Ketika user men-cek checkbox all
+            if ($(this).is(":checked")) // Jika checkbox all diceklis
+                $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+            else // Jika checkbox all tidak diceklis
+                $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+        });
+
+    });
+
+    $('.action-update').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-item:checked").val();
+        console.log('checked', checkedValue);
+        // jQuery.noConflict();
+        $('#modalresult').modal('show');
+        $.ajax({
+            url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                $('[name="fv_nama_edit"]').val(result.fv_nama);
+                $('[name="fc_email_edit"]').val(result.fc_email);
+                $('[name="fc_hp_edit"]').val(result.fc_hp);
+                $('[name="fc_aktif_edit"]').val(result.fc_aktif);
+                $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
+                $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
             }
-        });
+        })
 
-        $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-            $("#check-all").click(function() { // Ketika user men-cek checkbox all
-                if ($(this).is(":checked")) // Jika checkbox all diceklis
-                    $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-                else // Jika checkbox all tidak diceklis
-                    $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-            });
+        // $('input.check-item:checked').each(function() {
+        //     arr.push($(this).val());
+        // });
 
-        });
-
-        $('.action-update').click(function(e) {
-            e.preventDefault();
-            var arr = [];
-            var checkedValue = $(".check-item:checked").val();
-            console.log('checked', checkedValue);
-            // jQuery.noConflict();
-            $('#modalresult').modal('show');
-            $.ajax({
-                url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
-                type: "GET",
-                dataType: "JSON",
-                success: function(result) {
-                    $('[name="fc_salesid_edit"]').val(result.fc_salesid);
-                    $('[name="fv_nama_edit"]').val(result.fv_nama);
-                    $('[name="fc_email_edit"]').val(result.fc_email);
-                    $('[name="fc_hp_edit"]').val(result.fc_hp);
-                    $('[name="fc_aktif_edit"]').val(result.fc_aktif);
-                    $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
-                    $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Data Eror');
-                }
-            })
-
-            // $('input.check-item:checked').each(function() {
-            //     arr.push($(this).val());
-            // });
-
-            // var action = $(this).attr('data-href') + '/' + arr.join("-");
-            // window.location.href = action;
-        });
-    </script>
-    <!-- <script>
+        // var action = $(this).attr('data-href') + '/' + arr.join("-");
+        // window.location.href = action;
+    });
+</script>
+<!-- <script>
         $(document).ready(function() {
             $('#search').on('keyup', function() {
                 $.ajax({
@@ -422,27 +429,27 @@
         });
     </script> -->
 
-    <script>
-        var keyword = document.getElementById('keywoard');
-        var search = document.getElementById('btn-search');
-        var view = document.getElementById('tampil');
+<script>
+    var keyword = document.getElementById('keywoard');
+    var search = document.getElementById('btn-search');
+    var view = document.getElementById('tampil');
 
-        // search.addEventListener('click', function() {
-        //     alert('berhasil');
-        // });
-        keyword.addEventListener('keyup', function() {
-            //objek ajax
-            var ajax = new XMLHttpRequest();
+    // search.addEventListener('click', function() {
+    //     alert('berhasil');
+    // });
+    keyword.addEventListener('keyup', function() {
+        //objek ajax
+        var ajax = new XMLHttpRequest();
 
-            //cek kesiapan ajax
-            ajax.onreadystatechange = function() {
-                if (ajax.readyState == 4 && ajax.status == 200) {
-                    // view.innerHTML = ajax.responseText
-                    alert('congrats');
-                }
+        //cek kesiapan ajax
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState == 4 && ajax.status == 200) {
+                // view.innerHTML = ajax.responseText
+                alert('congrats');
             }
+        }
 
-            ajax.open('POST', '<?php base_url('C_sales/search') ?>'. $ke, true);
-            ajax.send();
-        })
-    </script>
+        ajax.open('POST', '<?php base_url('C_sales/search') ?>'.$ke, true);
+        ajax.send();
+    })
+</script>
