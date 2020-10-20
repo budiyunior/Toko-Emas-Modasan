@@ -178,13 +178,20 @@
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
-                                                            <div class="col-sm-6">
+                                                            <div class="col-sm-5">
                                                                 <input type="text" class="form-control" id="inputPassword" placeholder="">
                                                             </div>
-                                                            <div class="col-sm-2">
-                                                                <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#tambahpelanggan">
-                                                                    <i class=" ace-icon glyphicon glyphicon-plus"></i>
-                                                                </button>
+                                                            <div class="col-sm-3">
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#caripelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-search"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#tambahpelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-plus"></i>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
 
@@ -208,7 +215,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                                 <tr>
                                                 </tr>
                                             </tbody>
@@ -228,14 +234,12 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
-
                                                             </div>
                                                             <label class="col-sm-3 col-form-label">Subtotal</label>
                                                             <div class="col-sm-8">
                                                                 <input type="text" class="form-control" readonly value="100.000">
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
@@ -244,16 +248,12 @@
                                                                 <input type="text" class="form-control" readonly value="100.000">
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group row">
-
                                                             <label class="col-sm-2 col-form-label">Terbilang</label>
                                                             <div class="col-sm-10">
                                                                 <input type="text" class="form-control" readonly placeholder="">
                                                             </div>
                                                         </div>
-
-
                                                     </div>
                                                 </form>
                                             </div>
@@ -339,7 +339,53 @@
                                 </div>
                             </div>
                             <!-- PAGE CONTENT ENDS -->
-                        </div><!-- /.col -->
+                        </div>
+
+                        <div class="modal fade" id="caripelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cari Pelanggan</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="col-md-12">
+                                                    <table class="table table-bordered ">
+                                                        <thead>
+                                                            <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php $i = 1;
+                                                            foreach ($pelanggan as $p) : ?>
+                                                                <tr>
+                                                                    <td class="check center">
+                                                                        <input type="checkbox" class="check-item">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type='text' readonly class='txtedit' data-id='<?= $p->fc_kdpel ?>' data-field='name' id='<?= $p->fc_kdpel ?>' value='<?= $p->fv_nmpelanggan ?>'>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2" style="margin-top: 5px;">
+                                                <button class="btn btn-primary btn-sm">Pilih</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
+
+
+                        <!-- /.col -->
                         <div class="modal fade" id="pilihbarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg ">
                                 <div class="modal-content">
@@ -420,7 +466,7 @@
 </div>
 
 <script>
-   
+
 </script>
 
 
