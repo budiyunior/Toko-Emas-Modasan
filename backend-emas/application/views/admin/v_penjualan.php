@@ -354,6 +354,12 @@
                                                     <table class="table table-bordered ">
                                                         <thead>
                                                             <tr>
+                                                                <th class="check center">
+                                                                    <input type="checkbox" class="check-item">
+                                                                </th>
+                                                                <th>
+                                                                    Nama Pelanggan
+                                                                </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
@@ -363,9 +369,9 @@
                                                                     <td class="check center">
                                                                         <input type="checkbox" class="check-item">
                                                                     </td>
-                                                                    <td>
-                                                                        <input type='text' readonly class='txtedit' data-id='<?= $p->fc_kdpel ?>' data-field='name' id='<?= $p->fc_kdpel ?>' value='<?= $p->fv_nmpelanggan ?>'>
-                                                                    </td>
+                                                                    <td value='<?= $p->fc_kdpel ?>'><?= $p->fv_nmpelanggan ?> </td>
+                                                                    <!-- <input type='text' readonly class='txtedit' data-id='<?= $p->fc_kdpel ?>' data-field='name' id='<?= $p->fc_kdpel ?>' value='<?= $p->fv_nmpelanggan ?>'> -->
+
                                                                 </tr>
                                                             <?php endforeach; ?>
                                                         </tbody>

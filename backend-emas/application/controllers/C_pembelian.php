@@ -19,9 +19,9 @@ class C_pembelian extends CI_Controller
     {
         $data['title'] = "Pembelian";
         $data['menu'] = $this->M_menu->get_menu();
-
-
+        
         $data['barang'] = $this->M_barang->get_barang();
+        $data['faktur'] = $this->M_pembelian->get_faktur();
 
         $this->load->view('admin/v_pembelian', $data);
     }
