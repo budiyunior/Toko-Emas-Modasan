@@ -84,22 +84,27 @@ class M_barang extends CI_Model
     public function update_barang()
     {
         $post = $this->input->post();
-        $this->fd_date = $post['fd_date'];
+        $this->fn_id = $post['fn_id_edit'];
+        $this->fd_date = $post['fd_date_edit'];
         // $this->fc_barcode = $post['fc_barcode'];
-        $this->fc_kdstock = $post['fc_kdstock'];
-        $this->fv_nmbarang = $post['fv_nmbarang'];
-        $this->fc_kdkelompok = $post['fc_kdkelompok'];
-        $this->fc_kdlokasi = $post['fc_kdlokasi'];
-        $this->fc_salesid = $post['fc_salesid'];
-        $this->ff_berat = $post['ff_berat'];
-        $this->fc_kadar = $post['fc_kadar'];
-        $this->fm_ongkos = $post['fm_ongkos'];
-        $this->fm_hargabeli = $post['fm_hargabeli'];
-        $this->fm_hargajual = $post['fm_hargajual'];
-        $this->f_foto = $this->uploadImage();
-        $this->fc_sts = $post['fc_sts'];  
+        $this->fc_kdstock = $post['fc_kdstock_edit'];
+        $this->fv_nmbarang = $post['fv_nmbarang_edit'];
+        $this->fc_kdkelompok = $post['fc_kdkelompok_edit'];
+        $this->fc_kdlokasi = $post['fc_kdlokasi_edit'];
+        $this->fc_salesid = $post['fc_salesid_edit'];
+        $this->ff_berat = $post['ff_berat_edit'];
+        $this->fc_kadar = $post['fc_kadar_edit'];
+        $this->fm_ongkos = $post['fm_ongkos_edit'];
+        $this->fm_hargabeli = $post['fm_hargabeli_edit'];
+        $this->fm_hargajual = $post['fm_hargajual_edit'];
+        if (!empty($_FILES["f_foto"]["name"])) {
+            $this->f_foto = $this->uploadImage();
+        } else {
+            $this->f_foto = $post["old_image"];
+        }
+        $this->fc_sts = $post['fc_sts_edit'];  
 
-        $this->db->insert($this->tabel, $this);
+        $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit'] ));
     }
 
 }

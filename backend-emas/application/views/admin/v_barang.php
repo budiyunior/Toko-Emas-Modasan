@@ -577,294 +577,294 @@
 
         <div class="modal fade" id="modalupdate" tabindex="-1">
             <div class="modal-dialog ">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-8">
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Tanggal</label>
-                                    <div class="col-sm-7">
-                                        <input type="hidden" name="fn_id_edit">
-                                        <input type="date" name="fd_date_edit" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Kode</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fc_kdstock_edit" class="form-control" placeholder="Kode">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Nama</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fv_nmbarang_edit" class="form-control" placeholder="Nama">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Kelompok</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fc_kdkelompok_edit" class="form-control" name="" placeholder="kelompok">
-                                    </div>
-                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
-                                        <i class="fa fa-search-plus"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Lokasi</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="fc_kdlokasi_edit" placeholder="Lokasi">
-                                    </div>
-                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
-                                        <i class="fa fa-search-plus"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Sales</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fc_salesid_edit" class="form-control" placeholder="Sales">
-                                    </div>
-                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
-                                        <i class="fa fa-search-plus"></i>
-                                    </button>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Ongkos</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" class="form-control" name="fm_ongkos_edit" placeholder="Ongkos">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Berat</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="ff_berat_edit" class="form-control" placeholder="Berat">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Kadar</label>
-                                    <div class="col-sm-7">
-                                        <select class="form-control" required name="fc_kadar_edit">
-                                            <option>Pilih </option>
-                                            <option value="10">10</option>
-                                            <option value="50">50</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fm_hargabeli_edit" class="form-control" placeholder="Harga Beli">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="fm_hargajual_edit" class="form-control" placeholder="Harga Jual">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Foto</label>
-                                    <div class="col-sm-7">
-                                        <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
-                                    </div>
-
-                                </div>
-                                <div class="form-group row">
-                                    <label for="" class="col-sm-3 col-form-label">Status</label>
-                                    <div class="col-sm-7">
-                                        <select class="form-control" required name="fc_sts_edit">
-                                            <option>--Pilih--</option>
-                                            <option value="1">Baru</option>
-                                            <option value="2">Bekas</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 center">
-                                <div style="margin-top: 140%;">
-                                    <div style="margin-bottom: 10px;">
-                                        <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
-                                    </div>
-                                    <button type="button" class="btn btn-primary">Cam</button>
-                                </div>
-                            </div>
-                            </form>
+                <form method="post" action="<?= base_url('C_barang/update_barang') ?>" enctype="multipart/form-data">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
-                    </div>
-
-                    <!-- modal kelompok -->
-
-                    <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title center" id="exampleModalLabel">Kelompok
-                                    </h5>
-                                </div>
-                                <div class="modal-body">
-                                    <br><br><br>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Tanggal</label>
+                                        <div class="col-sm-7">
+                                            <input type="hidden" name="fn_id_edit">
+                                            <input type="date" name="fd_date_edit" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Kode</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fc_kdstock_edit" class="form-control" placeholder="Kode">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Nama</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fv_nmbarang_edit" class="form-control" placeholder="Nama">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Kelompok</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fc_kdkelompok_edit" class="form-control" name="" placeholder="kelompok">
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
+                                            <i class="fa fa-search-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Lokasi</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" name="fc_kdlokasi_edit" placeholder="Lokasi">
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
+                                            <i class="fa fa-search-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Sales</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fc_salesid_edit" class="form-control" placeholder="Sales">
+                                        </div>
+                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
+                                            <i class="fa fa-search-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Ongkos</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control" name="fm_ongkos_edit" placeholder="Ongkos">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Berat</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="ff_berat_edit" class="form-control" placeholder="Berat">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Kadar</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" required name="fc_kadar_edit">
+                                                <option>Pilih </option>
+                                                <option value="10">10</option>
+                                                <option value="50">50</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fm_hargabeli_edit" class="form-control" placeholder="Harga Beli">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fm_hargajual_edit" class="form-control" placeholder="Harga Jual">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Foto</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
+                                        </div>
 
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Status</label>
+                                        <div class="col-sm-7">
+                                            <select class="form-control" required name="fc_sts_edit">
+                                                <option>--Pilih--</option>
+                                                <option value="1">Baru</option>
+                                                <option value="2">Bekas</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- modal lokasi -->
-
-                    <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title center" id="exampleModalLabel">Lokasi
-                                    </h5>
-                                </div>
-                                <div class="modal-body">
-                                    <br><br><br>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control">
-                                            </div>
+                                <div class="col-md-4 center">
+                                    <div style="margin-top: 140%;">
+                                        <div style="margin-bottom: 10px;">
+                                            <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
                                         </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                                        </div>
+                                        <button type="button" class="btn btn-primary">Cam</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- sales -->
-
-                    <div class="modal fade" id="editsales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-sm">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+                        <div class="modal-footer">
+                            <div class="row" style="position: center;">
+                                <div class="col-md-4" style="margin-top: 5px;">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
-                                <div class="modal-body">
-                                    <br><br><br>
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                                        </div>
-                                        <div class="col-md-2" style="margin-top: 5px;">
-                                            <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                <div class="col-md-3" style="margin-top: 5px;">
+                                    <button type="submit" class="btn btn-success">Cetak Barcode</button>
+                                </div>
+                                <div class="col-md-1" style="margin-top: 5px;">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <!-- modal kelompok -->
+
+                <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title center" id="exampleModalLabel">Kelompok
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control">
                                         </div>
                                     </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <div class="row" style="position: center;">
-                            <div class="col-md-4" style="margin-top: 5px;">
-                                <button type="button" class="btn btn-primary">Simpan</button>
-                            </div>
-                            <div class="col-md-3" style="margin-top: 5px;">
-                                <button type="button" class="btn btn-success">Cetak Barcode</button>
-                            </div>
-                            <div class="col-md-1" style="margin-top: 5px;">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
+
+                <!-- modal lokasi -->
+
+                <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title center" id="exampleModalLabel">Lokasi
+                                </h5>
+                            </div>
+                            <div class="modal-body">
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- sales -->
+
+                <div class="modal fade" id="editsales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
+                            </div>
+                            <div class="modal-body">
+                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    </div>
+                                    <div class="col-md-2" style="margin-top: 5px;">
+                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+    </div>
 
-        <script>
-            $('.custom-file-input').on('change', function() {
-                let fileName = $(this).val().split('\\').pop();
-                $(this).next('.custom-file-label').addClass("selected").html(fileName);
+    <script>
+        $('.custom-file-input').on('change', function() {
+            let fileName = $(this).val().split('\\').pop();
+            $(this).next('.custom-file-label').addClass("selected").html(fileName);
+        });
+
+        $(".check-item").on("click", function() {
+            if ($(".check-item:checked").length < 2) {
+                $('.update').prop('disabled', false);
+            } else {
+                $('.update').prop('disabled', true);
+            }
+        });
+
+        $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+            $("#check-all").click(function() { // Ketika user men-cek checkbox all
+                if ($(this).is(":checked")) // Jika checkbox all diceklis
+                    $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+                else // Jika checkbox all tidak diceklis
+                    $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
             });
 
-            $(".check-item").on("click", function() {
-                if ($(".check-item:checked").length < 2) {
-                    $('.update').prop('disabled', false);
-                } else {
-                    $('.update').prop('disabled', true);
+        });
+        $('.update').click(function(e) {
+            e.preventDefault();
+            var arr = [];
+            var checkedValue = $(".check-item:checked").val();
+            console.log('checked', checkedValue);
+            // jQuery.noConflict();
+            $('#modalupdate').modal('show');
+            $.ajax({
+                url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
+                type: "GET",
+                dataType: "JSON",
+                success: function(result) {
+                    $('[name="fn_id_edit"]').val(result.fn_id);
+                    $('[name="fd_date_edit"]').val(result.fd_date);
+                    $('[name="fc_barcode_edit"]').val(result.fc_barcode);
+                    $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
+                    $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
+                    $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
+                    $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
+                    $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                    $('[name="ff_berat_edit"]').val(result.ff_berat);
+                    $('[name="fc_kadar_edit"]').val(result.fc_kadar);
+                    $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
+                    $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
+                    $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
+                    $('[name="f_foto_edit"]').val(result.f_foto);
+                    $('[name="fc_sts_edit"]').val(result.fc_sts);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert('Data Eror');
                 }
-            });
+            })
 
-            $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-                $("#check-all").click(function() { // Ketika user men-cek checkbox all
-                    if ($(this).is(":checked")) // Jika checkbox all diceklis
-                        $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-                    else // Jika checkbox all tidak diceklis
-                        $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-                });
+            // $('input.check-item:checked').each(function() {
+            //     arr.push($(this).val());
+            // });
 
-            });
-            $('.update').click(function(e) {
-                e.preventDefault();
-                var arr = [];
-                var checkedValue = $(".check-item:checked").val();
-                console.log('checked', checkedValue);
-                // jQuery.noConflict();
-                $('#modalupdate').modal('show');
-                $.ajax({
-                    url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
-                    type: "GET",
-                    dataType: "JSON",
-                    success: function(result) {
-                        $('[name="fn_id_edit"]').val(result.fn_id);
-                        $('[name="fd_date_edit"]').val(result.fd_date);
-                        $('[name="fc_barcode_edit"]').val(result.fc_barcode);
-                        $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
-                        $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
-                        $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
-                        $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
-                        $('[name="fc_salesid_edit"]').val(result.fc_salesid);
-                        $('[name="ff_berat_edit"]').val(result.ff_berat);
-                        $('[name="fc_kadar_edit"]').val(result.fc_kadar);
-                        $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
-                        $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
-                        $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
-                        $('[name="f_foto_edit"]').val(result.f_foto);
-                        $('[name="fc_sts_edit"]').val(result.fc_sts);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Data Eror');
-                    }
-                })
-
-                // $('input.check-item:checked').each(function() {
-                //     arr.push($(this).val());
-                // });
-
-                // var action = $(this).attr('data-href') + '/' + arr.join("-");
-                // window.location.href = action;
-            });
-        </script>
-        <?php $this->load->view('partials/footer.php') ?>
-        <?php $this->load->view('partials/js.php') ?>
+            // var action = $(this).attr('data-href') + '/' + arr.join("-");
+            // window.location.href = action;
+        });
+    </script>
+    <?php $this->load->view('partials/footer.php') ?>
+    <?php $this->load->view('partials/js.php') ?>
