@@ -41,13 +41,13 @@ class M_sales extends CI_Model
     //     return $query;
     // }
 
-    public function get()
+    public function list_sales($limit, $start)
     {
         $this->db->select('*');
         $this->db->from('t_sales', 'tm_posisi');
         $this->db->join('tm_posisi', 'tm_posisi.fc_kdposisi = t_sales.fc_kdposisi');
-        $query = $this->db->get()->result();
-        return $query;
+        $query = $this->db->get('', $limit, $start);
+        return $query->result();
     }
 
     public function save_sales()
