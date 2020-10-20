@@ -29,19 +29,22 @@ class C_penjualan extends CI_Controller
         $this->load->view('admin/v_penjualan', $data);
     }
 
-    public function save_pelanggan()
+    public function save_datapelanggan()
     {
 
 
         $save_pelanggan = $this->M_pelanggan;
-        
-            $save_pelanggan->save_pelanggan();
-            // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
-            // redirect('');
-        //     echo "<script>
-        //     window.location.href = '" . base_url('C_penjualan') . "';
-        // </script>"; //Url tujuan
 
-        
+        $save_pelanggan->save_pelanggan();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        echo "<script>
+            $('#closemodal').click(function() {
+    $('#tambahpelanggan').modal('hide');
+});
+            alert('Data pelanggan berhasil di tambahkan');
+        </script>"; //Url tujuan
+
+
     }
 }

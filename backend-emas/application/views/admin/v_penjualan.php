@@ -286,7 +286,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form method="post" action="<?= base_url('C_penjualan/save_pelanggan') ?>" enctype="multipart/form-data">
+                                                <form method="post" action="<?= base_url('C_penjualan/save_datapelanggan') ?>" enctype="multipart/form-data">
                                                     <div class="col-md-12">
                                                         <div class="form-group row">
                                                             <label for="kode" class="col-sm-4 col-form-label">Kode</label>
@@ -331,7 +331,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary" data-dismiss="modal">Simpan</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -375,7 +375,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-md-2" style="margin-top: 5px;">
-                                                <button class="btn btn-primary btn-sm">Pilih</button>
+                                                <button data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-primary btn-sm">Pilih</button>
                                             </div>
                                         </div>
                                     </div>
