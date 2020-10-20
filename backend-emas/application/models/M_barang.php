@@ -18,6 +18,13 @@ class M_barang extends CI_Model
         return $this->db->get($this->tbsales)->result();
     }
 
+    public function get_by_id($id)
+    {
+        $this->db->where('fn_id', $id);
+        return $this->db->get('tm_stock')->row();
+    }
+
+
     public function get_lokasi()
     {
         return $this->db->get($this->tblokasi)->result();
@@ -73,4 +80,32 @@ class M_barang extends CI_Model
 
         print_r($this->upload->display_errors());
     }
+
+    public function update_barang()
+    {
+        $post = $this->input->post();
+        $this->fn_id = $post['fn_id_edit'];
+        $this->fd_date = $post['fd_date_edit'];
+        // $this->fc_barcode = $post['fc_barcode'];
+        $this->fc_kdstock = $post['fc_kdstock_edit'];
+        $this->fv_nmbarang = $post['fv_nmbarang_edit'];
+        $this->fc_kdkelompok = $post['fc_kdkelompok_edit'];
+        $this->fc_kdlokasi = $post['fc_kdlokasi_edit'];
+        $this->fc_salesid = $post['fc_salesid_edit'];
+        $this->ff_berat = $post['ff_berat_edit'];
+        $this->fc_kadar = $post['fc_kadar_edit'];
+        $this->fm_ongkos = $post['fm_ongkos_edit'];
+        $this->fm_hargabeli = $post['fm_hargabeli_edit'];
+        $this->fm_hargajual = $post['fm_hargajual_edit'];
+        if (!empty($_FILES["f_foto"]["name"])) {
+            $this->f_foto = $this->uploadImage();
+        } else {
+            $this->f_foto = $post["old_image"];
+        }
+        $this->fc_sts = $post['fc_sts_edit'];  
+
+        $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit'] ));
+    }
+
 }
+

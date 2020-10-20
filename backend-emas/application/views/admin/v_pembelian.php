@@ -41,7 +41,7 @@
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue user-min">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="<?php base_url() ?>assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
                             Jason

@@ -189,13 +189,13 @@
                             <br>
                             <div class="row">
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary">Tambah</a>
+                                    <a href="" data-toggle="modal" data-target="#tambahpelanggan" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                                </div>
+                                <div class="col-md-1" style="margin-top: 5px; margin-left: 20px;">
+                                    <button type="button" class="btn btn-success action-update"><i class="fa fa-edit"></i> Edit</button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="button" class="btn btn-success action-update">Edit</button>
-                                </div>
-                                <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')">Hapus</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')"><i class="fa fa-trash"></i> Hapus</button>
                                 </div>
                                 <?= form_close(); ?>
                                 <div class="col-md-2" style="margin-top: 5px;">
