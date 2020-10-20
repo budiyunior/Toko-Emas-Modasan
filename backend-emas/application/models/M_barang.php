@@ -34,6 +34,12 @@ class M_barang extends CI_Model
         return $this->db->get($this->tbkelompok)->result();
     }
 
+    public function list_barang($limit, $start)
+    {
+        $query = $this->db->get('tm_stock', $limit, $start);
+        return $query->result();
+    }
+
     public function save_barang()
     {
         $post = $this->input->post();
@@ -50,7 +56,7 @@ class M_barang extends CI_Model
         $this->fm_hargabeli = $post['fm_hargabeli'];
         $this->fm_hargajual = $post['fm_hargajual'];
         $this->f_foto = $this->uploadImage();
-        $this->fc_sts = $post['fc_sts'];  
+        $this->fc_sts = $post['fc_sts'];
 
         $this->db->insert($this->tabel, $this);
     }
@@ -59,7 +65,7 @@ class M_barang extends CI_Model
     {
         $post = $this->input->post();
         $this->fv_nmkelompok = $post['fv_nmkelompok'];
-        
+
         $this->db->insert($this->tbkelompok, $this);
     }
 
@@ -102,10 +108,8 @@ class M_barang extends CI_Model
         } else {
             $this->f_foto = $post["f_foto_edit"];
         }
-        $this->fc_sts = $post['fc_sts_edit'];  
+        $this->fc_sts = $post['fc_sts_edit'];
 
-        $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit'] ));
+        $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit']));
     }
-
 }
-

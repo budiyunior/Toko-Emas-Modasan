@@ -100,8 +100,8 @@
         <ul class="nav nav-list">
             <?php foreach ($menu as $me) : ?>
                 <li class="hover">
-                    <a href="<?php echo $me->link_menu ?>">
-                        <i class="menu-icon <?= $me->icon_class ?>"></i>
+                    <a href="<?php echo base_url($me->link_menu);  ?>">
+                        <i class="menu-icon <?= base_url($me->icon_class);  ?>"></i>
                         <span class="menu-text"> <?= $me->nama_menu ?></span>
                     </a>
                 </li>
@@ -208,13 +208,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $i = 1;
+                                    <?php $no = $this->uri->segment('3') + 1;
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
                                                 <input type="checkbox" class="check-item" value="<?= $s->fn_id ?>">
                                             </td>
-                                            <th scope="col"><?= $i++ ?></th>
+                                            <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang ?></td>
                                             <td scope="row"><?= $s->fc_kdkelompok ?></td>
@@ -230,6 +230,12 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="">
+                                    <!--Tampilkan pagination-->
+                                    <?php echo $pagination; ?>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -243,6 +249,7 @@
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <a href="" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></a>
                             </div>
+                            <?= form_close(); ?>
                             <div class="col-md-2" style="margin-top: 5px;">
                                 <form action="">
                                     <input type="text" class="form-control" placeholder="Cari">
@@ -670,9 +677,9 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Foto</label>
                                         <div class="col-sm-7">
-                                            <input type="file" name="f_foto" class="form-control" placeholder="Foto">
-                                            <input type="hidden" name="f_foto_edit">
+                                            <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
                                         </div>
+
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Status</label>
