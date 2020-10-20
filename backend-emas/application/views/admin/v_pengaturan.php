@@ -20,7 +20,7 @@
             <button class="pull-right navbar-toggle navbar-toggle-img collapsed" type="button" data-toggle="collapse" data-target=".navbar-buttons,.navbar-menu">
                 <span class="sr-only">Toggle user menu</span>
 
-                <img src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                <img src="../Toko-Emas-Modasan/backend-emas/assets/assets/avatars/user.jpg" alt="Jason's Photo" />
             </button>
 
             <button class="pull-right navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#sidebar">
@@ -42,7 +42,7 @@
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue user-min">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="../Toko-Emas-Modasan/backend-emas/assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
                             Jason
@@ -101,7 +101,7 @@
         </script>
         <ul class="nav nav-list">
             <?php foreach ($menu as $me) : ?>
-                <li class="hover">
+                <li class="  hover">
                     <a href="<?php echo base_url($me->link_menu);  ?>">
                         <i class="menu-icon <?= base_url($me->icon_class);  ?>"></i>
                         <span class="menu-text"> <?= $me->nama_menu ?></span>

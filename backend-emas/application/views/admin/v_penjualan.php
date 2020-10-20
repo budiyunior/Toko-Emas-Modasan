@@ -215,7 +215,6 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
                                                 <tr>
                                                 </tr>
                                             </tbody>
@@ -340,7 +339,53 @@
                                 </div>
                             </div>
                             <!-- PAGE CONTENT ENDS -->
-                        </div><!-- /.col -->
+                        </div>
+
+                        <div class="modal fade" id="caripelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cari Pelanggan</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="col-md-12">
+                                                    <table class="table table-bordered ">
+                                                        <thead>
+                                                            <tr>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php $i = 1;
+                                                            foreach ($pelanggan as $p) : ?>
+                                                                <tr>
+                                                                    <td class="check center">
+                                                                        <input type="checkbox" class="check-item">
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type='text' readonly class='txtedit' data-id='<?= $p->fc_kdpel ?>' data-field='name' id='<?= $p->fc_kdpel ?>' value='<?= $p->fv_nmpelanggan ?>'>
+                                                                    </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2" style="margin-top: 5px;">
+                                                <button class="btn btn-primary btn-sm">Pilih</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
+
+
+                        <!-- /.col -->
                         <div class="modal fade" id="pilihbarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg ">
                                 <div class="modal-content">

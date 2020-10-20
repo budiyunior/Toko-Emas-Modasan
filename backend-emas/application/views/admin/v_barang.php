@@ -425,7 +425,7 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table ">
+                                <table class="table table-bordered">
                                     <thead>
                                         <tr>
 
@@ -435,16 +435,16 @@
                                         <?php $i = 1;
                                         foreach ($kelompok as $k) : ?>
                                             <tr>
+                                                <td class="check center">
+                                                    <input type="checkbox" class="check-item">
+                                                </td>
+                                                <td>
+                                                    <input type='text' readonly class='txtedit' data-id='<?= $k->fc_kdkelompok ?>' data-field='name' id='nametxt_"<?= $k->fc_kdkelompok ?>"' value='<?= $k->fv_nmkelompok ?>'>
+                                                </td>
+
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
-                                    <td class="check center">
-                                        <input type="checkbox" class="check-item">
-                                    </td>
-                                    <td>
-                                        <input type='text' readonly class='txtedit' data-id='<?= $k->fc_kdkelompok ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                    </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
                                 </table>
                             </div>
                         </div>
@@ -494,7 +494,7 @@
                                         <input type="checkbox" class="check-item">
                                     </td>
                                     <td>
-                                        <input type='text' readonly class='txtedit' data-id='<?= $l->fc_kdlokasi ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                        <input type='text' readonly class='txtedit' data-id='<?= $l->fc_kdlokasi ?>' data-field='name' id='nametxt_"<?= $l->fc_kdlokasi ?>"' value='<?= $l->fv_nmlokasi ?>'>
                                     </td>
                                     </tr>
                                 <?php endforeach; ?>
