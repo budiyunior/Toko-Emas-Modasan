@@ -19,6 +19,6 @@ class M_penjualan extends CI_Model
     public function get_by_barang($id)
     {
         $this->db->where('fn_id', $id);
-        return $this->db->get('tm_stock')->row();
+        return $this->db->get('tm_stock')->row_array();
     }
 }

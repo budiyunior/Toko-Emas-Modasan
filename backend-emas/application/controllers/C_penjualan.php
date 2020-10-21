@@ -58,4 +58,18 @@ class C_penjualan extends CI_Controller
         echo json_encode($data);
     }
     
+    public function coba()
+    {
+        $data['title'] = "Penjualan";
+        $data['menu'] = $this->M_menu->get_menu();
+        // $data['penjualan'] = $this->M_penjualan->get_penjualan();
+
+
+        $data['pelanggan'] = $this->M_penjualan->get_pelanggan();
+
+        $data['barang'] = $this->M_barang->get_barang();
+
+        $this->load->view('coba/coba2', $data);
+    }
+
 }
