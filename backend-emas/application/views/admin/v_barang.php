@@ -208,11 +208,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php echo form_open('C_barang/delete'); ?>
                                     <?php $no = $this->uri->segment('3') + 1;
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" value="<?= $s->fn_id ?>">
+                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -247,7 +248,7 @@
                                 <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <a href="" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></a>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Data Barang ?')"><i class="fa fa-trash"></i> Hapus</button>
                             </div>
                             <?= form_close(); ?>
                             <div class="col-md-2" style="margin-top: 5px;">

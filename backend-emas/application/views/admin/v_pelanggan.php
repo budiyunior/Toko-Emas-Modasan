@@ -195,7 +195,7 @@
                                     <button type="button" class="btn btn-success action-update"><i class="fa fa-edit"></i> Edit</button>
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin')"><i class="fa fa-trash"></i> Hapus</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Data Pelanggan ?')"><i class="fa fa-trash"></i> Hapus</button>
                                 </div>
                                 <?= form_close(); ?>
                                 <div class="col-md-2" style="margin-top: 5px;">

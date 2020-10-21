@@ -113,4 +113,12 @@ class C_barang extends CI_Controller
         $data = $this->M_barang->get_by_id($id);
         echo json_encode($data);
     }
+
+    function delete()
+    {
+        foreach ($_POST['id'] as $id) {
+            $this->M_barang->delete($id);
+        }
+        return redirect('C_barang/index');
+    }
 }

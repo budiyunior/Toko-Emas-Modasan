@@ -8,6 +8,12 @@ class M_barang extends CI_Model
     private $tbkelompok = "tm_kelompok";
     private $tblokasi = "tm_lokasi";
 
+    public function delete($id)
+    {
+        $this->db->where('fn_id', $id);
+        $this->db->delete('tm_stock');
+    }
+
     public function get_barang()
     {
         return $this->db->get($this->tabel)->result();
