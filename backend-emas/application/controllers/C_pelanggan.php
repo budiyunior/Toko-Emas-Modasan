@@ -93,4 +93,55 @@ class C_pelanggan extends CI_Controller
         }
         return redirect('C_pelanggan/index');
     }
+<<<<<<< HEAD
+=======
+
+    public function update()
+    {
+        // $validasi = $this->form_validation->set_rules('fc_salesid', 'id sales', 'required|is_unique[t_sales.fc_salesid]', [
+        //     'is_unique' => 'Kode sudah ada',
+        //     'required' => 'Nama Tidak Boleh Kosong'
+        // ]);
+        // $validasi = $this->form_validation->set_rules('fv_nama', 'nama', 'required', [
+        //     'required' => 'Nama Tidak boleh kosong'
+        // ]);
+
+        $update_pelanggan = $this->M_pelanggan;
+        // if ($validasi->run() == true) {
+        $update_pelanggan->update_pelanggan();
+        echo "<script>
+            alert('Data pelanggan berhasil di ubah');
+            window.location.href = '" . base_url('C_pelanggan') . "';
+        </script>"; //Url tujuan
+        //}
+    }
+
+    public function ajax_edit2($id)
+    {
+        $data = $this->M_pelanggan->get_by_id2($id);
+        echo json_encode($data);
+    }
+
+    public function view()
+    {
+        $data['sales'] = $this->M_pelanggan->get();
+        $data['sales3'] = $this->M_pelanggan->get();
+        $data['jabatan'] = $this->M_pelanggan->get_jabatan();
+        $this->load->view('tambahan/v_tablesales', $data);
+    }
+
+    public function search()
+    {
+        $keyword = $this->input->post('keyword');
+        $data = $this->M_pelanggan->search_pelanggan($keyword);
+
+        $hasil = $this->load->view('tambahan/v_tablesales', array('t_sales' => $data), true);
+
+        // Buat sebuah array
+        $callback = array(
+            'hasil' => $hasil, // Set array hasil dengan isi dari view.php yang diload tadi
+        );
+        echo json_encode($callback); // konversi varibael $callback menjadi JSON
+    }
+>>>>>>> 4a7e7bd4ad63effe727db26299bfb70c1a02d42e
 }

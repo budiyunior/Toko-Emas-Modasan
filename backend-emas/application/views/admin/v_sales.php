@@ -100,8 +100,8 @@
         <ul class="nav nav-list">
             <?php foreach ($menu as $me) : ?>
                 <li class="hover">
-                    <a href="<?php echo $me->link_menu ?>">
-                        <i class="menu-icon <?= $me->icon_class ?>"></i>
+                    <a href="<?php echo base_url($me->link_menu);  ?>">
+                        <i class="menu-icon <?= base_url($me->icon_class); ?>"></i>
                         <span class="menu-text"> <?= $me->nama_menu ?></span>
                     </a>
                 </li>
@@ -132,7 +132,7 @@
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="center">
-                        <div class="table-responsive" id="view">
+                        <div class="table-responsive" id="tampil">
                             <table class="table table-bordered">
                                 <thead>
                                     <tr>
@@ -167,8 +167,15 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
+                            <div class="row">
+                                <div class="">
+                                    <!--Tampilkan pagination-->
+                                    <?php echo $pagination; ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    <br>
                     <div class="center">
                         <div class="row">
                             <div class="col-md-1" style="margin-top: 5px">
@@ -183,12 +190,14 @@
                             <?= form_close(); ?>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
-                            <div class="col-md-3" style="margin-top: 5px">
-                                <input class="form-control" id="keywoard" type="text" placeholder="Cari Data">
-                            </div>
-                            <div class="col-md-1" style="margin-top: 5px;">
-                                <button type="button" id="btn-search" class="btn btn-secondary">Search</button>
-                            </div>
+                            <form>
+                                <div class="col-md-3" style="margin-top: 5px">
+                                    <input class="form-control" name="search" id="search" type="text" placeholder="Cari Data">
+                                </div>
+                                <div class="col-md-1" style="margin-top: 5px;">
+                                    <button type="button" id="btn-search" name="cari" class="btn btn-secondary">Search</button>
+                                </div>
+                            </form>
                         </div>
 
                         <div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -282,31 +291,31 @@
                                         <div class="form-group row">
                                             <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                                             <div class="col-sm-7">
-                                                <input type="text" name="fc_salesid" class="form-control" id="kode" placeholder="Kode">
+                                                <input type="text" name="fc_salesid_edit" class="form-control" id="kode" placeholder="Kode">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fv_nama" id="nama" placeholder="Nama">
+                                                <input type="text" class="form-control" name="fv_nama_edit" id="nama" placeholder="Nama">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label">Email</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fc_email" id="email" placeholder="Email">
+                                                <input type="text" class="form-control" name="fc_email_edit" id="email" placeholder="Email">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="no.hp" class="col-sm-2 col-form-label">No.hp</label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control" name="fc_hp" id="no.hp" placeholder="No.hp">
+                                                <input type="text" class="form-control" name="fc_hp_edit" id="no.hp" placeholder="No.hp">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="" class="col-sm-2 col-form-label">Sales</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="fc_aktif">
+                                                <select class="form-control" name="fc_aktif_edit">
                                                     <option>--Pilih--</option>
                                                     <option value="Y">Aktif</option>
                                                     <option value="N">Non Aktif</option>
@@ -317,13 +326,13 @@
                                             <label for="tanggal_lahir" class="col-sm-2 col-form-label">Tanggal
                                                 Lahir</label>
                                             <div class="col-sm-7">
-                                                <input type="date" class="form-control" name="fd_tgllahir" id="tanggal_lahir" placeholder="Tanggal Lahir">
+                                                <input type="date" class="form-control" name="fd_tgllahir_edit" id="tanggal_lahir" placeholder="Tanggal Lahir">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="jabatan" class="col-sm-2 col-form-label">Jabatan</label>
                                             <div class="col-sm-7">
-                                                <select class="form-control" name="fc_kdposisi">
+                                                <select class="form-control" name="fc_kdposisi_edit">
                                                     <?php foreach ($jabatan2 as $k) : ?>
                                                         <option value="<?= $k->fc_kdposisi ?>"><?= $k->fv_mposisi ?></option>
                                                     <?php endforeach; ?>
@@ -344,61 +353,101 @@
                 </div><!-- /.row -->
             </div><!-- /.page-content -->
         </div>
-    </div><!-- /.main-content -->
 
-
-    <?php $this->load->view('partials/footer.php') ?>
-    <?php $this->load->view('partials/js.php') ?>
-    
-    <script>
-        $(".check-item").on("click", function() {
-            if ($(".check-item:checked").length < 2) {
-                $('.action-update').prop('disabled', false);
-            } else {
-                $('.action-update').prop('disabled', true);
-            }
-        });
-
-        $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
-            $("#check-all").click(function() { // Ketika user men-cek checkbox all
-                if ($(this).is(":checked")) // Jika checkbox all diceklis
-                    $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
-                else // Jika checkbox all tidak diceklis
-                    $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+        <script>
+            $(".check-item").on("click", function() {
+                if ($(".check-item:checked").length < 2) {
+                    $('.action-update').prop('disabled', false);
+                } else {
+                    $('.action-update').prop('disabled', true);
+                }
             });
 
+            $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
+                $("#check-all").click(function() { // Ketika user men-cek checkbox all
+                    if ($(this).is(":checked")) // Jika checkbox all diceklis
+                        $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
+                    else // Jika checkbox all tidak diceklis
+                        $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
+                });
+
+            });
+
+            $('.action-update').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+                // jQuery.noConflict();
+                $('#modalresult').modal('show');
+                $.ajax({
+                    url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('[name="fc_salesid_edit"]').val(result.fc_salesid);
+                        $('[name="fv_nama_edit"]').val(result.fv_nama);
+                        $('[name="fc_email_edit"]').val(result.fc_email);
+                        $('[name="fc_hp_edit"]').val(result.fc_hp);
+                        $('[name="fc_aktif_edit"]').val(result.fc_aktif);
+                        $('[name="fd_tgllahir_edit"]').val(result.fd_tgllahir);
+                        $('[name="fc_kdposisi_edit"]').val(result.fc_kdposisi);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+                })
+
+                // $('input.check-item:checked').each(function() {
+                //     arr.push($(this).val());
+                // });
+
+                // var action = $(this).attr('data-href') + '/' + arr.join("-");
+                // window.location.href = action;
+            });
+        </script>
+
+        <?php $this->load->view('partials/footer.php') ?>
+        <?php $this->load->view('partials/js.php') ?>
+        <!-- <script>
+        $(document).ready(function() {
+            $('#search').on('keyup', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: <?php echo base_url('C_sales/search') ?>,
+                    data: {
+                        search: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#tampil').html(data);
+                    }
+                });
+            });
         });
+    </script> -->
 
-        $('.action-update').click(function(e) {
-            e.preventDefault();
-            var arr = [];
-            var checkedValue = $(".check-item:checked").val();
-            console.log('checked', checkedValue);
-            // jQuery.noConflict();
-            $('#modalresult').modal('show');
-            $.ajax({
-                url: "<?php echo base_url('C_sales/ajax_edit/') ?>" + checkedValue,
-                type: "GET",
-                dataType: "JSON",
-                success: function(result) {
-                    $('[name="fc_salesid"]').val(result.fc_salesid);
-                    $('[name="fv_nama"]').val(result.fv_nama);
-                    $('[name="fc_email"]').val(result.fc_email);
-                    $('[name="fc_hp"]').val(result.fc_hp);
-                    $('[name="fc_aktif"]').val(result.fc_aktif);
-                    $('[name="fd_tgllahir"]').val(result.fd_tgllahir);
-                    $('[name="fc_kdposisi"]').val(result.fc_kdposisi);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert('Data Eror');
-                }
-            })
+        <script>
+            var keyword = document.getElementById('keywoard');
+            var search = document.getElementById('btn-search');
+            var view = document.getElementById('tampil');
 
-            // $('input.check-item:checked').each(function() {
-            //     arr.push($(this).val());
+            // search.addEventListener('click', function() {
+            //     alert('berhasil');
             // });
+            keyword.addEventListener('keyup', function() {
+                //objek ajax
+                var ajax = new XMLHttpRequest();
 
-            // var action = $(this).attr('data-href') + '/' + arr.join("-");
-            // window.location.href = action;
-        });
-    </script>
+                //cek kesiapan ajax
+                ajax.onreadystatechange = function() {
+                    if (ajax.readyState == 4 && ajax.status == 200) {
+                        // view.innerHTML = ajax.responseText
+                        alert('congrats');
+                    }
+                }
+
+                ajax.open('POST', '<?php base_url('C_sales/search') ?>'.$ke, true);
+                ajax.send();
+            })
+        </script>
