@@ -93,8 +93,6 @@ class C_pelanggan extends CI_Controller
         }
         return redirect('C_pelanggan/index');
     }
-<<<<<<< HEAD
-=======
 
     public function update()
     {
@@ -143,5 +141,4 @@ class C_pelanggan extends CI_Controller
         );
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
->>>>>>> 4a7e7bd4ad63effe727db26299bfb70c1a02d42e
 }
