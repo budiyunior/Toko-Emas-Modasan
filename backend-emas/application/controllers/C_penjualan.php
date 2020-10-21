@@ -51,4 +51,11 @@ class C_penjualan extends CI_Controller
         $data = $this->M_penjualan->get_by_id($id);
         echo json_encode($data);
     }
+
+    public function tampil_barang($id)
+    {
+        $data = $this->M_penjualan->get_by_barang($id);
+        echo json_encode($data);
+    }
+    
 }

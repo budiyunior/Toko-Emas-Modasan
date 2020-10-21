@@ -42,9 +42,9 @@
 <script src="<?php echo base_url() ?>assets/assets/js/jquery-ui.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/jquery.ui.touch-punch.js"></script>
 
-<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<!-- <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script> -->
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables.editor.min"></script>
 <!-- ace scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/ace/elements.scroller.js"></script>

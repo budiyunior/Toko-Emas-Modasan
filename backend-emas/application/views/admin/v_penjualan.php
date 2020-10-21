@@ -192,10 +192,7 @@
                                                 </form>
                                             </div>
                                         </div>
-
-
                                         <table class="table table-bordered">
-
                                             <thead>
                                                 <tr>
                                                     <th scope="col">Kode</th>
@@ -209,6 +206,13 @@
                                             </thead>
                                             <tbody>
                                                 <tr>
+                                                    <td><input type="text" class="col-md-12" name="fc_kdstock_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="fv_nmbarang_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="ff_berat_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="fc_kadar_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="fm_hargajual_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
+                                                    <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -218,7 +222,7 @@
                                                     <div class="col-md-3">
                                                         <div>
                                                             <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#pilihbarang">
-                                                                <i class=" ace-icon glyphicon glyphicon-plus"> Pilih Barang</i>
+                                                                <i class="ace-icon glyphicon glyphicon-plus"> Pilih Barang</i>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -251,7 +255,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <input class="btn btn-primary" type="submit" name="btn" value="Simpan" />
+                                        <button class="btn btn-primary" type="submit"><i class="fa fa-save"> Simpan</i></button>
 
                                     </div>
 
@@ -344,7 +348,7 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="col-md-12">
-                                                    <table id="dynamic-table" class="table table-striped table-bordered table-hover">
+                                                    <table class="table table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th class="center">
@@ -401,7 +405,7 @@
                                                         <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
                                                         <div class="center">
                                                             <div class="table-responsive">
-                                                                <table class="table table-bordered ">
+                                                                <table class="table table-bordered">
                                                                     <thead>
                                                                         <tr>
                                                                             <th class="check">
@@ -427,10 +431,10 @@
                                                                         foreach ($barang as $s) : ?>
                                                                             <tr>
                                                                                 <td class="check">
-                                                                                    <input type="checkbox" class="check-item" name="id[]" value="<?php echo $s->fc_kdstock ?>">
+                                                                                    <input type="checkbox" class="check-barang" name="id[]" value="<?php echo $s->fn_id ?>">
                                                                                 </td>
                                                                                 <th scope="col"><?= $i++ ?></th>
-                                                                                <td scope="row"><?= $s->fc_barcode ?></td>
+                                                                                <td scope="row"><?= $s->fc_kdstock ?></td>
                                                                                 <td scope="row"><?= $s->fv_nmbarang ?></td>
                                                                                 <td scope="row"><?= $s->fc_kdkelompok ?></td>
                                                                                 <td scope="row"><?= $s->fc_kdlokasi ?></td>
@@ -447,7 +451,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <button type="button" class="btn btn-primary ">Simpan</button>
+                                                        <button type="button" data-dismiss="modal" class="btn btn-primary action-barang">Simpan</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -493,8 +497,30 @@
             }
         })
     });
+    $('.action-barang').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-barang:checked").val();
+        console.log('checked', checkedValue);
+        $('#tampilPenjualan').modal('show');
+        $.ajax({
+            url: "<?php echo base_url('C_penjualan/tampil_barang/') ?>" + checkedValue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fc_kdstock_view"]').val(result.fc_kdstock);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+                $('[name="ff_berat_view"]').val(result.ff_berat);
+                $('[name="fc_kadar_view"]').val(result.fc_kadar);
+                $('[name="fm_hargajual_view"]').val(result.fm_hargajual);
+                $('[name="fm_ongkos_view"]').val(result.fm_ongkos);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
+            }
+        })
+    });
 </script>
-
-
 <?php $this->load->view('partials/footer.php') ?>
 <?php $this->load->view('partials/js.php') ?>

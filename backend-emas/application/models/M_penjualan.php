@@ -15,4 +15,10 @@ class M_penjualan extends CI_Model
         $this->db->where('fc_kdpel', $id);
         return $this->db->get('tm_pelanggan')->row();
     }
+
+    public function get_by_barang($id)
+    {
+        $this->db->where('fn_id', $id);
+        return $this->db->get('tm_stock')->row();
+    }
 }
