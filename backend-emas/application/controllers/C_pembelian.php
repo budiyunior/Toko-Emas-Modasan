@@ -28,7 +28,7 @@ class C_pembelian extends CI_Controller
     }
 
     public function tampil_faktur($id)
-    {   
+    {
         $data = $this->M_pembelian->get_by_id($id);
         echo json_encode($data);
     }
@@ -37,5 +37,19 @@ class C_pembelian extends CI_Controller
     {
         $data = $this->M_pembelian->get_pelanggan_id($id);
         echo json_encode($data);
+    }
+
+    public function save_datapelanggan()
+    {
+
+        $save_pelanggan = $this->M_pelanggan;
+
+        $save_pelanggan->save_pelanggan();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        echo "<script>
+            window.location.href = '" . base_url('C_pembelian') . "';
+            
+        </script>"; //Url tujuan
     }
 }

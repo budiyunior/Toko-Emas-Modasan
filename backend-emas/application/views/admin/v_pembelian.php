@@ -280,7 +280,7 @@
                                                         <label for="inputPassword" class="col-sm-3 col-form-label">Subtotal</label>
                                                         <div class="col-sm-8">
                                                             <span id="hasil"></span>
-                                                            <input type="text" class="form-control" readonly id="hasil" name="hasil" >
+                                                            <input type="text" class="form-control" readonly id="hasil" name="hasil">
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -419,6 +419,70 @@
                             </div>
                             <!-- PAGE CONTENT ENDS -->
                         </div>
+
+                        <div class="modal fade" id="tambahpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Tambah Pelanggan</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <form method="post" action="<?= base_url('C_pembelian/save_datapelanggan') ?>" enctype="multipart/form-data">
+                                                    <div class="col-md-12">
+                                                        <div class="form-group row">
+                                                            <label for="kode" class="col-sm-4 col-form-label">Kode</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
+                                                                <?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="" class="col-sm-4 col-form-label">Nama</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="fv_nmpelanggan" class="form-control" id="" placeholder="Nama">
+                                                                <?= form_error('fv_nmpelanggan', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="" class="col-sm-4 col-form-label">Alamat</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="f_alamat" class="form-control" id="" placeholder="Alamat">
+                                                                <?= form_error('f_alamat', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="" class="col-sm-4 col-form-label">No Hp</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="fc_telp" class="form-control" id="" placeholder="No Hp">
+                                                                <?= form_error('fc_telp', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="" class="col-sm-4 col-form-label">No KTP</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="fc_noktp" class="form-control" id="" placeholder="No KTP">
+                                                                <?= form_error('fc_noktp', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="" class="col-sm-4 col-form-label">Keterangan</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" name="f_keterangan" class="form-control" id="" placeholder="Keterangan">
+                                                                <?= form_error('f_keterangan', '<small class="text-danger pl-3">', '</small>') ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
                     </div>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
@@ -435,6 +499,10 @@
 </div><!-- /.main-container -->
 
 <script>
+    $(document).ready(function() {
+        $('#tampilpembelian').modal('show');
+    });
+
     $(".check").on("click", function() {
         if ($(".check:checked").length < 2) {
             $('.action-select').prop('disabled', false);
