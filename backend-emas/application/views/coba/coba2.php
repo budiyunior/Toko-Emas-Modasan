@@ -195,6 +195,7 @@
                                         <table class="table table-bordered">
                                             <thead>
                                                 <tr>
+                                                    <th scope="col">nomor</th>
                                                     <th scope="col">Kode</th>
                                                     <th scope="col">Uraian Barang</th>
                                                     <th scope="col">Berat</th>
@@ -202,6 +203,7 @@
                                                     <th scope="col">Harga Per Gram</th>
                                                     <th scope="col">Ongkos</th>
                                                     <th scope="col">Total Harga</th>
+                                                    <th scope="col">Button</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="element_table">
@@ -469,6 +471,30 @@
         }
     });
 
+    $(document).ready(function() {
+        var select_item = function() {
+            $('#combination').val(
+                $("#element_table select").map(function(index, element) {
+                    return $(element).val();
+                }).get().join("+")
+            );
+        };
+        var add_row = function() {
+            var new_row = $("<tr><td>" + ($("#element_table>tr").length) + "</td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fv_nmbarang_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></><td><a id='delete_row' class='pull-right btn btn-danger'>Hapus Baris</a><a class='btn btn-primary' data-toggle='modal' data-target='#pilihbarang'>Pilih Barang</a></td></tr>").appendTo("#element_table");
+            select_item();
+            new_row.find('select').on('change', select_item);
+            new_row.find("#delete_row").click(function() {
+                $(this).parents("tr").remove();
+                select_item();
+            });
+        };
+
+        add_row();
+
+        $("#add_row").click(add_row);
+
+    });
+
     $('.action-select').click(function(e) {
         e.preventDefault();
         var arr = [];
@@ -510,31 +536,6 @@
                 alert('Data Eror');
             }
         })
-    });
-
-    $(document).ready(function() {
-        var select_item = function() {
-            $('#combination').val(
-                $("#element_table select").map(function(index, element) {
-                    return $(element).val();
-                }).get().join("+")
-            );
-        };
-        var add_row = function() {
-            var new_row = $("<tr><td>" + ($("#element_table>tr").length + 1) + "</td><td><select class='form-control'><option value='H'>Hydrogen</option><option value='He'>Helium</option><option value='Be'>Beryllium</option><option value='B'>Boron</option><option value='C'>Carbon</option><option value='N'>Nitrogen</option></select></td><td><a id='delete_row' class='pull-right btn btn-default'>Delete Row</a></td></tr>").appendTo("#element_table");
-
-            select_item();
-            new_row.find('select').on('change', select_item);
-            new_row.find("#delete_row").click(function() {
-                $(this).parents("tr").remove();
-                select_item();
-            });
-        };
-
-        add_row();
-
-        $("#add_row").click(add_row);
-
     });
 </script>
 <?php $this->load->view('partials/footer.php') ?>

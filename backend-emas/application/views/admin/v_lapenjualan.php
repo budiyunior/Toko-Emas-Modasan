@@ -1,4 +1,7 @@
 <?php $this->load->view('partials/header.php') ?>
+<?php
+$koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
+?>
 
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
@@ -148,7 +151,7 @@
                                     $today = date("Y-m-d");
                                     $yesterday = date("Y-m-d", strtotime("-1 days"));
                                     ?>
-                                    <form action="<?= base_url('C_lapenjualan/index'); ?>" enctype="multipart/form-data" method="get">
+                                    <form method="get">
                                         <label>Mulai Tanggal</label>
                                         <input type="date" name="startdate" class="form-control" value="<?= $yesterday ?>" />
                                         <label>S/D Tanggal</label>
@@ -203,21 +206,31 @@
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($penjualan as $p) : ?>
+                                        if (isset($_GET['startdate'])) {
+                                            $tgl = $_GET['startdate'];
+                                            $tgl2 = $_GET['enddate'];
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
+                                        }
+                                        // } else if (isset($_GET['shift'])){
+                                        //     $shift = $_GET['shift'];
+                                        //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
+                                        else {
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice");
+                                        }
+                                        while ($lp = mysqli_fetch_array($sql)) {
+                                        ?>
                                             <tr>
-                                                <td>
-                                                    <a href="#"><?= $p->fc_noinv; ?></a>
-                                                </td>
-                                                <td><?= $p->fv_catatan; ?></td>
-                                                <td class="hidden-480"><?= $p->fm_subtot; ?></td>
-                                                <td><?= $p->fm_grandtotal; ?></td>
+                                                <td><?php echo $lp['fc_noinv'] ?></td>
+                                                <td><?php echo $lp['fv_catatan'] ?></td>
+                                                <td><?php echo $lp['fm_subtot'] ?></td>
+                                                <td><?php echo $lp['fm_grandtotal'] ?></td>
 
                                                 <td class="hidden-480">
                                                     <span class="label label-sm label-warning">s</span>
                                                 </td>
 
                                             </tr>
-                                        <?php endforeach; ?>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
