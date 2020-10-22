@@ -22,6 +22,7 @@ class C_pembelian extends CI_Controller
 
         $data['barang'] = $this->M_barang->get_barang();
         $data['faktur'] = $this->M_pembelian->get_faktur();
+        $data['pelanggan'] = $this->M_pembelian->get_pelanggan();
 
         $this->load->view('admin/v_pembelian', $data);
     }
@@ -29,6 +30,12 @@ class C_pembelian extends CI_Controller
     public function tampil_faktur($id)
     {   
         $data = $this->M_pembelian->get_by_id($id);
+        echo json_encode($data);
+    }
+
+    public function tampil_pelanggan($id)
+    {
+        $data = $this->M_pembelian->get_pelanggan_id($id);
         echo json_encode($data);
     }
 }

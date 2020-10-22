@@ -168,7 +168,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="fc_kdpel_view" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" name="fc_noinv_view" class=" form-control" id="inputPassword" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -177,25 +177,37 @@
                                                             $tgl = date("Y-m-d");
                                                             ?>
                                                             <div class="col-sm-8">
-                                                                <input type="date" class="form-control" id="inputPassword" value="<?= $tgl ?>">
+                                                                <input type="date" class="form-control" name="fd_tglinv_view" id="inputPassword" value="<?= $tgl ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Kode Penjual</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                            <div class="col-sm-5">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" placeholder="">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#caripelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-search"></i>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-sm-6">
+                                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#tambahpelanggan">
+                                                                        <i class=" ace-icon glyphicon glyphicon-plus"></i>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Nama Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="fv_nmpelanggan_view" id="inputPassword" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Alamat Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="f_alamat_view" id="inputPassword" placeholder="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -233,10 +245,25 @@
                                                             </td>
                                                             <td>Feb 12</td>
                                                             <td>Feb 12</td>
+                                                            <td>12</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <a href="#">ace.com</a>
+                                                            </td>
+                                                            <td>$45</td>
+                                                            <td class="hidden-480">3,330</td>
+                                                            <td>10%</td>
                                                             <td>Feb 12</td>
+                                                            <td class="hidden-480">
+                                                                <span class="label label-sm label-warning">Expiring</span>
+                                                            </td>
+                                                            <td>Feb 12</td>
+                                                            <td>Feb 12</td>
+                                                            <td>12</td>
+
+                                                        </tr>
                                                     </tbody>
-                                                    </td>
-                                                    </tr>
                                                 </table>
                                             </div>
                                         </div>
@@ -252,7 +279,8 @@
                                                         </div>
                                                         <label for="inputPassword" class="col-sm-3 col-form-label">Subtotal</label>
                                                         <div class="col-sm-8">
-                                                            <input type="text" class="form-control" readonly id="inputPassword" value="100.000">
+                                                            <span id="hasil"></span>
+                                                            <input type="text" class="form-control" readonly id="hasil" name="hasil" >
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -291,7 +319,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <div class="col-md-12">
+                                                <div class="col-md-12 center">
                                                     <table id="dynamic-table" class="table table-striped table-bordered table-hover">
                                                         <thead>
                                                             <tr>
@@ -340,6 +368,57 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="modal fade" id="caripelanggan" tabindex="-1">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Cari Pelanggan</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="col-md-12">
+                                                    <table class="table table-bordered">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="center">
+                                                                    Ceklist
+                                                                </th>
+                                                                <th>
+                                                                    Nama Pelanggan
+                                                                </th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <?php $i = 1;
+                                                            foreach ($pelanggan as $p) : ?>
+                                                                <tr>
+                                                                    <td class="center">
+                                                                        <label class="pos-rel check">
+                                                                            <input type="checkbox" class="check-pelanggan" value="<?= $p->fc_kdpel ?>" />
+                                                                            <span class="lbl"></span>
+                                                                        </label>
+                                                                    </td>
+                                                                    <td><?= $p->fv_nmpelanggan ?> </td>
+                                                                </tr>
+                                                            <?php endforeach; ?>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-2" style="margin-top: 5px;">
+                                                <button type="button" data-dismiss="modal" class="btn btn-primary action-pelanggan">Pilih</button>
+                                                <!-- <button type="button" class="btn btn-primary action-select">Pilih</button> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PAGE CONTENT ENDS -->
+                        </div>
                     </div>
                     <!-- PAGE CONTENT ENDS -->
                 </div><!-- /.col -->
@@ -376,14 +455,46 @@
             type: "GET",
             dataType: "JSON",
             success: function(result) {
-                $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
                 $('[name="fc_noinv_view"]').val(result.fc_noinv);
+                $('[name="fd_tglinv_view"]').val(result.fd_tglinv);
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
             }
         })
     });
+
+    $('.action-pelanggan').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-pelanggan:checked").val();
+        console.log('checked', checkedValue);
+        $('#tampilPembelian').modal('show');
+        $.ajax({
+            url: "<?php echo base_url('C_pembelian/tampil_pelanggan/') ?>" + checkedValue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
+                $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+                $('[name="f_alamat_view"]').val(result.f_alamat);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
+            }
+        })
+    });
+
+
+    var table = document.getElementById("simple-table"),
+        sumHsl = 0;
+    for (var t = 1; t < table.rows.length; t++) {
+        sumHsl = sumHsl + parseInt(table.rows[t].cells[8].innerHTML);
+
+    }
+    document.getElementById("hasil").innerHTML = sumHsl;
+    console.log(sumHsl);
 </script>
 
 <?php $this->load->view('partials/footer.php') ?>
