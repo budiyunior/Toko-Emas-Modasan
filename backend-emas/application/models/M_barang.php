@@ -118,4 +118,20 @@ class M_barang extends CI_Model
 
         $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit']));
     }
+
+    public function save_kelompok()
+    {
+        $post = $this->input->post();
+        $this->fc_kdkelompok = $post['fc_kdkelompok'];
+        $this->fv_nmkelompok = $post['fv_nmkelompok'];
+        $this->db->insert($this->tbkelompok, $this);
+    }
+
+    public function save_lokasi()
+    {
+        $post = $this->input->post();
+        $this->fc_kdlokasi = $post['fc_kdlokasi'];
+        $this->fv_nmlokasi = $post['fv_nmlokasi'];
+        $this->db->insert($this->tblokasi, $this);
+    }
 }

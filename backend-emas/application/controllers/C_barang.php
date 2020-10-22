@@ -121,4 +121,30 @@ class C_barang extends CI_Controller
         }
         return redirect('C_barang/index');
     }
+
+    public function save_kelompok()
+    {
+
+        $save_kelompok = $this->M_barang;
+        $save_kelompok->save_kelompok();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        echo "<script>
+            alert('Data kelompok berhasil di tambahkan');
+            window.location.href = '" . base_url('C_barang') . "';
+        </script>"; //Url tujuan
+    }
+
+    public function save_lokasi()
+    {
+
+        $save_lokasi = $this->M_barang;
+        $save_lokasi->save_lokasi();
+        // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
+        // redirect('');
+        echo "<script>
+            alert('Data lokasi berhasil di tambahkan');
+            window.location.href = '" . base_url('C_barang') . "';
+        </script>"; //Url tujuan
+    }
 }
