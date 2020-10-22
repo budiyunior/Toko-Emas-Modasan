@@ -19,9 +19,11 @@ class C_lapenjualan extends CI_Controller
     {
         $data['title'] = "Laporan Penjualan";
         $data['menu'] = $this->M_menu->get_menu();
+        $startdate = $this->input->get('startdate', TRUE);
+        $enddate = $this->input->get('enddate', TRUE);
 
 
-        $data['barang'] = $this->M_barang->get_barang();
+        $data['penjualan'] = $this->M_lapenjualan->get_lapenjualan($startdate, $enddate);
 
         $this->load->view('admin/v_lapenjualan', $data);
     }

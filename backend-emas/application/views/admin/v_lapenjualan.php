@@ -148,11 +148,13 @@
                                     $today = date("Y-m-d");
                                     $yesterday = date("Y-m-d", strtotime("-1 days"));
                                     ?>
-                                    <label>Mulai Tanggal</label>
-                                    <input type="date" class="form-control" value="<?= $yesterday ?>" />
-                                    <label>S/D Tanggal</label>
-                                    <input type="date" class="form-control" value="<?= $today ?>" />
-
+                                    <form action="<?= base_url('C_lapenjualan/index'); ?>" enctype="multipart/form-data" method="get">
+                                        <label>Mulai Tanggal</label>
+                                        <input type="date" name="startdate" class="form-control" value="<?= $yesterday ?>" />
+                                        <label>S/D Tanggal</label>
+                                        <input type="date" name="enddate" class="form-control" value="<?= $today ?>" />
+                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -200,19 +202,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">ace.com</a>
-                                            </td>
-                                            <td>$45</td>
-                                            <td class="hidden-480">3,330</td>
-                                            <td>Feb 12</td>
+                                        <?php
+                                        foreach ($penjualan as $p) : ?>
+                                            <tr>
+                                                <td>
+                                                    <a href="#"><?= $p->fc_noinv; ?></a>
+                                                </td>
+                                                <td><?= $p->fv_catatan; ?></td>
+                                                <td class="hidden-480"><?= $p->fm_subtot; ?></td>
+                                                <td><?= $p->fm_grandtotal; ?></td>
 
-                                            <td class="hidden-480">
-                                                <span class="label label-sm label-warning">Expiring</span>
-                                            </td>
+                                                <td class="hidden-480">
+                                                    <span class="label label-sm label-warning">s</span>
+                                                </td>
 
-                                        </tr>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
