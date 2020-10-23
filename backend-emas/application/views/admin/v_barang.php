@@ -333,9 +333,9 @@
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
-                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#sales">
+                                                    <!-- <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#sales">
                                                         <i class="fa fa-search-plus"></i>
-                                                    </button>
+                                                    </button> -->
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Ongkos</label>
@@ -519,7 +519,10 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" placeholder="kode lokasi">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="lokasi">
                                 </div>
                             </div>
                             <div class="col-md-2">
