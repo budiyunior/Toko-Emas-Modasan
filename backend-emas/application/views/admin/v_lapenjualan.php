@@ -156,7 +156,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <input type="date" name="startdate" class="form-control" value="<?= $yesterday ?>" />
                                         <label>S/D Tanggal</label>
                                         <input type="date" name="enddate" class="form-control" value="<?= $today ?>" />
-                                        <button type="submit" class="btn btn-primary">Cari</button>
+                                        <div style="margin-top: 10px;">
+                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>

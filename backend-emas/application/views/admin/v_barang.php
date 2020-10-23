@@ -458,17 +458,22 @@
                         </div>
                         <br>
                         <div class="row">
-                            <div class="col-md-7">
-                                <div class="form-group">
-                                    <input type="text" class="form-control">
+                            <form action="<?= base_url('C_barang/save_kelompok') ?>" method="post">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <input type="text" name="fc_kdkelompok" class="form-control" placeholder="kode kelompok">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="fv_nmkelompok" class="form-control" placeholder="nama kelompok">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-2" style="margin-top: 5px;">
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                            </div>
-                            <div class="col-md-2" style="margin-top: 5px;">
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                            </div>
+                                <div class="col-md-2" style="margin-top: 5px;">
+                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                </div>
+                                <div class="col-md-2" style="margin-top: 5px;">
+                                    <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -567,7 +572,10 @@
                         <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" placeholder="kode lokasi">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="lokasi">
                                 </div>
                             </div>
                             <div class="col-md-2">
