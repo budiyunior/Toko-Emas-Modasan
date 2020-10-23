@@ -147,10 +147,32 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <form>
-                                                    <div class="col-md-3">
+                                                    <div class="col-md-5">
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <div class="form-group row">
 
+                                                            <div class="col-sm-4">
+                                                                <label for="inputPassword" class="col-form-label">Kode:</label>
+                                                                <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
+                                                                <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" name="fm_ongkos" readonly>
+                                                            </div>
+
+                                                            <br>
+
+                                                            <div class="col-sm-4">
+                                                                <button class="btn btn-sm btn-primary">Add Data</button>
+                                                            </div>
+
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-3 ">
+                                                    <div class="col-md-1 ">
 
                                                     </div>
                                                     <div class="col-md-6">
