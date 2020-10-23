@@ -5,7 +5,7 @@ class M_pembelian extends CI_Model
 {
     private $tbinvoice = "tm_invoice";
     private $tbpelanggan = "tm_pelanggan";
-    
+
     public function get_faktur()
     {
         return $this->db->get($this->tbinvoice)->result();
@@ -23,7 +23,11 @@ class M_pembelian extends CI_Model
         return $this->db->get('tm_pelanggan')->row();
     }
 
-    
+    public function get_by_barang($id)
+    {
+        $this->db->where('fn_id', $id);
+        return $this->db->get('tm_stock')->row_array();
+    }
 
     function get_pelanggan()
     {

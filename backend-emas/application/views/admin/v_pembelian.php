@@ -155,7 +155,7 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <form method="post" action="<?= base_url('C_penjualan/save_datapelanggan') ?>">
+                                                <form>
                                                     <div class=" col-md-3">
                                                         <label for="form-field-9">No Faktur Lama</label>
                                                         <button type="button" data-toggle="modal" data-target="#tampilFaktur" class="btn btn-success"><i class="fa fa-search"></i> Cari No Faktur Lama</i></button>
@@ -191,7 +191,7 @@
                                                     <div class="col-md-3 ">
                                                         <label for="form-field-9">Transaksi Terdahulu</label>
                                                         <input id="tags" type="text" name="fc_noinv_view" class="form-control">
-                                                        
+
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -246,9 +246,10 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-xs-12">
-                                                <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                                <table class="table  table-bordered" id="data-table">
                                                     <thead>
                                                         <tr>
+                                                            <th>No</th>
                                                             <th>Kode</th>
                                                             <th>Uraian Barang</th>
                                                             <th>Berat</th>
@@ -271,6 +272,13 @@
                                         </div>
                                         <form>
                                             <div class="col-md-3">
+
+                                                <div>
+                                                    <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#pilihbarang">
+                                                        <i class="ace-icon glyphicon glyphicon-plus"> Pilih Barang</i>
+                                                    </button>
+                                                </div>
+
                                             </div>
                                             <div class="col-md-3">
                                             </div>
@@ -483,7 +491,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- PAGE CONTENT ENDS -->
                         </div>
                     </div>
                     <!-- PAGE CONTENT ENDS -->
@@ -493,6 +500,78 @@
     </div>
 </div><!-- /.main-content -->
 
+<div class="modal fade" id="pilihbarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Pilih Barang</h5>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <form>
+                            <div class="col-md-12">
+                                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+                                <div class="center">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th class="check">
+                                                        <div class="center">
+                                                            <input type="checkbox" id="check-all">
+                                                        </div>
+                                                    </th>
+                                                    <th scope="col">No</th>
+                                                    <th scope="col">Kode</th>
+                                                    <th scope="col">Nama</th>
+                                                    <th scope="col">Kelompok</th>
+                                                    <th scope="col">Lokasi</th>
+                                                    <th scope="col">Berat Gram</th>
+                                                    <th scope="col">Kadar %</th>
+                                                    <th scope="col">Harga Beli</th>
+                                                    <th scope="col">Sales</th>
+                                                    <th scope="col">Status</th>
+                                                    <th scope="col">Tanggal</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1;
+                                                foreach ($barang as $s) : ?>
+                                                    <tr>
+                                                        <td class="check">
+                                                            <input type="checkbox" class="check-barang" name="id[]" value="<?php echo $s->fn_id ?>">
+                                                        </td>
+                                                        <th scope="col"><?= $i++ ?></th>
+                                                        <td scope="row"><?= $s->fc_kdstock ?></td>
+                                                        <td scope="row"><?= $s->fv_nmbarang ?></td>
+                                                        <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                                                        <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                                                        <td scope="row"><?= $s->ff_berat ?></td>
+                                                        <td scope="row"><?= $s->fc_kadar ?></td>
+                                                        <td scope="row"><?= $s->fm_hargabeli ?></td>
+                                                        <td scope="row"><?= $s->fc_salesid ?></td>
+                                                        <td scope="row"><?= $s->fc_sts ?></td>
+                                                        <td scope="row"><?= $s->fd_date ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <button type="button" data-dismiss="modal" class="btn btn-primary action-barang">Simpan</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE CONTENT ENDS -->
+</div><!-- /.col -->
 
 
 <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
@@ -501,10 +580,6 @@
 </div><!-- /.main-container -->
 
 <script>
-    $(document).ready(function() {
-        $('#tampilpembelian').modal('show');
-    });
-
     $(".check").on("click", function() {
         if ($(".check:checked").length < 2) {
             $('.action-select').prop('disabled', false);
@@ -534,6 +609,69 @@
             }
         })
     });
+
+
+    $('.action-barang').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-barang:checked").val();
+        console.log('checked', checkedValue);
+        $('#tampilPembelian').modal('show');
+        $.ajax({
+            url: "<?php echo base_url('C_pembelian/tampil_barang/') ?>" + checkedValue,
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fc_kdstock_view"]').val(result.fc_kdstock);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+                $('[name="ff_berat_view"]').val(result.ff_berat);
+                $('[name="fc_kadar_view"]').val(result.fc_kadar);
+                $('[name="fm_hargajual_view"]').val(result.fm_hargajual);
+                $('[name="fm_ongkos_view"]').val(result.fm_ongkos);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
+            }
+        })
+    });
+
+    $(function() {
+
+        var set_number = function() {
+            var table = $().length + 1;
+
+            $('#no').val(table);
+        }
+
+        set_number();
+
+        $('#add_data').click(function(e) {
+            e.preventDefault();
+            $('#tampilPembelian').modal('show');
+            var no = $('#no').val();
+            var fc_kdstock = $('#fc_kdstock').val();
+            var fv_nmbarang = $('#fv_nmbarang').val();
+            var ff_berat = $('#ff_berat').val();
+            var fc_kadar = $('#fc_kadar').val();
+            var fm_hargajual = $('#fm_hargajual').val();
+            var fm_ongkos = $('#fm_ongkos').val();
+
+
+            $('#data_table tbody:last-child').append(
+
+                '<tr>' +
+                '<td>' + no + '</td>' +
+                '<td>' + fc_kdstock + '</td>' +
+                '<td>' + fv_nmbarang + '</td>' +
+                '<td>' + ff_berat + '</td>' +
+                '<td>' + fc_kadar + '</td>' +
+                '<td>' + fm_hargajual + '</td>' +
+                '<td>' + fm_ongkos + '</td>' +
+                '</tr>'
+            );
+        });
+    })
 
     $('.action-pelanggan').click(function(e) {
         e.preventDefault();

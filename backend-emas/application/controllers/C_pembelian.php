@@ -52,4 +52,10 @@ class C_pembelian extends CI_Controller
             
         </script>"; //Url tujuan
     }
+
+    public function tampil_barang($id)
+    {
+        $data = $this->M_pembelian->get_by_barang($id);
+        echo json_encode($data);
+    }
 }
