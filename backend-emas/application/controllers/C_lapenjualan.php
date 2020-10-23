@@ -27,4 +27,13 @@ class C_lapenjualan extends CI_Controller
 
         $this->load->view('admin/v_lapenjualan', $data);
     }
+
+    public function view_cetak()
+    {
+        $data['title'] = "Penjualan";
+        $data['menu'] = $this->M_menu->get_menu();
+        
+
+        $this->load->view('admin/cetak_lapenjualan', $data);
+    }
 }
