@@ -224,8 +224,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             <tr>
                                                 <td><?php echo $lp['fc_noinv'] ?></td>
                                                 <td><?php echo $lp['fv_catatan'] ?></td>
-                                                <td><?php echo $lp['fm_subtot'] ?></td>
-                                                <td><?php echo $lp['fm_grandtotal'] ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
 
                                                 <td class="hidden-480">
                                                     <span class="label label-sm label-warning">s</span>
