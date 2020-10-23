@@ -1,5 +1,7 @@
 <?php $this->load->view('partials/header.php') ?>
-
+<?php
+$koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
+?>
 <!-- #section:basics/navbar.layout -->
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
     <script type="text/javascript">
@@ -147,10 +149,15 @@
                                     $today = date("Y-m-d");
                                     $yesterday = date("Y-m-d", strtotime("-1 days"));
                                     ?>
-                                    <label>Mulai Tanggal</label>
-                                    <input type="date" class="form-control" value="<?= $yesterday ?>" />
-                                    <label>S/D Tanggal</label>
-                                    <input type="date" class="form-control" value="<?= $today ?>" />
+                                    <form method="get">
+                                        <label>Mulai Tanggal</label>
+                                        <input type="date" name="startdate" class="form-control" value="<?= $yesterday ?>" />
+                                        <label>S/D Tanggal</label>
+                                        <input type="date" name="enddate" class="form-control" value="<?= $today ?>" />
+                                        <div style="margin-top: 10px;">
+                                            <button type="submit" class="btn btn-primary">Cari</button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -200,20 +207,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#">ace.com</a>
-                                            </td>
-                                            <td>$45</td>
-                                            <td class="hidden-480">3,330</td>
-                                            <td>10%</td>
-                                            <td>Feb 12</td>
-                                            <td class="hidden-480">
-                                                <span class="label label-sm label-warning">Expiring</span>
-                                            </td>
+                                        <?php
+                                        if (isset($_GET['startdate'])) {
+                                            $tgl = $_GET['startdate'];
+                                            $tgl2 = $_GET['enddate'];
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM t_belimst WHERE fd_tglbeli between '$tgl' AND '$tgl2'");
+                                        }
+                                        // } else if (isset($_GET['shift'])){
+                                        //     $shift = $_GET['shift'];
+                                        //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
+                                        else {
+                                            $sql = mysqli_query($koneksi, "SELECT * FROM t_belimst");
+                                        }
+                                        while ($lp = mysqli_fetch_array($sql)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $lp['fc_nobeli'] ?></td>
+                                                <td><?php echo $lp['fc_kdpel'] ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
+                                                <td><?php echo $lp['fm_pot'] ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
+                                                <td><?php echo $lp['fc_kdpel'] ?></td>
 
-                                            </td>
-                                        </tr>
+
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

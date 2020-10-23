@@ -159,10 +159,39 @@
                                                     <div class=" col-md-3">
                                                         <label for="form-field-9">No Faktur Lama</label>
                                                         <button type="button" data-toggle="modal" data-target="#tampilFaktur" class="btn btn-success"><i class="fa fa-search"></i> Cari No Faktur Lama</i></button>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        <label for="inputPassword" class="col-form-label">Kode:</label>
+                                                        <div class="form-group row">
+
+                                                            <div class="col-sm-8">
+
+                                                                <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
+                                                                <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" name="fm_ongkos" readonly>
+                                                            </div>
+
+
+
+                                                            <div class="col-sm-4 ">
+                                                                <button class="btn btn-sm btn-primary">Add Data</button>
+                                                            </div>
+
+
+
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-3 ">
                                                         <label for="form-field-9">Transaksi Terdahulu</label>
                                                         <input id="tags" type="text" name="fc_noinv_view" class="form-control">
+                                                        
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
@@ -233,34 +262,7 @@
                                                     </thead>
                                                     <tbody>
                                                         <tr>
-                                                            <td>
-                                                                <a href="#">ace.com</a>
-                                                            </td>
-                                                            <td>$45</td>
-                                                            <td class="hidden-480">3,330</td>
-                                                            <td>10%</td>
-                                                            <td>Feb 12</td>
-                                                            <td class="hidden-480">
-                                                                <span class="label label-sm label-warning">Expiring</span>
-                                                            </td>
-                                                            <td>Feb 12</td>
-                                                            <td>Feb 12</td>
-                                                            <td>12</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <a href="#">ace.com</a>
-                                                            </td>
-                                                            <td>$45</td>
-                                                            <td class="hidden-480">3,330</td>
-                                                            <td>10%</td>
-                                                            <td>Feb 12</td>
-                                                            <td class="hidden-480">
-                                                                <span class="label label-sm label-warning">Expiring</span>
-                                                            </td>
-                                                            <td>Feb 12</td>
-                                                            <td>Feb 12</td>
-                                                            <td>12</td>
+
 
                                                         </tr>
                                                     </tbody>

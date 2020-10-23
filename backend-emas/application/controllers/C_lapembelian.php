@@ -19,9 +19,12 @@ class C_lapembelian extends CI_Controller
     {
         $data['title'] = "Laporan Pembelian";
         $data['menu'] = $this->M_menu->get_menu();
+        $startdate = $this->input->get('startdate', TRUE);
+        $enddate = $this->input->get('enddate', TRUE);
 
 
-        $data['barang'] = $this->M_barang->get_barang();
+        $data['pembelian'] = $this->M_lapembelian->get_lapembelian($startdate, $enddate);
+
 
         $this->load->view('admin/v_lapembelian', $data);
     }
