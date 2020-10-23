@@ -156,18 +156,19 @@
 
                                                             <div class="col-sm-4">
                                                                 <label for="inputPassword" class="col-form-label">Kode:</label>
+                                                                <input type="hidden" class="col-md-12" name="no" id="no" readonly>
                                                                 <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" name="fm_ongkos" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" readonly>
                                                             </div>
 
                                                             <br>
 
                                                             <div class="col-sm-4">
-                                                                <button class="btn btn-sm btn-primary">Add Data</button>
+                                                                <button class="btn btn-sm btn-primary" id="add_data">Tambah Data</button>
                                                             </div>
 
                                                         </div>
@@ -214,9 +215,10 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <table class="table table-bordered">
+                                        <table class="table table-bordered" id="data_table">
                                             <thead>
                                                 <tr>
+                                                    <th scope="col">No</th>
                                                     <th scope="col">Kode</th>
                                                     <th scope="col">Uraian Barang</th>
                                                     <th scope="col">Berat</th>
@@ -227,7 +229,7 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
+                                                <!-- <tr>
                                                     <td><input type="text" class="col-md-12" name="fc_kdstock_view" readonly></td>
                                                     <td><input type="text" class="col-md-12" name="fv_nmbarang_view" readonly></td>
                                                     <td><input type="text" class="col-md-12" name="ff_berat_view" readonly></td>
@@ -235,7 +237,7 @@
                                                     <td><input type="text" class="col-md-12" name="fm_hargajual_view" readonly></td>
                                                     <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
                                                     <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
-                                                </tr>
+                                                </tr> -->
                                             </tbody>
                                         </table>
                                         <div class="row">
@@ -519,6 +521,44 @@
             }
         })
     });
+
+    $(function() {
+
+        var set_number = function() {
+            var table = $().length + 1;
+
+            $('#no').val(table);
+        }
+
+        set_number();
+
+        $('#add_data').click(function(e) {
+            e.preventDefault();
+            $('#tampilPenjualan').modal('show');
+            var no = $('#no').val();
+            var fc_kdstock = $('#fc_kdstock').val();
+            var fv_nmbarang = $('#fv_nmbarang').val();
+            var ff_berat = $('#ff_berat').val();
+            var fc_kadar = $('#fc_kadar').val();
+            var fm_hargajual = $('#fm_hargajual').val();
+            var fm_ongkos = $('#fm_ongkos').val();
+
+
+            $('#data_table tbody:last-child').append(
+
+                '<tr>' +
+                '<td>' + no + '</td>' +
+                '<td>' + fc_kdstock + '</td>' +
+                '<td>' + fv_nmbarang + '</td>' +
+                '<td>' + ff_berat + '</td>' +
+                '<td>' + fc_kadar + '</td>' +
+                '<td>' + fm_hargajual + '</td>' +
+                '<td>' + fm_ongkos + '</td>' +
+                '</tr>'
+            );
+        });
+    })
+
     $('.action-barang').click(function(e) {
         e.preventDefault();
         var arr = [];
