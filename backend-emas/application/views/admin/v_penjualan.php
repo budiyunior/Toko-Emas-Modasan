@@ -161,8 +161,8 @@
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();">
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();">
                                                                 <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
                                                             </div>
 
@@ -258,8 +258,9 @@
                                                             <div class="col-sm-1">
                                                             </div>
                                                             <label class="col-sm-3 col-form-label">Subtotal</label>
+                                                            <span id="val"></span>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" readonly value="100.000">
+                                                                <input type="text" class="form-control" id="subtotal" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -523,6 +524,15 @@
         })
     });
 
+    function sum() {
+        var txtFirstNumberValue = document.getElementsById('fm_hargajual').value;
+        var txtSecondNumberValue = document.getElementsById('fm_ongkos').value;
+        var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+        if (!isNaN(result)) {
+            document.getElementById('fm_total').value = result;
+        }
+    }
+
     $(function() {
 
         var set_number = function() {
@@ -536,6 +546,7 @@
         $('#add_data').click(function(e) {
             e.preventDefault();
             $('#tampilPenjualan').modal('show');
+
             var no = $('#no').val();
             var fc_kdstock = $('#fc_kdstock').val();
             var fv_nmbarang = $('#fv_nmbarang').val();
@@ -543,11 +554,9 @@
             var fc_kadar = $('#fc_kadar').val();
             var fm_hargajual = $('#fm_hargajual').val();
             var fm_ongkos = $('#fm_ongkos').val();
-            var fm_total = $('#fm_hargajual' + '#fm_ongkos').val();
-
+            var fm_total = parseInt($('#fm_hargajual').val()) + parseInt($('#fm_ongkos').val());
 
             $('#data_table tbody:last-child').append(
-
                 '<tr>' +
                 '<td>' + no + '</td>' +
                 '<td>' + fc_kdstock + '</td>' +
@@ -562,14 +571,6 @@
         });
     })
 
-    function sum() {
-        var txtFirstNumberValue = document.getElementById('fm_hargajual').value;
-        var txtSecondNumberValue = document.getElementById('fm_ongkos').value;
-        var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
-        if (!isNaN(result)) {
-            document.getElementById('fm_total').value = result;
-        }
-    }
 
     $('.action-barang').click(function(e) {
         e.preventDefault();
