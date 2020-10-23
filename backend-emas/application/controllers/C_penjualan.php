@@ -72,4 +72,5 @@ class C_penjualan extends CI_Controller
         $this->load->view('coba/coba2', $data);
     }
 
+    
 }
