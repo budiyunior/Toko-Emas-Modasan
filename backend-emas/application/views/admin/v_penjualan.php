@@ -163,7 +163,7 @@
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();" readonly>
-                                                                <input type="text" class="col-md-12" name="fm_total" id="fm_total" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
                                                             </div>
 
                                                             <br>
@@ -543,7 +543,7 @@
             var fc_kadar = $('#fc_kadar').val();
             var fm_hargajual = $('#fm_hargajual').val();
             var fm_ongkos = $('#fm_ongkos').val();
-            var fm_total = $('#fm_total').val();
+            var fm_total = $('#fm_hargajual' + '#fm_ongkos').val();
 
 
             $('#data_table tbody:last-child').append(
