@@ -171,6 +171,7 @@
                                                             <div class="col-sm-8">
 
                                                                 <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fc_kdstock_view" id="#no" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
@@ -181,7 +182,7 @@
 
 
                                                             <div class="col-sm-4 ">
-                                                                <button class="btn btn-sm btn-primary">Add Data</button>
+                                                                <button class="btn btn-sm btn-primary" id="add_data">Add Data</button>
                                                             </div>
 
 
@@ -658,7 +659,7 @@
             var fm_ongkos = $('#fm_ongkos').val();
 
 
-            $('#data_table tbody:last-child').append(
+            $('#data-table tbody:last-child').append(
 
                 '<tr>' +
                 '<td>' + no + '</td>' +

@@ -161,8 +161,9 @@
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();" readonly>
+                                                                <input type="text" class="col-md-12" name="fm_total" id="fm_total" readonly>
                                                             </div>
 
                                                             <br>
@@ -542,6 +543,7 @@
             var fc_kadar = $('#fc_kadar').val();
             var fm_hargajual = $('#fm_hargajual').val();
             var fm_ongkos = $('#fm_ongkos').val();
+            var fm_total = $('#fm_total').val();
 
 
             $('#data_table tbody:last-child').append(
@@ -554,10 +556,20 @@
                 '<td>' + fc_kadar + '</td>' +
                 '<td>' + fm_hargajual + '</td>' +
                 '<td>' + fm_ongkos + '</td>' +
+                '<td>' + fm_total + '</td>' +
                 '</tr>'
             );
         });
     })
+
+    function sum() {
+        var txtFirstNumberValue = document.getElementById('fm_hargajual').value;
+        var txtSecondNumberValue = document.getElementById('fm_ongkos').value;
+        var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+        if (!isNaN(result)) {
+            document.getElementById('fm_total').value = result;
+        }
+    }
 
     $('.action-barang').click(function(e) {
         e.preventDefault();
