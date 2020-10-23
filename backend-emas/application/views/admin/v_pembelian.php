@@ -171,12 +171,13 @@
                                                             <div class="col-sm-8">
 
                                                                 <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fc_kdstock_view" id="#no" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fc_kdstock_view" id="no" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" name="fm_ongkos" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargabeli_view" id="fm_hargabeli" readonly>
                                                             </div>
 
 
@@ -630,6 +631,7 @@
                 $('[name="fm_hargajual_view"]').val(result.fm_hargajual);
                 $('[name="fm_ongkos_view"]').val(result.fm_ongkos);
                 $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+                $('[name="fm_hargabeli_view"]').val(result.fm_hargabeli)
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
@@ -657,6 +659,7 @@
             var fc_kadar = $('#fc_kadar').val();
             var fm_hargajual = $('#fm_hargajual').val();
             var fm_ongkos = $('#fm_ongkos').val();
+            var fm_hargabeli = $('#fm_hargabeli').val();
 
 
             $('#data-table tbody:last-child').append(
@@ -668,7 +671,10 @@
                 '<td>' + ff_berat + '</td>' +
                 '<td>' + fc_kadar + '</td>' +
                 '<td>' + fm_hargajual + '</td>' +
+                '<td>' + '<input type="text" name="" class="form-control" >' + '</td>' +
                 '<td>' + fm_ongkos + '</td>' +
+                '<td>' + '<input type="text" name="" class="form-control" >' + '</td>' +
+                '<td>' + fm_hargabeli + '</td>' +
                 '</tr>'
             );
         });
