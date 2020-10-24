@@ -248,7 +248,7 @@
                                 <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button>
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Data Barang ?')"><i class="fa fa-trash"></i> Hapus</button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm(' Anda Yakin Menghapus Data Barang ?')"><i class="fa fa-trash"></i> Hapus</button>
                             </div>
                             <?= form_close(); ?>
                             <div class="col-md-2" style="margin-top: 5px;">
@@ -630,7 +630,13 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="fc_kdkelompok_edit" class="form-control" name="" placeholder="kelompok">
+                                            <select class="form-control" required name="fc_kdkelompok">
+                                                <option value="">Pilih </option>
+                                                <?php $i = 1;
+                                                foreach ($kelompok as $k) : ?>
+                                                    <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                         <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
                                             <i class="fa fa-search-plus"></i>
@@ -639,7 +645,13 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control" name="fc_kdlokasi_edit" placeholder="Lokasi">
+                                            <select class="form-control " required name="fc_kdlokasi">
+                                                <option value="">Pilih </option>
+                                                <?php $i = 1;
+                                                foreach ($lokasi as $l) : ?>
+                                                    <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
                                         <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
                                             <i class="fa fa-search-plus"></i>
@@ -648,11 +660,17 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Sales</label>
                                         <div class="col-sm-7">
-                                            <input type="text" name="fc_salesid_edit" class="form-control" placeholder="Sales">
+                                            <select class="form-control " required name="fc_salesid">
+                                                <option value="">Pilih </option>
+                                                <?php $i = 1;
+                                                foreach ($sales as $s) : ?>
+                                                    <option value="<?= $s->fc_salesid ?>"><?= $s->fv_nama ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
-                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
+                                        <!-- <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editsales">
                                             <i class="fa fa-search-plus"></i>
-                                        </button>
+                                        </button> -->
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Ongkos</label>
@@ -690,10 +708,9 @@
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Foto</label>
-                                        <div class="col-sm-7">
-                                            <input type="text" name="f_foto_edit" class="form-control" placeholder="Foto">
+                                        <div class="col-sm-7 custome-file">
+                                            <input type="file" name="f_foto" class="custom-file-input" placeholder="Foto">
                                         </div>
-
                                     </div>
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Status</label>
@@ -742,21 +759,50 @@
                                 </h5>
                             </div>
                             <div class="modal-body">
-                                <br><br><br>
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1;
+                                                foreach ($kelompok as $k) : ?>
+                                                    <tr>
+                                                        <td class="check center">
+                                                            <input type="checkbox" class="check-item">
+                                                        </td>
+                                                        <td>
+                                                            <input type='text' readonly class='txtedit' data-id='<?= $k->fc_kdkelompok ?>' data-field='name' id='nametxt_"<?= $k->fc_kdkelompok ?>"' value='<?= $k->fv_nmkelompok ?>'>
+                                                        </td>
+
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-
+                                <br>
+                                <div class="row">
+                                    <form action="<?= base_url('C_barang/save_kelompok') ?>" method="post">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <input type="text" name="fc_kdkelompok" class="form-control" placeholder="kode kelompok">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" name="fv_nmkelompok" class="form-control" placeholder="nama kelompok">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2" style="margin-top: 5px;">
+                                            <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                        <div class="col-md-2" style="margin-top: 5px;">
+                                            <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -772,19 +818,49 @@
                                 </h5>
                             </div>
                             <div class="modal-body">
-                                <br><br><br>
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1;
+                                                foreach ($lokasi as $l) : ?>
+                                                    <tr>
+                                            </tbody>
+                                            <td class="check center">
+                                                <input type="checkbox" class="check-item">
+                                            </td>
+                                            <td>
+                                                <input type='text' readonly class='txtedit' data-id='<?= $l->fc_kdlokasi ?>' data-field='name' id='nametxt_"<?= $l->fc_kdlokasi ?>"' value='<?= $l->fv_nmlokasi ?>'>
+                                            </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <form action="<?= base_url('C_barang/save_lokasi') ?>" method="post">
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="kode lokasi">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="lokasi">
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                                    </div>
+                                        <div class="col-md-2">
+                                            <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                        <div class="col-md-2" style="margin-top: 5px;">
+                                            <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -800,15 +876,43 @@
                                 <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
                             </div>
                             <div class="modal-body">
-                                <br><br><br>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php $i = 1;
+                                                foreach ($sales as $s) : ?>
+                                                    <tr>
+                                            </tbody>
+                                            <td class="check center">
+                                                <input type="checkbox" class="check-item">
+                                            </td>
+                                            <td>
+                                                <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
+                                            </td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <input type="text" class="form-control">
+                                            <input type="text" class="form-control" placeholder="kode lokasi">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="lokasi">
                                         </div>
                                     </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
                                     </div>
                                     <div class="col-md-2" style="margin-top: 5px;">
                                         <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
