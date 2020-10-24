@@ -564,7 +564,7 @@
                 '<td>' + ff_berat + '</td>' +
                 '<td>' + fc_kadar + '</td>' +
                 '<td>' + fm_hargajual + '</td>' +
-                '<td>' + fm_ongkos + '</td>' +
+                '<td>' + fm_ongkos +'</td>' +
                 '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
