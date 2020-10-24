@@ -58,4 +58,6 @@ class C_pembelian extends CI_Controller
         $data = $this->M_pembelian->get_by_barang($id);
         echo json_encode($data);
     }
+
+    
 }

@@ -28,4 +28,10 @@ class C_lapembelian extends CI_Controller
 
         $this->load->view('admin/v_lapembelian', $data);
     }
+
+    public function view_cetak()
+    {
+        $data['judul'] = "Cetak Pembelian";
+        $this->load->view('admin/cetak_lapembelian', $data);
+    }
 }

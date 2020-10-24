@@ -21,4 +21,5 @@ class M_lapembelian extends CI_Model
     // {
     //     return $this->db->query("SELECT  sum(fn_berat) as berat FROM t_belimst, t_belidtl WHERE t_belimst.fc_nobeli=t_belidtl.fc_nobeli and  fd_tglbeli between '$startdate' AND '$enddate'")->result();
     // }
+    
 }
