@@ -257,10 +257,10 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
-                                                            <label class="col-sm-3 col-form-label">Subtotal</label>
-                                                            <span id="val"></span>
+                                                            <label class="col-sm-3 col-form-label" id="subtotal">Subtotal</label>
                                                             <div class="col-sm-8">
                                                                 <input type="text" class="form-control" id="subtotal" readonly>
+                                                                <span id="subtotal"></span>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -565,9 +565,18 @@
                 '<td>' + fc_kadar + '</td>' +
                 '<td>' + fm_hargajual + '</td>' +
                 '<td>' + fm_ongkos + '</td>' +
-                '<td>' + fm_total + '</td>' +
+                '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
+
+            var table = document.getElementById("data_table"),
+                total = 0;
+            var subtotal = $('#fm_total').val();
+            for (var t = 1; t < table.rows.length; t++) {
+                total = total + parseInt(table.rows[t].cells[8]) + parseInt(subtotal);
+            }
+            document.getElementById("subtotal").innerHTML = total;
+            console.log(total);
         });
     })
 
