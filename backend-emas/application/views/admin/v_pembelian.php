@@ -289,6 +289,7 @@
                                                     <div class="form-group row">
                                                         <div class="col-sm-1">
                                                         </div>
+                                                        <span id="hasil"></span>
                                                         <label for="inputPassword" class="col-sm-3 col-form-label">Subtotal</label>
                                                         <div class="col-sm-8">
                                                             <span id="hasil"></span>
@@ -670,11 +671,11 @@
                 '<td>' + fv_nmbarang + '</td>' +
                 '<td>' + ff_berat + '</td>' +
                 '<td>' + fc_kadar + '</td>' +
-                '<td>' + fm_hargajual + '</td>' +
-                '<td>' + '<input type="text" name="" class="form-control" >' + '</td>' +
-                '<td>' + fm_ongkos + '</td>' +
-                '<td>' + '<input type="text" name="" class="form-control" >' + '</td>' +
-                '<td>' + fm_hargabeli + '</td>' +
+                '<td id="txt1"  onkeyup="sum();">' + fm_hargajual + '</td>' +
+                '<td>' + '<input type="text" name=""  class="form-control" >' + '</td>' +
+                '<td id="txt2"  onkeyup="sum();">' + fm_ongkos + '</td>' +
+                '<td>' + '<input type="text" name=""  class="form-control" >' + '</td>' +
+                '<td id="txt3">' + +'</td>' +
                 '</tr>'
             );
         });
@@ -702,14 +703,23 @@
     });
 
 
-    var table = document.getElementById("simple-table"),
+    var table = document.getElementById("data-table"),
         sumHsl = 0;
     for (var t = 1; t < table.rows.length; t++) {
-        sumHsl = sumHsl + parseInt(table.rows[t].cells[8].innerHTML);
+        sumHsl = sumHsl + parseInt(table.rows[t].cells[5].innerHTML);
 
     }
     document.getElementById("hasil").innerHTML = sumHsl;
     console.log(sumHsl);
+
+    function sum() {
+        var txtFirstNumberValue = document.getElementById('txt1').value;
+        var txtSecondNumberValue = document.getElementById('txt2').value;
+        var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
+        if (!isNaN(result)) {
+            document.getElementById('txt3').value = result;
+        }
+    }
 </script>
 
 <?php $this->load->view('partials/footer.php') ?>
