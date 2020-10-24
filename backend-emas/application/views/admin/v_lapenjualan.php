@@ -164,16 +164,48 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-3"></div>
+                    <div class="col-xs-12 col-sm-3">
+                        <?php
+                        if (isset($_GET['startdate'])) {
+                            $tgl = $_GET['startdate'];
+                            $tgl2 = $_GET['enddate'];
+                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
+                            $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
+                            $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
+                            $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv and  td_tglinv between '$tgl' AND '$tgl2'");
+                            $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_noinv) as transaksi FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
+                            $gtotal = mysqli_fetch_array($sql2);
+                            $stotal = mysqli_fetch_array($sql3);
+                            $berat = mysqli_fetch_array($sql4);
+                            $tran = mysqli_fetch_array($sql5);
+                        }
+
+                        // } else if (isset($_GET['shift'])){
+                        //     $shift = $_GET['shift'];
+                        //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
+                        else {
+                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice");
+                            $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice ");
+                            $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  ");
+                            $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv ");
+                            $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_noinv) as transaksi FROM tm_invoice ");
+                            $gtotal = mysqli_fetch_array($sql2);
+                            $stotal = mysqli_fetch_array($sql3);
+                            $berat = mysqli_fetch_array($sql4);
+                            $tran = mysqli_fetch_array($sql5);
+                        }
+                        ?>
+                    </div>
+
                     <div class="col-xs-12 col-sm-3">
                         <form>
                             <div>
                                 <label for="form-field-8">Transaksi</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" readonly value="<?php echo $tran['transaksi'] ?>">
                             </div>
                             <div>
                                 <label for="form-field-9">Berat</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($berat['berat']) ?> KG">
                             </div>
                         </form>
                     </div>
@@ -181,11 +213,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <form>
                             <div>
                                 <label for="form-field-8">Grand Total</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
                             </div>
                             <div>
                                 <label for="form-field-9">Sub Total</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($stotal['stotal']) ?>">
                             </div>
                         </form>
                     </div>
@@ -195,46 +227,37 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <!-- PAGE CONTENT BEGINS -->
                         <div class="row">
                             <div class="col-xs-12">
-                                <table id="simple-table" class="table table-striped table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Detail</th>
-                                            <th>Subtotal</th>
-                                            <th>Grand Total</th>
-                                            <th>Berat</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        if (isset($_GET['startdate'])) {
-                                            $tgl = $_GET['startdate'];
-                                            $tgl2 = $_GET['enddate'];
-                                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
-                                        }
-                                        // } else if (isset($_GET['shift'])){
-                                        //     $shift = $_GET['shift'];
-                                        //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
-                                        else {
-                                            $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice");
-                                        }
-                                        while ($lp = mysqli_fetch_array($sql)) {
-                                        ?>
+                                <div class="table-responsive">
+                                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                        <thead>
                                             <tr>
-                                                <td><?php echo $lp['fc_noinv'] ?></td>
-                                                <td><?php echo $lp['fv_catatan'] ?></td>
-                                                <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
-                                                <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
-
-                                                <td class="hidden-480">
-                                                    <span class="label label-sm label-warning">s</span>
-                                                </td>
+                                                <th>No</th>
+                                                <th>Detail</th>
+                                                <th>Subtotal</th>
+                                                <th>Grand Total</th>
+                                                <th>Berat</th>
 
                                             </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            while ($lp = mysqli_fetch_array($sql)) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $lp['fc_noinv'] ?></td>
+                                                    <td><?php echo $lp['fv_catatan'] ?></td>
+                                                    <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
+                                                    <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
+
+                                                    <td class="hidden-480">
+                                                        <span class="label label-sm label-warning">s</span>
+                                                    </td>
+
+                                                </tr>
+                                            <?php } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>

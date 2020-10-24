@@ -19,20 +19,35 @@ class C_lapenjualan extends CI_Controller
     {
         $data['title'] = "Laporan Penjualan";
         $data['menu'] = $this->M_menu->get_menu();
-        $startdate = $this->input->get('startdate', TRUE);
-        $enddate = $this->input->get('enddate', TRUE);
+        // $startdate = $this->input->get('startdate', TRUE);
+        // $enddate = $this->input->get('enddate', TRUE);
 
 
-        $data['penjualan'] = $this->M_lapenjualan->get_lapenjualan($startdate, $enddate);
+        // if ($startdate and $enddate) {
+        //     $data['penjualan'] = $this->M_lapenjualan->get_lapenjualan($startdate, $enddate);
+        //     // $data['total_asset'] = $this->M_lapenjualan->get_lapenjualan($startdate, $enddate);
+        // } else {
+        //     $data['penjualan'] = $this->M_lapenjualan->tampil_semua();
+        // }
 
         $this->load->view('admin/v_lapenjualan', $data);
     }
+
+    // public function filter()
+    // {
+    //     $startdate = $this->input->get('startdate', TRUE);
+    //     $enddate = $this->input->get('enddate', TRUE);
+
+    //     $data['penjualan'] = $this->M_lapenjualan->get_lapenjualan($startdate, $enddate);
+
+    //     $this->load->view('admin/v_lapenjualan', $data);
+    // }
 
     public function view_cetak()
     {
         $data['title'] = "Penjualan";
         $data['menu'] = $this->M_menu->get_menu();
-        
+
 
         $this->load->view('admin/cetak_lapenjualan', $data);
     }
