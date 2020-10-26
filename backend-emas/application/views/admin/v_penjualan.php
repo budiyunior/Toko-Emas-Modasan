@@ -181,7 +181,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" name="fc_noinv" class="form-control" id="inputPassword" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -190,13 +190,13 @@
                                                             $tgl = date("Y-m-d");
                                                             ?>
                                                             <div class="col-sm-8">
-                                                                <input type="date" class="form-control" id="inputPassword" value="<?= $tgl ?>">
+                                                                <input type="date" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" placeholder="">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -516,7 +516,8 @@
             type: "GET",
             dataType: "JSON",
             success: function(result) {
-                $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+                //$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+                $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
