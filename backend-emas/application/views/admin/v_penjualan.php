@@ -260,10 +260,9 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
-                                                            <label class="col-sm-3 col-form-label" id="subtotal">Subtotal</label>
+                                                            <label class="col-sm-3 col-form-label">Subtotal</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="subtotal" readonly>
-                                                                <span id="subtotal"></span>
+                                                                <input type="text" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -271,13 +270,13 @@
                                                             </div>
                                                             <label class="col-sm-3 col-form-label">GrandTotal</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" readonly value="100.000">
+                                                                <input type="text" class="form-control">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-sm-2 col-form-label">Terbilang</label>
                                                             <div class="col-sm-10">
-                                                                <input type="text" class="form-control" readonly placeholder="">
+                                                                <input type="text" class="form-control" placeholder="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -573,6 +572,18 @@
                 '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
+
+            $('#no').val('');
+            $('#fc_kdstock').val('');
+            $('#fv_nmbarang').val('');
+            $('#ff_berat').val('');
+            $('#fc_kadar').val('');
+            $('#fm_hargajual').val('');
+            $('#fm_ongkos').val('');
+            parseInt($('#fm_hargajual').val('')) + parseInt($('#fm_ongkos').val(''));
+
+
+
 
             var table = document.getElementById("data_table"),
                 total = 0;
