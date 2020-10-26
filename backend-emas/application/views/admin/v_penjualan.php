@@ -152,10 +152,13 @@
                                                         <br>
                                                         <br>
                                                         <br>
+                                                        <br>    
+                                                        <br>
+                                                        <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
 
                                                             <div class="col-sm-4">
-                                                                <label for="inputPassword" class="col-form-label">Kode:</label>
+
                                                                 <input type="hidden" class="col-md-12" name="no" id="no" readonly>
                                                                 <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
@@ -165,8 +168,6 @@
                                                                 <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();">
                                                                 <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
                                                             </div>
-
-                                                            <br>
 
                                                             <div class="col-sm-4">
                                                                 <button class="btn btn-sm btn-primary" id="add_data">Tambah Data</button>
@@ -196,10 +197,10 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-2 col-form-label">Pelanggan</label>
                                                             <div class="col-sm-2">
-                                                                <input type="text" class="form-control pull-right" id="inputPassword" name="fc_kdpel_view" placeholder="Kode">
+                                                                <input type="hidden" class="form-control pull-right" id="inputPassword" name="fc_kdpel_view" readonly>
                                                             </div>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="Nama">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" readonly>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -213,6 +214,13 @@
                                                                     </button>
                                                                 </div>
                                                             </div>
+                                                        </div>
+                                                        <div class="form-group row">
+                                                            <label for="inputPassword" class="col-sm-4 col-form-label">Alamat</label>
+                                                            <div class="col-sm-8">
+                                                                <input type="text" class="form-control" id="inputPassword" name="f_alamat_view" readonly>
+                                                            </div>
+
                                                         </div>
 
                                                     </div>
@@ -519,8 +527,8 @@
             dataType: "JSON",
             success: function(result) {
                 $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
-                //$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
                 $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
+                $('[name="f_alamat_view"]').val(result.f_alamat);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');

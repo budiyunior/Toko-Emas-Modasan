@@ -150,7 +150,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Faktur</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Pembelian</h5>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
@@ -165,7 +165,7 @@
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        <label for="inputPassword" class="col-form-label">Kode:</label>
+                                                        <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
 
                                                             <div class="col-sm-8">
@@ -215,7 +215,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Kode Penjual</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" readonly>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -233,13 +233,13 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Nama Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" name="fv_nmpelanggan_view" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="fv_nmpelanggan_view" id="inputPassword" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Alamat Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" name="f_alamat_view" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="f_alamat_view" id="inputPassword" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
