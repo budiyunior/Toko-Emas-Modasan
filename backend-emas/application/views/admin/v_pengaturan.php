@@ -133,9 +133,9 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Pengaturan
-                    </h1>
+                    </h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12" style="margin-top: 30px;">
