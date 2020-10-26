@@ -200,7 +200,6 @@
                                                             </div>
                                                             <div class="col-sm-5">
                                                                 <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="Nama">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" placeholder="">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
