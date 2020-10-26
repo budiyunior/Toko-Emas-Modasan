@@ -1,4 +1,5 @@
 <?php $this->load->view('partials/header.php') ?>
+<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
     <script type="text/javascript">
@@ -390,11 +391,20 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-4 center">
-                                                <div style="margin-top: 140%;">
-                                                    <div style="margin-bottom: 10px;">
-                                                        <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                                <div id="camBox" style="width:100%;height:100%;">
+                                                    <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
+                                                    <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">
+                                                        <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>
+                                                        <p>
+                                                            <input type="button" class="btn btn-success" value="Ok" id="btAddPicture" onclick="addCamPicture()" />
+                                                            <input type="button" class="btn btn-danger" value="Cancel" onclick="document.getElementById('camBox').style.display = 'none';" />
+                                                        </p>
+                                                        <input type="hidden" id="rowid" /><input type="hidden" id="dataurl" />
                                                     </div>
-                                                    <button type="button" class="btn btn-primary">Cam</button>
+                                                </div>
+                                                <div style="margin-top: 140%;">
+                                                    <div style="margin-bottom: 10px;" id="div_alpha"></div>
+                                                    <input type="button" value="Cam" class="btn btn-primary" id="alpha" onclick="takeSnapshot(this)">
                                                 </div>
                                             </div>
                                         </div>
@@ -724,11 +734,20 @@
                                     </div>
                                 </div>
                                 <div class="col-md-4 center">
-                                    <div style="margin-top: 140%;">
-                                        <div style="margin-bottom: 10px;">
-                                            <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                    <div id="camBox" style="width:100%;height:100%;">
+                                        <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
+                                        <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">
+                                            <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>
+                                            <p>
+                                                <input type="button" value="Ok" id="btAddPicture" onclick="addCamPicture()" />
+                                                <input type="button" value="Cancel" onclick="document.getElementById('camBox').style.display = 'none';" />
+                                            </p>
+                                            <input type="hidden" id="rowid" /><input type="hidden" id="dataurl" />
                                         </div>
-                                        <button type="button" class="btn btn-primary">Cam</button>
+                                    </div>
+                                    <div style="margin-top: 140%;">
+                                        <div style="margin-bottom: 10px;" id="div_alpha"></div>
+                                        <input type="button" value="Take a SnapShot" class="btn btn-primary" id="alpha" onclick="takeSnapshot(this)">
                                     </div>
                                 </div>
                             </div>
@@ -991,5 +1010,73 @@
                 // window.location.href = action;
             });
         </script>
+
+        <script>
+            Webcam.set({
+                width: 400,
+                height: 300,
+                image_format: 'jpeg',
+                jpeg_quality: 100
+            });
+            Webcam.attach('#camera');
+
+            takeSnapshot = function(oButton) {
+                document.getElementById('camBox').style.display = 'block';
+                document.getElementById('rowid').value = oButton.id
+            }
+
+            addCamPicture = function() {
+                var rowid = document.getElementById('rowid').value;
+
+                Webcam.snap(function(data_uri) {
+                    document.getElementById('div_' + rowid).innerHTML =
+                        '<img src="' + data_uri + '" id="" width="70px" height="50px" />';
+                });
+
+                document.getElementById('rowid').value = '';
+                document.getElementById('camBox').style.display = 'none'; // HIDE THE POPUP DIALOG BOX.
+            }
+        </script>
+        <style>
+            #camBox {
+                display: none;
+                position: fixed;
+                border: 0;
+                top: 0;
+                right: 0;
+                left: 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                z-index: 9999;
+                background-color: rgba(239, 239, 239, .9);
+                width: 100%;
+                height: 100%;
+                padding-top: 10px;
+                text-align: center;
+                cursor: pointer;
+                -webkit-box-align: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-pack: center;
+                -webkit-transition: .2s opacity;
+                -webkit-perspective: 1000
+            }
+
+            .revdivshowimg {
+                width: 500px;
+                height: 500px;
+                top: 0;
+                padding: 0;
+                position: relative;
+                margin: 0 auto;
+                display: block;
+                background-color: #fff;
+                webkit-box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                -moz-box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                overflow: hidden;
+                border-radius: 3px;
+                color: #17293c
+            }
+        </style>
         <?php $this->load->view('partials/footer.php') ?>
         <?php $this->load->view('partials/js.php') ?>
