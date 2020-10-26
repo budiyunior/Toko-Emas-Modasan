@@ -14,6 +14,22 @@ class M_barang extends CI_Model
         $this->db->delete('tm_stock');
     }
 
+    public function get_barang_all($limit, $start)
+    {
+        // $kelompok = $this->input->get('fc_kdkelompok');
+        // $lokasi = $this->input->get('fc_kdlokasi');
+        // $sales = $this->input->get('fc_salesid');
+        // $array = array('fc_kdlokasi' => $lokasi, 'fc_kdkelompok' => $kelompok, 'fc_salesid' => $sales );
+        $this->db->select('*');
+        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
+        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
+        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
+        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
+        //this->db->where($array);
+        $query = $this->db->get('', $limit, $start);
+        return $query->result();
+    }
+
     public function get_barang()
     {
         return $this->db->get($this->tabel)->result();

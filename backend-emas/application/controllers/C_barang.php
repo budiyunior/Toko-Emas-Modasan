@@ -19,10 +19,12 @@ class C_barang extends CI_Controller
         $data['title'] = "Barang";
         $data['menu'] = $this->M_menu->get_menu();
         $data['barang'] = $this->M_barang->get_barang();
-
         $data['sales'] = $this->M_barang->get_sales();
+        $data['sales2'] = $this->M_barang->get_sales();
         $data['kelompok'] = $this->M_barang->get_kelompok();
+        $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi'] = $this->M_barang->get_lokasi();
+        $data['lokasi2'] = $this->M_barang->get_lokasi();
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_barang/index'); //site url
@@ -56,7 +58,7 @@ class C_barang extends CI_Controller
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
         //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        $data['barang'] = $this->M_barang->list_barang($config["per_page"], $data['page']);
+        $data['barang'] = $this->M_barang->get_barang_all($config["per_page"], $data['page']);
 
         $data['pagination'] = $this->pagination->create_links();
 
@@ -152,5 +154,9 @@ class C_barang extends CI_Controller
             alert('Data lokasi berhasil di tambahkan');
             window.location.href = '" . base_url('C_barang') . "';
         </script>"; //Url tujuan
+    }
+
+    public function filter()
+    {
     }
 }

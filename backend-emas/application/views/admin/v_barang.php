@@ -131,51 +131,50 @@
                             Barang
                         </h2>
                     </div>
-                    <form action="" method=""></form>
-                    <div class="col-md-2">
-                        <label>Jenis</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Kelompok</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Lokasi</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Sales</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Status</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-1">
-                        <br>
-                        <button type="button" class="btn btn-primary">Refresh</button>
-                    </div>
+                    <form action="" method="">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
+                            <label>Kelompok</label>
+                            <select class="form-control" required name="fc_kdkelompok">
+                                <option value="">--Pilih--</option>
+                                <?php $i = 1;
+                                foreach ($kelompok2 as $k) : ?>
+                                    <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Lokasi</label>
+                            <select class="form-control " required name="fc_kdlokasi">
+                                <option value="">--Pilih--</option>
+                                <?php $i = 1;
+                                foreach ($lokasi2 as $l) : ?>
+                                    <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Sales</label>
+                            <select class="form-control " required name="fc_salesid">
+                                <option value="">Pilih </option>
+                                <?php $i = 1;
+                                foreach ($sales as $s) : ?>
+                                    <option value="<?= $s->fc_salesid ?>"><?= $s->fv_nama ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Status</label>
+                            <select class="form-control" required name="fc_sts">
+                                <option>--Pilih--</option>
+                                <option value="1">Baru</option>
+                                <option value="2">Bekas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <br>
+                            <button type="button" class="btn btn-primary">Refresh</button>
+                        </div>
                     </form>
                 </div>
 
@@ -219,12 +218,12 @@
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang ?></td>
-                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
-                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                                            <td scope="row"><?= $s->fv_nmkelompok ?></td>
+                                            <td scope="row"><?= $s->fv_nmlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
                                             <td scope="row"><?= $s->fm_hargabeli ?></td>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
 
@@ -300,7 +299,7 @@
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($kelompok as $k) : ?>
-                                                                <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                                <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -315,7 +314,7 @@
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($lokasi as $l) : ?>
-                                                                <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                                <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -1030,7 +1029,7 @@
 
                 Webcam.snap(function(data_uri) {
                     document.getElementById('div_' + rowid).innerHTML =
-                        '<img src="' + data_uri + '" id="" width="70px" height="50px" />';
+                        '<img src="' + data_uri + '" id="" width="150px" height="150px" />';
                 });
 
                 document.getElementById('rowid').value = '';
