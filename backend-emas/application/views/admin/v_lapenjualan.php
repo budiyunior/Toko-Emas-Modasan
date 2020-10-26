@@ -169,7 +169,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         if (isset($_GET['startdate'])) {
                             $tgl = $_GET['startdate'];
                             $tgl2 = $_GET['enddate'];
-                            $sql = mysqli_query($koneksi, "SELECT  tm_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and fd_tglinv between '$tgl' AND '$tgl2' GROUP BY tm_invoice.fc_noinv");
+                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and fd_tglinv between '$tgl' AND '$tgl2' GROUP BY tm_invoice.fc_noinv");
                             // $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
                             $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
                             $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
@@ -185,7 +185,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         //     $shift = $_GET['shift'];
                         //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
                         else {
-                            $sql = mysqli_query($koneksi, "SELECT  tm_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv GROUP BY tm_invoice.fc_noinv");
+                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv GROUP BY tm_invoice.fc_noinv");
                             $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice ");
                             $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  ");
                             $sql4 = mysqli_query($koneksi, "SELECT SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv ");
