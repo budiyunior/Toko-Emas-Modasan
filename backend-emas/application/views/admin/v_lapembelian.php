@@ -168,7 +168,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         if (isset($_GET['startdate'])) {
                             $tgl = $_GET['startdate'];
                             $tgl2 = $_GET['enddate'];
-                            $sql = mysqli_query($koneksi, "SELECT * FROM t_belimst WHERE fd_tglbeli between '$tgl' AND '$tgl2'");
+                            $sql = mysqli_query($koneksi, "SELECT  t_belimst.id, t_belimst.fc_nobeli, t_belimst.fd_tglbeli, t_belidtl.fc_kdstock,t_belimst.fm_subtot,t_belimst.fm_pot,t_belimst.fm_total, sum(t_belidtl.fn_berat) as berat  FROM t_belimst,t_belidtl  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli and fd_tglbeli between '$tgl' AND '$tgl2' GROUP BY t_belimst.fc_nobeli");
                             $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_total) as gtotal FROM t_belimst  WHERE  fd_tglbeli between '$tgl' AND '$tgl2'");
                             $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_total) as stotal FROM t_belimst  WHERE  fd_tglbeli between '$tgl' AND '$tgl2'");
                             $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM t_belimst, t_belidtl WHERE t_belimst.fc_nobeli=t_belidtl.fc_nobeli and  fd_tglbeli between '$tgl' AND '$tgl2'");
@@ -183,7 +183,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         //     $shift = $_GET['shift'];
                         //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
                         else {
-                            $sql = mysqli_query($koneksi, "SELECT * FROM t_belimst");
+                            $sql = mysqli_query($koneksi, "SELECT  t_belimst.id, t_belimst.fc_nobeli, t_belimst.fd_tglbeli, t_belidtl.fc_kdstock,t_belimst.fm_subtot,t_belimst.fm_pot,t_belimst.fm_total, sum(t_belidtl.fn_berat) as berat  FROM t_belimst,t_belidtl  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli GROUP BY t_belimst.fc_nobeli");
                             $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_total) as gtotal FROM t_belimst ");
                             $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_total) as stotal FROM t_belimst  ");
                             $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM t_belimst, t_belidtl WHERE t_belimst.fc_nobeli=t_belidtl.fc_nobeli ");
@@ -243,11 +243,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         ?>
                                             <tr>
                                                 <td><?php echo $lp['fc_nobeli'] ?></td>
-                                                <td><?php echo $lp['fc_kdpel'] ?></td>
+                                                <td><?php echo $lp['fc_kdstock'] ?></td>
                                                 <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                 <td><?php echo $lp['fm_pot'] ?></td>
                                                 <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
-                                                <td><?php echo $lp['fc_kdpel'] ?></td>
+                                                <td><?php echo $lp['berat'] ?> Gram</td>
 
 
                                             </tr>
