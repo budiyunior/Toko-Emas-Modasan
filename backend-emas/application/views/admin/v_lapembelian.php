@@ -203,7 +203,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                             <div>
                                 <label for=" form-field-9">Berat</label>
-                                <input type="text" class="form-control" value="<?php echo number_format($berat['berat']) ?> KG">
+                                <input type="text" class="form-control" value="<?php echo number_format($berat['berat']) ?> gram">
                             </div>
                         </form>
                     </div>
@@ -247,7 +247,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                 <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                 <td><?php echo $lp['fm_pot'] ?></td>
                                                 <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
-                                                <td><?php echo number_format($lp['berat']); ?> Gram</td>
+                                                <td><?php echo number_format($lp['berat']); ?> gram</td>
 
 
                                             </tr>
