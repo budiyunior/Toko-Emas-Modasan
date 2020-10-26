@@ -141,4 +141,4 @@ class C_pelanggan extends CI_Controller
         );
         echo json_encode($callback); // konversi varibael $callback menjadi JSON
     }
-} 
+}

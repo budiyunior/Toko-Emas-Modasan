@@ -38,10 +38,13 @@
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
+<!-- page specific plugin scripts -->
+<script src="<?php echo base_url() ?>assets/assets/js/jquery-ui.js"></script>
+<script src="<?php echo base_url() ?>assets/assets/js/jquery.ui.touch-punch.js"></script>
 
-<script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+<!-- <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
-<script src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+<script src="//cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script> -->
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables.editor.min"></script>
 <!-- ace scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/ace/elements.scroller.js"></script>
@@ -121,6 +124,41 @@
 
         var oTable1 =
             $('#dynamic-table')
+            //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
+            .dataTable({
+                bAutoWidth: false,
+                "aoColumns": [{
+                        "bSortable": false
+                    },
+                    null, null, null, null, null,
+                    {
+                        "bSortable": false
+                    }
+                ],
+                "aaSorting": [],
+
+                //,
+                //"sScrollY": "200px",
+                //"bPaginate": false,
+
+                //"sScrollX": "100%",
+                //"sScrollXInner": "120%",
+                //"bScrollCollapse": true,
+                //Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
+                //you may want to wrap the table inside a "div.dataTables_borderWrap" element
+
+                //"iDisplayLength": 50
+            });
+
+        TableTools.classes.container = "btn-group btn-overlap";
+        TableTools.classes.print = {
+            "body": "DTTT_Print",
+            "info": "tableTools-alert gritter-item-wrapper gritter-info gritter-center white",
+            "message": "tableTools-print-navbar"
+        }
+
+        var oTable1 =
+            $('#dynamic-table2')
             //.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
             .dataTable({
                 bAutoWidth: false,

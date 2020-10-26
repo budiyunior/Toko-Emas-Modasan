@@ -21,6 +21,8 @@
   <!-- text fonts -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/ace-fonts.css" />
 
+
+  <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/jquery-ui.css" />
   <!-- ace styles -->
   <link rel="stylesheet" href="<?php echo base_url() ?>assets/assets/css/ace.css" class="ace-main-stylesheet" id="main-ace-style" />
 
@@ -28,6 +30,7 @@
   <script src="<?php echo base_url() ?>assets/assets/js/ace-extra.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 
   <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 

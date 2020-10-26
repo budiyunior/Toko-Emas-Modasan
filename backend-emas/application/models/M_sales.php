@@ -41,13 +41,13 @@ class M_sales extends CI_Model
     //     return $query;
     // }
 
-    public function get()
+    public function list_sales($limit, $start)
     {
         $this->db->select('*');
         $this->db->from('t_sales', 'tm_posisi');
         $this->db->join('tm_posisi', 'tm_posisi.fc_kdposisi = t_sales.fc_kdposisi');
-        $query = $this->db->get()->result();
-        return $query;
+        $query = $this->db->get('', $limit, $start);
+        return $query->result();
     }
 
     public function save_sales()
@@ -90,16 +90,12 @@ class M_sales extends CI_Model
         return $this->db->get('t_sales')->row();
     }
 
-    public function search_sales($keyword)
+    public function search_sales($search)
     {
-        $this->db->like('fc_salesid', $keyword);
-        $this->db->or_like('fv_nama', $keyword);
-        $this->db->or_like('fc_email', $keyword);
-        // $this->db->or_like('telp', $keyword);
-        // $this->db->or_like('alamat', $keyword);
-
+        $this->db->like('fc_salesid', $search);
+        $this->db->or_like('fv_nama', $search);
+        $this->db->or_like('fc_email', $search);
         $result = $this->db->get('t_sales')->result();
-
         return $result;
     }
 }

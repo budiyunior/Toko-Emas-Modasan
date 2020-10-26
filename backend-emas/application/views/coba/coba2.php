@@ -147,41 +147,17 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <form>
-                                                    <div class="col-md-5">
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <div class="form-group row">
+                                                    <div class="col-md-3">
 
-                                                            <div class="col-sm-4">
-                                                                <label for="inputPassword" class="col-form-label">Kode:</label>
-                                                                <input type="hidden" class="col-md-12" name="no" id="no" readonly>
-                                                                <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
-                                                                <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();">
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();">
-                                                                <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
-                                                            </div>
-
-                                                            <br>
-
-                                                            <div class="col-sm-4">
-                                                                <button class="btn btn-sm btn-primary" id="add_data">Tambah Data</button>
-                                                            </div>
-
-                                                        </div>
                                                     </div>
-                                                    <div class="col-md-1 ">
+                                                    <div class="col-md-3 ">
 
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" name="fc_noinv" class="form-control" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" placeholder="">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -190,16 +166,13 @@
                                                             $tgl = date("Y-m-d");
                                                             ?>
                                                             <div class="col-sm-8">
-                                                                <input type="date" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
+                                                                <input type="date" class="form-control" id="inputPassword" value="<?= $tgl ?>">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="inputPassword" class="col-sm-2 col-form-label">Pelanggan</label>
-                                                            <div class="col-sm-2">
-                                                                <input type="text" class="form-control pull-right" id="inputPassword" name="fc_kdpel_view" placeholder="Kode">
-                                                            </div>
+                                                            <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="Nama">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -219,10 +192,10 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <table class="table table-bordered" id="data_table">
+                                        <table class="table table-bordered">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">No</th>
+                                                    <th scope="col">nomor</th>
                                                     <th scope="col">Kode</th>
                                                     <th scope="col">Uraian Barang</th>
                                                     <th scope="col">Berat</th>
@@ -230,29 +203,20 @@
                                                     <th scope="col">Harga Per Gram</th>
                                                     <th scope="col">Ongkos</th>
                                                     <th scope="col">Total Harga</th>
+                                                    <th scope="col">Button</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
-                                                <!-- <tr>
-                                                    <td><input type="text" class="col-md-12" name="fc_kdstock_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="fv_nmbarang_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="ff_berat_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="fc_kadar_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="fm_hargajual_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
-                                                    <td><input type="text" class="col-md-12" name="fm_ongkos_view" readonly></td>
-                                                </tr> -->
+                                            <tbody id="element_table">
+                                                <tr>
+
+                                                </tr>
                                             </tbody>
                                         </table>
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <form>
                                                     <div class="col-md-3">
-                                                        <div>
-                                                            <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#pilihbarang">
-                                                                <i class="ace-icon glyphicon glyphicon-plus"> Pilih Barang</i>
-                                                            </button>
-                                                        </div>
+                                                        <a id="add_row" class="btn btn-primary pull-left">Tambah Baris</a>
                                                     </div>
                                                     <div class="col-md-3">
                                                     </div>
@@ -260,10 +224,9 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
-                                                            <label class="col-sm-3 col-form-label" id="subtotal">Subtotal</label>
+                                                            <label class="col-sm-3 col-form-label">Subtotal</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" id="subtotal" readonly>
-                                                                <span id="subtotal"></span>
+                                                                <input type="text" class="form-control" readonly value="100.000">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
@@ -508,6 +471,30 @@
         }
     });
 
+    $(document).ready(function() {
+        var select_item = function() {
+            $('#combination').val(
+                $("#element_table select").map(function(index, element) {
+                    return $(element).val();
+                }).get().join("+")
+            );
+        };
+        var add_row = function() {
+            var new_row = $("<tr><td>" + ($("#element_table>tr").length) + "</td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fv_nmbarang_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></td><td><input type='text' class='col-md-12' name'fc_kdstock_view' readonly></><td><a id='delete_row' class='pull-right btn btn-danger'>Hapus Baris</a><a class='btn btn-primary' data-toggle='modal' data-target='#pilihbarang'>Pilih Barang</a></td></tr>").appendTo("#element_table");
+            select_item();
+            new_row.find('select').on('change', select_item);
+            new_row.find("#delete_row").click(function() {
+                $(this).parents("tr").remove();
+                select_item();
+            });
+        };
+
+        add_row();
+
+        $("#add_row").click(add_row);
+
+    });
+
     $('.action-select').click(function(e) {
         e.preventDefault();
         var arr = [];
@@ -520,72 +507,12 @@
             dataType: "JSON",
             success: function(result) {
                 $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
-                //$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
-                $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
             }
         })
     });
-
-    function sum() {
-        var txtFirstNumberValue = document.getElementsById('fm_hargajual').value;
-        var txtSecondNumberValue = document.getElementsById('fm_ongkos').value;
-        var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
-        if (!isNaN(result)) {
-            document.getElementById('fm_total').value = result;
-        }
-    }
-
-    $(function() {
-
-        var set_number = function() {
-            var table = $().length + 1;
-
-            $('#no').val(table);
-        }
-
-        set_number();
-
-        $('#add_data').click(function(e) {
-            e.preventDefault();
-            $('#tampilPenjualan').modal('show');
-
-            var no = $('#no').val();
-            var fc_kdstock = $('#fc_kdstock').val();
-            var fv_nmbarang = $('#fv_nmbarang').val();
-            var ff_berat = $('#ff_berat').val();
-            var fc_kadar = $('#fc_kadar').val();
-            var fm_hargajual = $('#fm_hargajual').val();
-            var fm_ongkos = $('#fm_ongkos').val();
-            var fm_total = parseInt($('#fm_hargajual').val()) + parseInt($('#fm_ongkos').val());
-
-            $('#data_table tbody:last-child').append(
-                '<tr>' +
-                '<td>' + no + '</td>' +
-                '<td>' + fc_kdstock + '</td>' +
-                '<td>' + fv_nmbarang + '</td>' +
-                '<td>' + ff_berat + '</td>' +
-                '<td>' + fc_kadar + '</td>' +
-                '<td>' + fm_hargajual + '</td>' +
-                '<td>' + fm_ongkos + '</td>' +
-                '<td id="fm_total">' + fm_total + '</td>' +
-                '</tr>'
-            );
-
-            var table = document.getElementById("data_table"),
-                total = 0;
-            var subtotal = $('#fm_total').val();
-            for (var t = 1; t < table.rows.length; t++) {
-                total = total + parseInt(table.rows[t].cells[8]) + parseInt(subtotal);
-            }
-            document.getElementById("subtotal").innerHTML = total;
-            console.log(total);
-        });
-    })
-
-
     $('.action-barang').click(function(e) {
         e.preventDefault();
         var arr = [];

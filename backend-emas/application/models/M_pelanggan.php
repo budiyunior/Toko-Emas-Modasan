@@ -37,18 +37,18 @@ class M_pelanggan extends CI_Model
 
         $this->db->insert($this->tabel, $this);
     }
-    
+
     public function update_pelanggan()
     {
         $post = $this->input->post();
-        $this->fc_kdpel = $post['fc_kdpel'];
-        $this->fv_nama = $post['fv_nmpelanggan'];
-        $this->f_alamat = $post['f_alamat'];
-        $this->fc_telp = $post['fc_telp'];
-        $this->fc_noktp = $post['fc_noktp'];
-        $this->f_keterangan = $post['f_keterangan'];
+        $this->fc_kdpel = $post['fc_kdpel_edit'];
+        $this->fv_nmpelanggan = $post['fv_nmpelanggan_edit'];
+        $this->f_alamat = $post['f_alamat_edit'];
+        $this->fc_telp = $post['fc_telp_edit'];
+        $this->fc_noktp = $post['fc_noktp_edit'];
+        $this->f_keterangan = $post['f_keterangan_edit'];
 
-        $this->db->update($this->tabel, $this, array('fc_kdpel' => $post['fc_kdpel']));
+        $this->db->update($this->tabel, $this, array('fc_kdpel' => $post['fc_kdpel_edit']));
     }
 
     public function get_by_id($id_pelanggan)
@@ -61,7 +61,7 @@ class M_pelanggan extends CI_Model
         $this->db->where('fc_kdpel', $id);
         return $this->db->get('tm_pelanggan')->row();
     }
-    
+
     public function delete($id)
     {
         $this->db->where('fc_kdpel', $id);
