@@ -152,7 +152,7 @@
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        <br>    
+                                                        <br>
                                                         <br>
                                                         <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
