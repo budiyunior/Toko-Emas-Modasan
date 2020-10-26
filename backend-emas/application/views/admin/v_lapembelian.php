@@ -199,7 +199,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <form>
                             <div>
                                 <label for="form-field-8">Transaksi</label>
-                                <input type="text" class="form-control" value="<?php echo$tran['transaksi'] ?>">
+                                <input type="text" class="form-control" value="<?php echo $tran['transaksi'] ?>">
                             </div>
                             <div>
                                 <label for=" form-field-9">Berat</label>
@@ -208,69 +208,72 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         </form>
                     </div>
                     <div class=" col-xs-12 col-sm-3">
-                                <form>
-                                    <div>
-                                        <label for="form-field-8">Grand Total</label>
-                                        <input type="text" class="form-control" value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
+                        <form>
+                            <div>
+                                <label for="form-field-8">Grand Total</label>
+                                <input type="text" class="form-control" value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
                             </div>
                             <div>
                                 <label for=" form-field-9">Sub Total</label>
-                                        <input type="text" class="form-control" value="Rp. <?php echo number_format($stotal['stotal']) ?>">
+                                <input type="text" class="form-control" value="Rp. <?php echo number_format($stotal['stotal']) ?>">
                             </div>
                         </form>
                     </div>
                 </div>
                 <div class=" row">
-                                        <div class="col-xs-12" style="margin-top: 30px;">
-                                            <!-- PAGE CONTENT BEGINS -->
-                                            <div class="row">
-                                                <div class="col-xs-12">
-                                                    <table id="simple-table" class="table table-striped table-bordered table-hover">
-                                                        <thead>
-                                                            <tr class="titlerow">
-                                                                <th>No</th>
-                                                                <th>Detail</th>
-                                                                <th>Subtotal</th>
-                                                                <th>Potongan</th>
-                                                                <th>Grand Total</th>
-                                                                <th>Berat</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <?php
+                    <div class="col-xs-12" style="margin-top: 30px;">
+                        <!-- PAGE CONTENT BEGINS -->
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                    <thead>
+                                        <tr class="titlerow">
+                                            <th>No</th>
+                                            <th>Detail</th>
+                                            <th>Subtotal</th>
+                                            <th>Potongan</th>
+                                            <th>Grand Total</th>
+                                            <th>Berat</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
 
-                                                            while ($lp = mysqli_fetch_array($sql)) {
-                                                            ?>
-                                                                <tr>
-                                                                    <td><?php echo $lp['fc_nobeli'] ?></td>
-                                                                    <td><?php echo $lp['fc_kdpel'] ?></td>
-                                                                    <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
-                                                                    <td><?php echo $lp['fm_pot'] ?></td>
-                                                                    <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
-                                                                    <td><?php echo $lp['fc_kdpel'] ?></td>
+                                        while ($lp = mysqli_fetch_array($sql)) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $lp['fc_nobeli'] ?></td>
+                                                <td><?php echo $lp['fc_kdpel'] ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
+                                                <td><?php echo $lp['fm_pot'] ?></td>
+                                                <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
+                                                <td><?php echo $lp['fc_kdpel'] ?></td>
 
 
-                                                                </tr>
-                                                            <?php } ?>
+                                            </tr>
+                                        <?php } ?>
 
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-success"><i class="fa fa-print"> Cetak</i></button>
-
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
                     </div>
+                </div>
+                <button type="button" class="btn btn-success" onclick="print()"><i class="fa fa-print"> Cetak</i></button>
 
-                </div><!-- /.main-container -->
             </div>
+        </div>
 
-            <script>
+    </div><!-- /.main-container -->
+</div>
 
-            </script>
+<script>
+    function print(params) {
+        window.print()
+
+    }
+</script>
 
 
-            <?php $this->load->view('partials/footer.php') ?>
-            <?php $this->load->view('partials/js.php') ?>
+<?php $this->load->view('partials/footer.php') ?>
+<?php $this->load->view('partials/js.php') ?>

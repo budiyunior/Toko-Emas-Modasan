@@ -194,9 +194,12 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
-                                                            <label for="inputPassword" class="col-sm-4 col-form-label">Pelanggan</label>
+                                                            <label for="inputPassword" class="col-sm-2 col-form-label">Pelanggan</label>
+                                                            <div class="col-sm-2">
+                                                                <input type="text" class="form-control pull-right" id="inputPassword" name="fc_kdpel_view" placeholder="Kode">
+                                                            </div>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="Nama">
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -517,6 +520,7 @@
             dataType: "JSON",
             success: function(result) {
                 $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+                $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
@@ -564,7 +568,7 @@
                 '<td>' + ff_berat + '</td>' +
                 '<td>' + fc_kadar + '</td>' +
                 '<td>' + fm_hargajual + '</td>' +
-                '<td>' + fm_ongkos +'</td>' +
+                '<td>' + fm_ongkos + '</td>' +
                 '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
