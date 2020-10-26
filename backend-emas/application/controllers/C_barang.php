@@ -68,7 +68,13 @@ class C_barang extends CI_Controller
 
     public function save_nmkelompok()
     {
-        $save_kelompok = $this->M_barang;
+        $save_kelompok = $this->form_validation->set_rules('');
+
+
+
+
+
+
 
         $save_kelompok->save_namakelompok();
         // $this->session->set_flashdata('success', '<div class="alert alert-success" role="alert">Data Produk Berhasil Disimpan :)</div>');
