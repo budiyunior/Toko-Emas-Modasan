@@ -134,10 +134,10 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Pembelian
 
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
 
                 <div class="row">

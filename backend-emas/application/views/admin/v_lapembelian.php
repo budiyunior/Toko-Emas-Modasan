@@ -136,9 +136,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
             <div class="page-content">
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Laporan Pembelian
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
                 <div class="row">
                     <div class="col-xs-12 col-sm-3">
@@ -247,7 +247,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                 <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                 <td><?php echo $lp['fm_pot'] ?></td>
                                                 <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>
-                                                <td><?php echo $lp['berat'] ?> Gram</td>
+                                                <td><?php echo number_format($lp['berat']); ?> Gram</td>
 
 
                                             </tr>

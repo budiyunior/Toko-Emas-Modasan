@@ -124,10 +124,10 @@
         <div class="main-content-inner">
             <div class="page-content">
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Penjualan
 
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
 
                 <div class="row">
@@ -152,7 +152,7 @@
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        <br>    
+                                                        <br>
                                                         <br>
                                                         <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
