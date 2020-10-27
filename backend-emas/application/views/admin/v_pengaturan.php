@@ -146,6 +146,9 @@
                                     <thead>
                                         <tr>
                                         <tr>
+                                            <th class="center">
+                                                <input type="checkbox" id="check-all" />
+                                            </th>
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Username</th>
@@ -153,11 +156,17 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Hey</td>
-                                            <td>add</td>
-                                        </tr>
+                                        <?php $no = $this->uri->segment('3') + 1; ?>
+                                        <?php foreach ($pengaturan as $u) : ?>
+                                            <tr>
+                                                <td class="check center">
+                                                    <input type="checkbox" class="check-item" id="user" name="fc_userid[]" value="<?php echo $u->fc_userid ?>">
+                                                </td>
+                                                <td><?= $no++ ?></td>
+                                                <td><?= $u->fv_username ?></td>
+                                                <td><?= $u->fc_kdposisi ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -165,7 +174,7 @@
                         <div class="row">
                             <a href="#" data-toggle="modal" data-target="#exampleModal" class=" btn btn-primary" style="margin-left: 10px;">
                                 <i class="fa fa-save">
-                                    Tambah Pengaturan Baru
+                                    Tambah Operator Baru
                                 </i>
                             </a>
 
@@ -245,11 +254,11 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" class="form-control" name="">
+                                            <input type="password" id="pw1" class="form-control" name="">
                                         </div>
                                         <div class="form-group">
                                             <label>Ulangi Password</label>
-                                            <input type="password" class="form-control" name="">
+                                            <input type="password" id="pw2" class="form-control" name="">
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -278,8 +287,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"> Close</i></button>
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save">
-                                                Simpan</i></button>
+                                        <button type="submit" class="btn btn-primary" value="cek"><i class="fa fa-save">Simpan</i></button>
                                     </div>
                                 </div>
                             </form>
@@ -318,7 +326,27 @@
 </div>
 
 <script>
+    $(".check-item").on("click", function() {
+        if ($(".check-item:checked").length < 2) {
+            $('.action-update').prop('disabled', false);
+        } else {
+            $('.action-update').prop('disabled', true);
+        }
+    });
 
+    window.onload = function() {
+        document.getElementById("pw1").onchange = validatePassword;
+        document.getElementById("pw2").onchange = validatePassword;
+    }
+
+    function validatePassword() {
+        var pass2 = document.getElementById("pw2").value;
+        var pass1 = document.getElementById("pw1").value;
+        if (pass1 != pass2)
+            document.getElementById("pw2").setCustomValidity("Passwords Tidak Sama, Coba Lagi");
+        else
+            document.getElementById("pw2").setCustomValidity('');
+    }
 </script>
 
 
