@@ -21,4 +21,9 @@ class C_pengaturan extends CI_Controller
 
         $this->load->view('admin/v_pengaturan', $data);
     }
+
+    public function save()
+    {
+        
+    }
 }
