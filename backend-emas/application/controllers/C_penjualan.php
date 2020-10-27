@@ -72,5 +72,10 @@ class C_penjualan extends CI_Controller
         $this->load->view('coba/coba2', $data);
     }
 
+    public function cetak_nota()
+    {
+        $data['title'] = "Cetak Nota";
+        $this->load->view('admin/cetak_nota', $data);
+    }
     
 }
