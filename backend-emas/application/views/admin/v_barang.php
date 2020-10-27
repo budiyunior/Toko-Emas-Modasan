@@ -214,7 +214,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fc_kdstock ?>">
+                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
