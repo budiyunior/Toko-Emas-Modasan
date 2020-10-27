@@ -177,4 +177,11 @@ class C_penjualan extends CI_Controller
 		window.history.back();
 		</script>";	
 	}
+
+    public function cetak_nota()
+    {
+        $data['title'] = "Cetak Nota";
+        $this->load->view('admin/cetak_nota', $data);
+    }
+    
 }

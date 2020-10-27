@@ -52,11 +52,5 @@ class C_lapenjualan extends CI_Controller
         $this->load->view('admin/cetak_lapenjualan', $data);
     }
 
-    public function cetak_nota()
-    {
-        $data['title'] = "Cetak Nota";
-
-
-        $this->load->view('admin/cetak_nota', $data);
-    }
+    
 }

@@ -11,9 +11,14 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
             <!-- /section:settings.box -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-3">
+                    <div class="col-xs-12 col-sm-2">
                         <h2>
-                            Modasan
+                            
+                        </h2>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <h2>
+                            M O D A S A N
                         </h2>
                     </div>
                     <div class="col-xs-12 col-sm-3">
