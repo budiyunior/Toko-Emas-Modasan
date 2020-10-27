@@ -134,10 +134,10 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Pembelian
 
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
 
                 <div class="row">
@@ -150,7 +150,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Faktur</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Pembelian</h5>
                                     </div>
                                     <div class="modal-body">
                                         <div class="row">
@@ -165,7 +165,7 @@
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        <label for="inputPassword" class="col-form-label">Kode:</label>
+                                                        <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
 
                                                             <div class="col-sm-8">
@@ -175,9 +175,10 @@
                                                                 <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
                                                                 <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();" readonly>
                                                                 <input type="hidden" class="col-md-12" name="fm_hargabeli_view" id="fm_hargabeli" readonly>
+                                                                <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
                                                             </div>
 
 
@@ -214,7 +215,7 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Kode Penjual</label>
                                                             <div class="col-sm-5">
-                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" placeholder="">
+                                                                <input type="text" class="form-control" id="inputPassword" name="fc_kdpel_view" readonly>
                                                             </div>
                                                             <div class="col-sm-3">
                                                                 <div class="col-sm-6">
@@ -232,13 +233,13 @@
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Nama Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" name="fv_nmpelanggan_view" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="fv_nmpelanggan_view" id="inputPassword" readonly>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label for="inputPassword" class="col-sm-4 col-form-label">Alamat Penjual</label>
                                                             <div class="col-sm-8">
-                                                                <input type="text" class="form-control" name="f_alamat_view" id="inputPassword" placeholder="">
+                                                                <input type="text" class="form-control" name="f_alamat_view" id="inputPassword" readonly>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -661,6 +662,7 @@
             var fm_hargajual = $('#fm_hargajual').val();
             var fm_ongkos = $('#fm_ongkos').val();
             var fm_hargabeli = $('#fm_hargabeli').val();
+            var fm_total = parseInt($('#fm_hargajual').val()) + parseInt($('#fm_ongkos').val())
 
 
             $('#data-table tbody:last-child').append(
@@ -671,11 +673,11 @@
                 '<td>' + fv_nmbarang + '</td>' +
                 '<td>' + ff_berat + '</td>' +
                 '<td>' + fc_kadar + '</td>' +
-                '<td id="txt1"  onkeyup="sum();">' + fm_hargajual + '</td>' +
+                '<td>' + fm_hargajual + '</td>' +
                 '<td>' + '<input type="text" name=""  class="form-control" >' + '</td>' +
-                '<td id="txt2"  onkeyup="sum();">' + fm_ongkos + '</td>' +
+                '<td>' + fm_ongkos + '</td>' +
                 '<td>' + '<input type="text" name=""  class="form-control" >' + '</td>' +
-                '<td id="txt3">' + +'</td>' +
+                '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
         });
@@ -713,13 +715,15 @@
     console.log(sumHsl);
 
     function sum() {
-        var txtFirstNumberValue = document.getElementById('txt1').value;
-        var txtSecondNumberValue = document.getElementById('txt2').value;
+        var txtFirstNumberValue = document.getElementsById('fm_hargajual').value;
+        var txtSecondNumberValue = document.getElementsById('fm_ongkos').value;
         var result = parseInt(txtFirstNumberValue) + parseInt(txtSecondNumberValue);
         if (!isNaN(result)) {
-            document.getElementById('txt3').value = result;
+            document.getElementById('fm_total').value = result;
         }
     }
+
+    $('#save')
 </script>
 
 <?php $this->load->view('partials/footer.php') ?>

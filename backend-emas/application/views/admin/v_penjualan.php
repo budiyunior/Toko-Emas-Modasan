@@ -168,10 +168,10 @@
         <div class="main-content-inner">
             <div class="page-content">
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Penjualan
 
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
 
                 <div class="row">
@@ -197,25 +197,11 @@
                                                         <br>
                                                         <br>
                                                         <br>
+                                                        <br>
+                                                        <br>
+                                                        <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
 
-                                                            <!-- <div class="col-sm-4">
-                                                                <label for="inputPassword" class="col-form-label">Kode:</label>
-                                                                <input type="hidden" class="col-md-12" name="no" id="no" readonly>
-                                                                <input type="text" class="col-md-12" name="fc_kdstock_view" id="fc_kdstock" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fv_nmbarang_view" id="fv_nmbarang" readonly>
-                                                                <input type="hidden" class="col-md-12" name="ff_berat_view" id="ff_berat" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fc_kadar_view" id="fc_kadar" readonly>
-                                                                <input type="hidden" class="col-md-12" name="fm_hargajual_view" id="fm_hargajual" onkeyup="sum();">
-                                                                <input type="hidden" class="col-md-12" name="fm_ongkos_view" id="fm_ongkos" onkeyup="sum();">
-                                                                <input type="hidden" class="col-md-12" name="fm_total" id="fm_total" readonly>
-                                                            </div>
-
-                                                            <br>
-
-                                                            <div class="col-sm-4">
-                                                                <button class="btn btn-sm btn-primary" id="add_data">Tambah Data</button>
-                                                            </div> -->
 
                                                         </div>
                                                     </div>
@@ -270,6 +256,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                      
 
                                                     </div>
                                                
@@ -312,7 +299,7 @@
                                                         <div class="form-group row">
                                                             <div class="col-sm-1">
                                                             </div>
-                                                            <label class="col-sm-3 col-form-label" id="subtotal">Subtotal</label>
+                                                            <label class="col-sm-3 col-form-label">Subtotal</label>
                                                             <div class="col-sm-8">
                                                                 <input type="text" class="form-control" id="SubTotalBayar" name='SubTotalBayar' readonly>
 																<input type="hidden" class="form-control" id="SubTotalBayar2" name='SubTotalBayar2' readonly>
@@ -1226,6 +1213,7 @@
                 $('#nama_pelanggan').html('<b>Nama: </b>'+result.fv_nmpelanggan+'<br />'+'<b>Alamat: </b>'+result.f_alamat+'<br />'+'<b>No Telp: </b>'+result.fc_telp);
                 //$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
                 $('[name="fc_kdpel_view"]').val(result.fc_kdpel);
+                $('[name="f_alamat_view"]').val(result.f_alamat);
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 alert('Data Eror');
@@ -1299,6 +1287,18 @@
                 '<td id="fm_total">' + fm_total + '</td>' +
                 '</tr>'
             );
+
+            $('#no').val('');
+            $('#fc_kdstock').val('');
+            $('#fv_nmbarang').val('');
+            $('#ff_berat').val('');
+            $('#fc_kadar').val('');
+            $('#fm_hargajual').val('');
+            $('#fm_ongkos').val('');
+            parseInt($('#fm_hargajual').val('')) + parseInt($('#fm_ongkos').val(''));
+
+
+
 
             var table = document.getElementById("data_table"),
                 total = 0;

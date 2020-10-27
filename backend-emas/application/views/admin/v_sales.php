@@ -122,10 +122,10 @@
 
             <!-- /section:settings.box -->
             <div class="page-header">
-                <h1>
+                <h2 style="color: #07A1C8;">
                     Sales
                     <button type="button" class="pull-right btn btn-primary">Refresh</button>
-                </h1>
+                </h2>
             </div><!-- /.page-header -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
             <div class="row">

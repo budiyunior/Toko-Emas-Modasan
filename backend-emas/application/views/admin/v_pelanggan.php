@@ -132,10 +132,10 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Pelanggan
                         <button type="button" class="pull-right btn btn-primary">Refresh</button>
-                    </h1>
+                    </h2>
                 </div><!-- /.page-header -->
                 <!-- asasasasasasas -->
                 <div class="row">

@@ -17,8 +17,14 @@ class C_pengaturan extends CI_Controller
     {
         $data['title'] = "Pengaturan";
         $data['menu'] = $this->M_menu->get_menu();
+        $data['pengaturan'] = $this->M_pengaturan->get_user();
 
 
         $this->load->view('admin/v_pengaturan', $data);
+    }
+
+    public function save()
+    {
+        
     }
 }

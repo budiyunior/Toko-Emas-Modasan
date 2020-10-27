@@ -1,4 +1,5 @@
 <?php $this->load->view('partials/header.php') ?>
+<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
     <script type="text/javascript">
@@ -130,51 +131,50 @@
                             Barang
                         </h2>
                     </div>
-                    <form action="" method=""></form>
-                    <div class="col-md-2">
-                        <label>Jenis</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Kelompok</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Lokasi</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Sales</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-2">
-                        <label>Status</label>
-                        <select class="form-control" required name="metode">
-                            <option value="">Pilih </option>
-                            <option name="Indomaret">Indomaret</option>
-                            <option name="Alfamart">Alfamart</option>
-                        </select>
-                    </div>
-                    <div class="col-md-1">
-                        <br>
-                        <button type="button" class="btn btn-primary">Refresh</button>
-                    </div>
+                    <form action="" method="">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-2">
+                            <label>Kelompok</label>
+                            <select class="form-control" required name="fc_kdkelompok">
+                                <option value="">--Pilih--</option>
+                                <?php $i = 1;
+                                foreach ($kelompok2 as $k) : ?>
+                                    <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Lokasi</label>
+                            <select class="form-control " required name="fc_kdlokasi">
+                                <option value="">--Pilih--</option>
+                                <?php $i = 1;
+                                foreach ($lokasi2 as $l) : ?>
+                                    <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Sales</label>
+                            <select class="form-control " required name="fc_salesid">
+                                <option value="">Pilih </option>
+                                <?php $i = 1;
+                                foreach ($sales as $s) : ?>
+                                    <option value="<?= $s->fc_salesid ?>"><?= $s->fv_nama ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label>Status</label>
+                            <select class="form-control" required name="fc_sts">
+                                <option>--Pilih--</option>
+                                <option value="1">Baru</option>
+                                <option value="2">Bekas</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <br>
+                            <button type="button" class="btn btn-primary">Refresh</button>
+                        </div>
                     </form>
                 </div>
 
@@ -192,7 +192,7 @@
                                 <thead>
                                     <tr>
                                         <th class="center">
-                                            <input type="checkbox" id="check-all" />
+                                            Checklist
                                         </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
@@ -205,6 +205,7 @@
                                         <th scope="col">Sales</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
+                                        <th scope="col">Stok</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -226,7 +227,7 @@
                                             <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
-
+                                            <td scope="row"><?= $s->fn_stock ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -299,7 +300,7 @@
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($kelompok as $k) : ?>
-                                                                <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                                <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -314,7 +315,7 @@
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($lokasi as $l) : ?>
-                                                                <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                                <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
@@ -388,13 +389,28 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Stok</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" name="fn_stock" class="form-control" placeholder="Stok">
+                                                    </div>
+                                                </div>
                                             </div>
                                             <div class="col-md-4 center">
-                                                <div style="margin-top: 140%;">
-                                                    <div style="margin-bottom: 10px;">
-                                                        <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                                <div id="camBox" style="width:100%;height:100%;">
+                                                    <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
+                                                    <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">
+                                                        <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>
+                                                        <p>
+                                                            <input type="button" class="btn btn-success" value="Ok" id="btAddPicture" onclick="addCamPicture()" />
+                                                            <input type="button" class="btn btn-danger" value="Cancel" onclick="document.getElementById('camBox').style.display = 'none';" />
+                                                        </p>
+                                                        <input type="hidden" id="rowid" /><input type="hidden" id="dataurl" />
                                                     </div>
-                                                    <button type="button" class="btn btn-primary">Cam</button>
+                                                </div>
+                                                <div style="margin-top: 140%;">
+                                                    <div style="margin-bottom: 10px;" id="div_alpha"></div>
+                                                    <input type="button" value="Cam" class="btn btn-primary" id="alpha" onclick="takeSnapshot(this)">
                                                 </div>
                                             </div>
                                         </div>
@@ -630,11 +646,11 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" required name="fc_kdkelompok">
+                                            <select class="form-control" required name="fc_kdkelompok_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($kelompok as $k) : ?>
-                                                    <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                    <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -645,11 +661,11 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control " required name="fc_kdlokasi">
+                                            <select class="form-control " required name="fc_kdlokasi_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($lokasi as $l) : ?>
-                                                    <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                    <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -660,7 +676,7 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Sales</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control " required name="fc_salesid">
+                                            <select class="form-control " required name="fc_salesid_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($sales as $s) : ?>
@@ -722,13 +738,28 @@
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Stok</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fn_stock_edit" class="form-control" placeholder="Stok">
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-4 center">
-                                    <div style="margin-top: 140%;">
-                                        <div style="margin-bottom: 10px;">
-                                            <img src="../../assets/assets/img/php.png" alt="Foto" width="150"><br>
+                                    <div id="camBox" style="width:100%;height:100%;">
+                                        <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
+                                        <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">
+                                            <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>
+                                            <p>
+                                                <input type="button" value="Ok" id="btAddPicture" onclick="addCamPicture()" />
+                                                <input type="button" value="Cancel" onclick="document.getElementById('camBox').style.display = 'none';" />
+                                            </p>
+                                            <input type="hidden" id="rowid" /><input type="hidden" id="dataurl" />
                                         </div>
-                                        <button type="button" class="btn btn-primary">Cam</button>
+                                    </div>
+                                    <div style="margin-top: 140%;">
+                                        <div style="margin-bottom: 10px;" id="div_alpha"></div>
+                                        <input type="button" value="Take a SnapShot" class="btn btn-primary" id="alpha" onclick="takeSnapshot(this)">
                                     </div>
                                 </div>
                             </div>
@@ -977,6 +1008,7 @@
                         $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
                         $('[name="f_foto_edit"]').val(result.f_foto);
                         $('[name="fc_sts_edit"]').val(result.fc_sts);
+                        $('[name="fn_stock_edit"]').val(result.fn_stock);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Data Eror');
@@ -991,5 +1023,73 @@
                 // window.location.href = action;
             });
         </script>
+
+        <script>
+            Webcam.set({
+                width: 400,
+                height: 300,
+                image_format: 'jpeg',
+                jpeg_quality: 100
+            });
+            Webcam.attach('#camera');
+
+            takeSnapshot = function(oButton) {
+                document.getElementById('camBox').style.display = 'block';
+                document.getElementById('rowid').value = oButton.id
+            }
+
+            addCamPicture = function() {
+                var rowid = document.getElementById('rowid').value;
+
+                Webcam.snap(function(data_uri) {
+                    document.getElementById('div_' + rowid).innerHTML =
+                        '<img src="' + data_uri + '" id="" width="150px" height="150px" />';
+                });
+
+                document.getElementById('rowid').value = '';
+                document.getElementById('camBox').style.display = 'none'; // HIDE THE POPUP DIALOG BOX.
+            }
+        </script>
+        <style>
+            #camBox {
+                display: none;
+                position: fixed;
+                border: 0;
+                top: 0;
+                right: 0;
+                left: 0;
+                overflow-x: auto;
+                overflow-y: hidden;
+                z-index: 9999;
+                background-color: rgba(239, 239, 239, .9);
+                width: 100%;
+                height: 100%;
+                padding-top: 10px;
+                text-align: center;
+                cursor: pointer;
+                -webkit-box-align: center;
+                -webkit-box-orient: vertical;
+                -webkit-box-pack: center;
+                -webkit-transition: .2s opacity;
+                -webkit-perspective: 1000
+            }
+
+            .revdivshowimg {
+                width: 500px;
+                height: 500px;
+                top: 0;
+                padding: 0;
+                position: relative;
+                margin: 0 auto;
+                display: block;
+                background-color: #fff;
+                webkit-box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                -moz-box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                box-shadow: 6px 0 10px rgba(0, 0, 0, .2), -6px 0 10px rgba(0, 0, 0, .2);
+                overflow: hidden;
+                border-radius: 3px;
+                color: #17293c
+            }
+        </style>
         <?php $this->load->view('partials/footer.php') ?>
         <?php $this->load->view('partials/js.php') ?>
