@@ -192,7 +192,7 @@
                                 <thead>
                                     <tr>
                                         <th class="center">
-                                            <input type="checkbox" id="check-all" />
+                                            Checklist
                                         </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
@@ -205,6 +205,7 @@
                                         <th scope="col">Sales</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
+                                        <th scope="col">Stok</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -213,20 +214,20 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fc_kdstock ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang ?></td>
-                                            <td scope="row"><?= $s->fv_nmkelompok ?></td>
-                                            <td scope="row"><?= $s->fv_nmlokasi ?></td>
+                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
                                             <td scope="row"><?= $s->fm_hargabeli ?></td>
-                                            <td scope="row"><?= $s->fv_nama ?></td>
+                                            <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
-
+                                            <td scope="row"><?= $s->fn_stock ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -386,6 +387,12 @@
                                                             <option value="1">Baru</option>
                                                             <option value="2">Bekas</option>
                                                         </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label for="" class="col-sm-3 col-form-label">Stok</label>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" name="fn_stock" class="form-control" placeholder="Stok">
                                                     </div>
                                                 </div>
                                             </div>
@@ -639,11 +646,11 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control" required name="fc_kdkelompok">
+                                            <select class="form-control" required name="fc_kdkelompok_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($kelompok as $k) : ?>
-                                                    <option name="<?= $k->fv_nmkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                                    <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -654,11 +661,11 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control " required name="fc_kdlokasi">
+                                            <select class="form-control " required name="fc_kdlokasi_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($lokasi as $l) : ?>
-                                                    <option name="<?= $l->fv_nmlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                                    <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
                                                 <?php endforeach; ?>
                                             </select>
                                         </div>
@@ -669,7 +676,7 @@
                                     <div class="form-group row">
                                         <label for="" class="col-sm-3 col-form-label">Sales</label>
                                         <div class="col-sm-7">
-                                            <select class="form-control " required name="fc_salesid">
+                                            <select class="form-control " required name="fc_salesid_edit">
                                                 <option value="">Pilih </option>
                                                 <?php $i = 1;
                                                 foreach ($sales as $s) : ?>
@@ -729,6 +736,12 @@
                                                 <option value="1">Baru</option>
                                                 <option value="2">Bekas</option>
                                             </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="" class="col-sm-3 col-form-label">Stok</label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="fn_stock_edit" class="form-control" placeholder="Stok">
                                         </div>
                                     </div>
                                 </div>
@@ -995,6 +1008,7 @@
                         $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
                         $('[name="f_foto_edit"]').val(result.f_foto);
                         $('[name="fc_sts_edit"]').val(result.fc_sts);
+                        $('[name="fn_stock_edit"]').val(result.fn_stock);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Data Eror');
