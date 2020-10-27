@@ -71,19 +71,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             <th>Berat</th>
                                             <th>Ongkos</th>
                                             <th>Jumlah</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                         <tr>
-
                                             <td>Cincin</td>
                                             <td>10%</td>
                                             <td>1 gram</td>
                                             <td>10.000</td>
                                             <td>10.000</td>
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -94,9 +90,5 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
             </div><!-- /.row -->
         </div><!-- /.page-content -->
     </div>
-
-
 </div>
-
-
 <?php $this->load->view('partials/js.php') ?>

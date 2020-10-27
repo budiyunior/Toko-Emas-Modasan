@@ -206,7 +206,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                             <div>
                                 <label for="form-field-9">Berat</label>
-                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($berat['berat']) ?> Gram">
+                                <input type="text" class="form-control" readonly value="<?php echo number_format($berat['berat']) ?> Gram">
                             </div>
                         </form>
                     </div>
