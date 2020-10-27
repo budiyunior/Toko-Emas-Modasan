@@ -58,7 +58,7 @@ class C_barang extends CI_Controller
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
         //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        $data['barang'] = $this->M_barang->get_barang_all($config["per_page"], $data['page']);
+        $data['barang'] = $this->M_barang->list_barang($config["per_page"], $data['page']);
 
         $data['pagination'] = $this->pagination->create_links();
 

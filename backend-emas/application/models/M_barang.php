@@ -16,16 +16,11 @@ class M_barang extends CI_Model
 
     public function get_barang_all($limit, $start)
     {
-        // $kelompok = $this->input->get('fc_kdkelompok');
-        // $lokasi = $this->input->get('fc_kdlokasi');
-        // $sales = $this->input->get('fc_salesid');
-        // $array = array('fc_kdlokasi' => $lokasi, 'fc_kdkelompok' => $kelompok, 'fc_salesid' => $sales );
         $this->db->select('*');
         $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
         $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
         $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
         $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
-        //this->db->where($array);
         $query = $this->db->get('', $limit, $start);
         return $query->result();
     }
@@ -79,6 +74,7 @@ class M_barang extends CI_Model
         $this->fm_hargajual = $post['fm_hargajual'];
         $this->f_foto = $this->uploadImage();
         $this->fc_sts = $post['fc_sts'];
+        $this->fn_stock = $post['fn_stock'];
 
         $this->db->insert($this->tabel, $this);
     }
@@ -131,7 +127,7 @@ class M_barang extends CI_Model
             $this->f_foto = $post["f_foto_edit"];
         }
         $this->fc_sts = $post['fc_sts_edit'];
-
+        $this->fn_stock = $post['fn_stock_edit'];
         $this->db->update($this->tabel, $this, array('fn_id' => $post['fn_id_edit']));
     }
 
