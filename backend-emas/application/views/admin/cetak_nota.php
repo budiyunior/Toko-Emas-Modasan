@@ -17,9 +17,13 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         </h2>
                     </div>
                     <div class="col-xs-12 col-sm-4">
-                        <h2>
-                            M O D A S A N
+                        <h2 style="font-family: times new roman; font-size: 35px; font-style: bold;">
+                            - M O D A S A N -
                         </h2>
+                        <h5 style="font-family: times new roman; font-size: 15px; font-style: bold; margin-left: 20%;">
+                            Butik and Gold
+                        </h5>
+                        <p><i class="fa fa-home"></p>
                     </div>
                     <div class="col-xs-12 col-sm-3">
                     </div>
