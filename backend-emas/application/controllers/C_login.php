@@ -81,7 +81,8 @@ class C_Login extends CI_Controller
             if ($cekpass->num_rows() > 0) {
 
                 $data = [
-                    'fv_username' => $fv_username['fv_username'],
+					'fv_username' => $fv_username['fv_username'],
+					'fc_userid' => $admin['fc_userid'],
                     //'foto' => $pengguna['foto']
                 ];
                 $data['logged_in'] = TRUE;

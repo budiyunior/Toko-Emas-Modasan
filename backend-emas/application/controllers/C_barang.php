@@ -24,7 +24,14 @@ class C_barang extends CI_Controller
         $data['kelompok'] = $this->M_barang->get_kelompok();
         $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi'] = $this->M_barang->get_lokasi();
-        $data['lokasi2'] = $this->M_barang->get_lokasi();
+		$data['lokasi2'] = $this->M_barang->get_lokasi();
+		
+		// $fc_userid = $this->session->userdata('fc_userid');
+
+		// $r = $this->M_barang->getRole($fc_userid, 'r')->r;
+		// $c = $this->M_barang->getRole($fc_userid, 'c')->r;
+		// $u = $this->M_barang->getRole($fc_userid, 'u')->r;
+		// $d = $this->M_barang->getRole($fc_userid, 'd')->r;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_barang/index'); //site url
@@ -62,9 +69,11 @@ class C_barang extends CI_Controller
 
         $data['pagination'] = $this->pagination->create_links();
 
-        //load view pelanggan view
+		//load view pelanggan view
+		//if ($r == '1' || $c == '1' || $u == '1' || $d == '1') {
 
-        $this->load->view('admin/v_barang', $data);
+			$this->load->view('admin/v_barang', $data);
+		//}	
     }
 
 
