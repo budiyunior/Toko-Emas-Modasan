@@ -122,109 +122,6 @@
 
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
-<<<<<<< Updated upstream
-	<script type="text/javascript">
-		try {
-			ace.settings.check('main-container', 'fixed')
-		} catch (e) {}
-	</script>
-
-	<!-- #section:basics/sidebar.horizontal -->
-	<div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
-		<script type="text/javascript">
-			try {
-				ace.settings.check('sidebar', 'fixed')
-			} catch (e) {}
-		</script>
-		<ul class="nav nav-list">
-			<?php foreach ($menu as $me) : ?>
-				<li class="hover">
-					<a href="<?php echo base_url($me->link_menu);  ?>">
-						<i class="menu-icon <?= base_url($me->icon_class);  ?>"></i>
-						<span class="menu-text"> <?= $me->nama_menu ?></span>
-					</a>
-				</li>
-			<?php endforeach; ?>
-		</ul><!-- /.nav-list -->
-
-		<!-- #section:basics/sidebar.layout.minimize -->
-
-		<!-- /section:basics/sidebar.layout.minimize -->
-		<!-- /.nav-list -->
-
-		<!-- #section:basics/sidebar.layout.minimize -->
-
-		<!-- /section:basics/sidebar.layout.minimize -->
-		<script type="text/javascript">
-			try {
-				ace.settings.check('sidebar', 'collapsed')
-			} catch (e) {}
-		</script>
-
-	</div>
-
-	<!-- /section:basics/sidebar.horizontal -->
-	<div class="main-content">
-		<div class="main-content-inner">
-			<div class="page-content">
-				<div class="page-header">
-					<h2 style="color: #07A1C8;">
-						Penjualan
-
-					</h2>
-				</div><!-- /.page-header -->
-
-				<div class="row">
-					<div class="col-xs-12">
-						<!-- PAGE CONTENT BEGINS -->
-
-						<button type="button" data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-success"><i class="fa fa-print"> Penjualan</i></button>
-
-						<!-- Modal -->
-						<div class="modal fade" id="tampilPenjualan" tabindex="-1">
-							<div class="modal-dialog modal-lg" style='width: 1100px;'>
-								<div class="modal-content">
-									<div class="modal-header">
-										<h5 class="modal-title" id="exampleModalLabel">Penjualan</h5>
-									</div>
-									<div class="modal-body">
-										<form method='post' action='<?php echo base_url('C_penjualan/simpan_penjualan') ?>'>
-											<div class="row">
-												<div class="col-xs-12">
-
-													<div class="col-md-5">
-														<br>
-														<br>
-														<br>
-														<br>
-														<br>
-														<br>
-														<label for="inputPassword" class="col-form-label">Kode</label>
-														<div class="form-group row">
-
-
-														</div>
-													</div>
-													<div class="col-md-1 ">
-
-													</div>
-													<div class="col-md-6">
-														<div class="form-group row">
-															<label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
-															<div class="col-sm-8">
-																<input type="text" name="fc_noinv" class="form-control" id="no_nota" placeholder="">
-															</div>
-														</div>
-														<div class="form-group row">
-															<label for="inputPassword" class="col-sm-4 col-form-label">Tanggal</label>
-															<?php
-															$tgl = date("Y-m-d");
-															?>
-															<div class="col-sm-8">
-																<input type="text" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
-															</div>
-														</div>
-=======
     <script type="text/javascript">
         try {
             ace.settings.check('main-container', 'fixed')
@@ -391,7 +288,6 @@
                                                                 <input type="text" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
                                                             </div>
                                                         </div>
->>>>>>> Stashed changes
 														<div class="form-group row">
 															<label for="inputPassword" class="col-sm-4 col-form-label">Sales</label>
 															<div class="col-sm-8">
