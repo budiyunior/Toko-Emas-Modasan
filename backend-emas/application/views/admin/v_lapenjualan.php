@@ -102,81 +102,81 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                 ace.settings.check('sidebar', 'fixed')
             } catch (e) {}
         </script>
-       <ul class="nav nav-list">
-				<?php
-				$id_level=$this->session->userdata('fc_userid');
-				$main_menu=$this->db->join('mainmenu','mainmenu.idmenu=tab_akses_mainmenu.id_menu')
-									->where('tab_akses_mainmenu.fc_userid',$id_level)
-									->where('tab_akses_mainmenu.r','1')
-									->order_by('mainmenu.idmenu','asc')
-									->get('tab_akses_mainmenu')
-									->result();
-				foreach ($main_menu as $rs) {
-				?>
-				<?php
-				$row = $this->db->where('mainmenu_idmenu',$rs->idmenu)->get('submenu')->num_rows();
-					if($row>0){
-						$sub_menu=$this->db->join('submenu','submenu.id_sub=tab_akses_submenu.id_sub_menu')
-										   ->where('submenu.mainmenu_idmenu',$rs->idmenu)
-										   ->where('tab_akses_submenu.fc_userid',$id_level)
-										   ->where('tab_akses_submenu.r','1')
-										   ->get('tab_akses_submenu')
-										   ->result();
-				?>
+        <ul class="nav nav-list">
+            <?php
+            $id_level = $this->session->userdata('fc_userid');
+            $main_menu = $this->db->join('mainmenu', 'mainmenu.idmenu=tab_akses_mainmenu.id_menu')
+                ->where('tab_akses_mainmenu.fc_userid', $id_level)
+                ->where('tab_akses_mainmenu.r', '1')
+                ->order_by('mainmenu.idmenu', 'asc')
+                ->get('tab_akses_mainmenu')
+                ->result();
+            foreach ($main_menu as $rs) {
+            ?>
+                <?php
+                $row = $this->db->where('mainmenu_idmenu', $rs->idmenu)->get('submenu')->num_rows();
+                if ($row > 0) {
+                    $sub_menu = $this->db->join('submenu', 'submenu.id_sub=tab_akses_submenu.id_sub_menu')
+                        ->where('submenu.mainmenu_idmenu', $rs->idmenu)
+                        ->where('tab_akses_submenu.fc_userid', $id_level)
+                        ->where('tab_akses_submenu.r', '1')
+                        ->get('tab_akses_submenu')
+                        ->result();
+                ?>
 
-					<li class="hover">
-						<a class="dropdown-toggle">
-							<i class="menu-icon <?=$rs->icon_class?>"></i>
-							<span class="menu-text">
-								<?=$rs->nama_menu?>
-							</span>
+                    <li class="hover">
+                        <a class="dropdown-toggle">
+                            <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                            <span class="menu-text">
+                                <?= $rs->nama_menu ?>
+                            </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-						<b class="arrow"></b>
+                        <b class="arrow"></b>
 
-						<?php
-						echo "<ul class='submenu'>";
-						foreach ($sub_menu as $rsub){
-						?>
-							<li class="hover">
-								<a href="<?=base_url().$rsub->link_sub?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<?=$rsub->nama_sub?>
-								</a>
+                        <?php
+                        echo "<ul class='submenu'>";
+                        foreach ($sub_menu as $rsub) {
+                        ?>
+                    <li class="hover">
+                        <a href="<?= base_url() . $rsub->link_sub ?>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            <?= $rsub->nama_sub ?>
+                        </a>
 
-								<b class="arrow"></b>
-							</li>
+                        <b class="arrow"></b>
+                    </li>
 
 
-						<?php
-						}
-							echo "</ul>";
-						}else{ 
-						?>
-						</li>
-						<li class="hover">
-							<a href="<?=base_url().$rs->link_menu?>">
-								<i class="menu-icon <?=$rs->icon_class?>"></i>
-								<span class="menu-text"><?=$rs->nama_menu?> </span>
-							</a>
+                <?php
+                        }
+                        echo "</ul>";
+                    } else {
+                ?>
+                </li>
+                <li class="hover">
+                    <a href="<?= base_url() . $rs->link_menu ?>">
+                        <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                        <span class="menu-text"><?= $rs->nama_menu ?> </span>
+                    </a>
 
-							<b class="arrow"></b>
-						</li>
-						<?php
-						}
-						}
-						?>
-						<?php
-							if ($id_level==1){?>
-					
-						<?php
-						}
-						?>
-						
+                    <b class="arrow"></b>
+                </li>
+        <?php
+                    }
+                }
+        ?>
+        <?php
+        if ($id_level == 1) { ?>
 
-		</ul>
+        <?php
+        }
+        ?>
+
+
+        </ul>
 
         <!-- #section:basics/sidebar.layout.minimize -->
 
@@ -271,7 +271,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                             <div>
                                 <label for="form-field-9">Berat</label>
-                                <input type="text" class="form-control" readonly value="<?php echo number_format($berat['berat']) ?> Gram">
+                                <input type="text" class="form-control" readonly value="<?php echo number_format($berat['berat']) ?> gram">
                             </div>
                         </form>
                     </div>
@@ -316,7 +316,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                     <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
 
                                                     <td>
-                                                        <span class="label label-sm label-warning"><?php echo $lp['berat'] ?> Gram</span>
+                                                        <?php echo $lp['berat'] ?> gram
                                                     </td>
 
                                                 </tr>
