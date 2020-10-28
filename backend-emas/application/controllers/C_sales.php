@@ -11,7 +11,8 @@ class C_sales extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('M_menu');
-        $this->load->model('M_sales');
+		$this->load->model('M_sales');
+		$this->load->model('M_barang');
         $this->load->library('pagination');
     }
 

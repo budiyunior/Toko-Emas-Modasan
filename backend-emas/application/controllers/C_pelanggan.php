@@ -12,7 +12,8 @@ class C_pelanggan extends CI_Controller
         $this->load->library('pagination');
         $this->load->helper('form');
         $this->load->model('M_menu');
-        $this->load->model('M_pelanggan');
+		$this->load->model('M_pelanggan');
+		$this->load->model('M_barang');
     }
 
 

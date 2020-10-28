@@ -145,5 +145,22 @@ class M_barang extends CI_Model
         $this->fc_kdlokasi = $post['fc_kdlokasi'];
         $this->fv_nmlokasi = $post['fv_nmlokasi'];
         $this->db->insert($this->tblokasi, $this);
-    }
+	}
+	
+	public function getRole($id_admin, $spesifik, $idmenu)
+	{
+		$this->db->select($spesifik . ' as r');
+		$this->db->where('fc_userid', $id_admin);
+		$this->db->where('id_menu', $idmenu);
+		// $this->db->where('password', $password);
+		return $this->db->get('tab_akses_mainmenu')->result()[0];
+		//  var_dump($this->db->last_query());die;
+		//  return
+
+	}
+
+	public function getMenu($menu){
+		$this->db->where('link_menu', $menu);
+		return $this->db->get('mainmenu')->row();
+	}
 }
