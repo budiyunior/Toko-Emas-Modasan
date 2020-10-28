@@ -23,7 +23,14 @@ class C_pembelian extends CI_Controller
 
         $data['barang'] = $this->M_barang->get_barang();
         $data['faktur'] = $this->M_pembelian->get_faktur();
-        $data['pelanggan'] = $this->M_pembelian->get_pelanggan();
+		$data['pelanggan'] = $this->M_pembelian->get_pelanggan();
+		
+		$dateValue = date('Y-m-d');
+        $time = strtotime($dateValue);
+
+        $data['month'] = date("m", $time);
+        $data['day'] = date("d", $time);
+        $data['years'] = date("Y", $time);
 
         $this->load->view('admin/v_pembelian', $data);
     }
@@ -31,6 +38,12 @@ class C_pembelian extends CI_Controller
     public function tampil_faktur($id)
     {
         $data = $this->M_pembelian->get_by_id($id);
+        echo json_encode($data);
+	}
+	
+	public function tampil_faktur2($id)
+    {
+        $data = $this->M_pembelian->get_by_id2($id);
         echo json_encode($data);
     }
 
@@ -123,5 +136,51 @@ class C_pembelian extends CI_Controller
     {
         $data = $this->M_penjualan->get_by_barang($id);
         echo json_encode($data);
-    }
+	}
+	
+	public function get_list_penjualan(){
+		$data = $this->M_pembelian->get_list_penjualan();
+        echo json_encode($data);
+	}
+
+	public function get_list_penjualan_det($fc_noinv){
+		$data = $this->M_pembelian->get_list_penjualan_det($fc_noinv);
+        echo json_encode($data);
+	}
+
+	function simpan_pembelian(){
+		$data_pembelian = array(
+            'fc_nobeli'           => $this->input->post('no_faktur_penjualan'),
+            'fd_tglbeli'        => date('Y-m-d'),
+            'fc_noinv_lama'                  => $this->input->post('fc_noinv_view'), //$this->input->post('tanggal_penjualan'), 
+            'fc_kdpel'                  => $this->input->post('fc_kdpel_view'),
+            'fd_tglinput'             => date('Y-m-d'),
+            'fc_userid'               => '1',
+            'fm_subtot' => $this->input->post('SubTotalBayar2'),
+			'fm_total' => $this->input->post('TotalBayar2'),
+			'fm_pot' => $this->input->post('TotalPotongan'),
+			'fc_status'               => '1',
+		);
+		
+		$id_pembelian = $this->M_pembelian->insertdata($data_pembelian);
+
+		foreach ($this->input->post('Id') as $key => $value) {
+            $data_detail_pembelian = array(
+                'fc_nobeli' =>  $this->input->post('no_faktur_penjualan'),
+                'fc_kdstock'      => $_POST['kode_stok'][$key],
+                'fn_berat'             => $_POST['berat_emas'][$key],
+                'f_kadar' => $_POST['kadar_emas'][$key],
+                'fm_hargalama' => $_POST['hargalama'][$key],
+                'fv_kondisi'     => $_POST['kondisi'][$key],
+				'fm_potongan'        => $_POST['potongan'][$key],
+				'fm_hargabeli'        => $_POST['hargabeli'][$key],
+            );
+
+            $id_pembelian_detail = $this->M_pembelian->insertdata_detail($data_detail_pembelian);
+        }
+        echo "<script>
+		alert('Transaksi berhasil di simpan !!');
+		window.history.back();
+		</script>";
+	}
 }
