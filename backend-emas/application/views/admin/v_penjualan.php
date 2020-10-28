@@ -1,4 +1,5 @@
 <?php $this->load->view('partials/header.php') ?>
+
 <!-- <link href="<?php echo base_url('assets') ?>/table/bootstrap-table.css" rel="stylesheet">
 <script src="<?php echo base_url('assets') ?>/table/bootstrap-table.js"></script> -->
 <script src="<?php echo base_url('assets') ?>/assets/js/sprintf.js"></script>
@@ -1420,3 +1421,4 @@
 </script>
 <?php $this->load->view('partials/footer.php') ?>
 <?php $this->load->view('partials/js.php') ?>
+

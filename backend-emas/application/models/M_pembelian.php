@@ -27,6 +27,13 @@ class M_pembelian extends CI_Model
     {
         $this->db->where('fc_kdpel', $id);
         return $this->db->get('tm_pelanggan')->row();
+	}
+	
+	public function get_by_id2($id)
+    {
+		$this->db->where('fc_noinv', $id);
+		$this->db->join('tm_pelanggan','tm_invoice.fc_kdpel=tm_pelanggan.fc_kdpel','left outer');
+        return $this->db->get('tm_invoice')->row();
     }
 
     public function get_by_barang($id)
@@ -65,7 +72,7 @@ class M_pembelian extends CI_Model
 
     function where_max_nota()
     {
-        return $this->db->query('SELECT fc_noinv AS maxs FROM tm_invoice order by fc_noinv desc limit 1 ');
+        return $this->db->query('SELECT fc_nobeli AS maxs FROM t_belimst order by fc_nobeli desc limit 1 ');
     }
 
     function get_sales()
@@ -83,5 +90,39 @@ class M_pembelian extends CI_Model
     {
         $this->db->insert('td_invoice', $where);
         return $this->db->insert_id();
-    }
+	}
+	
+	function get_list_penjualan(){
+		$this->db->select('a.fc_noinv');
+		$this->db->select('DATE_FORMAT(a.fd_tglinv, "%d-%m-%Y") as tanggal');
+		$this->db->select('b.fv_nmpelanggan');
+		$this->db->select('a.fm_grandtotal');
+		$this->db->select('a.fc_sts');
+		$this->db->join('tm_pelanggan b','a.fc_kdpel=b.fc_kdpel','left outer');
+		$this->db->where('a.fc_sts',1);
+		return $this->db->get('tm_invoice a')->result();
+	}
+
+	function get_list_penjualan_det($fc_noinv){
+		$this->db->select('a.fc_noinv');
+		$this->db->select('a.fc_kdstock');
+		$this->db->select('b.fv_nmbarang');
+		$this->db->select('a.fn_berat');
+		$this->db->select('a.ff_kadar');
+		$this->db->select('a.fm_price');
+		$this->db->select('a.Id');
+		$this->db->join('tm_stock b','a.fc_kdstock=b.fc_kdstock','left outer');
+		$this->db->where('a.fc_noinv',$fc_noinv);
+		return $this->db->get('td_invoice a')->result();
+	}
+
+	function insertdata($where){
+		$this->db->insert('t_belimst',$where);
+		return $this->db->insert_id();
+	}
+	
+	function insertdata_detail($where){
+		$this->db->insert('t_belidtl',$where);
+		return $this->db->insert_id();
+	}
 }

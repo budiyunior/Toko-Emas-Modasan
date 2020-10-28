@@ -22,6 +22,7 @@
     if ('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url() ?>assets/assets/js/jquery.mobile.custom.js'>" + "<" + "/script>");
 </script>
 <script src="<?php echo base_url() ?>assets/assets/js/bootstrap.js"></script>
+<script src="http://www.rsigondanglegi.com/laris/assets/table/bootstrap-table.js"></script>
 
 <script>
     function disable() {
