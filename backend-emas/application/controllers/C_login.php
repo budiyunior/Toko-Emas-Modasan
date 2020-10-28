@@ -81,8 +81,8 @@ class C_Login extends CI_Controller
             if ($cekpass->num_rows() > 0) {
 
                 $data = [
-					'fv_username' => $fv_username['fv_username'],
-					'fc_userid' => $admin['fc_userid'],
+                    'fv_username' => $fv_username['fv_username'],
+                    'fc_userid' => $admin['fc_userid'],
                     //'foto' => $pengguna['foto']
                 ];
                 $data['logged_in'] = TRUE;
@@ -101,5 +101,12 @@ class C_Login extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf username yang anda masukkan salah!</div>');
             redirect('C_Login');
         }
+    }
+
+    public function logout()
+    {
+        $this->session->unset_userdata('username');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah logout</div>');
+        redirect('C_login');
     }
 }

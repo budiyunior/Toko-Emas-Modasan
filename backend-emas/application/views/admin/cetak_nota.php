@@ -11,30 +11,23 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
             <!-- /section:settings.box -->
             <div class="page-header">
                 <div class="row">
-                    <div class="col-xs-12 col-sm-2">
-                        <h2>
-                            
-                        </h2>
-                    </div>
-                    <div class="col-xs-12 col-sm-4">
-                        <h2 style="font-family: times new roman; font-size: 35px; font-style: bold;">
+                    <div class="col-xs-1"></div>
+                    <div class="col-xs-6 col-sm-5">
+                        <br>
+                        <br>
+                        <a style="font-family: times new roman; font-size: 35px; font-style: bold;">
+                            <img src="../../backend-emas/assets/img/logo_modasan.png" width="70" />
                             - M O D A S A N -
-                        </h2>
-                        <h5 style="font-family: times new roman; font-size: 15px; font-style: bold; margin-left: 20%;">
-                            Butik and Gold
-                        </h5>
-                        <p><i class="fa fa-home"></p>
+                        </a>
                     </div>
-                    <div class="col-xs-12 col-sm-3">
-                    </div>
-                    <div class="col-sm-6">
+                    <div class=" col-xs-4 col-sm-6">
                         <div class="">
                             <form>
                                 <div class="row">
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nama</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" class=" col-sm-5" />
                                     </div>
                                 </div>
                                 <br>
@@ -42,7 +35,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Alamat</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" class="col-xs-7 col-sm-5" />
                                     </div>
                                 </div>
                                 <br>
@@ -50,7 +43,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">No. Telp</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class="col-xs-10 col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" class=" col-sm-5" />
                                     </div>
                                 </div>
                             </form>
@@ -83,12 +76,31 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         </tr>
                                     </tbody>
                                 </table>
+
+                            </div>
+
+                            <label class="col-xs-1 control-label no-padding-right" for="form-field-1">Terbilang</label>
+
+                            <div class="col-xs-8">
+                                <input type="text" id="form-field-1" placeholder="" class="col-xs-11" />
+                            </div>
+                            <div class="col-xs-3">
+                                <label for="">Total</label>
+                                <input type="text" id="form-field-1" class="no-padding-right" placeholder="" />
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div><!-- /.row -->
         </div><!-- /.page-content -->
     </div>
+
+
 </div>
+<script>
+    window.print()
+</script>
+
+
 <?php $this->load->view('partials/js.php') ?>
