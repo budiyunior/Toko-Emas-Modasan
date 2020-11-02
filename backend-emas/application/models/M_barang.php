@@ -53,6 +53,9 @@ class M_barang extends CI_Model
 
     public function list_barang($limit, $start)
     {
+        // $kadar = $this->input->post('fc_kadar');
+        // $kelompok = $this->input->post('fc_kdkelompok');
+        // $lokasi = $this->input->post('fc_kdlokasi');
         $query = $this->db->get('tm_stock', $limit, $start);
         return $query->result();
     }
@@ -145,22 +148,93 @@ class M_barang extends CI_Model
         $this->fc_kdlokasi = $post['fc_kdlokasi'];
         $this->fv_nmlokasi = $post['fv_nmlokasi'];
         $this->db->insert($this->tblokasi, $this);
-	}
-	
-	public function getRole($id_admin, $spesifik, $idmenu)
-	{
-		$this->db->select($spesifik . ' as r');
-		$this->db->where('fc_userid', $id_admin);
-		$this->db->where('id_menu', $idmenu);
-		// $this->db->where('password', $password);
-		return $this->db->get('tab_akses_mainmenu')->result()[0];
-		//  var_dump($this->db->last_query());die;
-		//  return
+    }
 
-	}
+    public function getRole($id_admin, $spesifik, $idmenu)
+    {
+        $this->db->select($spesifik . ' as r');
+        $this->db->where('fc_userid', $id_admin);
+        $this->db->where('id_menu', $idmenu);
+        // $this->db->where('password', $password);
+        return $this->db->get('tab_akses_mainmenu')->result()[0];
+        //  var_dump($this->db->last_query());die;
+        //  return
 
-	public function getMenu($menu){
-		$this->db->where('link_menu', $menu);
-		return $this->db->get('mainmenu')->row();
-	}
+    }
+    public function filter($limit, $start)
+    {
+        $kadar = $this->input->get('fc_kadar');
+        if ($kadar) {
+            $this->db->where('fc_kadar', $kadar);
+        }
+        $kelompok = $this->input->get('fc_kdkelompok');
+        if ($kelompok) {
+            $this->db->where('fc_kdkelompok', $kelompok);
+        }
+        $lokasi = $this->input->get('fc_kdlokasi');
+        if ($lokasi) {
+            $this->db->where('fc_kdlokasi', $lokasi);
+        }
+        return $this->db->get('tm_stock', $limit, $start)->result();
+        // $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
+        // return $query->result();
+    }
+
+    // public function filter2($limit, $start)
+    // {
+    //     if ($kadar = $this->input->get('fc_kadar')) {
+    //         $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar), $limit, $start);
+    //         return $query->result();
+    //     } else {
+    //         $query = $this->db->get('tm_stock', $limit, $start);
+    //         return $query->result();
+    //     }
+    //     if ($kelompok = $this->input->get('fc_kdkelompok')) {
+    //         $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
+    //         return $query->result();
+    //     } else {
+    //         $query = $this->db->get('tm_stock', $limit, $start);
+    //         return $query->result();
+    //     }
+    //     if ($kelompok = $this->input->get('fc_kdkelompok')) {
+    //         $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
+    //         return $query->result();
+    //     } else {
+    //         $query = $this->db->get('tm_stock', $limit, $start);
+    //         return $query->result();
+    //     }
+    //     $kadar = $this->input->get('fc_kadar');
+    //     $kelompok = $this->input->get('fc_kdkelompok');
+    //     $lokasi = $this->input->get('fc_kdlokasi');
+    //     $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
+    //     return $query->result();
+    // }
+
+    // public function filter3($limit, $start)
+    // {
+    //     if ($kelompok = $this->input->get('fc_kdkelompok')) {
+    //         $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
+    //         return $query->result();
+    //     } else {
+    //         $query = $this->db->get('tm_stock', $limit, $start);
+    //         return $query->result();
+    //     }
+    // }
+
+    // public function filter4($limit, $start)
+    // {
+    //     if ($lokasi = $this->input->get('fc_kdlokasi')) {
+    //         $query = $this->db->get_where('tm_stock', array('fc_kdlokasi' => $lokasi), $limit, $start);
+    //         return $query->result();
+    //     } else {
+    //         $query = $this->db->get('tm_stock', $limit, $start);
+    //         return $query->result();
+    //     }
+    // }
+
+    public function getMenu($menu)
+    {
+        $this->db->where('link_menu', $menu);
+        return $this->db->get('mainmenu')->row();
+    }
 }

@@ -24,14 +24,14 @@ class C_barang extends CI_Controller
         $data['kelompok'] = $this->M_barang->get_kelompok();
         $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi'] = $this->M_barang->get_lokasi();
-		$data['lokasi2'] = $this->M_barang->get_lokasi();
-		
-		// $fc_userid = $this->session->userdata('fc_userid');
+        $data['lokasi2'] = $this->M_barang->get_lokasi();
 
-		// $r = $this->M_barang->getRole($fc_userid, 'r')->r;
-		// $c = $this->M_barang->getRole($fc_userid, 'c')->r;
-		// $u = $this->M_barang->getRole($fc_userid, 'u')->r;
-		// $d = $this->M_barang->getRole($fc_userid, 'd')->r;
+        // $fc_userid = $this->session->userdata('fc_userid');
+
+        // $r = $this->M_barang->getRole($fc_userid, 'r')->r;
+        // $c = $this->M_barang->getRole($fc_userid, 'c')->r;
+        // $u = $this->M_barang->getRole($fc_userid, 'u')->r;
+        // $d = $this->M_barang->getRole($fc_userid, 'd')->r;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_barang/index'); //site url
@@ -69,11 +69,12 @@ class C_barang extends CI_Controller
 
         $data['pagination'] = $this->pagination->create_links();
 
-		//load view pelanggan view
-		//if ($r == '1' || $c == '1' || $u == '1' || $d == '1') {
 
-			$this->load->view('admin/v_barang', $data);
-		//}	
+        //load view pelanggan view
+        //if ($r == '1' || $c == '1' || $u == '1' || $d == '1') {
+
+        $this->load->view('admin/v_barang', $data);
+        //}	
     }
 
 
@@ -165,7 +166,57 @@ class C_barang extends CI_Controller
         </script>"; //Url tujuan
     }
 
+
     public function filter()
     {
+        $data['title'] = "Barang";
+        $data['menu'] = $this->M_menu->get_menu();
+        $data['barang'] = $this->M_barang->get_barang();
+        $data['sales'] = $this->M_barang->get_sales();
+        $data['sales2'] = $this->M_barang->get_sales();
+        $data['kelompok'] = $this->M_barang->get_kelompok();
+        $data['kelompok2'] = $this->M_barang->get_kelompok();
+        $data['lokasi'] = $this->M_barang->get_lokasi();
+        $data['lokasi2'] = $this->M_barang->get_lokasi();
+
+        
+        //konfigurasi pagination
+        $config['base_url'] = site_url('C_barang/index'); //site url
+        $config['total_rows'] = $this->db->count_all('tm_stock'); //total row
+        $config['per_page'] = 10;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        // Membuat Style pagination dengan Bootstrap
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
+        $data['barang'] = $this->M_barang->filter($config["per_page"], $data['page']);
+        // $data['barang'] = $this->M_barang->filter2($config["per_page"], $data['page']);
+        // $data['barang'] = $this->M_barang->filter3($config["per_page"], $data['page']);
+        // $data['barang'] = $this->M_barang->filter4($config["per_page"], $data['page']);
+        $data['pagination'] = $this->pagination->create_links();
+        $this->load->view('admin/v_barang', $data);
     }
 }
