@@ -100,80 +100,80 @@
             } catch (e) {}
         </script>
         <ul class="nav nav-list">
-				<?php
-				$id_level=$this->session->userdata('fc_userid');
-				$main_menu=$this->db->join('mainmenu','mainmenu.idmenu=tab_akses_mainmenu.id_menu')
-									->where('tab_akses_mainmenu.fc_userid',$id_level)
-									->where('tab_akses_mainmenu.r','1')
-									->order_by('mainmenu.idmenu','asc')
-									->get('tab_akses_mainmenu')
-									->result();
-				foreach ($main_menu as $rs) {
-				?>
-				<?php
-				$row = $this->db->where('mainmenu_idmenu',$rs->idmenu)->get('submenu')->num_rows();
-					if($row>0){
-						$sub_menu=$this->db->join('submenu','submenu.id_sub=tab_akses_submenu.id_sub_menu')
-										   ->where('submenu.mainmenu_idmenu',$rs->idmenu)
-										   ->where('tab_akses_submenu.fc_userid',$id_level)
-										   ->where('tab_akses_submenu.r','1')
-										   ->get('tab_akses_submenu')
-										   ->result();
-				?>
+            <?php
+            $id_level = $this->session->userdata('fc_userid');
+            $main_menu = $this->db->join('mainmenu', 'mainmenu.idmenu=tab_akses_mainmenu.id_menu')
+                ->where('tab_akses_mainmenu.fc_userid', $id_level)
+                ->where('tab_akses_mainmenu.r', '1')
+                ->order_by('mainmenu.idmenu', 'asc')
+                ->get('tab_akses_mainmenu')
+                ->result();
+            foreach ($main_menu as $rs) {
+            ?>
+                <?php
+                $row = $this->db->where('mainmenu_idmenu', $rs->idmenu)->get('submenu')->num_rows();
+                if ($row > 0) {
+                    $sub_menu = $this->db->join('submenu', 'submenu.id_sub=tab_akses_submenu.id_sub_menu')
+                        ->where('submenu.mainmenu_idmenu', $rs->idmenu)
+                        ->where('tab_akses_submenu.fc_userid', $id_level)
+                        ->where('tab_akses_submenu.r', '1')
+                        ->get('tab_akses_submenu')
+                        ->result();
+                ?>
 
-					<li class="hover">
-						<a class="dropdown-toggle">
-							<i class="menu-icon <?=$rs->icon_class?>"></i>
-							<span class="menu-text">
-								<?=$rs->nama_menu?>
-							</span>
+                    <li class="hover">
+                        <a class="dropdown-toggle">
+                            <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                            <span class="menu-text">
+                                <?= $rs->nama_menu ?>
+                            </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-						<b class="arrow"></b>
+                        <b class="arrow"></b>
 
-						<?php
-						echo "<ul class='submenu'>";
-						foreach ($sub_menu as $rsub){
-						?>
-							<li class="hover">
-								<a href="<?=base_url().$rsub->link_sub?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<?=$rsub->nama_sub?>
-								</a>
+                        <?php
+                        echo "<ul class='submenu'>";
+                        foreach ($sub_menu as $rsub) {
+                        ?>
+                    <li class="hover">
+                        <a href="<?= base_url() . $rsub->link_sub ?>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            <?= $rsub->nama_sub ?>
+                        </a>
 
-								<b class="arrow"></b>
-							</li>
+                        <b class="arrow"></b>
+                    </li>
 
 
-						<?php
-						}
-							echo "</ul>";
-						}else{ 
-						?>
-						</li>
-						<li class="hover">
-							<a href="<?=base_url().$rs->link_menu?>">
-								<i class="menu-icon <?=$rs->icon_class?>"></i>
-								<span class="menu-text"><?=$rs->nama_menu?> </span>
-							</a>
+                <?php
+                        }
+                        echo "</ul>";
+                    } else {
+                ?>
+                </li>
+                <li class="hover">
+                    <a href="<?= base_url() . $rs->link_menu ?>">
+                        <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                        <span class="menu-text"><?= $rs->nama_menu ?> </span>
+                    </a>
 
-							<b class="arrow"></b>
-						</li>
-						<?php
-						}
-						}
-						?>
-						<?php
-							if ($id_level==1){?>
-					
-						<?php
-						}
-						?>
-						
+                    <b class="arrow"></b>
+                </li>
+        <?php
+                    }
+                }
+        ?>
+        <?php
+        if ($id_level == 1) { ?>
 
-		</ul>
+        <?php
+        }
+        ?>
+
+
+        </ul>
 
         <!-- #section:basics/sidebar.layout.minimize -->
 
@@ -319,11 +319,12 @@
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input type="password" id="pw1" class="form-control" name="">
+                                            <input type="password" id="password" class="form-control" onkeyup='check();' name="password">
                                         </div>
                                         <div class="form-group">
                                             <label>Ulangi Password</label>
-                                            <input type="password" id="pw2" class="form-control" name="">
+                                            <input type="password" id="confirm_password" class="form-control" onkeyup='check();' name="confirm_password">
+                                            <span id="message"></span>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
@@ -399,18 +400,17 @@
         }
     });
 
-    window.onload = function() {
-        document.getElementById("pw1").onchange = validatePassword;
-        document.getElementById("pw2").onchange = validatePassword;
-    }
 
-    function validatePassword() {
-        var pass2 = document.getElementById("pw2").value;
-        var pass1 = document.getElementById("pw1").value;
-        if (pass1 != pass2)
-            document.getElementById("pw2").setCustomValidity("Passwords Tidak Sama, Coba Lagi");
-        else
-            document.getElementById("pw2").setCustomValidity('');
+
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+            document.getElementById('message').innerHTML = 'matching';
+        } else {
+            document.getElementById('message').style.color = 'red';
+            document.getElementById('message').innerHTML = 'not matching';
+        }
     }
 </script>
 
