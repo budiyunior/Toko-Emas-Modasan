@@ -60,6 +60,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <thead>
                                         <tr>
                                             <th>Jenis Barang</th>
+                                            <th>Gambar</th>
                                             <th>Kadar</th>
                                             <th>Berat</th>
                                             <th>Ongkos</th>
@@ -69,6 +70,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <tbody>
                                         <tr>
                                             <td>Cincin</td>
+                                            <td></td>
                                             <td>10%</td>
                                             <td>1 gram</td>
                                             <td>10.000</td>

@@ -262,7 +262,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Pembelian</h5>
+                                        <h3 class="modal-title" id="exampleModalLabel">Pembelian</h3>
                                     </div>
                                     <div class="modal-body">
 									<form method='post' action='<?php echo base_url('C_pembelian/simpan_pembelian')?>'>

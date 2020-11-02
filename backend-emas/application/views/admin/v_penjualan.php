@@ -244,7 +244,7 @@
                             <div class="modal-dialog modal-lg" style='width: 1100px;'>
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Penjualan</h5>
+                                        <h3 class="modal-title" id="exampleModalLabel">Penjualan</h3>
                                     </div>
                                     <div class="modal-body">
 									<form method='post' action='<?php echo base_url('C_penjualan/simpan_penjualan')?>'>
@@ -258,7 +258,6 @@
                                                         <br>
                                                         <br>
                                                         <br>
-                                                        <label for="inputPassword" class="col-form-label">Kode</label>
                                                         <div class="form-group row">
 
 

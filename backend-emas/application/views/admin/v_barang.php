@@ -296,7 +296,6 @@
                                         <th scope="col">Sales</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
-                                        <th scope="col">Stok</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -318,7 +317,6 @@
                                             <td scope="row"><?= $s->fc_salesid ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
-                                            <td scope="row"><?= $s->fn_stock ?></td>
                                         </tr>
                                     <?php endforeach; ?>
                                 </tbody>
@@ -452,8 +450,8 @@
                                                     <div class="col-sm-7">
                                                         <select class="form-control" name="fc_kadar">
                                                             <option value="">Pilih </option>
-                                                            <option value="10">10</option>
-                                                            <option value="50">50</option>
+                                                            <option value="40">40</option>
+                                                            <option value="70">70</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -802,8 +800,8 @@
                                         <div class="col-sm-7">
                                             <select class="form-control" required name="fc_kadar_edit">
                                                 <option>Pilih </option>
-                                                <option value="10">10</option>
-                                                <option value="50">50</option>
+                                                <option value="40">40</option>
+                                                <option value="70">70</option>
                                             </select>
                                         </div>
                                     </div>
