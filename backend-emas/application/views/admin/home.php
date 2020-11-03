@@ -104,7 +104,8 @@
                 ->where('tab_akses_mainmenu.r', '1')
                 ->order_by('mainmenu.idmenu', 'asc')
                 ->get('tab_akses_mainmenu')
-                ->result();
+				->result();
+		//	print_r($this->db->last_query());		
             foreach ($main_menu as $rs) {
             ?>
                 <?php

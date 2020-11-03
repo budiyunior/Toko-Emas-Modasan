@@ -215,12 +215,13 @@
                                                 <input type="checkbox" id="check-all" />
                                             </th>
                                             <th>No</th>
-                                            <th>Nama</th>
+                                            <th>Kode User</th>
                                             <th>Username</th>
                                         </tr>
                                         </tr>
                                     </thead>
                                     <tbody>
+										<?php echo form_open('C_pengaturan/delete'); ?>
                                         <?php $no = $this->uri->segment('3') + 1; ?>
                                         <?php foreach ($pengaturan as $u) : ?>
                                             <tr>
@@ -228,8 +229,8 @@
                                                     <input type="checkbox" class="check-item" id="user" name="fc_userid[]" value="<?php echo $u->fc_userid ?>">
                                                 </td>
                                                 <td><?= $no++ ?></td>
+                                                <td><?= $u->fc_userid ?></td>
                                                 <td><?= $u->fv_username ?></td>
-                                                <td><?= $u->fc_kdposisi ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -243,60 +244,132 @@
                                 </i>
                             </a>
 
-                            <a href="#" data-toggle="modal" data-target="#exampleModal2" class="btn btn-success">
+                            <button type="button" class="btn btn-success update">
                                 <i class="fa fa-edit">
                                     Edit
                                 </i>
-                            </a>
-                            <a href="#" class="btn btn-danger">
-                                <i class="fa fa-trash">
-                                    Hapus
-                                </i>
-                            </a>
+                            </button>
+							<button type="submit" class="btn btn-danger" onclick="return confirm(' Anda Yakin Menghapus Data Admin ?')"><i class="fa fa-trash"></i> Hapus</button>
+							<?= form_close(); ?>
                         </div>
+						
                     </div>
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <form action="" enctype="multipart/form-data" method="post">
+                        <div class="modal-dialog" style="width: 664px;">
+							<form name="form_data" method="post" id="form_data" action="">
                                 <div class="modal-content">
                                     <div class="modal-body">
-                                        <h5>Tambah Data Operator</h5>
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" name="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" class="form-control" name="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Ulangi Password</label>
-                                            <input type="password" class="form-control" name="">
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Jendela Barang
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Tambah
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Edit
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Hapus
-                                            </label>
-                                        </div>
+										<div class="row">
+										<div class="widget-box">	
+                                        <!-- <h5>Tambah Data Operator</h5> -->
+											<div class="widget-header">
+													<h4 class="widget-title">Data Operator</h4>
+
+													<div class="widget-toolbar">
+														<a href="#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-up"></i>
+														</a>
+
+														<a href="#" data-action="close">
+															<i class="ace-icon fa fa-times"></i>
+														</a>
+													</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main">
+													<div class="form-group">
+														<label>Kode User</label>
+														<input type="text" class="form-control" name="fc_userid" value="<?php echo $nota?>">
+													</div>
+													<div class="form-group">
+														<label>Username</label>
+														<input type="text" class="form-control" name="username">
+													</div>
+													<div class="form-group">
+														<label>Password</label>
+														<input type="password" class="form-control" name="password" id="password">
+													</div>
+													<div class="form-group">
+														<label>Ulangi Password</label>
+														<input type="password" class="form-control" name="ulangi_password" id="ulangi_password" onkeyup='cek_password(this.value)'>
+													</div>
+													<div class='form-group'>
+														
+														<div class='md-form' id='dur_pass4' style='margin: -13px;'>	
+															<label class='btn_2 rounded' for='inputSuccess' id='erpr4' style='display: none;'><i class='fa fa-times label-danger'></i>Password Tidak Sama</label>
+															<label class='btn_1 rounded' for='inputError'  id='scpr4' style='display: none;'><i class='fa fa-check label-success'></i>Password Sama</label>
+														</div>
+														
+													</div>
+												</div>	
+											</div>	
+										</div>
+										<?php
+											// if($data==true)
+											// {
+											  $no=1;$i=0;$j=0;
+											  foreach ($data as $tampil){
+												if (isset($tampil->id_level)) {
+														if ($tampil->c==1) $cek_c="checked"; else $cek_c="";
+														if ($tampil->r==1) $cek_r="checked"; else $cek_r="";
+														if ($tampil->u==1) $cek_u="checked"; else $cek_u="";
+														if ($tampil->d==1) $cek_d="checked"; else $cek_d="";
+														//$submenu=$this->db->join('submenu','submenu.id_sub=tab_akses_submenu.id_sub_menu')->where('submenu.mainmenu_idmenu',$tampil->idmenu)->where('tab_akses_submenu.id_level',$tampil->id_level)->get('tab_akses_submenu')->result();
+														//print_r($this->db->last_query());
+												} 
+												else 
+												{
+													// $submenu=$this->db->where('submenu.mainmenu_idmenu',@$tampil->idmenu)
+													// 		->get('submenu')->result();
+													$cek="";
+										
+														// anwar
+														$cek_c="";
+														$cek_r="";
+														$cek_u="";
+														$cek_d="";
+												}
+
+											echo "
+											
+												<div class='col-md-4'>
+												<div class='alert alert-info'>
+												<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_read_menu[$i] id=cb_read_menu[$i] value='1' $cek_r>
+													<label class='form-check-label' for='defaultCheck1'>
+														Jendela $tampil->nama_menu
+													</label>
+												</div>
+												<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_create_menu[$i] id=cb_create_menu[$i] value='1' $cek_c>
+													<label class='form-check-label' for='defaultCheck1'>
+														Tambah
+													</label>
+												</div>
+												<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_update_menu[$i] id=cb_update_menu[$i] value='1' $cek_u>
+													<label class='form-check-label' for='defaultCheck1'>
+														Edit
+													</label>
+												</div>
+												<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_delete_menu[$i] id=cb_delete_menu[$i] value='1' $cek_d>
+													<label class='form-check-label' for='defaultCheck1'>
+														Hapus
+													</label>
+												</div>
+												</div>
+												</div>
+											
+												
+											";	
+											
+										
+											$i++;
+										}	
+										?>
+												
+										</div>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"> Close</i></button>
@@ -307,11 +380,12 @@
                             </form>
                         </div>
                     </div>
-                    <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <form action="" enctype="multipart/form-data" method="post">
+                    <div class="modal fade" id="modalupdate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" style="width: 664px;">
+							<form name="form_data" method="post" id="form_data" action="">
                                 <div class="modal-content">
                                     <div class="modal-body">
+<<<<<<< Updated upstream
                                         <h5>Edit Data Operator</h5>
                                         <div class="form-group">
                                             <label>Nama</label>
@@ -351,6 +425,56 @@
                                             </label>
                                         </div>
                                     </div>
+=======
+									<div class="row">
+										<div class="widget-box">	
+                                        <!-- <h5>Tambah Data Operator</h5> -->
+											<div class="widget-header">
+													<h4 class="widget-title">Data Operator</h4>
+
+													<div class="widget-toolbar">
+														<a href="#" data-action="collapse">
+															<i class="ace-icon fa fa-chevron-up"></i>
+														</a>
+
+														<a href="#" data-action="close">
+															<i class="ace-icon fa fa-times"></i>
+														</a>
+													</div>
+											</div>
+											<div class="widget-body">
+												<div class="widget-main">
+													<div class="form-group">
+														<label>Kode User</label>
+														<input type="text" class="form-control" name="fc_userid" id="fc_userid">
+													</div>
+													<div class="form-group">
+														<label>Username</label>
+														<input type="text" class="form-control" name="fv_username">
+													</div>
+													<div class="form-group">
+														<label>Password</label>
+														<input type="password" class="form-control" name="fv_password" id="password">
+													</div>
+													<div class="form-group">
+														<label>Ulangi Password</label>
+														<input type="password" class="form-control" name="ulangi_password" id="ulangi_password" onkeyup='cek_password(this.value)'>
+													</div>
+													<div class='form-group'>
+														
+														<div class='md-form' id='dur_pass4' style='margin: -13px;'>	
+															<label class='btn_2 rounded' for='inputSuccess' id='erpr4' style='display: none;'><i class='fa fa-times label-danger'></i>Password Tidak Sama</label>
+															<label class='btn_1 rounded' for='inputError'  id='scpr4' style='display: none;'><i class='fa fa-check label-success'></i>Password Sama</label>
+														</div>
+														
+													</div>
+												</div>	
+											</div>	
+										</div>
+										<div id='mainmenu_id'></div>
+										</div>
+									</div>	
+>>>>>>> Stashed changes
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"> Close</i></button>
                                         <button type="submit" class="btn btn-primary" value="cek"><i class="fa fa-save">Simpan</i></button>
@@ -361,27 +485,34 @@
                     </div>
                 </div>
                 <div class="row">
+				<form id="form-upload" class="form-horizontal" role="form" action="<?= site_url('C_pengaturan/update_setup')?>" method="POST" enctype="multipart/form-data">
                     <div class="col-md-4" style="margin-top: 20px;">
                         <h5>Data Toko</h5>
-                        <form>
+                      
                             <div class="form-group">
                                 <label>Nama Toko</label>
-                                <input type="text" class="form-control" placeholder="Nama Toko...">
+                                <input type="text" class="form-control" placeholder="Nama Toko..." id="nama_toko" name="nama_toko">
                             </div>
                             <div class="form-group">
                                 <label>Alamat</label>
-                                <input type="text" class="form-control" placeholder="Alamat...">
+                                <input type="text" class="form-control" placeholder="Alamat..." id="alamat_toko" name="alamat_toko">
                             </div>
                             <div class="form-group">
                                 <label>Telp</label>
-                                <input type="text" class="form-control" placeholder="Telp...">
+                                <input type="text" class="form-control" placeholder="Telp..." id="telp_toko" name="telp_toko">
                             </div>
-                        </form>
+                       
                     </div>
                     <div class="col-md-4" style="margin-top: 40px; margin-left: 20px;">
-                        <img src="../../assets/assets/img/php.png" width="200" height="100">
+					
+					<img id="preview-upload1" src="#" style="height: 100px;border: 1px solid #DDC; " /><br /><br />
+					<input type="file" name="file-upload1" id="file-upload1">
+					<span class="help-block"></span>
+					<div class="input-group-btn">
+						<button type="submit" class="btn btn-primary">Upload</button>
+					</div>
                     </div>
-                    </form>
+                </form>   
                 </div>
                 <!-- /.page-header -->
             </div><!-- /.page-content -->
@@ -398,8 +529,118 @@
         } else {
             $('.action-update').prop('disabled', true);
         }
+	});
+
+	$(document).ready(function(){
+	  ubah();
+
+	  
+      function readURL1(input) {
+			if (input.files && input.files[0]) {
+				var rd = new FileReader(); 
+				rd.onload = function (e) { $('#preview-upload1').attr('src', e.target.result); }; rd.readAsDataURL(input.files[0]);
+			}
+	  }
+	  $("#file-upload1").change(function(){ readURL1(this); });
+	})  
+	
+	$('.update').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+                // jQuery.noConflict();
+                $('#modalupdate').modal('show');
+                $.ajax({
+                    url: "<?php echo base_url('C_pengaturan/edit/') ?>" + checkedValue,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('#fc_userid').val(result.fc_userid);
+                        $('[name="fv_username"]').val(result.fv_username);
+                        $('[name="fv_password"]').val(result.fv_view_password);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+				})
+				
+				$.getJSON('<?php echo base_url()?>C_pengaturan/get_mainmenu/'+checkedValue, {
+					format: "json"
+				})
+				.done(function (datae) {
+					var mainmenu = "";
+					var i = 0;
+					$.each(datae, function (key, val) {
+						if(val.c==1){
+							var cek_c = 'checked';
+						}else{
+							var cek_c = '';
+						}
+
+						if(val.r==1){
+							var cek_r = 'checked';
+						}else{
+							var cek_r = '';
+						}
+
+						if(val.u==1){
+							var cek_u = 'checked';
+						}else{
+							var cek_u = '';
+						}
+
+						if(val.d==1){
+							var cek_d = 'checked';
+						}else{
+							var cek_d = '';
+						}
+						mainmenu += `
+							<div class='col-md-4'>
+								 <div class='alert alert-info'>
+								 	<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_read_menu[`+i+`] id=cb_read_menu[`+i+`] value='1' `+cek_r+`>
+													<label class='form-check-label' for='defaultCheck1'>
+														Jendela `+val.nama_menu+`
+													</label>
+									</div>
+									<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_create_menu[`+i+`] id=cb_create_menu[`+i+`] value='1' `+cek_c+`>
+													<label class='form-check-label' for='defaultCheck1'>
+														Tambah
+													</label>
+									</div>
+									<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_update_menu[`+i+`] id=cb_update_menu[`+i+`] value='1' `+cek_u+`>
+													<label class='form-check-label' for='defaultCheck1'>
+														Edit
+													</label>
+									</div>
+									<div class='form-check'>
+													<input class='form-check-input' type='checkbox' name=cb_delete_menu[`+i+`] id=cb_delete_menu[`+i+`] value='1' `+cek_d+`>
+													<label class='form-check-label' for='defaultCheck1'>
+														Hapus
+													</label>
+									</div>
+								 </div>
+							</div>	 
+						`;
+
+						i++;
+					})
+					var get_menu = mainmenu;
+					document.getElementById('mainmenu_id').innerHTML = get_menu;	
+				})	
+
+                // $('input.check-item:checked').each(function() {
+                //     arr.push($(this).val());
+                // });
+
+                // var action = $(this).attr('data-href') + '/' + arr.join("-");
+                // window.location.href = action;
     });
 
+<<<<<<< Updated upstream
 
 
     var check = function() {
@@ -411,6 +652,66 @@
             document.getElementById('message').style.color = 'red';
             document.getElementById('message').innerHTML = 'not matching';
         }
+=======
+    // window.onload = function() {
+    //     document.getElementById("pw1").onchange = validatePassword;
+    //     document.getElementById("pw2").onchange = validatePassword;
+    // }
+
+    function validatePassword() {
+        var pass2 = document.getElementById("pw2").value;
+        var pass1 = document.getElementById("pw1").value;
+        if (pass1 != pass2)
+            document.getElementById("pw2").setCustomValidity("Passwords Tidak Sama, Coba Lagi");
+        else
+            document.getElementById("pw2").setCustomValidity('');
+	}
+	
+	function cek_password(value){
+		var password = document.getElementById("password").value;
+		var ulangi_password = value;
+
+		if(ulangi_password != password){
+			document.getElementById('erpr4').removeAttribute('style');
+
+			//$("#spassnext").attr('disabled','disabled');
+
+			$("#dur_pass4").attr('class','col-sm-10 has-error');
+
+			$("#scpr4").attr('style','display: none;');
+		}else{
+			
+
+			document.getElementById('scpr4').removeAttribute('style');
+
+			//document.getElementById('spassnext').removeAttribute('disabled');
+
+			$("#dur_pass4").attr('class','col-sm-10 has-success');
+
+			$("#erpr4").attr('style','display: none;');
+		}
+	}
+
+	function ubah() {
+		link_edit = "ajax_edit";
+        $.ajax({
+            url : "<?php echo base_url('C_pengaturan/ajax_edit')?>",
+            type: "GET",
+            dataType: "JSON",
+            success: function(result) {
+            // //set_data1 dst menggambil data function mdl_setup "get_by_id" dan  email dst menenggambillya di id&name di bagian viewnya
+            // console.log(result.set_header1);
+            var img = '<?= base_url(); ?>assets/img/'+result.set_data4;
+               $("#nama_toko").val(result.set_data1); 
+			   $("#alamat_toko").val(result.set_data2);
+			   $("#telp_toko").val(result.set_data3);
+			   $('#preview-upload1').attr('src', img);   
+			   		   
+            }, error: function (jqXHR, textStatus, errorThrown) {
+                alert('Error get data from ajax');
+            }
+        });
+>>>>>>> Stashed changes
     }
 </script>
 

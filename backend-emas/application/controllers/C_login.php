@@ -71,7 +71,7 @@ class C_Login extends CI_Controller
         $fv_password = $this->input->post('fv_password');
 
         $admin = $this->db->get_where('admin', ['fv_username' => $fv_username])->row_array();
-        $cekpass = $this->db->get_where('admin', array('fv_password' => $fv_password));
+        $cekpass = $this->db->get_where('admin', array('fv_password' => md5($fv_password)));
 
 
         //jika usernya terdaftar
@@ -81,18 +81,19 @@ class C_Login extends CI_Controller
             if ($cekpass->num_rows() > 0) {
 
                 $data = [
-                    'fv_username' => $fv_username['fv_username'],
+                    'fv_username' => $admin['fv_username'],
                     'fc_userid' => $admin['fc_userid'],
                     //'foto' => $pengguna['foto']
-                ];
+				];
+				print_r($data);
                 $data['logged_in'] = TRUE;
                 $this->session->set_userdata($data);
-                if ($admin['fc_kdposisi'] == '1') {
+               // if ($admin['fc_kdposisi'] == '0001') {
                     redirect('C_home');
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">posisi anda tidak di temukan!</div>');
-                    redirect('C_Login');
-                }
+                // } else {
+                //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">posisi anda tidak di temukan!</div>');
+                //     redirect('C_Login');
+                // }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang anda masukkan salah!</div>');
                 redirect('C_Login');
