@@ -1,4 +1,7 @@
 <?php $this->load->view('partials/header.php') ?>
+<?php
+$koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
+?>
 <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
@@ -210,7 +213,7 @@
 
 
                 <div class="row">
-                    <div class="col-md-1">
+                    <div class="col-md-3">
                         <h2 style="color: #07A1C8;">
                             Laporan Harian
                         </h2>
@@ -224,7 +227,7 @@
                                 <option value="70">70%</option>
                             </select>
                         </div>
-                       
+
                         <div class="col-md-1">
                             <br>
                             <button type="button" class="btn btn-primary">Refresh</button>
@@ -233,7 +236,159 @@
                 </div>
 
             </div><!-- /.page-header -->
+            <div class="row">
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
 
+                        <tr>
+                            <th rowspan="1" height="70">Jenis</th>
+
+                        </tr>
+
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok 
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <th scope="row"><?php echo $lp['fv_nmkelompok'] ?></th>
+                            </tr>
+                        <?php } ?>
+                        <tr>
+                            <th scope="row">Total</th>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+
+                        <tr>
+
+                            <th colspan="2" scope="colgroup">Kemarin</th>
+
+                        </tr>
+                        <tr>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Berat</th>
+                        </tr>
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok AND tm_stock.fd_date = '2020-10-19'
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $lp['jumlah'] ?></td>
+                                <td><?php echo $lp['berat'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                        <tr>
+
+                            <th colspan="2" scope="colgroup">Laku</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Berat</th>
+                        </tr>
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok  
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $lp['jumlah'] ?></td>
+                                <td><?php echo $lp['berat'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                        <tr>
+
+                            <th colspan="2" scope="colgroup">Diambil</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Berat</th>
+                        </tr>
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok 
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $lp['jumlah'] ?></td>
+                                <td><?php echo $lp['berat'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                        <tr>
+
+                            <th colspan="2" scope="colgroup">Tambahan</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Berat</th>
+                        </tr>
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok 
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $lp['jumlah'] ?></td>
+                                <td><?php echo $lp['berat'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+
+                <div class="col-sm-2">
+                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                        <tr>
+
+                            <th colspan="2" scope="colgroup">Total</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Berat</th>
+                        </tr>
+                        <?php
+                        $sql = mysqli_query($koneksi, "SELECT tm_kelompok.fc_kdkelompok, tm_kelompok.fv_nmkelompok, SUM(tm_stock.ff_berat) as berat, COUNT(tm_stock.fc_kdkelompok) as jumlah
+                                                        FROM tm_stock,tm_kelompok 
+                                                        WHERE tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok 
+                                                        GROUP BY fc_kdkelompok");
+                        while ($lp = mysqli_fetch_array($sql)) {
+                        ?>
+                            <tr>
+                                <td><?php echo $lp['jumlah'] ?></td>
+                                <td><?php echo $lp['berat'] ?></td>
+                            </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
 
         </div>
 
