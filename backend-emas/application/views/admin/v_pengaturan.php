@@ -385,47 +385,6 @@
 							<form name="form_data" method="post" id="form_data" action="">
                                 <div class="modal-content">
                                     <div class="modal-body">
-<<<<<<< Updated upstream
-                                        <h5>Edit Data Operator</h5>
-                                        <div class="form-group">
-                                            <label>Nama</label>
-                                            <input type="text" class="form-control" name="">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Password</label>
-                                            <input type="password" id="password" class="form-control" onkeyup='check();' name="password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Ulangi Password</label>
-                                            <input type="password" id="confirm_password" class="form-control" onkeyup='check();' name="confirm_password">
-                                            <span id="message"></span>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Jendela Barang
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Tambah
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Edit
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                                            <label class="form-check-label" for="defaultCheck1">
-                                                Hapus
-                                            </label>
-                                        </div>
-                                    </div>
-=======
 									<div class="row">
 										<div class="widget-box">	
                                         <!-- <h5>Tambah Data Operator</h5> -->
@@ -474,7 +433,6 @@
 										<div id='mainmenu_id'></div>
 										</div>
 									</div>	
->>>>>>> Stashed changes
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times"> Close</i></button>
                                         <button type="submit" class="btn btn-primary" value="cek"><i class="fa fa-save">Simpan</i></button>
@@ -640,19 +598,6 @@
                 // window.location.href = action;
     });
 
-<<<<<<< Updated upstream
-
-
-    var check = function() {
-        if (document.getElementById('password').value ==
-            document.getElementById('confirm_password').value) {
-            document.getElementById('message').style.color = 'green';
-            document.getElementById('message').innerHTML = 'matching';
-        } else {
-            document.getElementById('message').style.color = 'red';
-            document.getElementById('message').innerHTML = 'not matching';
-        }
-=======
     // window.onload = function() {
     //     document.getElementById("pw1").onchange = validatePassword;
     //     document.getElementById("pw2").onchange = validatePassword;
@@ -711,7 +656,6 @@
                 alert('Error get data from ajax');
             }
         });
->>>>>>> Stashed changes
     }
 </script>
 
