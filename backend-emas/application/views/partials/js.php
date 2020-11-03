@@ -36,6 +36,7 @@
 
 <!-- page specific plugin scripts -->
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.js"></script>
+<script src="<?php echo base_url() ?>assets/ddtf.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/jquery.dataTables.bootstrap.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/TableTools/js/dataTables.tableTools.js"></script>
 <script src="<?php echo base_url() ?>assets/assets/js/dataTables/extensions/ColVis/js/dataTables.colVis.js"></script>
