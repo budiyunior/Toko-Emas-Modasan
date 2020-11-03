@@ -246,7 +246,7 @@
                         </div>
                         <div class="col-md-1">
                             <br>
-                            <button type="submit" name="refresh" class="btn btn-primary">Refresh</button>
+                            <a href="<?= base_url('C_barang') ?>" type="submit" name="refresh" class="btn btn-primary">Refresh</a>
                         </div>
                     </form>
                 </div>
@@ -256,9 +256,6 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
-
-
-
                     <div class="center">
                         <div class="table-responsive">
                             <table class="table table-bordered" id="tabel_barang">
@@ -1018,13 +1015,9 @@
                 barang();
                 kelompok();
                 $("#kadar").change(function() {
-                    // let a = $(this).val();
-                    // console.log(a);
                     barang();
                 })
                 $("#kelompok").change(function() {
-                    // let a = $(this).val();
-                    // console.log(a);
                     kelompok();
                 })
                 $("#lokasi").change(function() {
