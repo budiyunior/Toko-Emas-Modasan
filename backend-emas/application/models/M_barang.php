@@ -163,13 +163,14 @@ class M_barang extends CI_Model
     }
     public function filter($limit, $start)
     {
+        $post = $this->input->get('refresh');
         $kadar = $this->input->get('fc_kadar');
-        if ($kadar) {
-            $this->db->where('fc_kadar', $kadar);
-        }
-        $kelompok = $this->input->get('fc_kdkelompok');
-        if ($kelompok) {
-            $this->db->where('fc_kdkelompok', $kelompok);
+        if (isset($kadar)) {
+            //$kadar = $this->input->get('fc_kadar');
+            $this->db->get_where('tm_stock', array('fc_kadar' => $kadar), $limit, $start);
+        } else if ($this->input->post('refresh')) {
+            $kelompok = $this->input->get('fc_kdkelompok');
+            $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
         }
         $lokasi = $this->input->get('fc_kdlokasi');
         if ($lokasi) {
@@ -178,6 +179,15 @@ class M_barang extends CI_Model
         return $this->db->get('tm_stock', $limit, $start)->result();
         // $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
         // return $query->result();
+    }
+
+    public function filternew($limit, $start)
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
+        return $query->result();
     }
 
     // public function filter2($limit, $start)

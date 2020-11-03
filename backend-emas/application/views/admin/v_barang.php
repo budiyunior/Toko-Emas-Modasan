@@ -218,7 +218,7 @@
                     <form action="<?= base_url('C_barang/filter') ?>" method="get">
                         <div class="col-md-2">
                             <label>Kadar</label>
-                            <select class="form-control" name="fc_kadar">
+                            <select class="form-control" id="kadar" name="fc_kadar">
                                 <option>--Pilih--</option>
                                 <option value="40">40%</option>
                                 <option value="70">70%</option>
@@ -226,7 +226,7 @@
                         </div>
                         <div class="col-md-2">
                             <label>Kelompok</label>
-                            <select class="form-control" name="fc_kdkelompok">
+                            <select class="form-control" id="kelompok" name="fc_kdkelompok">
                                 <option>--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($kelompok2 as $k) : ?>
@@ -236,7 +236,7 @@
                         </div>
                         <div class="col-md-2">
                             <label>Lokasi</label>
-                            <select class="form-control" name="fc_kdlokasi">
+                            <select class="form-control" id="lokasi" name="fc_kdlokasi">
                                 <option>--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($lokasi2 as $l) : ?>
@@ -246,7 +246,7 @@
                         </div>
                         <div class="col-md-1">
                             <br>
-                            <button type="submit" class="btn btn-primary">Refresh</button>
+                            <button type="submit" name="refresh" class="btn btn-primary">Refresh</button>
                         </div>
                     </form>
                 </div>
@@ -261,7 +261,7 @@
 
                     <div class="center">
                         <div class="table-responsive">
-                            <table class="table table-bordered ">
+                            <table class="table table-bordered" id="tabel_barang">
                                 <thead>
                                     <tr>
                                         <th class="center">
@@ -282,25 +282,6 @@
                                 </thead>
                                 <tbody>
                                     <?php echo form_open('C_barang/delete'); ?>
-                                    <?php $no = $this->uri->segment('3') + 1;
-                                    foreach ($barang as $s) : ?>
-                                        <tr>
-                                            <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
-                                            </td>
-                                            <th scope="col"><?= $no++ ?></th>
-                                            <td scope="row"><?= $s->fc_kdstock ?></td>
-                                            <td scope="row"><?= $s->fv_nmbarang ?></td>
-                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
-                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
-                                            <td scope="row"><?= $s->ff_berat ?></td>
-                                            <td scope="row"><?= $s->fc_kadar ?></td>
-                                            <td scope="row"><?= $s->fm_hargabeli ?></td>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
-                                            <td scope="row"><?= $s->fc_sts ?></td>
-                                            <td scope="row"><?= $s->fd_date ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="row">
@@ -542,7 +523,6 @@
                                                 <td>
                                                     <input type='text' readonly class='txtedit' data-id='<?= $k->fc_kdkelompok ?>' data-field='name' id='nametxt_"<?= $k->fc_kdkelompok ?>"' value='<?= $k->fv_nmkelompok ?>'>
                                                 </td>
-
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -1033,8 +1013,71 @@
 
             </div>
         </div>
+        <script>
+            $(document).ready(function() {
+                barang();
+                kelompok();
+                $("#kadar").change(function() {
+                    // let a = $(this).val();
+                    // console.log(a);
+                    barang();
+                })
+                $("#kelompok").change(function() {
+                    // let a = $(this).val();
+                    // console.log(a);
+                    kelompok();
+                })
+                $("#lokasi").change(function() {
+                    // let a = $(this).val();
+                    // console.log(a);
+                    lokasi();
+                })
 
+            })
 
+            function barang() {
+                var kadar = $("#kadar").val();
+                // var kelompok = $("#kelompok").val();
+                // var lokasi = $("#lokasi").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/kadar') ?>",
+                    data: "kadar=" + kadar,
+                    // data2: "kelompok=" + kelompok,
+                    // data3: "lokasi=" + lokasi,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
+
+            function kelompok() {
+                var kelompok = $("#kelompok").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/kelompok') ?>",
+                    data: "kelompok=" + kelompok,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
+
+            function lokasi() {
+                var lokasi = $("#lokasi").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/lokasi') ?>",
+                    data: "lokasi=" + lokasi,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
+        </script>
         <script>
             $('.custom-file-input').on('change', function() {
                 let fileName = $(this).val().split('\\').pop();
