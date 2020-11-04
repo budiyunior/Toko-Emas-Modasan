@@ -285,7 +285,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         </form>
                     </div>
                 </div>
-                <div class=" row">
+                <div class="row">
                     <div class="col-xs-12" style="margin-top: 30px;">
                         <!-- PAGE CONTENT BEGINS -->
                         <div class="row">
