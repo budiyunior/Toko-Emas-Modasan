@@ -264,11 +264,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <form>
                             <div>
                                 <label for="form-field-8">Transaksi</label>
-                                <input type="text" class="form-control" value="<?php echo $tran['transaksi'] ?>">
+                                <input type="text" class="form-control" readonly value="<?php echo $tran['transaksi'] ?>">
                             </div>
                             <div>
                                 <label for=" form-field-9">Berat</label>
-                                <input type="text" class="form-control" value="<?php echo number_format($berat['berat']) ?> gram">
+                                <input type="text" class="form-control" readonly value="<?php echo number_format($berat['berat']) ?> gram">
                             </div>
                         </form>
                     </div>
@@ -276,11 +276,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <form>
                             <div>
                                 <label for="form-field-8">Grand Total</label>
-                                <input type="text" class="form-control" value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
+                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
                             </div>
                             <div>
                                 <label for=" form-field-9">Sub Total</label>
-                                <input type="text" class="form-control" value="Rp. <?php echo number_format($stotal['stotal']) ?>">
+                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($stotal['stotal']) ?>">
                             </div>
                         </form>
                     </div>
@@ -294,6 +294,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr class="titlerow">
+                                                <th class="center">
+                                                    Checklist
+                                                </th>
                                                 <th>No</th>
                                                 <th>Detail</th>
                                                 <th>Subtotal</th>
@@ -308,6 +311,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             while ($lp = mysqli_fetch_array($sql)) {
                                             ?>
                                                 <tr>
+                                                    <td class="check center">
+                                                        <input type="checkbox" class="check-item">
+                                                    </td>
                                                     <td><?php echo $lp['fc_nobeli'] ?></td>
                                                     <td><?php echo $lp['fc_kdstock'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
@@ -326,7 +332,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-success" onclick="print()"><i class="fa fa-print"> Cetak</i></button>
+                <button type="button" class="btn btn-success action-cetak" onclick="print()"><i class="fa fa-print"> Cetak</i></button>
 
             </div>
         </div>
@@ -335,10 +341,13 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 </div>
 
 <script>
-    function print(params) {
-        window.print()
-
-    }
+    $(".check-item").on("click", function() {
+        if ($(".check-item:checked").length < 2) {
+            $('.action-cetak').prop('disabled', false);
+        } else {
+            $('.action-cetak').prop('disabled', true);
+        }
+    });
 </script>
 
 

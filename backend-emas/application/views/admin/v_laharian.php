@@ -233,7 +233,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 </div>
                                 <div class="col-md-5">
                                     <div>
-                                        <button type="submit" class="btn-sm btn-primary"><i class=" ace-icon glyphicon glyphicon-search"></i>Cari</button>
+                                        <button type="submit" class="btn-sm btn-primary"><i class=" ace-icon glyphicon glyphicon-search"></i>Filter</button>
                                     </div>
                                 </div>
                             </div>
@@ -250,19 +250,19 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         Kadar 40%
                     </h4>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                     <h5>
 
                         <?php
-                        // if (isset($_GET['date'])) {
+                        if (isset($_GET['date'])) {
+                            $hari = $_GET['date'];
+                            $hari2 = date("d F Y", strtotime($hari));
+                            echo $hari2;
+                        } else {
                             // $hari = $_GET['date'];
-                            // $hari2 = date("d F Y");
-                            // echo $hari2;
-                        // } else {
-                        //     $hari = $_GET['date'];
-                        //     $hari2 = date("d F Y");
-                        //     echo $hari2;
-                        // }
+                            $hari3 = date("d F Y");
+                            echo $hari3;
+                        }
                         ?>
                     </h5>
                 </div>
