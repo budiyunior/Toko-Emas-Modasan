@@ -1034,7 +1034,7 @@
 		var Harga_emas = $(this).val();
 		var Diskon = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(8) input#diskon').val();;
 
-		var SubTotal = parseInt(Berat_emas) * parseInt(Harga_emas);
+		var SubTotal = parseFloat(Berat_emas) * parseInt(Harga_emas);
 		if (SubTotal > 0) {
 			var SubTotalVal = SubTotal;
 			SubTotal = to_rupiah(SubTotal);
@@ -1043,7 +1043,7 @@
 			var SubTotalVal = 0;
 		}
 
-		var SubTotal2 = parseInt(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir);
+		var SubTotal2 = parseFloat(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir);
 		if (SubTotal2 > 0) {
 			var SubTotalVal2 = SubTotal2;
 			SubTotal2 = to_rupiah(SubTotal2);
@@ -1065,7 +1065,7 @@
 		var Harga_emas = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(6) input#harga_pergram').val();
 		var Diskon = $(this).val();
 
-		var SubTotal = (parseInt(Berat_emas) * parseInt(Harga_emas)) - (parseInt(Diskon));
+		var SubTotal = (parseFloat(Berat_emas) * parseInt(Harga_emas)) - (parseInt(Diskon));
 		if (SubTotal > 0) {
 			var SubTotalVal = SubTotal;
 			SubTotal = to_rupiah(SubTotal);
@@ -1074,7 +1074,7 @@
 			var SubTotalVal = 0;
 		}
 
-		var SubTotal2 = (parseInt(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir)) - (parseInt(Diskon));
+		var SubTotal2 = (parseFloat(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir)) - (parseInt(Diskon));
 		if (SubTotal2 > 0) {
 			var SubTotalVal2 = SubTotal2;
 			SubTotal2 = to_rupiah(SubTotal2);

@@ -140,7 +140,7 @@ class C_penjualan extends CI_Controller
         echo json_encode($json);
     }
 
-    public function simpan_penjualan()
+    public function simpan_penjualan($kdstock)
     {
         $data_penjualan = array(
             'fc_noinv'           => $this->input->post('fc_noinv'),
@@ -178,11 +178,22 @@ class C_penjualan extends CI_Controller
 
             $id_penjualan_detail = $this->M_penjualan->insert_detail($data_detail_penjualan);
         }
+
+        if ($kondisi = '2') {
+        $this->M_penjualan->update_stsbrg($kondisi, $kdstock);
+        //redirect('admin/Dashboard/datauserbaru');)
+        }
         echo "<script>
 		alert('Transaksi berhasil di simpan !!');
 		window.history.back();
 		</script>";
     }
+
+    public function update_brg()
+    {
+       
+    }
+
     public function cetak_nota()
     {
         $data['title'] = "Cetak Nota";

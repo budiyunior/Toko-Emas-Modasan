@@ -51,6 +51,11 @@ class M_penjualan extends CI_Model
 
 	}
 
+	public function update_stsbrg($kondisi, $kdstock)
+	{
+		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fc_kdstock='$kdstock'");
+	}
+
 	public function get_all_barang(){
 		$this->db->select('*');
 		$this->db->from('tm_stock');
