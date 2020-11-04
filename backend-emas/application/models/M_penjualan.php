@@ -21,10 +21,18 @@ class M_penjualan extends CI_Model
         $this->db->where('fn_id', $id);
         return $this->db->get('tm_stock')->row_array();
 	}
+
+	public function nota_jual()
+	{
+		$this->db->select('*');
+		$this->db->from('tm_invoice', 'td_invoice', 'tm_stock', 'tm_pelanggan');
+		$this->db->join('tm_invoice', 'td_invoice.fc_noinv=tm_invoice.fc_noinv', 'left outer');
+		$this->db->join('tm_pelanggan', 'tm_invoice.fc_kdpel=tm_pelanggan.fc_kdpel', 'left outer');
+		$this->db->join('tm_stock', 'td_invoice');
+	}
 	
 	public function ambilBarang()
 	{
-
 
 		$this->db->select('*');
 		$this->db->from('tm_stock');

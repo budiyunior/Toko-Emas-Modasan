@@ -181,22 +181,22 @@ class C_penjualan extends CI_Controller
             $kdstock = $_POST['kode_barang'][$key];
             $kondisi = '2';
             $this->M_penjualan->update_stsbrg($kondisi, $kdstock);
+
+            
             //redirect('admin/Dashboard/datauserbaru');)
         }
 
         echo "<script>
 		alert('Transaksi berhasil di simpan !!');
-		window.history.back();
+        window.location.href = '" . base_url('C_lapenjualan') . "';
 		</script>";
-    }
-
-    public function update_brg()
-    {
     }
 
     public function cetak_nota()
     {
         $data['title'] = "Cetak Nota";
+        // $data['data'] = $this->db->get_where('tm_invoice', ['fc_noinv' => $id_invoice])->row();
+        // $data['data2'] = $this->db->get_where('td_invoice', ['Id' => $id])->row();
         $this->load->view('admin/cetak_nota', $data);
     }
 }

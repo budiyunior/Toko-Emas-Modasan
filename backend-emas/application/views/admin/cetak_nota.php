@@ -98,17 +98,28 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                     </div>
                 </div>
                 <div class="row" style="margin-top: 20px;">
-                    <div class="col-xs-7">
-                        <p>Perhiasan Rusak:...................</p>
-                        <p>Perhiasan Tidak Sepasang:...............</p>
+                    <div class="col-xs-8">
+                        <p>Perhiasan Rusak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:...................</p>
+                        <p>Perhiasan Tidak Sepasang :..................</p>
                         <h3 style="margin-top: 40px; font-family: Brush Script MT;">Terima Kasih Atas Kunjungan dan Kepercayaan Anda</h3>
                     </div>
-                    <div class="col-xs-5">
+                    <div class="col-xs-4">
                         <h5>Malang, </h5>
                         <br>
                         <br>
                         <br>
                         <p>......................................</p>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 30px;">
+                    <div class="col-xs-4">
+                        <input type="text" class="col-xs-10" value="Open Daily: 09.00-20.00" readonly />
+                    </div>
+                    <div class="col-xs-5">
+                        <h5><i class="fa fa-instagram"></i> Modasan_Gold / Modasan_Butik</h5>
+                    </div>
+                    <div class="col-sx-3">
+                        <h5><i class="fa fa-facebook"></i> Modasan 20/9/2019</h5>
                     </div>
                 </div>
 
@@ -121,6 +132,24 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 <script>
     window.print()
 </script>
-
+<!-- <script>
+        $.ajax({
+            url: "<?php echo base_url('C_penjualan/simpan_penjualan/') ?>",
+            type: "POST",
+            dataType: "JSON",
+            success: function(result) {
+                $('[name="fc_kdstock_view"]').val(result.fc_kdstock);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+                $('[name="ff_berat_view"]').val(result.ff_berat);
+                $('[name="fc_kadar_view"]').val(result.fc_kadar);
+                $('[name="fm_hargajual_view"]').val(result.fm_hargajual);
+                $('[name="fm_ongkos_view"]').val(result.fm_ongkos);
+                $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert('Data Eror');
+            }
+        })
+</script> -->
 
 <?php $this->load->view('partials/js.php') ?>
