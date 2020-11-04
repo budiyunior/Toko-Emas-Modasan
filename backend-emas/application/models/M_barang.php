@@ -77,6 +77,7 @@ class M_barang extends CI_Model
         $this->fm_hargajual = $post['fm_hargajual'];
         $this->f_foto = $this->uploadImage();
         $this->fc_sts = $post['fc_sts'];
+        $this->fc_kondisi = '0';
         $this->fn_stock = $post['fn_stock'];
 
         $this->db->insert($this->tabel, $this);

@@ -359,7 +359,7 @@
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
-                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#kelompok">
+                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editkelompok">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
@@ -374,7 +374,7 @@
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
-                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#lokasi">
+                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#editlokasi">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
@@ -494,7 +494,7 @@
 
         <!-- modal kelompok -->
 
-        <div class="modal fade" id="kelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -552,7 +552,7 @@
 
         <!-- modal lokasi -->
 
-        <div class="modal fade" id="lokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -611,59 +611,7 @@
 
         <!-- sales -->
 
-        <div class="modal fade" id="sales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($sales as $s) : ?>
-                                            <tr>
-                                    </tbody>
-                                    <td class="check center">
-                                        <input type="checkbox" class="check-item">
-                                    </td>
-                                    <td>
-                                        <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                    </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="kode lokasi">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="lokasi">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
-                            </div>
-                            <div class="col-md-2" style="margin-top: 5px;">
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <!-- Modal Edit -->
 
         <div class="modal fade" id="modalupdate" tabindex="-1">
@@ -836,7 +784,7 @@
 
                 <!-- modal kelompok -->
 
-                <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -891,11 +839,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- modal lokasi -->
 
-                <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -950,63 +898,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- sales -->
 
-                <div class="modal fade" id="editsales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $i = 1;
-                                                foreach ($sales as $s) : ?>
-                                                    <tr>
-                                            </tbody>
-                                            <td class="check center">
-                                                <input type="checkbox" class="check-item">
-                                            </td>
-                                            <td>
-                                                <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                            </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                        </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="kode lokasi">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="lokasi">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
 
             </div>
         </div>
