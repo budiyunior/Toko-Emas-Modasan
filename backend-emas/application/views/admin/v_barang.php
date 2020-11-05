@@ -220,7 +220,7 @@
                     <form action="<?= base_url('C_barang/filter') ?>" method="get">
                         <div class="col-md-2">
                             <label>Kadar</label>
-                            <select class="form-control" name="fc_kadar">
+                            <select class="form-control" id="kadar" name="fc_kadar">
                                 <option>--Pilih--</option>
                                 <option value="40">40%</option>
                                 <option value="70">70%</option>
@@ -228,7 +228,7 @@
                         </div>
                         <div class="col-md-2">
                             <label>Kelompok</label>
-                            <select class="form-control" name="fc_kdkelompok">
+                            <select class="form-control" id="kelompok" name="fc_kdkelompok">
                                 <option>--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($kelompok2 as $k) : ?>
@@ -238,7 +238,7 @@
                         </div>
                         <div class="col-md-2">
                             <label>Lokasi</label>
-                            <select class="form-control" name="fc_kdlokasi">
+                            <select class="form-control" id="lokasi" name="fc_kdlokasi">
                                 <option>--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($lokasi2 as $l) : ?>
@@ -248,7 +248,7 @@
                         </div>
                         <div class="col-md-1">
                             <br>
-                            <button type="submit" class="btn btn-primary">Refresh</button>
+                            <a href="<?= base_url('C_barang') ?>" type="submit" name="refresh" class="btn btn-primary">Refresh</a>
                         </div>
                     </form>
                 </div>
@@ -258,12 +258,9 @@
             <div class="row">
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
-
-
-
                     <div class="center">
                         <div class="table-responsive">
-                            <table class="table table-bordered ">
+                            <table class="table table-bordered" id="tabel_barang">
                                 <thead>
                                     <tr>
                                         <th class="center">
@@ -284,25 +281,6 @@
                                 </thead>
                                 <tbody>
                                     <?php echo form_open('C_barang/delete'); ?>
-                                    <?php $no = $this->uri->segment('3') + 1;
-                                    foreach ($barang as $s) : ?>
-                                        <tr>
-                                            <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
-                                            </td>
-                                            <th scope="col"><?= $no++ ?></th>
-                                            <td scope="row"><?= $s->fc_kdstock ?></td>
-                                            <td scope="row"><?= $s->fv_nmbarang ?></td>
-                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
-                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
-                                            <td scope="row"><?= $s->ff_berat ?></td>
-                                            <td scope="row"><?= $s->fc_kadar ?></td>
-                                            <td scope="row"><?= $s->fm_hargabeli ?></td>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
-                                            <td scope="row"><?= $s->fc_sts ?></td>
-                                            <td scope="row"><?= $s->fd_date ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                             <div class="row">
@@ -381,7 +359,7 @@
 														<div id="kelompokne" style="display: none;"> </div>
 
                                                     </div>
-                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="kelompok()">
+                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="kelompok_modal()">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
@@ -391,7 +369,7 @@
                                                         
 														<div id="lokasine" style="display: none;"> </div>
                                                     </div>
-                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="lokasi()">
+                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="lokasi_modal()">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
@@ -511,7 +489,7 @@
 
         <!-- modal kelompok -->
 
-        <div class="modal fade" id="kelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -553,7 +531,7 @@
 
         <!-- modal lokasi -->
 
-        <div class="modal fade" id="lokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -595,59 +573,7 @@
 
         <!-- sales -->
 
-        <div class="modal fade" id="sales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($sales as $s) : ?>
-                                            <tr>
-                                    </tbody>
-                                    <td class="check center">
-                                        <input type="checkbox" class="check-item">
-                                    </td>
-                                    <td>
-                                        <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                    </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-7">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="kode lokasi">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="lokasi">
-                                </div>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
-                            </div>
-                            <div class="col-md-2" style="margin-top: 5px;">
-                                <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
         <!-- Modal Edit -->
 
         <div class="modal fade" id="modalupdate" tabindex="-1">
@@ -820,7 +746,7 @@
 
                 <!-- modal kelompok -->
 
-                <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editkelompok" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -875,11 +801,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- modal lokasi -->
 
-                <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- <div class="modal fade" id="editlokasi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -934,67 +860,14 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <!-- sales -->
 
-                <div class="modal fade" id="editsales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title center" id="exampleModalLabel">Sales</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php $i = 1;
-                                                foreach ($sales as $s) : ?>
-                                                    <tr>
-                                            </tbody>
-                                            <td class="check center">
-                                                <input type="checkbox" class="check-item">
-                                            </td>
-                                            <td>
-                                                <input type='text' readonly class='txtedit' data-id='<?= $s->fc_salesid ?>' data-field='name' id='nametxt_"<?= $s->fc_salesid ?>"' value='<?= $s->fv_nama ?>'>
-                                            </td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                        </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="kode lokasi">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="lokasi">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <button class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
-                                    </div>
-                                    <div class="col-md-2" style="margin-top: 5px;">
-                                        <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
 
             </div>
         </div>
-
 		<div class="modal fade" id="modalbarcode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
@@ -1038,7 +911,8 @@
                         </div>
                     </div>
         </div>
-											
+		
+		
         <script>
             $('.custom-file-input').on('change', function() {
                 let fileName = $(this).val().split('\\').pop();
@@ -1051,7 +925,66 @@
                 } else {
                     $('.update').prop('disabled', true);
                 }
-            });
+			});
+
+			$(document).ready(function() {
+                barang();
+                kelompok();
+                $("#kadar").change(function() {
+                    barang();
+                })
+                $("#kelompok").change(function() {
+                    kelompok();
+                })
+                $("#lokasi").change(function() {
+                    // let a = $(this).val();
+                    // console.log(a);
+                    lokasi();
+				})
+			})	
+			
+			function barang() {
+                var kadar = $("#kadar").val();
+                // var kelompok = $("#kelompok").val();
+                // var lokasi = $("#lokasi").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/kadar') ?>",
+                    data: "kadar=" + kadar,
+                    // data2: "kelompok=" + kelompok,
+                    // data3: "lokasi=" + lokasi,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
+
+            function kelompok() {
+                var kelompok = $("#kelompok").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/kelompok') ?>",
+                    data: "kelompok=" + kelompok,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
+
+            function lokasi() {
+                var lokasi = $("#lokasi").val();
+                $.ajax({
+                    url: "<?= base_url('C_barang/lokasi') ?>",
+                    data: "lokasi=" + lokasi,
+                    success: function(data) {
+                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+                        //console.log(data);
+                        $("#tabel_barang tbody").html(data)
+                    }
+                })
+            }
 
             $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
                 $("#check-all").click(function() { // Ketika user men-cek checkbox all
@@ -1351,13 +1284,13 @@
 				$('#modalbarcode').modal('show');	
 			}
 
-			function kelompok(){
+			function kelompok_modal(){
 				$('#kelompok').modal('show');	
 				$('[name="fv_nmkelompok"]').val("");
 				kelompok_list();
 			}
 
-			function lokasi(){
+			function lokasi_modal(){
 				$('#lokasi').modal('show');
 				lokasi_list();
 			}

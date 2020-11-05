@@ -186,5 +186,13 @@ class C_pembelian extends CI_Controller
 		alert('Transaksi berhasil di simpan !!');
 		window.history.back();
 		</script>";
-	}
+    }
+    
+    public function cetak_nota($noinv)
+    {
+        $data['title'] = "Cetak Nota";
+        $data['nota'] = $this->M_penjualan->query_nota($noinv);
+        $data['barang'] = $this->M_penjualan->query_nota2($noinv);
+        $this->load->view('admin/cetak_nota', $data);
+    }
 }

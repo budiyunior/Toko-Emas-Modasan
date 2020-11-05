@@ -68,6 +68,12 @@ class C_penjualan extends CI_Controller
         echo json_encode($data);
     }
 
+    public function tampil_nota($noinv)
+    {
+        $data = $this->M_penjualan->nota_jual($noinv);
+        echo json_encode($data);
+    }
+
     public function coba()
     {
         $data['title'] = "Penjualan";
@@ -156,6 +162,7 @@ class C_penjualan extends CI_Controller
             'fm_totongkir' => $this->input->post('TotalOngkir'),
             'fm_subtot' => $this->input->post('SubTotalBayar2'),
             'fm_grandtotal' => $this->input->post('TotalBayar2'),
+            'fv_terbilang' => $this->input->post('terbilang'),
         );
 
         $id_penjualan = $this->M_penjualan->insert($data_penjualan);
@@ -177,15 +184,27 @@ class C_penjualan extends CI_Controller
             );
 
             $id_penjualan_detail = $this->M_penjualan->insert_detail($data_detail_penjualan);
+
+            $kdstock = $_POST['kode_barang'][$key];
+            $kondisi = '2';
+            $this->M_penjualan->update_stsbrg($kondisi, $kdstock);
+
+
+            //redirect('admin/Dashboard/datauserbaru');)
         }
-        echo "<script>
-		alert('Transaksi berhasil di simpan !!');
-		window.history.back();
-		</script>";
+
+        // echo "<script>
+        // alert('Transaksi berhasil di simpan !!');
+        // window.location.href = '" . base_url('C_penjualan/cetak_nota') . "';
+        // </script>";
+        redirect('C_penjualan/cetak_nota/' . $this->input->post('fc_noinv'));
     }
-    public function cetak_nota()
+
+    public function cetak_nota($noinv)
     {
         $data['title'] = "Cetak Nota";
+        $data['nota'] = $this->M_penjualan->query_nota($noinv);
+        $data['barang'] = $this->M_penjualan->query_nota2($noinv);
         $this->load->view('admin/cetak_nota', $data);
     }
 }

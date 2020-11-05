@@ -262,7 +262,7 @@ class C_barang extends CI_Controller
         $data['lokasi'] = $this->M_barang->get_lokasi();
         $data['lokasi2'] = $this->M_barang->get_lokasi();
 
-        
+
         //konfigurasi pagination
         $config['base_url'] = site_url('C_barang/index'); //site url
         $config['total_rows'] = $this->db->count_all('tm_stock'); //total row
@@ -295,12 +295,13 @@ class C_barang extends CI_Controller
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
         //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        $data['barang'] = $this->M_barang->filter($config["per_page"], $data['page']);
+        $data['barang'] = $this->M_barang->filternew($config["per_page"], $data['page']);
         // $data['barang'] = $this->M_barang->filter2($config["per_page"], $data['page']);
         // $data['barang'] = $this->M_barang->filter3($config["per_page"], $data['page']);
         // $data['barang'] = $this->M_barang->filter4($config["per_page"], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
         $this->load->view('admin/v_barang', $data);
+
 	}
 	
 	public function Barcode($code)
@@ -379,4 +380,114 @@ class C_barang extends CI_Controller
 		$this->M_barang->delete_by_id_lokasi($id);
 		echo json_encode(array("status" => TRUE));
 	}
+
+
+    public function kadar()
+    {
+        $kadar = $_GET['kadar'];
+        if ($kadar == 0) {
+            $barang = $this->db->get('tm_stock')->result();
+        } else {
+            $barang = $this->db->get_where('tm_stock', ['fc_kadar' => $kadar])->result();
+        }
+
+        if (!empty($barang)) {
+            $no = $this->uri->segment('3') + 1;
+        foreach ($barang as $s) : ?>
+            <tr>
+                <td class="check">
+                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                </td>
+                <th scope="col"><?= $no++ ?></th>
+                <td scope="row"><?= $s->fc_kdstock ?></td>
+                <td scope="row"><?= $s->fv_nmbarang ?></td>
+                <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                <td scope="row"><?= $s->ff_berat ?></td>
+                <td scope="row"><?= $s->fc_kadar ?></td>
+                <td scope="row"><?= $s->fm_hargabeli ?></td>
+                <td scope="row"><?= $s->fc_salesid ?></td>
+                <td scope="row"><?= $s->fc_sts ?></td>
+                <td scope="row"><?= $s->fd_date ?></td>
+            </tr>
+        <?php endforeach ?> <?php
+        } else {
+            ?>
+                <tr><td align="center">Tidak Ada Data</td></tr>
+            <?php
+        }
+        
+    }
+
+    public function kelompok()
+    {
+        $kelompok = $_GET['kelompok'];
+        if ($kelompok == 0) {
+            $barang = $this->db->get('tm_stock')->result();
+        } else {
+            $barang = $this->db->get_where('tm_stock', ['fc_kdkelompok' => $kelompok])->result();
+        }
+
+        if (!empty($barang)) {
+            $no = $this->uri->segment('3') + 1;
+        foreach ($barang as $s) : ?>
+            <tr>
+                <td class="check">
+                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                </td>
+                <th scope="col"><?= $no++ ?></th>
+                <td scope="row"><?= $s->fc_kdstock ?></td>
+                <td scope="row"><?= $s->fv_nmbarang ?></td>
+                <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                <td scope="row"><?= $s->ff_berat ?></td>
+                <td scope="row"><?= $s->fc_kadar ?></td>
+                <td scope="row"><?= $s->fm_hargabeli ?></td>
+                <td scope="row"><?= $s->fc_salesid ?></td>
+                <td scope="row"><?= $s->fc_sts ?></td>
+                <td scope="row"><?= $s->fd_date ?></td>
+            </tr>
+        <?php endforeach ?> <?php
+        } else {
+            ?>
+                <tr><td align="center">Tidak Ada Data</td></tr>
+            <?php
+        }
+    }
+
+    public function lokasi()
+    {
+        $lokasi = $_GET['lokasi'];
+        if ($lokasi == 0) {
+            $barang = $this->db->get('tm_stock')->result();
+        } else {
+            $barang = $this->db->get_where('tm_stock', ['fc_kdlokasi' => $lokasi])->result();
+        }
+
+        if (!empty($barang)) {
+            $no = $this->uri->segment('3') + 1;
+        foreach ($barang as $s) : ?>
+            <tr>
+                <td class="check">
+                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                </td>
+                <th scope="col"><?= $no++ ?></th>
+                <td scope="row"><?= $s->fc_kdstock ?></td>
+                <td scope="row"><?= $s->fv_nmbarang ?></td>
+                <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                <td scope="row"><?= $s->ff_berat ?></td>
+                <td scope="row"><?= $s->fc_kadar ?></td>
+                <td scope="row"><?= $s->fm_hargabeli ?></td>
+                <td scope="row"><?= $s->fc_salesid ?></td>
+                <td scope="row"><?= $s->fc_sts ?></td>
+                <td scope="row"><?= $s->fd_date ?></td>
+            </tr>
+        <?php endforeach ?> <?php
+        } else {
+            ?>
+                <tr><td align="center">Tidak Ada Data</td></tr>
+            <?php
+        }
+    }
 }
