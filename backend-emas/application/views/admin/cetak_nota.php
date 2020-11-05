@@ -85,7 +85,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 
                             <div class="col-xs-8">
                                 <label for="form-field-1">Terbilang</label>
-                                <input type="text" id="form-field-1" placeholder="" class="col-xs-11" />
+                                <input type="text" id="form-field-1" value="<?= $nota->fv_terbilang ?>" placeholder="" class="col-xs-11" />
                             </div>
                             <div class="col-xs-3">
                                 <label for="">Total</label>
