@@ -68,6 +68,12 @@ class C_penjualan extends CI_Controller
         echo json_encode($data);
     }
 
+    public function tampil_nota($noinv)
+    {
+        $data = $this->M_penjualan->nota_jual($noinv);
+        echo json_encode($data);
+    }
+
     public function coba()
     {
         $data['title'] = "Penjualan";
@@ -182,21 +188,20 @@ class C_penjualan extends CI_Controller
             $kondisi = '2';
             $this->M_penjualan->update_stsbrg($kondisi, $kdstock);
 
-            
+
             //redirect('admin/Dashboard/datauserbaru');)
         }
 
         echo "<script>
 		alert('Transaksi berhasil di simpan !!');
-        window.location.href = '" . base_url('C_lapenjualan') . "';
+        window.location.href = '" . base_url('C_penjualan/cetak_nota') . "';
 		</script>";
     }
 
-    public function cetak_nota()
+    public function cetak_nota($noinv)
     {
         $data['title'] = "Cetak Nota";
-        // $data['data'] = $this->db->get_where('tm_invoice', ['fc_noinv' => $id_invoice])->row();
-        // $data['data2'] = $this->db->get_where('td_invoice', ['Id' => $id])->row();
+        $data['nota'] = $this->M_penjualan->query_nota($noinv);
         $this->load->view('admin/cetak_nota', $data);
     }
 }

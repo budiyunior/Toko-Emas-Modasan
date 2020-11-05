@@ -69,7 +69,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Cincin</td>
+                                            <td><?= $nota->fv_nmbarang ?></td>
                                             <td><img src="" width="100"></td>
                                             <td>10%</td>
                                             <td>1 gram</td>

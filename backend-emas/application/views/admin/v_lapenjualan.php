@@ -305,7 +305,6 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                 <th>Subtotal</th>
                                                 <th>Grand Total</th>
                                                 <th>Berat</th>
-
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -314,13 +313,12 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             ?>
                                                 <tr>
                                                     <td class="check center">
-                                                        <input type="checkbox" class="check-item">
+                                                        <input type="checkbox" class="check-inv" value="<?php echo $lp['fc_noinv'] ?>">
                                                     </td>
                                                     <td><?php echo $lp['fc_noinv'] ?></td>
                                                     <td><?php echo $lp['fc_kdstock'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
-
                                                     <td>
                                                         <?php echo $lp['berat'] ?> gram
                                                     </td>
@@ -335,6 +333,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                     </div>
                 </div>
                 <a href="" class="btn btn-success action-cetak"><i class="fa fa-print"> Cetak</i></a>
+                <a href="<?php base_url('C_penjualan/cetak_nota') ?>" id="cetak" class="btn btn-primary action-nota"><i class="fa fa-check"> Pilih</i></a>
             </div><!-- /.row -->
         </div><!-- /.page-content -->
     </div>
@@ -349,6 +348,34 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
         } else {
             $('.action-cetak').prop('disabled', true);
         }
+    });
+
+    $('.action-nota').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-inv:checked").val();
+        console.log('checked', checkedValue);
+        //$('#tampilPenjualan').modal('show');
+        // $.ajax({
+        //     url: "<?php echo base_url('C_penjualan/tampil_nota/') ?>" + checkedValue,
+        //     type: "GET",
+        //     dataType: "JSON",
+        //     success: function(result) {
+        //         $('[name="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+        //         $('[name="f_alamat_view"]').val(result.f_alamat);
+        //         $('[name="fc_telp_view"]').val(result.fc_telp);
+        //         $('[name="fv_nmbarang_view"]').val(result.fv_nmbarang);
+        //         $('[name="f_foto_view"]').val(result.f_foto);
+        //         $('[name="fc_kadar_view"]').val(result.fc_kadar);
+        //         $('[name="ff_berat_view"]').val(result.ff_berat);
+        //         $('[name="fm_ongkos_view"]').val(result.fm_ongkos);
+        //         $('[name="fm_price_view"]').val(result.fm_price);
+        //         $('[name="fm_grandtotal_view"]').val(result.fm_grandtotal);
+        //     },
+        //     error: function(jqXHR, textStatus, errorThrown) {
+        //         alert('Data Eror');
+        //     }
+        // })
     });
 </script>
 
