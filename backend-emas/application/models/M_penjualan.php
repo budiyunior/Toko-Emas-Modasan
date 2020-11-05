@@ -35,7 +35,7 @@ class M_penjualan extends CI_Model
 
 	public function query_nota($noinv)
 	{
-		$query = $this->db->query("SELECT * FROM tm_invoice, td_invoice, tm_pelanggan, tm_stock WHERE td_invoice.fc_noinv = tm_invoice.fc_noinv AND tm_invoice.fc_kdpel=tm_pelanggan.fc_kdpel AND td_invoice.fc_kdstock=tm_stock.fc_kdstock AND fc_noinv='$noinv'");
+		$query = $this->db->query("SELECT tm_invoice.fc_kdpel, tm_pelanggan.fv_nmpelanggan, tm_pelanggan.f_alamat, tm_pelanggan.fc_telp,tm_invoice.fd_tglinv ,td_invoice.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, td_invoice.ff_kadar, td_invoice.fn_berat, td_invoice.fm_ongkos, td_invoice.fm_subtot, tm_invoice.fm_grandtotal FROM td_invoice, tm_invoice,tm_stock, tm_pelanggan WHERE tm_stock.fc_kdstock = td_invoice.fc_kdstock AND tm_invoice.fc_kdpel = tm_pelanggan.fc_kdpel AND td_invoice.fc_noinv = tm_invoice.fc_noinv AND td_invoice.fc_noinv = 'PJ20201105-00001'");
 		return $query->row();
 	}
 
