@@ -25,7 +25,21 @@ class C_sales extends CI_Controller
         // $data['sales'] = $this->M_sales->get();
         // $data['sales3'] = $this->M_sales->get();
         $data['jabatan'] = $this->M_sales->get_jabatan();
-        $data['jabatan2'] = $this->M_sales->get_jabatan();
+		$data['jabatan2'] = $this->M_sales->get_jabatan();
+		
+		$sales = $this->M_sales->max_sales()->row();
+
+		$kode_sales = $sales->maxs_sales;
+
+		$urut_sales = (int) substr($kode_sales, 4, 2);
+
+		$urut_sales++;
+
+		$char = "SLS";
+
+		$kode_sales = $char.sprintf("%02s", $urut_sales);
+
+		$data['kode_sales'] = $kode_sales;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_sales/index'); //site url

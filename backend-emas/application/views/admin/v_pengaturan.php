@@ -190,7 +190,17 @@
         </script>
 
     </div>
+	<?php
+    $bu = base_url();
 
+    $fc_userid = $this->session->userdata('fc_userid');
+    $get_menu = $this->M_barang->getMenu($this->uri->segment(1));
+    $cr = $this->M_barang->getRole($fc_userid, 'r', $get_menu->idmenu)->r;
+    $cc = $this->M_barang->getRole($fc_userid, 'c', $get_menu->idmenu)->r;
+    $cu = $this->M_barang->getRole($fc_userid, 'u', $get_menu->idmenu)->r;
+    $cd = $this->M_barang->getRole($fc_userid, 'd', $get_menu->idmenu)->r;
+
+    ?>		
     <!-- /section:basics/sidebar.horizontal -->
     <div class="main-content">
         <div class="main-content-inner">
@@ -238,18 +248,23 @@
                             </div>
                         </div>
                         <div class="row">
+						<?php if ($cc == '1') { ?>				
                             <a href="#" data-toggle="modal" data-target="#exampleModal" class=" btn btn-primary" style="margin-left: 10px;">
                                 <i class="fa fa-save">
                                     Tambah Operator Baru
                                 </i>
                             </a>
-
+						<?php } ?>	
+						<?php if ($cu == '1') { ?>
                             <button type="button" class="btn btn-success update">
                                 <i class="fa fa-edit">
                                     Edit
                                 </i>
                             </button>
+						<?php } ?>	
+						<?php if ($cd == '1') { ?>
 							<button type="submit" class="btn btn-danger" onclick="return confirm(' Anda Yakin Menghapus Data Admin ?')"><i class="fa fa-trash"></i> Hapus</button>
+						<?php } ?>		
 							<?= form_close(); ?>
                         </div>
 						

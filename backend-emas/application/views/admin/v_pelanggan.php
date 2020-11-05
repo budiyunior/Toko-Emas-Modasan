@@ -299,7 +299,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" placeholder="Kode">
+                                                                        <input type="text" name="fc_kdpel" class="form-control" id="kode" value="<?php echo $kode_pelanggan?>" placeholder="Kode">
                                                                         <?= form_error('fc_kdpel', '<small class="text-danger pl-3">', '</small>') ?>
                                                                     </div>
                                                                 </div>
@@ -365,7 +365,7 @@
                                                                 <div class="form-group row">
                                                                     <label for="kode" class="col-sm-4 col-form-label">Kode</label>
                                                                     <div class="col-sm-8">
-                                                                        <input type="text" name="fc_kdpel_edit" class="form-control" id="kode" placeholder="Kode">
+                                                                        <input type="text" name="fc_kdpel_edit" class="form-control" id="kode"  placeholder="Kode">
                                                                     </div>
                                                                 </div>
                                                                 <div class="form-group row">

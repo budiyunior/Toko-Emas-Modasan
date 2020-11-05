@@ -1,4 +1,6 @@
 <?php $this->load->view('partials/header.php') ?>
+<link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+ <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
@@ -340,12 +342,13 @@
                     <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog ">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
+                               
+								<div class="modal-header">
+									<h5 class="modal-title center" id="exampleModalLabel">Form Barang</h5>
+									
+								</div>
                                 <form method="post" action="<?= base_url('C_barang/save_barang') ?>" enctype="multipart/form-data">
+								<input type="hidden" name="fn_id" id="fn_idbarang" class="form-control" >
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -355,55 +358,47 @@
                                                     ?>
                                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                                     <div class="col-sm-7">
-                                                        <input type="date" name="fd_date" class="form-control" value="<?= $tgl ?>">
+                                                        <input type="text" name="fd_date" id="tgl_1" class="form-control" >
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kode</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fc_kdstock" class="form-control" placeholder="Kode">
+														<input type="hidden" name="fc_barcode" id="fc_barcode" class="form-control" value="<?php echo $kode_barcode?>">
+                                                        <input type="text" name="fc_kdstock" id="fc_kdstock" class="form-control" placeholder="Kode" value="<?php echo $kode_barang?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Nama</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fv_nmbarang" class="form-control" placeholder="Nama">
+                                                        <input type="text" name="fv_nmbarang" id="fv_nmbarang" class="form-control" placeholder="Nama">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control" required name="fc_kdkelompok">
-                                                            <option value="">Pilih </option>
-                                                            <?php $i = 1;
-                                                            foreach ($kelompok as $k) : ?>
-                                                                <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
+                                                       
+														<div id="kelompokne" style="display: none;"> </div>
+
                                                     </div>
-                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#kelompok">
+                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="kelompok()">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control " required name="fc_kdlokasi">
-                                                            <option value="">Pilih </option>
-                                                            <?php $i = 1;
-                                                            foreach ($lokasi as $l) : ?>
-                                                                <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
-                                                            <?php endforeach; ?>
-                                                        </select>
+                                                        
+														<div id="lokasine" style="display: none;"> </div>
                                                     </div>
-                                                    <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#lokasi">
+                                                    <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="lokasi()">
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Sales</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control " required name="fc_salesid">
+                                                        <select class="form-control"  name="fc_salesid" id="fc_salesidne">
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($sales as $s) : ?>
@@ -418,19 +413,19 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Ongkos</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fm_ongkos" class="form-control" placeholder="Ongkos">
+                                                        <input type="text" name="fm_ongkos" id="fm_ongkos" class="form-control" placeholder="Ongkos">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Berat</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="ff_berat" class="form-control" placeholder="Berat">
+                                                        <input type="text" name="ff_berat" id="ff_berat" class="form-control" placeholder="Berat">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kadar</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control" name="fc_kadar">
+                                                        <select class="form-control" name="fc_kadar" id="fc_kadar">
                                                             <option value="">Pilih </option>
                                                             <option value="40">40</option>
                                                             <option value="70">70</option>
@@ -440,13 +435,13 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fm_hargabeli" class="form-control" placeholder="Harga Beli">
+                                                        <input type="text" name="fm_hargabeli" id="fm_hargabeli" class="form-control" placeholder="Harga Beli">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Harga Jual</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fm_hargajual" class="form-control" placeholder="Harga Jual">
+                                                        <input type="text" name="fm_hargajual" id="fm_hargajual" class="form-control" placeholder="Harga Jual">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -459,7 +454,7 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Status</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control" required name="fc_sts">
+                                                        <select class="form-control" required name="fc_sts" id="fc_sts">
                                                             <option>Pilih </option>
                                                             <option value="1">Baru</option>
                                                             <option value="2">Bekas</option>
@@ -469,7 +464,7 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Stok</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fn_stock" class="form-control" placeholder="Stok">
+                                                        <input type="text" name="fn_stock" id="fn_stock" class="form-control" placeholder="Stok">
                                                     </div>
                                                 </div>
                                             </div>
@@ -494,10 +489,10 @@
                                         <div class="modal-footer">
                                             <div class="row">
                                                 <div class="col-md-4" style="margin-top: 5px;">
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                    <button type="submit" class="btn btn-primary" >Simpan</button>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top: 5px;">
-                                                    <button type="button" class="btn btn-success">Cetak Barcode</button>
+                                                    <button type="button" class="btn btn-success" onclick="barcode()">Cetak Barcode</button>
                                                 </div>
                                                 <div class="col-md-1" style="margin-top: 5px;">
                                                     <button type="button" class="btn btn-danger" data-dismiss="modal">Keluar</button>
@@ -526,45 +521,28 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($kelompok as $k) : ?>
-                                            <tr>
-                                                <td class="check center">
-                                                    <input type="checkbox" class="check-item">
-                                                </td>
-                                                <td>
-                                                    <input type='text' readonly class='txtedit' data-id='<?= $k->fc_kdkelompok ?>' data-field='name' id='nametxt_"<?= $k->fc_kdkelompok ?>"' value='<?= $k->fv_nmkelompok ?>'>
-                                                </td>
-
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    </tbody>
-                                </table>
+                                
+								<div id="list_kelompok" style="display: none;"></div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <form action="<?= base_url('C_barang/save_kelompok') ?>" method="post">
+                            <form id="form-add" action="<?= site_url('C_barang/ajax_add_kelompok')?>" method="POST" role="form" enctype="multipart/form-data">
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <input type="text" name="fc_kdkelompok" class="form-control" placeholder="kode kelompok">
+										<input type="hidden" name="fn_id" id="fn_id2" class="form-control">
+                                        <input type="text" name="fc_kdkelompok" id="fc_kdkelompok2" class="form-control" placeholder="kode kelompok" value="<?php echo $kode_kelompok?>" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" name="fv_nmkelompok" class="form-control" placeholder="nama kelompok">
+                                        <input type="text" name="fv_nmkelompok" id="fv_nmkelompok2" class="form-control" placeholder="nama kelompok">
                                     </div>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
-                                    <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    <button type="submit" value="Add" id="btnSave" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
-                                    <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+                                    <button type="button" class="btn btn-primary btn-sm delete_kelompok"><i class="fa fa-minus"></i></button>
+									<!-- <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button> -->
                                 </div>
                             </form>
                         </div>
@@ -585,45 +563,28 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                <table class="table ">
-                                    <thead>
-                                        <tr>
+                              
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php $i = 1;
-                                        foreach ($lokasi as $l) : ?>
-                                            <tr>
-                                    </tbody>
-                                    <td class="check center">
-                                        <input type="checkbox" class="check-item">
-                                    </td>
-                                    <td>
-                                        <input type='text' readonly class='txtedit' data-id='<?= $l->fc_kdlokasi ?>' data-field='name' id='nametxt_"<?= $l->fc_kdlokasi ?>"' value='<?= $l->fv_nmlokasi ?>'>
-                                    </td>
-                                    </tr>
-                                <?php endforeach; ?>
-                                </tbody>
-                                </table>
+								<div id="list_lokasi" style="display: none;"></div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <form action="<?= base_url('C_barang/save_lokasi') ?>" method="post">
+						<form id="form-add-lokasi" action="<?= site_url('C_barang/ajax_add_lokasi')?>" method="POST" role="form" enctype="multipart/form-data">
                                 <div class="col-md-7">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="kode lokasi">
+										<input type="hidden" name="fn_id" id="fn_id3" class="form-control">
+                                        <input type="text" name="fc_kdlokasi" id="fc_kdlokasi2" class="form-control" placeholder="Kode Lokasi" value="<?php echo $kode_lokasi?>" readonly>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="lokasi">
+                                        <input type="text" name="fv_nmlokasi" id="fv_nmlokasi2" class="form-control" placeholder="Lokasi">
                                     </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 5px;"><i class="fa fa-plus"></i></button>
+                                <div class="col-md-2" style="margin-top: 5px;">
+									<button type="submit" value="Add" id="btnSave2" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
-                                    <button class="btn btn-primary btn-sm"><i class="fa fa-minus"></i></button>
+									<button type="button" class="btn btn-primary btn-sm delete_lokasi"><i class="fa fa-minus"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -1034,7 +995,50 @@
             </div>
         </div>
 
-
+		<div class="modal fade" id="modalbarcode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title center" id="exampleModalLabel">Barcode</h5>
+                            </div>
+							<form method="post" action="<?php echo base_url('C_barang/cetak_barcode')?>">
+                            <div class="modal-body">
+							<div class="row">
+                               <input type="hidden" name="fd_date2" id="fd_date2">
+							   <input type="hidden" name="fc_barcode2" id="fc_barcode2">
+							   <input type="hidden" name="fc_kdstock2" id="fc_kdstock2">
+							   <input type="hidden" name="fv_nmbarang2" id="fv_nmbarang2">
+							   <input type="hidden" name="fc_kdkelompok2" id="fc_kdkelompok2">
+							   <input type="hidden" name="fc_kdlokasi2" id="fc_kdlokasi2">
+							   <input type="hidden" name="fc_salesid2" id="fc_salesid2">
+							   <input type="hidden" name="fm_ongkos2" id="fm_ongkos2">
+							   <input type="hidden" name="ff_berat2" id="ff_berat2">
+							   <input type="hidden" name="fc_kadar2" id="fc_kadar2">
+							   <input type="hidden" name="fm_hargabeli2" id="fm_hargabeli2">
+							   <input type="hidden" name="fm_hargajual2" id="fm_hargajual2">
+													
+							    <div class="form-group row">
+                                	<label for="" class="col-sm-3 col-form-label">Jumlah</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="jumlah" id="jumlah" class="form-control" placeholder="Nama">
+                                    </div>
+                                </div>
+								
+							</div>   
+                            </div>
+							<div class="modal-footer">
+                                <div class="row">
+                                    <div class="col-md-4" style="margin-top: 5px;">
+                                        <button type="submit" class="btn btn-primary" >Simpan</button>
+                                    </div>
+                                                
+                            	</div>
+                            </div>
+							</form>
+                        </div>
+                    </div>
+        </div>
+											
         <script>
             $('.custom-file-input').on('change', function() {
                 let fileName = $(this).val().split('\\').pop();
@@ -1055,37 +1059,221 @@
                         $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
                     else // Jika checkbox all tidak diceklis
                         $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-                });
+				});
 
-            });
+				$('#tgl_1').datepicker({
+				format: "yyyy-mm-dd",
+				autoclose: true
+				});
+				
+				setTimeout(function(){
+					get_kelompok();
+				}, 1000);
+				
+				setTimeout(function(){
+					get_lokasi();
+				}, 1000);
+
+				$('#form-add').submit(function(e) {
+					
+					e.preventDefault(); var formData = new FormData($(this)[0]);
+					$.ajax({
+						url: $(this).attr("action"), type: 'POST', dataType: 'json', data: formData, async: true,
+						beforeSend: function() { $('#btnSave').attr('disabled',true); },
+						success: function(response) {
+							if(response.status) { 
+								 Batal(); 
+								 kelompok_list();
+								 
+								 setTimeout(function(){
+									get_kelompok();
+								}, 1000);
+								// swal_berhasil();
+							} else {
+								  Batal(); 
+								// swal_error(response.error);
+							 }
+						},
+						complete: function() { $('#btnSave').attr('disabled',false); },
+						cache: false, contentType: false, processData: false
+					});
+					return false;
+				});
+
+				$('#form-add-lokasi').submit(function(e) {
+					
+					e.preventDefault(); var formData = new FormData($(this)[0]);
+					$.ajax({
+						url: $(this).attr("action"), type: 'POST', dataType: 'json', data: formData, async: true,
+						beforeSend: function() { $('#btnSave2').attr('disabled',true); },
+						success: function(response) {
+							if(response.status) { 
+								 BatalLokasi(); 
+								 lokasi_list();
+								 
+								 setTimeout(function(){
+									get_lokasi();
+								}, 1000);
+								// swal_berhasil();
+							} else {
+								BatalLokasi(); 
+								// swal_error(response.error);
+							 }
+						},
+						complete: function() { $('#btnSave2').attr('disabled',false); },
+						cache: false, contentType: false, processData: false
+					});
+					return false;
+				});
+
+			});
+			
+			function get_kelompok(){
+				var okeycabang = '<select name="fc_kdkelompok" id="fc_kdkelompok" class="form-control" ><option>--Pilih Kelompok--</option>';
+				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_kelompok/', {
+					format: "json"
+				})
+				.done(function (datae) {
+							$.each(datae, function (key, val) {
+							
+									okeycabang += '<option value="' + val.fc_kdkelompok + '" >' + val.fv_nmkelompok+'</option>';
+							//  }
+								
+							});
+							okeycabang += '</select></div></div>';
+
+							var f = document.getElementById("kelompokne");
+							f.innerHTML= okeycabang;
+							document.getElementById('kelompokne').style.display = "block";
+						//   document.getElementById('pengganti_cabangn').style.display = "none";
+				}) 
+			}
+
+			function get_lokasi(){
+				var lokasi = '<select name="fc_kdlokasi" id="fc_kdlokasi" class="form-control" ><option>--Pilih Lokasi--</option>';
+
+				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_lokasi/', {
+					format: "json"
+				})
+				.done(function (datae) {
+							$.each(datae, function (key, val) {
+							
+								lokasi += '<option value="' + val.fc_kdlokasi + '" >' + val.fv_nmlokasi+'</option>';
+							//  }
+								
+							});
+							lokasi += '</select></div></div>';
+
+							var g = document.getElementById("lokasine");
+							g.innerHTML= lokasi;
+							document.getElementById('lokasine').style.display = "block";
+						//   document.getElementById('pengganti_cabangn').style.display = "none";
+				}) 
+			}
+
+			$('.delete_kelompok').click(function(e) {
+				e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-kelompok:checked").val();
+				console.log('checked', checkedValue);
+				
+				if (confirm('Are you sure delete this data?')) {
+					$.ajax ({
+						url : "<?php echo site_url('C_barang/ajax_delete_kelompok')?>/"+checkedValue,
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							setTimeout(function(){
+								Batal();
+							}, 1000);
+
+							kelompok_list();
+								 
+							setTimeout(function(){
+								get_kelompok();
+							}, 1000);
+						}, error: function (jqXHR, textStatus, errorThrown) {
+							
+							setTimeout(function(){
+								Batal();
+							}, 1000);
+
+							kelompok_list();
+								 
+							setTimeout(function(){
+								get_kelompok();
+							}, 1000);
+						}
+					});
+				}
+			})	
+
+			$('.delete_lokasi').click(function(e) {
+				e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-lokasi:checked").val();
+				console.log('checked', checkedValue);
+				
+				if (confirm('Are you sure delete this data?')) {
+					$.ajax ({
+						url : "<?php echo site_url('C_barang/ajax_delete_lokasi')?>/"+checkedValue,
+						type: "POST",
+						dataType: "JSON",
+						success: function(data) {
+							setTimeout(function(){
+								BatalLokasi();
+							}, 1000);
+
+							lokasi_list();
+								 
+							setTimeout(function(){
+								get_lokasi();
+							}, 1000);
+						}, error: function (jqXHR, textStatus, errorThrown) {
+							
+							setTimeout(function(){
+								BatalLokasi();
+							}, 1000);
+
+							lokasi_list();
+								 
+							setTimeout(function(){
+								get_lokasi();
+							}, 1000);
+						}
+					});
+				}
+			})	
+
             $('.update').click(function(e) {
                 e.preventDefault();
                 var arr = [];
                 var checkedValue = $(".check-item:checked").val();
                 console.log('checked', checkedValue);
                 // jQuery.noConflict();
-                $('#modalupdate').modal('show');
+                $('#tambah').modal('show');
                 $.ajax({
                     url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
                     type: "GET",
                     dataType: "JSON",
                     success: function(result) {
-                        $('[name="fn_id_edit"]').val(result.fn_id);
-                        $('[name="fd_date_edit"]').val(result.fd_date);
-                        $('[name="fc_barcode_edit"]').val(result.fc_barcode);
-                        $('[name="fc_kdstock_edit"]').val(result.fc_kdstock);
-                        $('[name="fv_nmbarang_edit"]').val(result.fv_nmbarang);
-                        $('[name="fc_kdkelompok_edit"]').val(result.fc_kdkelompok);
-                        $('[name="fc_kdlokasi_edit"]').val(result.fc_kdlokasi);
-                        $('[name="fc_salesid_edit"]').val(result.fc_salesid);
-                        $('[name="ff_berat_edit"]').val(result.ff_berat);
-                        $('[name="fc_kadar_edit"]').val(result.fc_kadar);
-                        $('[name="fm_ongkos_edit"]').val(result.fm_ongkos);
-                        $('[name="fm_hargabeli_edit"]').val(result.fm_hargabeli);
-                        $('[name="fm_hargajual_edit"]').val(result.fm_hargajual);
-                        $('[name="f_foto_edit"]').val(result.f_foto);
-                        $('[name="fc_sts_edit"]').val(result.fc_sts);
-                        $('[name="fn_stock_edit"]').val(result.fn_stock);
+                        $('#fn_idbarang').val(result.fn_id);
+						$('#tgl_1').val(result.fd_date);
+						$('#fc_barcode').val(result.fc_barcode);
+                        $('#fc_kdstock').val(result.fc_kdstock);
+                        $('#fv_nmbarang').val(result.fv_nmbarang);
+                        $('#fc_kdkelompok').val(result.fc_kdkelompok);
+                        $('#fc_kdlokasi').val(result.fc_kdlokasi);
+                        $('#fc_salesidne').val(result.fc_salesid);
+                        $('#fm_ongkos').val(result.fm_ongkos);
+                        $('#ff_berat').val(result.ff_berat);
+                        $('#fc_kadar').val(result.fc_kadar);
+                        $('#fm_hargabeli').val(result.fm_hargabeli);
+                        $('#fm_hargajual').val(result.fm_hargajual);
+                        $('#fc_sts').val(result.fc_sts);
+                        $('#fn_stock').val(result.fn_stock);
+                        // $('[name="fc_sts_edit"]').val(result.fc_sts);
+                        // $('[name="fn_stock_edit"]').val(result.fn_stock);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Data Eror');
@@ -1098,7 +1286,143 @@
 
                 // var action = $(this).attr('data-href') + '/' + arr.join("-");
                 // window.location.href = action;
-            });
+			});
+
+			function check_kelompok(value){
+				$.ajax({
+                    url: "<?php echo base_url('C_barang/get_edit_kelompok/') ?>" + value,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('#fn_id2').val(result.fn_id);
+                        $('#fc_kdkelompok2').val(result.fc_kdkelompok);
+                        $('#fv_nmkelompok2').val(result.fv_nmkelompok);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+                })
+
+			}
+
+			function check_lokasi(value){
+				$.ajax({
+                    url: "<?php echo base_url('C_barang/get_edit_lokasi/') ?>" + value,
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function(result) {
+                        $('#fn_id3').val(result.fn_id);
+                        $('#fc_kdlokasi2').val(result.fc_kdlokasi);
+                        $('#fv_nmlokasi2').val(result.fv_nmlokasi);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert('Data Eror');
+                    }
+                })
+			}
+					
+			
+			function barcode(){
+				var fd_date = $('#fd_date').val();
+				var fc_barcode = $('#fc_barcode').val(); 
+				var fc_kdstock = $('#fc_kdstock').val();
+				var fv_nmbarang = $('#fv_nmbarang').val(); 
+				var fc_kdkelompok = $('#fc_kdkelompok').val();
+				var fc_kdlokasi = $('#fc_kdlokasi').val(); 
+				var fc_salesid = $('#fc_salesid').val();  
+				var fm_ongkos = $('#fm_ongkos').val();   
+				var ff_berat = $('#ff_berat').val(); 
+				var fc_kadar = $('#fc_kadar').val(); 
+				var fm_hargabeli = $('#fm_hargabeli').val();
+				var fm_hargajual = $('#fm_hargajual').val(); 
+
+				$('#fd_date2').val(fd_date);
+				$('#fc_barcode2').val(fc_barcode);
+				$('#fc_kdstock2').val(fc_kdstock);
+				$('#fv_nmbarang2').val(fv_nmbarang);
+				$('#fc_kdkelompok2').val(fc_kdkelompok);
+				$('#fc_kdlokasi2').val(fc_kdlokasi);
+				$('#fc_salesid2').val(fc_salesid);
+				$('#fm_ongkos2').val(fm_ongkos);
+				$('#ff_berat2').val(ff_berat);
+				$('#fc_kadar2').val(fc_kadar);
+				$('#fm_hargabeli2').val(fm_hargabeli);
+				$('#fm_hargajual2').val(fm_hargajual);
+				$('#modalbarcode').modal('show');	
+			}
+
+			function kelompok(){
+				$('#kelompok').modal('show');	
+				$('[name="fv_nmkelompok"]').val("");
+				kelompok_list();
+			}
+
+			function lokasi(){
+				$('#lokasi').modal('show');
+				lokasi_list();
+			}
+
+			function Batal() {
+				$('#kelompok').modal('hide');
+			}	
+
+			function BatalLokasi(){
+				$('#lokasi').modal('hide');
+			}
+
+			function kelompok_list(){
+				var gabungan = '';
+				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_kelompok/', {
+					format: "json"
+				})
+				.done(function (datae) {
+					var list_kelompok_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
+					var list_kelompok_bawah = '</tbody></table>';
+					var tengah = '';
+					var list_kelompok_isi = '';
+					$.each(datae, function (key, val) {
+							
+						list_kelompok_isi = '<tr><td class="check center"><input type="checkbox" class="check-kelompok" onchange="check_kelompok('+val.fn_id+')" value="'+val.fn_id+'"></td><td><input type="text" readonly class="txtedit" data-id='+val.fc_kdkelompok+' data-field="name" id="nametxt_'+val.fc_kdkelompok+'" value="'+val.fv_nmkelompok+'"> </td></tr>';
+						tengah+=''+list_kelompok_isi+'';	
+					});
+					if (tengah!="") {
+						gabungan = list_kelompok_atas+tengah+list_kelompok_bawah;
+					}else{
+						gabungan = "Tidak Ada Data";
+					}  
+
+					var h = document.getElementById("list_kelompok");
+					h.innerHTML= gabungan;
+					document.getElementById('list_kelompok').style.display = "block";
+				})	
+			}
+
+			function lokasi_list(){
+				var gabungan_lokasi = '';
+				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_lokasi/', {
+					format: "json"
+				})
+				.done(function (datae) {
+					var list_lokasi_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
+					var list_lokasi_bawah = '</tbody></table>';
+					var tengah_lokasi = '';
+					var list_lokasi_isi = '';
+					$.each(datae, function (key, val) {
+							
+						list_lokasi_isi = '<tr><td class="check center"><input type="checkbox" class="check-lokasi" onchange="check_lokasi('+val.fn_id+')" value="'+val.fn_id+'"></td><td><input type="text" readonly class="txtedit" data-id='+val.fc_kdlokasi+' data-field="name" id="nametxt_'+val.fc_kdlokasi+'" value="'+val.fv_nmlokasi+'"> </td></tr>';
+						tengah_lokasi+=''+list_lokasi_isi+'';	
+					});
+					if (tengah_lokasi!="") {
+						gabungan_lokasi = list_lokasi_atas+tengah_lokasi+list_lokasi_bawah;
+					}else{
+						gabungan_lokasi = "Tidak Ada Data";
+					}  
+
+					var i = document.getElementById("list_lokasi");
+					i.innerHTML= gabungan_lokasi;
+					document.getElementById('list_lokasi').style.display = "block";
+				})	
+			}
         </script>
 
         <script>

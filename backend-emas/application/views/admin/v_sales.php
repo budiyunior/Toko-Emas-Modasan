@@ -296,7 +296,7 @@
                                             <div class="form-group row">
                                                 <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                                                 <div class="col-sm-7">
-                                                    <input type="text" name="fc_salesid" class="form-control" id="kode" placeholder="Kode">
+                                                    <input type="text" name="fc_salesid" class="form-control" id="kode" placeholder="Kode" value="<?php echo $kode_sales?>">
                                                     <?= form_error('fc_salesid', '<small class="text-danger pl-3">', '</small>') ?>
                                                 </div>
                                             </div>

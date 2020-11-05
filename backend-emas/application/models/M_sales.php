@@ -97,5 +97,9 @@ class M_sales extends CI_Model
         $this->db->or_like('fc_email', $search);
         $result = $this->db->get('t_sales')->result();
         return $result;
-    }
+	}
+	
+	function max_sales(){
+		return $this->db->query('SELECT max(fc_salesid) AS maxs_sales FROM t_sales');
+	}
 }

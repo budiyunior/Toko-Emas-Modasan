@@ -66,5 +66,9 @@ class M_pelanggan extends CI_Model
     {
         $this->db->where('fc_kdpel', $id);
         $this->db->delete('tm_pelanggan');
-    }
+	}
+	
+	function max_pelanggan(){
+		return $this->db->query('SELECT max(fc_kdpel) AS maxs_pelanggan FROM tm_pelanggan');
+	}
 }

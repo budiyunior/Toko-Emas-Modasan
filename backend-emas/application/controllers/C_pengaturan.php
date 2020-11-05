@@ -9,7 +9,8 @@ class C_pengaturan extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper('url');
         $this->load->helper('form');
-        $this->load->model('M_menu');
+		$this->load->model('M_menu');
+		$this->load->model('M_barang');
         $this->load->model('M_pengaturan');
     }
 

@@ -125,4 +125,9 @@ class M_pembelian extends CI_Model
 		$this->db->insert('t_belidtl',$where);
 		return $this->db->insert_id();
 	}
+
+	public function update_status($data1,$where) {
+		$this->db->update('tm_invoice', $data1, $where);
+		return $this->db->affected_rows();
+	}
 }

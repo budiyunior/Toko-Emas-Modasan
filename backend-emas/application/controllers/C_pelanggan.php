@@ -22,7 +22,21 @@ class C_pelanggan extends CI_Controller
         $data['title'] = "Pelanggan";
         $data['menu'] = $this->M_menu->get_menu();
         // $data['pelanggan'] = $this->M_pelanggan->get();
-        // $this->load->view('admin/v_pelanggan', $data);
+		// $this->load->view('admin/v_pelanggan', $data);
+		
+		$pelanggan = $this->M_pelanggan->max_pelanggan()->row();
+
+		$kode_pelanggan = $pelanggan->maxs_pelanggan;
+
+		$urut_pelanggan = (int) substr($kode_pelanggan, 4, 4);
+
+		$urut_pelanggan++;
+
+		$char = "PLG";
+
+		$kode_pelanggan = $char.sprintf("%04s", $urut_pelanggan);
+
+		$data['kode_pelanggan'] = $kode_pelanggan;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_pelanggan/index'); //site url
