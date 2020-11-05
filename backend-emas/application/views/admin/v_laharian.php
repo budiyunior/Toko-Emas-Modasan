@@ -311,8 +311,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     $jumlah1 = mysqli_fetch_array($sql2);
                                     $berat1 = mysqli_fetch_array($sql3);
                                     //laku
-                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' ),'0') As jumlah");
-                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl'  ),'0') As berat");
+                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 40 ),'0') As jumlah");
+                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 40 ),'0') As berat");
                                     $jumlah2 = mysqli_fetch_array($sql4);
                                     $berat2 = mysqli_fetch_array($sql5);
                                     //diambil
@@ -347,6 +347,46 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </tr>
                                 <?php
                                 }
+                                //Kemarin
+                                $sql12 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$tgl' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql13 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date < '$tgl' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah6 = mysqli_fetch_array($sql12);
+                                $berat6 = mysqli_fetch_array($sql13);
+                                //laku
+                                $sql14 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and  tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 40 ),'0') As jumlah");
+                                $sql15 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and  tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 40 ),'0') As berat");
+                                $jumlah7 = mysqli_fetch_array($sql14);
+                                $berat7 = mysqli_fetch_array($sql15);
+                                //diambil
+                                $sql16 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 1 and fc_kadar = 40),'0') As jumlah");
+                                $sql17 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 1 and fc_kadar = 40),'0') As berat");
+                                $jumlah8 = mysqli_fetch_array($sql16);
+                                $berat8 = mysqli_fetch_array($sql17);
+                                //tambahan
+                                $sql18 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql19 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah9 = mysqli_fetch_array($sql18);
+                                $berat9 = mysqli_fetch_array($sql19);
+                                //total
+                                $sql20 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$tgl3' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql21 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date < '$tgl3' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah10 = mysqli_fetch_array($sql20);
+                                $berat10 = mysqli_fetch_array($sql21);
+                                ?>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat6['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat7['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat8['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat9['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat10['berat'] ?> gram</th>
+                                </tr>
+                                <?php
                             } else {
                                 $row = mysqli_query($koneksi, "SELECT COUNT(fc_kdkelompok) as row FROM tm_kelompok ");
                                 $countrow = mysqli_fetch_array($row);
@@ -361,8 +401,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     $jumlah1 = mysqli_fetch_array($sql2);
                                     $berat1 = mysqli_fetch_array($sql3);
                                     //laku
-                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' ),'0') As jumlah");
-                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today'  ),'0') As berat");
+                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 40 ),'0') As jumlah");
+                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 40 ),'0') As berat");
                                     $jumlah2 = mysqli_fetch_array($sql4);
                                     $berat2 = mysqli_fetch_array($sql5);
                                     //diambil
@@ -394,11 +434,52 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <td><?php echo $berat4['berat'] ?> gram</td>
                                         <td><?php echo $jumlah5['jumlah'] ?> buah</td>
                                         <td><?php echo $berat5['berat'] ?> gram</td>
-
                                     </tr>
-                            <?php }
+                                <?php }
+
+                                //kemarin
+                                $sql12 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$today' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql13 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where   fd_date < '$today' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah6 = mysqli_fetch_array($sql12);
+                                $berat6 = mysqli_fetch_array($sql13);
+                                //laku
+                                $sql14 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv  and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 40 ),'0') As jumlah");
+                                $sql15 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv  and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 40 ),'0') As berat");
+                                $jumlah7 = mysqli_fetch_array($sql14);
+                                $berat7 = mysqli_fetch_array($sql15);
+                                //diambil
+                                $sql16 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$today' and fc_kondisi = 1 and fc_kadar = 40),'0') As jumlah");
+                                $sql17 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$today' and fc_kondisi = 1 and fc_kadar = 40),'0') As berat");
+                                $jumlah8 = mysqli_fetch_array($sql16);
+                                $berat8 = mysqli_fetch_array($sql17);
+                                //tambahan
+                                $sql18 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$today' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql19 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$today' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah9 = mysqli_fetch_array($sql18);
+                                $berat9 = mysqli_fetch_array($sql19);
+                                //total
+                                $sql20 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$tomorrow' and fc_kondisi = 0 and fc_kadar = 40),'0') As jumlah");
+                                $sql21 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date < '$tomorrow' and fc_kondisi = 0 and fc_kadar = 40),'0') As berat");
+                                $jumlah10 = mysqli_fetch_array($sql20);
+                                $berat10 = mysqli_fetch_array($sql21);
+                                ?>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat6['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat7['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat8['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat9['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat10['berat'] ?> gram</th>
+                                </tr>
+                            <?php
                             }
                             ?>
+
                         </table>
                     </div>
                 </div>
@@ -453,8 +534,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     $jumlah1 = mysqli_fetch_array($sql2);
                                     $berat1 = mysqli_fetch_array($sql3);
                                     //laku
-                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' ),'0') As jumlah");
-                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl'  ),'0') As berat");
+                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 70 ),'0') As jumlah");
+                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 70 ),'0') As berat");
                                     $jumlah2 = mysqli_fetch_array($sql4);
                                     $berat2 = mysqli_fetch_array($sql5);
                                     //diambil
@@ -485,10 +566,50 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <td><?php echo $berat4['berat'] ?> gram</td>
                                         <td><?php echo $jumlah5['jumlah'] ?> buah</td>
                                         <td><?php echo $berat5['berat'] ?> gram</td>
-
                                     </tr>
                                 <?php
                                 }
+                                //Kemarin
+                                $sql12 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$tgl' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql13 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date < '$tgl' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah6 = mysqli_fetch_array($sql12);
+                                $berat6 = mysqli_fetch_array($sql13);
+                                //laku
+                                $sql14 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 70 ),'0') As jumlah");
+                                $sql15 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and tm_invoice.fd_tglinv = '$tgl' and td_invoice.ff_kadar = 70 ),'0') As berat");
+                                $jumlah7 = mysqli_fetch_array($sql14);
+                                $berat7 = mysqli_fetch_array($sql15);
+                                //diambil
+                                $sql16 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 1 and fc_kadar = 70),'0') As jumlah");
+                                $sql17 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 1 and fc_kadar = 70),'0') As berat");
+                                $jumlah8 = mysqli_fetch_array($sql16);
+                                $berat8 = mysqli_fetch_array($sql17);
+                                //tambahan
+                                $sql18 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql19 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date = '$tgl' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah9 = mysqli_fetch_array($sql18);
+                                $berat9 = mysqli_fetch_array($sql19);
+                                //total
+                                $sql20 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where  fd_date < '$tgl3' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql21 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where  fd_date < '$tgl3' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah10 = mysqli_fetch_array($sql20);
+                                $berat10 = mysqli_fetch_array($sql21);
+                                ?>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat6['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat7['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat8['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat9['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat10['berat'] ?> gram</th>
+                                </tr>
+                                <?php
+
                             } else {
                                 $row = mysqli_query($koneksi, "SELECT COUNT(fc_kdkelompok) as row FROM tm_kelompok ");
                                 $countrow = mysqli_fetch_array($row);
@@ -503,8 +624,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     $jumlah1 = mysqli_fetch_array($sql2);
                                     $berat1 = mysqli_fetch_array($sql3);
                                     //laku
-                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' ),'0') As jumlah");
-                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today'  ),'0') As berat");
+                                    $sql4 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 70),'0') As jumlah");
+                                    $sql5 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdkelompok = '$v' and tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 70 ),'0') As berat");
                                     $jumlah2 = mysqli_fetch_array($sql4);
                                     $berat2 = mysqli_fetch_array($sql5);
                                     //diambil
@@ -538,9 +659,51 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <td><?php echo $berat5['berat'] ?> gram</td>
 
                                     </tr>
-                            <?php }
+                                <?php }
+                                $sql12 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where   fd_date < '$today' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql13 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where   fd_date < '$today' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah6 = mysqli_fetch_array($sql12);
+                                $berat6 = mysqli_fetch_array($sql13);
+                                //laku
+                                $sql14 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(td_invoice.fc_kdkelompok) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and   tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 70),'0') As jumlah");
+                                $sql15 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(td_invoice.fn_berat) from td_invoice, tm_invoice where tm_invoice.fc_noinv = td_invoice.fc_noinv and   tm_invoice.fd_tglinv = '$today' and td_invoice.ff_kadar = 70 ),'0') As berat");
+                                $jumlah7 = mysqli_fetch_array($sql14);
+                                $berat7 = mysqli_fetch_array($sql15);
+                                //diambil
+                                $sql16 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where   fd_date = '$today' and fc_kondisi = 1 and fc_kadar = 70),'0') As jumlah");
+                                $sql17 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where   fd_date = '$today' and fc_kondisi = 1 and fc_kadar = 70),'0') As berat");
+                                $jumlah8 = mysqli_fetch_array($sql16);
+                                $berat8 = mysqli_fetch_array($sql17);
+                                //tambahan
+                                $sql18 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where   fd_date = '$today' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql19 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where   fd_date = '$today' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah9 = mysqli_fetch_array($sql18);
+                                $berat9 = mysqli_fetch_array($sql19);
+                                //total
+                                $sql20 = mysqli_query($koneksi, "SELECT IFNULL((select COUNT(fc_kdkelompok) from tm_stock where   fd_date < '$tomorrow' and fc_kondisi = 0 and fc_kadar = 70),'0') As jumlah");
+                                $sql21 = mysqli_query($koneksi, "SELECT IFNULL((select SUM(ff_berat) from tm_stock where   fd_date < '$tomorrow' and fc_kondisi = 0 and fc_kadar = 70),'0') As berat");
+                                $jumlah10 = mysqli_fetch_array($sql20);
+                                $berat10 = mysqli_fetch_array($sql21);
+                                ?>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat6['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat7['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat8['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat9['berat'] ?> gram</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $berat10['berat'] ?> gram</th>
+                                </tr>
+                            <?php
                             }
                             ?>
+
+
+
                         </table>
                     </div>
                 </div>
