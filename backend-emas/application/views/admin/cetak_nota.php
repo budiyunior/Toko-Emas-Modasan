@@ -16,7 +16,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <br>
                         <br>
                         <a style="font-family: times new roman; font-size: 35px; font-style: bold;">
-                            <img src="../../backend-emas/assets/img/logo_modasan.png" width="70" />
+                            <img src="<?= base_url('assets/img/logo_modasan.png')?>" width="70" />
                             -M O D A S A N-
                         </a>
                     </div>
@@ -27,7 +27,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Nama</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class=" col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" value="<?= $nota->fv_nmpelanggan ?>" readonly class=" col-sm-5" />
                                     </div>
                                 </div>
                                 <br>
@@ -35,7 +35,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">Alamat</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class="col-xs-7 col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" value="<?= $nota->f_alamat ?>" readonly class="col-xs-7 col-sm-5" />
                                     </div>
                                 </div>
                                 <br>
@@ -43,7 +43,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <label class="col-sm-3 control-label no-padding-right" for="form-field-1">No. Telp</label>
 
                                     <div class="col-sm-9">
-                                        <input type="text" id="form-field-1" placeholder="" class=" col-sm-5" />
+                                        <input type="text" id="form-field-1" placeholder="" readonly value="<?= $nota->fc_telp ?>" class=" col-sm-5" />
                                     </div>
                                 </div>
                             </form>
@@ -68,14 +68,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td><?= $nota->fv_nmbarang ?></td>
-                                            <td><img src="" width="100"></td>
-                                            <td>10%</td>
-                                            <td>1 gram</td>
-                                            <td>10.000</td>
-                                            <td>10.000</td>
-                                        </tr>
+                                        <?php foreach ($barang as $brg) : ?>
+                                            <tr>
+                                                <td><?= $brg->fv_nmbarang ?></td>
+                                                <td><img src="<?= base_url('assets/img/foto_barang/' . $brg->f_foto) ?>" width="100"></td>
+                                                <td><?= $brg->fc_kadar ?></td>
+                                                <td><?= $brg->ff_berat ?></td>
+                                                <td><?= $brg->fm_ongkos ?></td>
+                                                <td><?= $brg->fm_price ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
 
@@ -87,7 +89,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                             <div class="col-xs-3">
                                 <label for="">Total</label>
-                                <input type="text" id="form-field-1" class="no-padding-right" placeholder="" />
+                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= $nota->fm_grandtotal ?>" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -104,7 +106,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <h3 style="margin-top: 40px; font-family: Brush Script MT;">Terima Kasih Atas Kunjungan dan Kepercayaan Anda</h3>
                     </div>
                     <div class="col-xs-4">
-                        <h5>Malang, </h5>
+                        <h5>Malang, <?php echo $nota->fd_tglinv ?></h5>
                         <br>
                         <br>
                         <br>
