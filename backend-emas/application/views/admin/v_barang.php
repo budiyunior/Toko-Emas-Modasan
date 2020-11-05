@@ -1285,22 +1285,22 @@
 			}
 
 			function kelompok_modal(){
-				$('#kelompok').modal('show');	
+				$('#editkelompok').modal('show');	
 				$('[name="fv_nmkelompok"]').val("");
 				kelompok_list();
 			}
 
 			function lokasi_modal(){
-				$('#lokasi').modal('show');
+				$('#editlokasi').modal('show');
 				lokasi_list();
 			}
 
 			function Batal() {
-				$('#kelompok').modal('hide');
+				$('#editkelompok').modal('hide');
 			}	
 
 			function BatalLokasi(){
-				$('#lokasi').modal('hide');
+				$('#editlokasi').modal('hide');
 			}
 
 			function kelompok_list(){
