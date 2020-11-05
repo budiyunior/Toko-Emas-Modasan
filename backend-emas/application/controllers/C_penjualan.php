@@ -162,6 +162,7 @@ class C_penjualan extends CI_Controller
             'fm_totongkir' => $this->input->post('TotalOngkir'),
             'fm_subtot' => $this->input->post('SubTotalBayar2'),
             'fm_grandtotal' => $this->input->post('TotalBayar2'),
+            'fv_terbilang' => $this->input->post('terbilang'),
         );
 
         $id_penjualan = $this->M_penjualan->insert($data_penjualan);
@@ -192,10 +193,11 @@ class C_penjualan extends CI_Controller
             //redirect('admin/Dashboard/datauserbaru');)
         }
 
-        echo "<script>
-		alert('Transaksi berhasil di simpan !!');
-        window.location.href = '" . base_url('C_penjualan/cetak_nota') . "';
-		</script>";
+        // echo "<script>
+        // alert('Transaksi berhasil di simpan !!');
+        // window.location.href = '" . base_url('C_penjualan/cetak_nota') . "';
+        // </script>";
+        redirect('C_penjualan/cetak_nota/' . $this->input->post('fc_noinv'));
     }
 
     public function cetak_nota($noinv)
