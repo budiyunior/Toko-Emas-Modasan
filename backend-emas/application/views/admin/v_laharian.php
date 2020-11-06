@@ -272,11 +272,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 
                             <tr>
                                 <th rowspan="2">Jenis</th>
-                                <th colspan="2" scope="colgroup">Kemarin</th>
-                                <th colspan="2" scope="colgroup">Laku</th>
-                                <th colspan="2" scope="colgroup">Diambil</th>
-                                <th colspan="2" scope="colgroup">Tambahan</th>
-                                <th colspan="2" scope="colgroup">Total</th>
+                                <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                <th class="center" colspan="2" scope="colgroup">Laku</th>
+                                <th class="center" colspan="2" scope="colgroup">Diambil</th>
+                                <th class="center" colspan="2" scope="colgroup">Tambahan</th>
+                                <th class="center" colspan="2" scope="colgroup">Total</th>
 
                             </tr>
                             <tr>
@@ -333,16 +333,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             ?>
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
-                                        <td><?php echo $jumlah1['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat1['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah2['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat2['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah3['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat3['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah4['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat4['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah5['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat5['berat'] ?> gram</td>
+                                        <td><?php echo $jumlah1['jumlah'] ?> </td>
+                                        <td><?php echo $berat1['berat'] ?></td>
+                                        <td><?php echo $jumlah2['jumlah'] ?> </td>
+                                        <td><?php echo $berat2['berat'] ?></td>
+                                        <td><?php echo $jumlah3['jumlah'] ?> </td>
+                                        <td><?php echo $berat3['berat'] ?></td>
+                                        <td><?php echo $jumlah4['jumlah'] ?> </td>
+                                        <td><?php echo $berat4['berat'] ?></td>
+                                        <td><?php echo $jumlah5['jumlah'] ?> </td>
+                                        <td><?php echo $berat5['berat'] ?></td>
 
                                     </tr>
                                 <?php
@@ -375,15 +375,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah </th>
                                     <th><?php echo $berat6['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah </th>
                                     <th><?php echo $berat7['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah </th>
                                     <th><?php echo $berat8['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah </th>
                                     <th><?php echo $berat9['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah </th>
                                     <th><?php echo $berat10['berat'] ?> gram</th>
                                 </tr>
                                 <?php
@@ -424,16 +424,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
-                                        <td><?php echo $jumlah1['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat1['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah2['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat2['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah3['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat3['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah4['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat4['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah5['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat5['berat'] ?> gram</td>
+                                        <td><?php echo $jumlah1['jumlah'] ?> </td>
+                                        <td><?php echo $berat1['berat'] ?> </td>
+                                        <td><?php echo $jumlah2['jumlah'] ?> </td>
+                                        <td><?php echo $berat2['berat'] ?> </td>
+                                        <td><?php echo $jumlah3['jumlah'] ?> </td>
+                                        <td><?php echo $berat3['berat'] ?> </td>
+                                        <td><?php echo $jumlah4['jumlah'] ?> </td>
+                                        <td><?php echo $berat4['berat'] ?> </td>
+                                        <td><?php echo $jumlah5['jumlah'] ?> </td>
+                                        <td><?php echo $berat5['berat'] ?> </td>
                                     </tr>
                                 <?php }
 
@@ -465,15 +465,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah </th>
                                     <th><?php echo $berat6['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah </th>
                                     <th><?php echo $berat7['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah </th>
                                     <th><?php echo $berat8['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah </th>
                                     <th><?php echo $berat9['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah </th>
                                     <th><?php echo $berat10['berat'] ?> gram</th>
                                 </tr>
                             <?php
@@ -495,11 +495,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 
                             <tr>
                                 <th rowspan="2">Jenis</th>
-                                <th colspan="2" scope="colgroup">Kemarin</th>
-                                <th colspan="2" scope="colgroup">Laku</th>
-                                <th colspan="2" scope="colgroup">Diambil</th>
-                                <th colspan="2" scope="colgroup">Tambahan</th>
-                                <th colspan="2" scope="colgroup">Total</th>
+                                <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                <th class="center" colspan="2" scope="colgroup">Laku</th>
+                                <th class="center" colspan="2" scope="colgroup">Diambil</th>
+                                <th class="center" colspan="2" scope="colgroup">Tambahan</th>
+                                <th class="center" colspan="2" scope="colgroup">Total</th>
 
                             </tr>
                             <tr>
@@ -556,16 +556,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             ?>
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
-                                        <td><?php echo $jumlah1['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat1['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah2['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat2['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah3['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat3['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah4['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat4['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah5['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat5['berat'] ?> gram</td>
+                                        <td><?php echo $jumlah1['jumlah'] ?> </td>
+                                        <td><?php echo $berat1['berat'] ?> </td>
+                                        <td><?php echo $jumlah2['jumlah'] ?> </td>
+                                        <td><?php echo $berat2['berat'] ?> </td>
+                                        <td><?php echo $jumlah3['jumlah'] ?> </td>
+                                        <td><?php echo $berat3['berat'] ?> </td>
+                                        <td><?php echo $jumlah4['jumlah'] ?> </td>
+                                        <td><?php echo $berat4['berat'] ?> </td>
+                                        <td><?php echo $jumlah5['jumlah'] ?> </td>
+                                        <td><?php echo $berat5['berat'] ?> </td>
                                     </tr>
                                 <?php
                                 }
@@ -597,15 +597,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah </th>
                                     <th><?php echo $berat6['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah </th>
                                     <th><?php echo $berat7['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah </th>
                                     <th><?php echo $berat8['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah </th>
                                     <th><?php echo $berat9['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah </th>
                                     <th><?php echo $berat10['berat'] ?> gram</th>
                                 </tr>
                                 <?php
@@ -647,16 +647,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
-                                        <td><?php echo $jumlah1['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat1['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah2['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat2['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah3['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat3['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah4['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat4['berat'] ?> gram</td>
-                                        <td><?php echo $jumlah5['jumlah'] ?> buah</td>
-                                        <td><?php echo $berat5['berat'] ?> gram</td>
+                                        <td><?php echo $jumlah1['jumlah'] ?> </td>
+                                        <td><?php echo $berat1['berat'] ?></td>
+                                        <td><?php echo $jumlah2['jumlah'] ?> </td>
+                                        <td><?php echo $berat2['berat'] ?></td>
+                                        <td><?php echo $jumlah3['jumlah'] ?> </td>
+                                        <td><?php echo $berat3['berat'] ?></td>
+                                        <td><?php echo $jumlah4['jumlah'] ?> </td>
+                                        <td><?php echo $berat4['berat'] ?></td>
+                                        <td><?php echo $jumlah5['jumlah'] ?> </td>
+                                        <td><?php echo $berat5['berat'] ?></td>
 
                                     </tr>
                                 <?php }
@@ -687,15 +687,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 ?>
                                 <tr>
                                     <th scope="row">Total</th>
-                                    <th><?php echo $jumlah6['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah6['jumlah'] ?> buah </th>
                                     <th><?php echo $berat6['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah7['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah7['jumlah'] ?> buah </th>
                                     <th><?php echo $berat7['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah8['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah8['jumlah'] ?> buah </th>
                                     <th><?php echo $berat8['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah9['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah9['jumlah'] ?> buah </th>
                                     <th><?php echo $berat9['berat'] ?> gram</th>
-                                    <th><?php echo $jumlah10['jumlah'] ?> buah</th>
+                                    <th><?php echo $jumlah10['jumlah'] ?> buah </th>
                                     <th><?php echo $berat10['berat'] ?> gram</th>
                                 </tr>
                             <?php

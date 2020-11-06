@@ -106,7 +106,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <h3 style="margin-top: 40px; font-family: Brush Script MT;">Terima Kasih Atas Kunjungan dan Kepercayaan Anda</h3>
                     </div>
                     <div class="col-xs-4">
-                        <h5>Malang, <?php echo $nota->fd_tglinv ?></h5>
+                    
+                        <h5>Malang, <?php echo date("d F Y", strtotime($nota->fd_tglinv)) ?></h5>
                         <br>
                         <br>
                         <br>
