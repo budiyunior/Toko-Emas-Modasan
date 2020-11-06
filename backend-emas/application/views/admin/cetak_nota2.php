@@ -13,7 +13,7 @@
                         <br>
                         <br>
                         <a style="font-family: times new roman; font-size: 35px; font-style: bold;">
-                            <img src="<?= base_url('assets/img/logo_modasan.png')?>" width="70" />
+                            <img src="<?= base_url('assets/img/logo_modasan.png') ?>" width="70" />
                             -M O D A S A N-
                         </a>
                     </div>
@@ -60,19 +60,23 @@
                                             <th>Gambar</th>
                                             <th>Kadar</th>
                                             <th>Berat</th>
-                                            <th>Ongkos</th>
-                                            <th>Jumlah</th>
+                                            <th>Harga Lama</th>
+                                            <th>Kondisi</th>
+                                            <th>potongan</th>
+                                            <th>Harga Beli</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($barang as $brg) : ?>
                                             <tr>
                                                 <td><?= $brg->fv_nmbarang ?></td>
-                                                <td><img src="<?= base_url('assets/img/foto_barang/' . $brg->f_foto) ?>" width="100"></td>
+                                                <td><img src="<?= base_url('assets/img/foto_barang/' . $brg->f_foto) ?>" width="64"></td>
                                                 <td><?= $brg->fc_kadar ?></td>
                                                 <td><?= $brg->ff_berat ?></td>
-                                                <td><?= $brg->fm_ongkos ?></td>
-                                                <td><?= $brg->fm_price ?></td>
+                                                <td><?= $brg->fm_hargalama ?></td>
+                                                <td><?= $brg->fv_kondisi ?></td>
+                                                <td><?= $brg->fm_potongan ?></td>
+                                                <td><?= $brg->fm_hargabeli ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -86,7 +90,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="">Total</label>
-                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= $nota->fm_grandtotal ?>" placeholder="" />
+                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= $nota->fm_total ?>" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -103,7 +107,7 @@
                         <h3 style="margin-top: 40px; font-family: Brush Script MT;">Terima Kasih Atas Kunjungan dan Kepercayaan Anda</h3>
                     </div>
                     <div class="col-xs-4">
-                        <h5>Malang, <?php echo $nota->fd_tglinv ?></h5>
+                        <h5>Malang, <?php echo date("d F Y", strtotime($nota->fd_tglinput)) ?></h5>
                         <br>
                         <br>
                         <br>

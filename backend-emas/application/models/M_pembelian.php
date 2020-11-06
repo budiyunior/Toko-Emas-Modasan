@@ -38,13 +38,13 @@ class M_pembelian extends CI_Model
 
     public function query_nota($nobeli)
     {
-        $query = $this->db->query("SELECT t_belimst.fc_nobeli, tm_pelanggan.fv_nmpelanggan, tm_pelanggan.f_alamat, tm_pelanggan.fc_telp, t_belimst.fd_tglinput ,t_belidtl.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, t_belidtl.f_kadar, t_belidtl.fn_berat, t_belidtl.fm_potongan, t_belimst.fm_subtot, t_belimst.fm_total, t_belismt.fv_terbilang FROM t_belidtl, t_belimst ,tm_stock, tm_pelanggan WHERE tm_stock.fc_kdstock = td_invoice.fc_kdstock AND t_belimst.fc_kdpel = tm_pelanggan.fc_kdpel AND t_belidtl.fc_nobeli = t_belimst.fc_nobeli AND t_belidtl.fc_nobeli = '$nobeli'");
+        $query = $this->db->query("SELECT t_belimst.fc_nobeli, tm_pelanggan.fv_nmpelanggan, tm_pelanggan.f_alamat, tm_pelanggan.fc_telp, t_belimst.fd_tglinput ,t_belidtl.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, t_belidtl.f_kadar, t_belidtl.fm_potongan, t_belidtl.fn_berat, t_belidtl.fv_kondisi, t_belidtl.fm_potongan, t_belimst.fm_subtot, t_belimst.fm_total, t_belimst.fv_terbilang FROM t_belidtl, t_belimst ,tm_stock, tm_pelanggan WHERE tm_stock.fc_kdstock = t_belidtl.fc_kdstock AND t_belimst.fc_kdpel = tm_pelanggan.fc_kdpel AND t_belidtl.fc_nobeli = t_belimst.fc_nobeli AND t_belidtl.fc_nobeli = '$nobeli'");
         return $query->row();
     }
 
     public function query_nota2($nobeli)
     {
-        $query = $this->db->query("SELECT td_invoice.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, tm_stock.fc_kadar, tm_stock.ff_berat, td_invoice.fm_ongkos, td_invoice.fm_subtot, td_invoice.fm_price FROM t_belidtl, tm_stock WHERE tm_stock.fc_kdstock = t_belidtl.fc_kdstock AND t_belidtl.fc_nobeli = '$nobeli'");
+        $query = $this->db->query("SELECT t_belidtl.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, tm_stock.fc_kadar, tm_stock.ff_berat, t_belidtl.fm_hargalama, t_belidtl.fv_kondisi, t_belidtl.fm_potongan, t_belidtl.fm_hargabeli FROM t_belidtl, tm_stock WHERE tm_stock.fc_kdstock = t_belidtl.fc_kdstock AND t_belidtl.fc_nobeli = '$nobeli'");
         return $query->result();
     }
 

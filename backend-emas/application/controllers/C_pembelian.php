@@ -180,31 +180,24 @@ class C_pembelian extends CI_Controller
             );
 
             $id_pembelian_detail = $this->M_pembelian->insertdata_detail($data_detail_pembelian);
-<<<<<<< Updated upstream
-		}
+
 		
 		$data1 = array('fc_sts' => '2');
 		$this->M_pembelian->update_status($data1,array('fc_noinv' => $this->input->post('no_faktur_penjualan')));
 		
-        echo "<script>
-		alert('Transaksi berhasil di simpan !!');
-		window.history.back();
-		</script>";
-=======
-        }
         // echo "<script>
-        // alert('Transaksi berhasil di simpan !!');
-        // window.history.back();
-        // </script>";
+		// alert('Transaksi berhasil di simpan !!');
+		// window.history.back();
+		// </script>";
+        }
         redirect('C_pembelian/cetak_nota/' . $this->input->post('no_faktur_penjualan'));
->>>>>>> Stashed changes
     }
 
-    public function cetak_nota($noinv)
+    public function cetak_nota($nobeli)
     {
         $data['title'] = "Cetak Nota";
-        $data['nota'] = $this->M_pembelian->query_nota($noinv);
-        $data['barang'] = $this->M_pembelian->query_nota2($noinv);
-        $this->load->view('admin/cetak_nota', $data);
+        $data['nota'] = $this->M_pembelian->query_nota($nobeli);
+        $data['barang'] = $this->M_pembelian->query_nota2($nobeli);
+        $this->load->view('admin/cetak_nota2', $data);
     }
 }
