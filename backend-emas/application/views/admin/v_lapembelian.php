@@ -307,15 +307,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         </thead>
                                         <tbody>
                                             <?php
-
+                                            $no = 1;
                                             while ($lp = mysqli_fetch_array($sql)) {
                                             ?>
                                                 <tr>
                                                     <td class="check center">
                                                         <input type="checkbox" class="check-item">
                                                     </td>
+                                                    <td><?php echo $no++ ?></td>
                                                     <td><?php echo $lp['fc_nobeli'] ?></td>
-                                                    <td><?php echo $lp['fc_kdstock'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                     <td><?php echo $lp['fm_pot'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_total']);  ?></td>

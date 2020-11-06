@@ -296,7 +296,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 <div class="table-responsive">
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
-                                            <tr>
+                                            <tr><th class="center">
+                                                    Checklist
+                                                </th>
                                                 <th>No</th>
                                                 <th>Detail</th>
                                                 <th>Subtotal</th>
@@ -306,11 +308,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         </thead>
                                         <tbody>
                                             <?php
+                                            $no = 1;
                                             while ($lp = mysqli_fetch_array($sql)) {
                                             ?>
                                                 <tr>
+                                                    <td class="check center">
+                                                        <input type="checkbox" class="check-item">
+                                                    </td>
+                                                    <td><?php echo $no++ ?></td>
                                                     <td><?php echo $lp['fc_noinv'] ?></td>
-                                                    <td><?php echo $lp['fc_kdstock'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
                                                     <td>
