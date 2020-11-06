@@ -163,6 +163,7 @@ class C_pembelian extends CI_Controller
             'fm_total' => $this->input->post('TotalBayar2'),
             'fm_pot' => $this->input->post('TotalPotongan'),
             'fc_status'               => '1',
+            'fv_terbilang' => $this->input->post('terbilang'),
         );
 
         $id_pembelian = $this->M_pembelian->insertdata($data_pembelian);
