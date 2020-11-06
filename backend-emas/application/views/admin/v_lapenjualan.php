@@ -318,7 +318,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                     </td>
                                                 </tr>
                                             <?php } ?>
-                                            </thead>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -326,7 +326,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                     </div>
                 </div>
                 <form action="" method="post">
-                    <button type="submit" class="btn btn-success action-cetak"><i class="fa fa-print"> Cetak</i></button>            
+                    <button type="submit" class="btn btn-success action-cetak"><i class="fa fa-print"> Cetak</i></button>
                 </form>
             </div><!-- /.row -->
         </div><!-- /.page-content -->
@@ -345,7 +345,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
     });
 
     $(".action-cetak").on("click", function() {
-        
+
     })
 
     $('.action-nota').click(function(e) {
