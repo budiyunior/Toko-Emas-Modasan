@@ -45,12 +45,11 @@ class C_lapenjualan extends CI_Controller
 
     public function view_cetak()
     {
-        $data['title'] = "Penjualan";
-        $data['menu'] = $this->M_menu->get_menu();
-
-
+        $data['title'] = "Cetak Laporan Penjualan";
+        //$data['menu'] = $this->M_menu->get_menu();
+        $data['pelanggan'] = $this->M_penjualan->get_pelanggan();
+        $data['barang'] = $this->M_barang->get_barang();
         $this->load->view('admin/cetak_lapenjualan', $data);
     }
 
-    
 }
