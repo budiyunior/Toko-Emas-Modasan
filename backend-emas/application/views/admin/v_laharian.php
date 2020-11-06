@@ -253,16 +253,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                 <div class="col-sm-3">
                     <h5>
 
-                        <?php
-                        if (isset($_GET['date'])) {
-                            $hari = $_GET['date'];
-                            $hari2 = date("d F Y", strtotime($hari));
-                            echo $hari2;
-                        } else {
-                            // $hari = $_GET['date'];
-                            $hari3 = date("d F Y");
-                            echo $hari3;
-                        }
+                       <?php
+                       if (isset($_GET['date'])) {
+                           $hari = $_GET['date'];
+                           $hari2 = date("d F Y", strtotime($hari));
+                           echo $hari2;
+                       } else {
+                           // $hari = $_GET['date'];
+                           $hari3 = date("d F Y");
+                           echo $hari3;
+                       }
                         ?>
                     </h5>
                 </div>
@@ -295,7 +295,6 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             if (isset($_GET['date'])) {
 
                                 $tgl = $_GET['date'];
-
                                 $tgl2 = date("Y-m-d", strtotime($tgl . '-1 days'));
                                 $tgl3 = date("Y-m-d", strtotime($tgl . '+1 days'));
                                 $row = mysqli_query($koneksi, "SELECT COUNT(fc_kdkelompok) as row FROM tm_kelompok ");
