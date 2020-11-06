@@ -113,32 +113,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php
-                                    if (isset($_GET['startdate'])) {
-                                        $tgl = $_GET['startdate'];
-                                        $tgl2 = $_GET['enddate'];
-                                        $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
-                                    }
-                                    // } else if (isset($_GET['shift'])){
-                                    //     $shift = $_GET['shift'];
-                                    //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
-                                    else {
-                                        $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice");
-                                    }
-                                    while ($lp = mysqli_fetch_array($sql)) {
-                                    ?>
                                         <tr>
-                                            <td><?php echo $lp['fc_noinv'] ?></td>
-                                            <td><?php echo $lp['fv_catatan'] ?></td>
-                                            <td><?php echo $lp['fm_subtot'] ?></td>
-                                            <td><?php echo $lp['fm_grandtotal'] ?></td>
-
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                             <td class="hidden-480">
                                                 <span class="label label-sm label-warning">s</span>
                                             </td>
 
                                         </tr>
-                                    <?php } ?>
                                 </tbody>
                             </table>
                         </div>
