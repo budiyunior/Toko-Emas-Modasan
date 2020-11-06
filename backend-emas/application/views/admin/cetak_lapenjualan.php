@@ -48,7 +48,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                 <div class="col-sm-6">
                     <div class="col-xs-6 col-sm-6">
                         <form>
-                            <label >Transaksi</label>
+                            <label>Transaksi</label>
                             <div class="row">
                                 <div class="col-xs-8 col-sm-11">
                                     <!-- #section:plugins/date-time.datepicker -->
@@ -57,7 +57,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </div>
                                 </div>
                             </div>
-                            <label >Berat</label>
+                            <label>Berat</label>
                             <div class="row">
                                 <div class="col-xs-8 col-sm-11">
                                     <!-- #section:plugins/date-time.datepicker -->
@@ -81,14 +81,12 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </div>
                                 </div>
                             </div>
-                            <label >Sub Total</label>
-
+                            <label>Sub Total</label>
                             <div class="row">
                                 <div class="col-xs-8 col-sm-11">
                                     <!-- #section:plugins/date-time.datepicker -->
                                     <div class="input-group">
                                         <input class="form-control " />
-
                                     </div>
                                 </div>
                             </div>
@@ -113,16 +111,16 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php foreach ($lapen as $lap) : ?>
                                         <tr>
+                                        $no = 1;
+                                            <td><?= $no++ ?></td>
+                                            <td><?= $lap->fc_noiv ?></td>
+                                            <td>Rp. <?php echo number_format($lap->subtot); ?></td>
+                                            <td>Rp. <?php echo number_format($lap->grandtotal); ?></td>
                                             <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td class="hidden-480">
-                                                <span class="label label-sm label-warning">s</span>
-                                            </td>
-
                                         </tr>
+                                    <?php endforeach; ?>
                                 </tbody>
                             </table>
                         </div>
