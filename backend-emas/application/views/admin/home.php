@@ -104,8 +104,8 @@
                 ->where('tab_akses_mainmenu.r', '1')
                 ->order_by('mainmenu.idmenu', 'asc')
                 ->get('tab_akses_mainmenu')
-				->result();
-		//	print_r($this->db->last_query());		
+                ->result();
+            //	print_r($this->db->last_query());		
             foreach ($main_menu as $rs) {
             ?>
                 <?php
@@ -189,10 +189,10 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
-                    <h1>
+                    <h2 style="color: #07A1C8;">
                         Selamat Datang....
-                    </h1>
-                    <h4 style="margin-left: 85%;">
+                    </h2>
+                    <h4 style=" margin-left: 85%;">
                         <script type='text/javascript'>
                             var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
@@ -214,7 +214,7 @@
 
                             document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
                         </script>
-                    </h4>
+                        </h4>
                 </div>
                 <!-- /.page-header -->
 
