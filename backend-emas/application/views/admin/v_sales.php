@@ -40,15 +40,13 @@
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue user-min">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="<?= base_url() ?>/assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
-                            Jason
+                            <?= $this->session->userdata('fv_username') ?>
                         </span>
-
                         <i class="ace-icon fa fa-caret-down"></i>
                     </a>
-
                     <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
                         <li>
                             <a href="#">
@@ -56,16 +54,13 @@
                                 Settings
                             </a>
                         </li>
-
                         <li>
                             <a href="profile.html">
                                 <i class="ace-icon fa fa-user"></i>
                                 Profile
                             </a>
                         </li>
-
                         <li class="divider"></li>
-
                         <li>
                             <a href="<?php echo base_url('C_login/logout') ?>">
                                 <i class="ace-icon fa fa-power-off"></i>
@@ -230,7 +225,7 @@
                                     foreach ($sales as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" id="sales" name="fc_salesid[]" value="<?php echo $s->fc_salesid ?>">
+                                                <input type="checkbox" class="check-item" id="id[]" name="id[]" value="<?php echo $s->fc_salesid ?>">
                                             </td>
                                             <th scope="row"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>

@@ -215,7 +215,7 @@ class C_barang extends CI_Controller
         echo json_encode($data);
 	}
 
-    function delete()
+    public function delete()
     {
         foreach ($_POST['id'] as $id) {
             $this->M_barang->delete($id);
@@ -396,7 +396,7 @@ class C_barang extends CI_Controller
         foreach ($barang as $s) : ?>
             <tr>
                 <td class="check">
-                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                    <input type="checkbox" class="check-item" name="id" value="<?= $s->fn_id ?>">
                 </td>
                 <th scope="col"><?= $no++ ?></th>
                 <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -433,7 +433,7 @@ class C_barang extends CI_Controller
         foreach ($barang as $s) : ?>
             <tr>
                 <td class="check">
-                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                    <input type="checkbox" class="check-item" name="id" value="<?= $s->fn_id ?>">
                 </td>
                 <th scope="col"><?= $no++ ?></th>
                 <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -469,7 +469,7 @@ class C_barang extends CI_Controller
         foreach ($barang as $s) : ?>
             <tr>
                 <td class="check">
-                    <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                    <input type="checkbox" class="check-item" name="id" value="<?= $s->fn_id ?>">
                 </td>
                 <th scope="col"><?= $no++ ?></th>
                 <td scope="row"><?= $s->fc_kdstock ?></td>

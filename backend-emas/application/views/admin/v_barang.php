@@ -1,6 +1,6 @@
 <?php $this->load->view('partials/header.php') ?>
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
- <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
@@ -43,7 +43,7 @@
                 <!-- #section:basics/navbar.user_menu -->
                 <li class="light-blue user-min">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        <img class="nav-user-photo" src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
+                        <img class="nav-user-photo" src="<?php base_url() ?>assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
                             Jason
@@ -305,7 +305,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm(' Anda Yakin Menghapus Data Barang ?')"><i class="fa fa-trash"></i> Hapus</button>
+                                    <button type="submit" class="btn btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -320,13 +320,13 @@
                     <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog ">
                             <div class="modal-content">
-                               
-								<div class="modal-header">
-									<h5 class="modal-title center" id="exampleModalLabel">Form Barang</h5>
-									
-								</div>
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title center" id="exampleModalLabel">Form Barang</h5>
+
+                                </div>
                                 <form method="post" action="<?= base_url('C_barang/save_barang') ?>" enctype="multipart/form-data">
-								<input type="hidden" name="fn_id" id="fn_idbarang" class="form-control" >
+                                    <input type="hidden" name="fn_id" id="fn_idbarang" class="form-control">
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-8">
@@ -336,14 +336,14 @@
                                                     ?>
                                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fd_date" id="tgl_1" class="form-control" >
+                                                        <input type="text" name="fd_date" id="tgl_1" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kode</label>
                                                     <div class="col-sm-7">
-														<input type="hidden" name="fc_barcode" id="fc_barcode" class="form-control" value="<?php echo $kode_barcode?>">
-                                                        <input type="text" name="fc_kdstock" id="fc_kdstock" class="form-control" placeholder="Kode" value="<?php echo $kode_barang?>">
+                                                        <input type="hidden" name="fc_barcode" id="fc_barcode" class="form-control" value="<?php echo $kode_barcode ?>">
+                                                        <input type="text" name="fc_kdstock" id="fc_kdstock" class="form-control" placeholder="Kode" value="<?php echo $kode_barang ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
@@ -355,8 +355,8 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Kelompok</label>
                                                     <div class="col-sm-7">
-                                                       
-														<div id="kelompokne" style="display: none;"> </div>
+
+                                                        <div id="kelompokne" style="display: none;"> </div>
 
                                                     </div>
                                                     <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="kelompok_modal()">
@@ -366,8 +366,8 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Lokasi</label>
                                                     <div class="col-sm-7">
-                                                        
-														<div id="lokasine" style="display: none;"> </div>
+
+                                                        <div id="lokasine" style="display: none;"> </div>
                                                     </div>
                                                     <button type="button" class="btn btn-primary btn-sm" style="margin-top: 5px;" onclick="lokasi_modal()">
                                                         <i class="fa fa-search-plus"></i>
@@ -376,7 +376,7 @@
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Sales</label>
                                                     <div class="col-sm-7">
-                                                        <select class="form-control"  name="fc_salesid" id="fc_salesidne">
+                                                        <select class="form-control" name="fc_salesid" id="fc_salesidne">
                                                             <option value="">Pilih </option>
                                                             <?php $i = 1;
                                                             foreach ($sales as $s) : ?>
@@ -467,7 +467,7 @@
                                         <div class="modal-footer">
                                             <div class="row">
                                                 <div class="col-md-4" style="margin-top: 5px;">
-                                                    <button type="submit" class="btn btn-primary" >Simpan</button>
+                                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                                 </div>
                                                 <div class="col-md-3" style="margin-top: 5px;">
                                                     <button type="button" class="btn btn-success" onclick="barcode()">Cetak Barcode</button>
@@ -499,17 +499,17 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                                
-								<div id="list_kelompok" style="display: none;"></div>
+
+                                <div id="list_kelompok" style="display: none;"></div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-                            <form id="form-add" action="<?= site_url('C_barang/ajax_add_kelompok')?>" method="POST" role="form" enctype="multipart/form-data">
+                            <form id="form-add" action="<?= site_url('C_barang/ajax_add_kelompok') ?>" method="POST" role="form" enctype="multipart/form-data">
                                 <div class="col-md-7">
                                     <div class="form-group">
-										<input type="hidden" name="fn_id" id="fn_id2" class="form-control">
-                                        <input type="text" name="fc_kdkelompok" id="fc_kdkelompok2" class="form-control" placeholder="kode kelompok" value="<?php echo $kode_kelompok?>" readonly>
+                                        <input type="hidden" name="fn_id" id="fn_id2" class="form-control">
+                                        <input type="text" name="fc_kdkelompok" id="fc_kdkelompok2" class="form-control" placeholder="kode kelompok" value="<?php echo $kode_kelompok ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="fv_nmkelompok" id="fv_nmkelompok2" class="form-control" placeholder="nama kelompok">
@@ -520,7 +520,7 @@
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
                                     <button type="button" class="btn btn-primary btn-sm delete_kelompok"><i class="fa fa-minus"></i></button>
-									<!-- <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button> -->
+                                    <!-- <button type="button" class="btn btn-success update"><i class="fa fa-edit"> Edit</i></button> -->
                                 </div>
                             </form>
                         </div>
@@ -541,28 +541,28 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-12">
-                              
 
-								<div id="list_lokasi" style="display: none;"></div>
+
+                                <div id="list_lokasi" style="display: none;"></div>
                             </div>
                         </div>
                         <br>
                         <div class="row">
-						<form id="form-add-lokasi" action="<?= site_url('C_barang/ajax_add_lokasi')?>" method="POST" role="form" enctype="multipart/form-data">
+                            <form id="form-add-lokasi" action="<?= site_url('C_barang/ajax_add_lokasi') ?>" method="POST" role="form" enctype="multipart/form-data">
                                 <div class="col-md-7">
                                     <div class="form-group">
-										<input type="hidden" name="fn_id" id="fn_id3" class="form-control">
-                                        <input type="text" name="fc_kdlokasi" id="fc_kdlokasi2" class="form-control" placeholder="Kode Lokasi" value="<?php echo $kode_lokasi?>" readonly>
+                                        <input type="hidden" name="fn_id" id="fn_id3" class="form-control">
+                                        <input type="text" name="fc_kdlokasi" id="fc_kdlokasi2" class="form-control" placeholder="Kode Lokasi" value="<?php echo $kode_lokasi ?>" readonly>
                                     </div>
                                     <div class="form-group">
                                         <input type="text" name="fv_nmlokasi" id="fv_nmlokasi2" class="form-control" placeholder="Lokasi">
                                     </div>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
-									<button type="submit" value="Add" id="btnSave2" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
+                                    <button type="submit" value="Add" id="btnSave2" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></button>
                                 </div>
                                 <div class="col-md-2" style="margin-top: 5px;">
-									<button type="button" class="btn btn-primary btn-sm delete_lokasi"><i class="fa fa-minus"></i></button>
+                                    <button type="button" class="btn btn-primary btn-sm delete_lokasi"><i class="fa fa-minus"></i></button>
                                 </div>
                             </form>
                         </div>
@@ -573,7 +573,7 @@
 
         <!-- sales -->
 
-       
+
         <!-- Modal Edit -->
 
         <div class="modal fade" id="modalupdate" tabindex="-1">
@@ -864,55 +864,55 @@
 
                 <!-- sales -->
 
-               
+
 
             </div>
         </div>
-		<div class="modal fade" id="modalbarcode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title center" id="exampleModalLabel">Barcode</h5>
-                            </div>
-							<form method="post" action="<?php echo base_url('C_barang/cetak_barcode')?>">
-                            <div class="modal-body">
-							<div class="row">
-                               <input type="hidden" name="fd_date2" id="fd_date2">
-							   <input type="hidden" name="fc_barcode2" id="fc_barcode2">
-							   <input type="hidden" name="fc_kdstock2" id="fc_kdstock2">
-							   <input type="hidden" name="fv_nmbarang2" id="fv_nmbarang2">
-							   <input type="hidden" name="fc_kdkelompok2" id="fc_kdkelompok2">
-							   <input type="hidden" name="fc_kdlokasi2" id="fc_kdlokasi2">
-							   <input type="hidden" name="fc_salesid2" id="fc_salesid2">
-							   <input type="hidden" name="fm_ongkos2" id="fm_ongkos2">
-							   <input type="hidden" name="ff_berat2" id="ff_berat2">
-							   <input type="hidden" name="fc_kadar2" id="fc_kadar2">
-							   <input type="hidden" name="fm_hargabeli2" id="fm_hargabeli2">
-							   <input type="hidden" name="fm_hargajual2" id="fm_hargajual2">
-													
-							    <div class="form-group row">
-                                	<label for="" class="col-sm-3 col-form-label">Jumlah</label>
+        <div class="modal fade" id="modalbarcode" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title center" id="exampleModalLabel">Barcode</h5>
+                    </div>
+                    <form method="post" action="<?php echo base_url('C_barang/cetak_barcode') ?>">
+                        <div class="modal-body">
+                            <div class="row">
+                                <input type="hidden" name="fd_date2" id="fd_date2">
+                                <input type="hidden" name="fc_barcode2" id="fc_barcode2">
+                                <input type="hidden" name="fc_kdstock2" id="fc_kdstock2">
+                                <input type="hidden" name="fv_nmbarang2" id="fv_nmbarang2">
+                                <input type="hidden" name="fc_kdkelompok2" id="fc_kdkelompok2">
+                                <input type="hidden" name="fc_kdlokasi2" id="fc_kdlokasi2">
+                                <input type="hidden" name="fc_salesid2" id="fc_salesid2">
+                                <input type="hidden" name="fm_ongkos2" id="fm_ongkos2">
+                                <input type="hidden" name="ff_berat2" id="ff_berat2">
+                                <input type="hidden" name="fc_kadar2" id="fc_kadar2">
+                                <input type="hidden" name="fm_hargabeli2" id="fm_hargabeli2">
+                                <input type="hidden" name="fm_hargajual2" id="fm_hargajual2">
+
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Jumlah</label>
                                     <div class="col-sm-7">
                                         <input type="text" name="jumlah" id="jumlah" class="form-control" placeholder="Nama">
                                     </div>
                                 </div>
-								
-							</div>   
+
                             </div>
-							<div class="modal-footer">
-                                <div class="row">
-                                    <div class="col-md-4" style="margin-top: 5px;">
-                                        <button type="submit" class="btn btn-primary" >Simpan</button>
-                                    </div>
-                                                
-                            	</div>
-                            </div>
-							</form>
                         </div>
-                    </div>
+                        <div class="modal-footer">
+                            <div class="row">
+                                <div class="col-md-4" style="margin-top: 5px;">
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-		
-		
+
+
         <script>
             $('.custom-file-input').on('change', function() {
                 let fileName = $(this).val().split('\\').pop();
@@ -925,9 +925,9 @@
                 } else {
                     $('.update').prop('disabled', true);
                 }
-			});
+            });
 
-			$(document).ready(function() {
+            $(document).ready(function() {
                 barang();
                 kelompok();
                 $("#kadar").change(function() {
@@ -940,10 +940,10 @@
                     // let a = $(this).val();
                     // console.log(a);
                     lokasi();
-				})
-			})	
-			
-			function barang() {
+                })
+            })
+
+            function barang() {
                 var kadar = $("#kadar").val();
                 // var kelompok = $("#kelompok").val();
                 // var lokasi = $("#lokasi").val();
@@ -992,191 +992,215 @@
                         $(".check-item").prop("checked", true); // ceklis semua checkbox siswa dengan class "check-item"
                     else // Jika checkbox all tidak diceklis
                         $(".check-item").prop("checked", false); // un-ceklis semua checkbox siswa dengan class "check-item"
-				});
+                });
 
-				$('#tgl_1').datepicker({
-				format: "yyyy-mm-dd",
-				autoclose: true
-				});
-				
-				setTimeout(function(){
-					get_kelompok();
-				}, 1000);
-				
-				setTimeout(function(){
-					get_lokasi();
-				}, 1000);
+                $('#tgl_1').datepicker({
+                    format: "yyyy-mm-dd",
+                    autoclose: true
+                });
 
-				$('#form-add').submit(function(e) {
-					
-					e.preventDefault(); var formData = new FormData($(this)[0]);
-					$.ajax({
-						url: $(this).attr("action"), type: 'POST', dataType: 'json', data: formData, async: true,
-						beforeSend: function() { $('#btnSave').attr('disabled',true); },
-						success: function(response) {
-							if(response.status) { 
-								 Batal(); 
-								 kelompok_list();
-								 
-								 setTimeout(function(){
-									get_kelompok();
-								}, 1000);
-								// swal_berhasil();
-							} else {
-								  Batal(); 
-								// swal_error(response.error);
-							 }
-						},
-						complete: function() { $('#btnSave').attr('disabled',false); },
-						cache: false, contentType: false, processData: false
-					});
-					return false;
-				});
+                setTimeout(function() {
+                    get_kelompok();
+                }, 1000);
 
-				$('#form-add-lokasi').submit(function(e) {
-					
-					e.preventDefault(); var formData = new FormData($(this)[0]);
-					$.ajax({
-						url: $(this).attr("action"), type: 'POST', dataType: 'json', data: formData, async: true,
-						beforeSend: function() { $('#btnSave2').attr('disabled',true); },
-						success: function(response) {
-							if(response.status) { 
-								 BatalLokasi(); 
-								 lokasi_list();
-								 
-								 setTimeout(function(){
-									get_lokasi();
-								}, 1000);
-								// swal_berhasil();
-							} else {
-								BatalLokasi(); 
-								// swal_error(response.error);
-							 }
-						},
-						complete: function() { $('#btnSave2').attr('disabled',false); },
-						cache: false, contentType: false, processData: false
-					});
-					return false;
-				});
+                setTimeout(function() {
+                    get_lokasi();
+                }, 1000);
 
-			});
-			
-			function get_kelompok(){
-				var okeycabang = '<select name="fc_kdkelompok" id="fc_kdkelompok" class="form-control" ><option>--Pilih Kelompok--</option>';
-				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_kelompok/', {
-					format: "json"
-				})
-				.done(function (datae) {
-							$.each(datae, function (key, val) {
-							
-									okeycabang += '<option value="' + val.fc_kdkelompok + '" >' + val.fv_nmkelompok+'</option>';
-							//  }
-								
-							});
-							okeycabang += '</select></div></div>';
+                $('#form-add').submit(function(e) {
 
-							var f = document.getElementById("kelompokne");
-							f.innerHTML= okeycabang;
-							document.getElementById('kelompokne').style.display = "block";
-						//   document.getElementById('pengganti_cabangn').style.display = "none";
-				}) 
-			}
+                    e.preventDefault();
+                    var formData = new FormData($(this)[0]);
+                    $.ajax({
+                        url: $(this).attr("action"),
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        async: true,
+                        beforeSend: function() {
+                            $('#btnSave').attr('disabled', true);
+                        },
+                        success: function(response) {
+                            if (response.status) {
+                                Batal();
+                                kelompok_list();
 
-			function get_lokasi(){
-				var lokasi = '<select name="fc_kdlokasi" id="fc_kdlokasi" class="form-control" ><option>--Pilih Lokasi--</option>';
+                                setTimeout(function() {
+                                    get_kelompok();
+                                }, 1000);
+                                // swal_berhasil();
+                            } else {
+                                Batal();
+                                // swal_error(response.error);
+                            }
+                        },
+                        complete: function() {
+                            $('#btnSave').attr('disabled', false);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                    return false;
+                });
 
-				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_lokasi/', {
-					format: "json"
-				})
-				.done(function (datae) {
-							$.each(datae, function (key, val) {
-							
-								lokasi += '<option value="' + val.fc_kdlokasi + '" >' + val.fv_nmlokasi+'</option>';
-							//  }
-								
-							});
-							lokasi += '</select></div></div>';
+                $('#form-add-lokasi').submit(function(e) {
 
-							var g = document.getElementById("lokasine");
-							g.innerHTML= lokasi;
-							document.getElementById('lokasine').style.display = "block";
-						//   document.getElementById('pengganti_cabangn').style.display = "none";
-				}) 
-			}
+                    e.preventDefault();
+                    var formData = new FormData($(this)[0]);
+                    $.ajax({
+                        url: $(this).attr("action"),
+                        type: 'POST',
+                        dataType: 'json',
+                        data: formData,
+                        async: true,
+                        beforeSend: function() {
+                            $('#btnSave2').attr('disabled', true);
+                        },
+                        success: function(response) {
+                            if (response.status) {
+                                BatalLokasi();
+                                lokasi_list();
 
-			$('.delete_kelompok').click(function(e) {
-				e.preventDefault();
+                                setTimeout(function() {
+                                    get_lokasi();
+                                }, 1000);
+                                // swal_berhasil();
+                            } else {
+                                BatalLokasi();
+                                // swal_error(response.error);
+                            }
+                        },
+                        complete: function() {
+                            $('#btnSave2').attr('disabled', false);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                    return false;
+                });
+
+            });
+
+            function get_kelompok() {
+                var okeycabang = '<select name="fc_kdkelompok" id="fc_kdkelompok" class="form-control" ><option>--Pilih Kelompok--</option>';
+                $.getJSON('<?php echo base_url() ?>C_barang/ajax_get_kelompok/', {
+                        format: "json"
+                    })
+                    .done(function(datae) {
+                        $.each(datae, function(key, val) {
+
+                            okeycabang += '<option value="' + val.fc_kdkelompok + '" >' + val.fv_nmkelompok + '</option>';
+                            //  }
+
+                        });
+                        okeycabang += '</select></div></div>';
+
+                        var f = document.getElementById("kelompokne");
+                        f.innerHTML = okeycabang;
+                        document.getElementById('kelompokne').style.display = "block";
+                        //   document.getElementById('pengganti_cabangn').style.display = "none";
+                    })
+            }
+
+            function get_lokasi() {
+                var lokasi = '<select name="fc_kdlokasi" id="fc_kdlokasi" class="form-control" ><option>--Pilih Lokasi--</option>';
+
+                $.getJSON('<?php echo base_url() ?>C_barang/ajax_get_lokasi/', {
+                        format: "json"
+                    })
+                    .done(function(datae) {
+                        $.each(datae, function(key, val) {
+
+                            lokasi += '<option value="' + val.fc_kdlokasi + '" >' + val.fv_nmlokasi + '</option>';
+                            //  }
+
+                        });
+                        lokasi += '</select></div></div>';
+
+                        var g = document.getElementById("lokasine");
+                        g.innerHTML = lokasi;
+                        document.getElementById('lokasine').style.display = "block";
+                        //   document.getElementById('pengganti_cabangn').style.display = "none";
+                    })
+            }
+
+            $('.delete_kelompok').click(function(e) {
+                e.preventDefault();
                 var arr = [];
                 var checkedValue = $(".check-kelompok:checked").val();
-				console.log('checked', checkedValue);
-				
-				if (confirm('Are you sure delete this data?')) {
-					$.ajax ({
-						url : "<?php echo site_url('C_barang/ajax_delete_kelompok')?>/"+checkedValue,
-						type: "POST",
-						dataType: "JSON",
-						success: function(data) {
-							setTimeout(function(){
-								Batal();
-							}, 1000);
+                console.log('checked', checkedValue);
 
-							kelompok_list();
-								 
-							setTimeout(function(){
-								get_kelompok();
-							}, 1000);
-						}, error: function (jqXHR, textStatus, errorThrown) {
-							
-							setTimeout(function(){
-								Batal();
-							}, 1000);
+                if (confirm('Are you sure delete this data?')) {
+                    $.ajax({
+                        url: "<?php echo site_url('C_barang/ajax_delete_kelompok') ?>/" + checkedValue,
+                        type: "POST",
+                        dataType: "JSON",
+                        success: function(data) {
+                            setTimeout(function() {
+                                Batal();
+                            }, 1000);
 
-							kelompok_list();
-								 
-							setTimeout(function(){
-								get_kelompok();
-							}, 1000);
-						}
-					});
-				}
-			})	
+                            kelompok_list();
 
-			$('.delete_lokasi').click(function(e) {
-				e.preventDefault();
+                            setTimeout(function() {
+                                get_kelompok();
+                            }, 1000);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+
+                            setTimeout(function() {
+                                Batal();
+                            }, 1000);
+
+                            kelompok_list();
+
+                            setTimeout(function() {
+                                get_kelompok();
+                            }, 1000);
+                        }
+                    });
+                }
+            })
+
+            $('.delete_lokasi').click(function(e) {
+                e.preventDefault();
                 var arr = [];
                 var checkedValue = $(".check-lokasi:checked").val();
-				console.log('checked', checkedValue);
-				
-				if (confirm('Are you sure delete this data?')) {
-					$.ajax ({
-						url : "<?php echo site_url('C_barang/ajax_delete_lokasi')?>/"+checkedValue,
-						type: "POST",
-						dataType: "JSON",
-						success: function(data) {
-							setTimeout(function(){
-								BatalLokasi();
-							}, 1000);
+                console.log('checked', checkedValue);
 
-							lokasi_list();
-								 
-							setTimeout(function(){
-								get_lokasi();
-							}, 1000);
-						}, error: function (jqXHR, textStatus, errorThrown) {
-							
-							setTimeout(function(){
-								BatalLokasi();
-							}, 1000);
+                if (confirm('Are you sure delete this data?')) {
+                    $.ajax({
+                        url: "<?php echo site_url('C_barang/ajax_delete_lokasi') ?>/" + checkedValue,
+                        type: "POST",
+                        dataType: "JSON",
+                        success: function(data) {
+                            setTimeout(function() {
+                                BatalLokasi();
+                            }, 1000);
 
-							lokasi_list();
-								 
-							setTimeout(function(){
-								get_lokasi();
-							}, 1000);
-						}
-					});
-				}
-			})	
+                            lokasi_list();
+
+                            setTimeout(function() {
+                                get_lokasi();
+                            }, 1000);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+
+                            setTimeout(function() {
+                                BatalLokasi();
+                            }, 1000);
+
+                            lokasi_list();
+
+                            setTimeout(function() {
+                                get_lokasi();
+                            }, 1000);
+                        }
+                    });
+                }
+            })
 
             $('.update').click(function(e) {
                 e.preventDefault();
@@ -1191,8 +1215,8 @@
                     dataType: "JSON",
                     success: function(result) {
                         $('#fn_idbarang').val(result.fn_id);
-						$('#tgl_1').val(result.fd_date);
-						$('#fc_barcode').val(result.fc_barcode);
+                        $('#tgl_1').val(result.fd_date);
+                        $('#fc_barcode').val(result.fc_barcode);
                         $('#fc_kdstock').val(result.fc_kdstock);
                         $('#fv_nmbarang').val(result.fv_nmbarang);
                         $('#fc_kdkelompok').val(result.fc_kdkelompok);
@@ -1219,10 +1243,10 @@
 
                 // var action = $(this).attr('data-href') + '/' + arr.join("-");
                 // window.location.href = action;
-			});
+            });
 
-			function check_kelompok(value){
-				$.ajax({
+            function check_kelompok(value) {
+                $.ajax({
                     url: "<?php echo base_url('C_barang/get_edit_kelompok/') ?>" + value,
                     type: "GET",
                     dataType: "JSON",
@@ -1236,10 +1260,10 @@
                     }
                 })
 
-			}
+            }
 
-			function check_lokasi(value){
-				$.ajax({
+            function check_lokasi(value) {
+                $.ajax({
                     url: "<?php echo base_url('C_barang/get_edit_lokasi/') ?>" + value,
                     type: "GET",
                     dataType: "JSON",
@@ -1252,110 +1276,110 @@
                         alert('Data Eror');
                     }
                 })
-			}
-					
-			
-			function barcode(){
-				var fd_date = $('#fd_date').val();
-				var fc_barcode = $('#fc_barcode').val(); 
-				var fc_kdstock = $('#fc_kdstock').val();
-				var fv_nmbarang = $('#fv_nmbarang').val(); 
-				var fc_kdkelompok = $('#fc_kdkelompok').val();
-				var fc_kdlokasi = $('#fc_kdlokasi').val(); 
-				var fc_salesid = $('#fc_salesid').val();  
-				var fm_ongkos = $('#fm_ongkos').val();   
-				var ff_berat = $('#ff_berat').val(); 
-				var fc_kadar = $('#fc_kadar').val(); 
-				var fm_hargabeli = $('#fm_hargabeli').val();
-				var fm_hargajual = $('#fm_hargajual').val(); 
+            }
 
-				$('#fd_date2').val(fd_date);
-				$('#fc_barcode2').val(fc_barcode);
-				$('#fc_kdstock2').val(fc_kdstock);
-				$('#fv_nmbarang2').val(fv_nmbarang);
-				$('#fc_kdkelompok2').val(fc_kdkelompok);
-				$('#fc_kdlokasi2').val(fc_kdlokasi);
-				$('#fc_salesid2').val(fc_salesid);
-				$('#fm_ongkos2').val(fm_ongkos);
-				$('#ff_berat2').val(ff_berat);
-				$('#fc_kadar2').val(fc_kadar);
-				$('#fm_hargabeli2').val(fm_hargabeli);
-				$('#fm_hargajual2').val(fm_hargajual);
-				$('#modalbarcode').modal('show');	
-			}
 
-			function kelompok_modal(){
-				$('#editkelompok').modal('show');	
-				$('[name="fv_nmkelompok"]').val("");
-				kelompok_list();
-			}
+            function barcode() {
+                var fd_date = $('#fd_date').val();
+                var fc_barcode = $('#fc_barcode').val();
+                var fc_kdstock = $('#fc_kdstock').val();
+                var fv_nmbarang = $('#fv_nmbarang').val();
+                var fc_kdkelompok = $('#fc_kdkelompok').val();
+                var fc_kdlokasi = $('#fc_kdlokasi').val();
+                var fc_salesid = $('#fc_salesid').val();
+                var fm_ongkos = $('#fm_ongkos').val();
+                var ff_berat = $('#ff_berat').val();
+                var fc_kadar = $('#fc_kadar').val();
+                var fm_hargabeli = $('#fm_hargabeli').val();
+                var fm_hargajual = $('#fm_hargajual').val();
 
-			function lokasi_modal(){
-				$('#editlokasi').modal('show');
-				lokasi_list();
-			}
+                $('#fd_date2').val(fd_date);
+                $('#fc_barcode2').val(fc_barcode);
+                $('#fc_kdstock2').val(fc_kdstock);
+                $('#fv_nmbarang2').val(fv_nmbarang);
+                $('#fc_kdkelompok2').val(fc_kdkelompok);
+                $('#fc_kdlokasi2').val(fc_kdlokasi);
+                $('#fc_salesid2').val(fc_salesid);
+                $('#fm_ongkos2').val(fm_ongkos);
+                $('#ff_berat2').val(ff_berat);
+                $('#fc_kadar2').val(fc_kadar);
+                $('#fm_hargabeli2').val(fm_hargabeli);
+                $('#fm_hargajual2').val(fm_hargajual);
+                $('#modalbarcode').modal('show');
+            }
 
-			function Batal() {
-				$('#editkelompok').modal('hide');
-			}	
+            function kelompok_modal() {
+                $('#editkelompok').modal('show');
+                $('[name="fv_nmkelompok"]').val("");
+                kelompok_list();
+            }
 
-			function BatalLokasi(){
-				$('#editlokasi').modal('hide');
-			}
+            function lokasi_modal() {
+                $('#editlokasi').modal('show');
+                lokasi_list();
+            }
 
-			function kelompok_list(){
-				var gabungan = '';
-				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_kelompok/', {
-					format: "json"
-				})
-				.done(function (datae) {
-					var list_kelompok_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
-					var list_kelompok_bawah = '</tbody></table>';
-					var tengah = '';
-					var list_kelompok_isi = '';
-					$.each(datae, function (key, val) {
-							
-						list_kelompok_isi = '<tr><td class="check center"><input type="checkbox" class="check-kelompok" onchange="check_kelompok('+val.fn_id+')" value="'+val.fn_id+'"></td><td><input type="text" readonly class="txtedit" data-id='+val.fc_kdkelompok+' data-field="name" id="nametxt_'+val.fc_kdkelompok+'" value="'+val.fv_nmkelompok+'"> </td></tr>';
-						tengah+=''+list_kelompok_isi+'';	
-					});
-					if (tengah!="") {
-						gabungan = list_kelompok_atas+tengah+list_kelompok_bawah;
-					}else{
-						gabungan = "Tidak Ada Data";
-					}  
+            function Batal() {
+                $('#editkelompok').modal('hide');
+            }
 
-					var h = document.getElementById("list_kelompok");
-					h.innerHTML= gabungan;
-					document.getElementById('list_kelompok').style.display = "block";
-				})	
-			}
+            function BatalLokasi() {
+                $('#editlokasi').modal('hide');
+            }
 
-			function lokasi_list(){
-				var gabungan_lokasi = '';
-				$.getJSON('<?php echo base_url()?>C_barang/ajax_get_lokasi/', {
-					format: "json"
-				})
-				.done(function (datae) {
-					var list_lokasi_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
-					var list_lokasi_bawah = '</tbody></table>';
-					var tengah_lokasi = '';
-					var list_lokasi_isi = '';
-					$.each(datae, function (key, val) {
-							
-						list_lokasi_isi = '<tr><td class="check center"><input type="checkbox" class="check-lokasi" onchange="check_lokasi('+val.fn_id+')" value="'+val.fn_id+'"></td><td><input type="text" readonly class="txtedit" data-id='+val.fc_kdlokasi+' data-field="name" id="nametxt_'+val.fc_kdlokasi+'" value="'+val.fv_nmlokasi+'"> </td></tr>';
-						tengah_lokasi+=''+list_lokasi_isi+'';	
-					});
-					if (tengah_lokasi!="") {
-						gabungan_lokasi = list_lokasi_atas+tengah_lokasi+list_lokasi_bawah;
-					}else{
-						gabungan_lokasi = "Tidak Ada Data";
-					}  
+            function kelompok_list() {
+                var gabungan = '';
+                $.getJSON('<?php echo base_url() ?>C_barang/ajax_get_kelompok/', {
+                        format: "json"
+                    })
+                    .done(function(datae) {
+                        var list_kelompok_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
+                        var list_kelompok_bawah = '</tbody></table>';
+                        var tengah = '';
+                        var list_kelompok_isi = '';
+                        $.each(datae, function(key, val) {
 
-					var i = document.getElementById("list_lokasi");
-					i.innerHTML= gabungan_lokasi;
-					document.getElementById('list_lokasi').style.display = "block";
-				})	
-			}
+                            list_kelompok_isi = '<tr><td class="check center"><input type="checkbox" class="check-kelompok" onchange="check_kelompok(' + val.fn_id + ')" value="' + val.fn_id + '"></td><td><input type="text" readonly class="txtedit" data-id=' + val.fc_kdkelompok + ' data-field="name" id="nametxt_' + val.fc_kdkelompok + '" value="' + val.fv_nmkelompok + '"> </td></tr>';
+                            tengah += '' + list_kelompok_isi + '';
+                        });
+                        if (tengah != "") {
+                            gabungan = list_kelompok_atas + tengah + list_kelompok_bawah;
+                        } else {
+                            gabungan = "Tidak Ada Data";
+                        }
+
+                        var h = document.getElementById("list_kelompok");
+                        h.innerHTML = gabungan;
+                        document.getElementById('list_kelompok').style.display = "block";
+                    })
+            }
+
+            function lokasi_list() {
+                var gabungan_lokasi = '';
+                $.getJSON('<?php echo base_url() ?>C_barang/ajax_get_lokasi/', {
+                        format: "json"
+                    })
+                    .done(function(datae) {
+                        var list_lokasi_atas = '<table class="table table-bordered"><thead><tr></tr> </thead><tbody>';
+                        var list_lokasi_bawah = '</tbody></table>';
+                        var tengah_lokasi = '';
+                        var list_lokasi_isi = '';
+                        $.each(datae, function(key, val) {
+
+                            list_lokasi_isi = '<tr><td class="check center"><input type="checkbox" class="check-lokasi" onchange="check_lokasi(' + val.fn_id + ')" value="' + val.fn_id + '"></td><td><input type="text" readonly class="txtedit" data-id=' + val.fc_kdlokasi + ' data-field="name" id="nametxt_' + val.fc_kdlokasi + '" value="' + val.fv_nmlokasi + '"> </td></tr>';
+                            tengah_lokasi += '' + list_lokasi_isi + '';
+                        });
+                        if (tengah_lokasi != "") {
+                            gabungan_lokasi = list_lokasi_atas + tengah_lokasi + list_lokasi_bawah;
+                        } else {
+                            gabungan_lokasi = "Tidak Ada Data";
+                        }
+
+                        var i = document.getElementById("list_lokasi");
+                        i.innerHTML = gabungan_lokasi;
+                        document.getElementById('list_lokasi').style.display = "block";
+                    })
+            }
         </script>
 
         <script>
@@ -1383,6 +1407,30 @@
                 document.getElementById('rowid').value = '';
                 document.getElementById('camBox').style.display = 'none'; // HIDE THE POPUP DIALOG BOX.
             }
+
+            $(document).ready(function() {
+
+                $(".delete").click(function(event) {
+                    alert("Delete?");
+                    var href = $(this).attr("<?php base_url('C_barang/delete') ?>")
+                    var btn = this;
+
+                    $.ajax({
+                        type: "POST",
+                        url: href,
+                        success: function(response) {
+
+                            if (response == "Success") {
+                                $(btn).closest('tr').fadeOut("slow");
+                            } else {
+                                alert("Error");
+                            }
+
+                        }
+                    });
+                    event.preventDefault();
+                })
+            });
         </script>
         <style>
             #camBox {
