@@ -343,6 +343,10 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
             $('.action-cetak').prop('disabled', true);
         }
     });
+
+    $(".action-cetak").on("click", function() {
+        window.print();
+    })
 </script>
 
 
