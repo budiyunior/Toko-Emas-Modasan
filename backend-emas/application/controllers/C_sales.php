@@ -11,8 +11,8 @@ class C_sales extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('M_menu');
-		$this->load->model('M_sales');
-		$this->load->model('M_barang');
+        $this->load->model('M_sales');
+        $this->load->model('M_barang');
         $this->load->library('pagination');
     }
 
@@ -25,21 +25,21 @@ class C_sales extends CI_Controller
         // $data['sales'] = $this->M_sales->get();
         // $data['sales3'] = $this->M_sales->get();
         $data['jabatan'] = $this->M_sales->get_jabatan();
-		$data['jabatan2'] = $this->M_sales->get_jabatan();
-		
-		$sales = $this->M_sales->max_sales()->row();
+        $data['jabatan2'] = $this->M_sales->get_jabatan();
 
-		$kode_sales = $sales->maxs_sales;
+        $sales = $this->M_sales->max_sales()->row();
 
-		$urut_sales = (int) substr($kode_sales, 4, 2);
+        $kode_sales = $sales->maxs_sales;
 
-		$urut_sales++;
+        $urut_sales = (int) substr($kode_sales, 4, 2);
 
-		$char = "SLS";
+        $urut_sales++;
 
-		$kode_sales = $char.sprintf("%02s", $urut_sales);
+        $char = "SLS";
 
-		$data['kode_sales'] = $kode_sales;
+        $kode_sales = $char . sprintf("%02s", $urut_sales);
+
+        $data['kode_sales'] = $kode_sales;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_sales/index'); //site url
