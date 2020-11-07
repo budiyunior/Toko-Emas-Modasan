@@ -345,7 +345,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
     });
 
     $(".action-cetak").on("click", function() {
-
+        window.print();
     })
 
     $('.action-nota').click(function(e) {
