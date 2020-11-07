@@ -293,9 +293,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr class="titlerow">
-                                                <th class="center">
-                                                    Checklist
-                                                </th>
+
                                                 <th>No</th>
                                                 <th>Detail</th>
                                                 <th>Subtotal</th>
@@ -310,9 +308,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             while ($lp = mysqli_fetch_array($sql)) {
                                             ?>
                                                 <tr>
-                                                    <td class="check center">
-                                                        <input type="checkbox" class="check-item">
-                                                    </td>
+
                                                     <td><?php echo $no++ ?></td>
                                                     <td><?php echo $lp['fc_nobeli'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
