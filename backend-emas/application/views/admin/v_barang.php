@@ -281,6 +281,26 @@
                                 </thead>
                                 <tbody>
                                     <?php echo form_open('C_barang/delete'); ?>
+                                    <?php
+                                    $no = $this->uri->segment('3') + 1;
+                                    foreach ($barang as $s) : ?>
+                                        <tr>
+                                            <td class="check">
+                                                <input type="checkbox" class="check-item" name="id" value="<?= $s->fn_id ?>">
+                                            </td>
+                                            <th scope="col"><?= $no++ ?></th>
+                                            <td scope="row"><?= $s->fc_kdstock ?></td>
+                                            <td scope="row"><?= $s->fv_nmbarang ?></td>
+                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
+                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                                            <td scope="row"><?= $s->ff_berat ?></td>
+                                            <td scope="row"><?= $s->fc_kadar ?></td>
+                                            <td scope="row"><?= $s->fm_hargabeli ?></td>
+                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fc_sts ?></td>
+                                            <td scope="row"><?= $s->fd_date ?></td>
+                                        </tr>
+                                    <?php endforeach ?>
                                 </tbody>
                             </table>
                             <div class="row">
@@ -927,64 +947,64 @@
                 }
             });
 
-            $(document).ready(function() {
-                barang();
-                kelompok();
-                $("#kadar").change(function() {
-                    barang();
-                })
-                $("#kelompok").change(function() {
-                    kelompok();
-                })
-                $("#lokasi").change(function() {
-                    // let a = $(this).val();
-                    // console.log(a);
-                    lokasi();
-                })
-            })
+            // $(document).ready(function() {
+            //     barang();
+            //     kelompok();
+            //     $("#kadar").change(function() {
+            //         barang();
+            //     })
+            //     $("#kelompok").change(function() {
+            //         kelompok();
+            //     })
+            //     $("#lokasi").change(function() {
+            //         // let a = $(this).val();
+            //         // console.log(a);
+            //         lokasi();
+            //     })
+            // })
 
-            function barang() {
-                var kadar = $("#kadar").val();
-                // var kelompok = $("#kelompok").val();
-                // var lokasi = $("#lokasi").val();
-                $.ajax({
-                    url: "<?= base_url('C_barang/kadar') ?>",
-                    data: "kadar=" + kadar,
-                    // data2: "kelompok=" + kelompok,
-                    // data3: "lokasi=" + lokasi,
-                    success: function(data) {
-                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
-                        //console.log(data);
-                        $("#tabel_barang tbody").html(data)
-                    }
-                })
-            }
+            // function barang() {
+            //     var kadar = $("#kadar").val();
+            //     // var kelompok = $("#kelompok").val();
+            //     // var lokasi = $("#lokasi").val();
+            //     $.ajax({
+            //         url: "<?= base_url('C_barang/kadar') ?>",
+            //         data: "kadar=" + kadar,
+            //         // data2: "kelompok=" + kelompok,
+            //         // data3: "lokasi=" + lokasi,
+            //         success: function(data) {
+            //             //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+            //             //console.log(data);
+            //             $("#tabel_barang tbody").html(data)
+            //         }
+            //     })
+            // }
 
-            function kelompok() {
-                var kelompok = $("#kelompok").val();
-                $.ajax({
-                    url: "<?= base_url('C_barang/kelompok') ?>",
-                    data: "kelompok=" + kelompok,
-                    success: function(data) {
-                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
-                        //console.log(data);
-                        $("#tabel_barang tbody").html(data)
-                    }
-                })
-            }
+            // function kelompok() {
+            //     var kelompok = $("#kelompok").val();
+            //     $.ajax({
+            //         url: "<?= base_url('C_barang/kelompok') ?>",
+            //         data: "kelompok=" + kelompok,
+            //         success: function(data) {
+            //             //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+            //             //console.log(data);
+            //             $("#tabel_barang tbody").html(data)
+            //         }
+            //     })
+            // }
 
-            function lokasi() {
-                var lokasi = $("#lokasi").val();
-                $.ajax({
-                    url: "<?= base_url('C_barang/lokasi') ?>",
-                    data: "lokasi=" + lokasi,
-                    success: function(data) {
-                        //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
-                        //console.log(data);
-                        $("#tabel_barang tbody").html(data)
-                    }
-                })
-            }
+            // function lokasi() {
+            //     var lokasi = $("#lokasi").val();
+            //     $.ajax({
+            //         url: "<?= base_url('C_barang/lokasi') ?>",
+            //         data: "lokasi=" + lokasi,
+            //         success: function(data) {
+            //             //$("#tabel_barang tbody").html('<tr><td colspan="4" align="center">Tidak Ada Data</td></tr>')
+            //             //console.log(data);
+            //             $("#tabel_barang tbody").html(data)
+            //         }
+            //     })
+            // }
 
             $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
                 $("#check-all").click(function() { // Ketika user men-cek checkbox all

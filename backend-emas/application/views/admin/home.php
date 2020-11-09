@@ -42,7 +42,7 @@
                         <img class="nav-user-photo" src="../../assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
-                            Jason
+                            <?= $this->session->userdata('fv_username') ?>
                         </span>
 
                         <i class="ace-icon fa fa-caret-down"></i>
@@ -190,7 +190,7 @@
                 <!-- /section:settings.box -->
                 <div class="page-header">
                     <h2 style="color: #07A1C8;">
-                        Selamat Datang....
+                        Selamat Datang, <?php echo $this->session->userdata('fv_username') ?>
                     </h2>
                     <h4 style=" margin-left: 85%;">
                         <script type='text/javascript'>
