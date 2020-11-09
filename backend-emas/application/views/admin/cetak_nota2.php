@@ -73,10 +73,10 @@
                                                 <td><img src="<?= base_url('assets/img/foto_barang/' . $brg->f_foto) ?>" width="64"></td>
                                                 <td><?= $brg->fc_kadar ?></td>
                                                 <td><?= $brg->ff_berat ?></td>
-                                                <td><?= $brg->fm_hargalama ?></td>
+                                                <td>Rp.<?= number_format($brg->fm_hargalama); ?></td>
                                                 <td><?= $brg->fv_kondisi ?></td>
-                                                <td><?= $brg->fm_potongan ?></td>
-                                                <td><?= $brg->fm_hargabeli ?></td>
+                                                <td>Rp.<?= number_format($brg->fm_potongan); ?></td>
+                                                <td>Rp.<?= number_format($brg->fm_hargabeli); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
@@ -108,10 +108,8 @@
                     </div>
                     <div class="col-xs-4">
                         <h5>Malang, <?php echo date("d F Y", strtotime($nota->fd_tglinput)) ?></h5>
-                        <br>
-                        <br>
-                        <br>
-                        <p>......................................</p>
+                        <img src="<?php echo base_url() ?>assets/img/modasan.jpg" width="150">
+                        <p>............................................</p>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 30px;">

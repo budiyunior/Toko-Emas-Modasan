@@ -16,7 +16,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <br>
                         <br>
                         <a style="font-family: times new roman; font-size: 35px; font-style: bold;">
-                            <img src="<?= base_url('assets/img/logo_modasan.png')?>" width="70" />
+                            <img src="<?= base_url('assets/img/logo_modasan.png') ?>" width="70" />
                             -M O D A S A N-
                         </a>
                     </div>
@@ -108,11 +108,9 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <h3 style="margin-top: 40px; font-family: Brush Script MT;">Terima Kasih Atas Kunjungan dan Kepercayaan Anda</h3>
                     </div>
                     <div class="col-xs-4">
-                    
+
                         <h5>Malang, <?php echo date("d F Y", strtotime($nota->fd_tglinv)) ?></h5>
-                        <br>
-                        <br>
-                        <br>
+                        <img src="<?php echo base_url() ?>assets/img/modasan.jpg" width="150">
                         <p>......................................</p>
                     </div>
                 </div>
