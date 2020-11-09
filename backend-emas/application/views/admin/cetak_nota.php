@@ -91,7 +91,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
                             <div class="col-xs-3">
                                 <label for="">Total</label>
-                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= $nota->fm_grandtotal ?>" placeholder="" />
+                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= number_format($nota->fm_grandtotal); ?>" placeholder="" />
                             </div>
                         </div>
                     </div>
@@ -111,7 +111,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
 
                         <h5>Malang, <?php echo date("d F Y", strtotime($nota->fd_tglinv)) ?></h5>
                         <img src="<?php echo base_url() ?>assets/img/modasan.jpg" width="150">
-                        <p>......................................</p>
+                        <p>............................................</p>
                     </div>
                 </div>
                 <div class="row" style="margin-top: 30px;">
