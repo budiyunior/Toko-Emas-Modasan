@@ -64,6 +64,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             <th>Kadar</th>
                                             <th>Berat</th>
                                             <th>Ongkos</th>
+                                            <th>Harga Pergram</th>
                                             <th>Jumlah</th>
                                         </tr>
                                     </thead>
@@ -72,10 +73,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             <tr>
                                                 <td><?= $brg->fv_nmbarang ?></td>
                                                 <td><img src="<?= base_url('assets/img/foto_barang/' . $brg->f_foto) ?>" width="100"></td>
-                                                <td><?= $brg->fc_kadar ?></td>
-                                                <td><?= $brg->ff_berat ?></td>
-                                                <td><?= $brg->fm_ongkos ?></td>
-                                                <td><?= $brg->fm_price ?></td>
+                                                <td><?= $brg->fc_kadar ?>%</td>
+                                                <td><?= $brg->ff_berat ?> gram</td>
+                                                <td>Rp.<?= number_format($brg->fm_ongkos); ?></td>
+                                                <td>Rp.<?= number_format($brg->fm_price); ?></td>
+                                                <td>Rp.<?= number_format($brg->fm_subtot); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

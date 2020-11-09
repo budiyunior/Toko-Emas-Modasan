@@ -35,6 +35,11 @@ class M_barang extends CI_Model
         return $this->db->get($this->tbsales)->result();
     }
 
+    public function update_kondisibrg($kondisi, $id)
+	{
+		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fc_kdstock='$id'");
+	}
+
     public function get_by_id($id)
     {
         $this->db->where('fn_id', $id);
@@ -64,10 +69,10 @@ class M_barang extends CI_Model
 
     public function list_barang($limit, $start)
     {
-        // $kadar = $this->input->post('fc_kadar');
-        // $kelompok = $this->input->post('fc_kdkelompok');
-        // $lokasi = $this->input->post('fc_kdlokasi');
-        $query = $this->db->get('tm_stock', $limit, $start);
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kondisi', 0);
+        $query = $this->db->get_where('', $limit, $start);
         return $query->result();
     }
 

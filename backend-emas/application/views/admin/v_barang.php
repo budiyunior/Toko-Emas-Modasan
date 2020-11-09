@@ -305,7 +305,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger delete"><i class="fa fa-trash"></i> Hapus</button>
+                                    <a href="<?= base_url('C_barang/diambil') ?>" class="btn btn-danger hapus"><i class="fa fa-trash"></i> Hapus</a>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -1245,22 +1245,26 @@
                 // window.location.href = action;
             });
 
-            function check_kelompok(value) {
+            $('.hapus').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+                // jQuery.noConflict();
+                // $('#tambah').modal('show');
                 $.ajax({
-                    url: "<?php echo base_url('C_barang/get_edit_kelompok/') ?>" + value,
+                    url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
                     type: "GET",
                     dataType: "JSON",
                     success: function(result) {
-                        $('#fn_id2').val(result.fn_id);
-                        $('#fc_kdkelompok2').val(result.fc_kdkelompok);
-                        $('#fv_nmkelompok2').val(result.fv_nmkelompok);
+                        $('#fn_idbarang').val(result.fn_id);
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         alert('Data Eror');
                     }
                 })
+            });
 
-            }
 
             function check_lokasi(value) {
                 $.ajax({

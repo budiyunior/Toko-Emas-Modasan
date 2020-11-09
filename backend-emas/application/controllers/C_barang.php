@@ -386,9 +386,9 @@ class C_barang extends CI_Controller
     {
         $kadar = $_GET['kadar'];
         if ($kadar == 0) {
-            $barang = $this->db->get('tm_stock')->result();
+            $barang = $this->db->get('tm_stock', array('fc_kondisi' => 0))->result();
         } else {
-            $barang = $this->db->get_where('tm_stock', ['fc_kadar' => $kadar])->result();
+            $barang = $this->db->get_where('tm_stock', ['fc_kadar' => $kadar, 'fc_kondisi' => 0])->result();
         }
 
         if (!empty($barang)) {
@@ -423,9 +423,9 @@ class C_barang extends CI_Controller
     {
         $kelompok = $_GET['kelompok'];
         if ($kelompok == 0) {
-            $barang = $this->db->get('tm_stock')->result();
+            $barang = $this->db->get('tm_stock', ['fc_kondisi' => 0])->result();
         } else {
-            $barang = $this->db->get_where('tm_stock', ['fc_kdkelompok' => $kelompok])->result();
+            $barang = $this->db->get_where('tm_stock', ['fc_kdkelompok' => $kelompok, 'fc_kondisi' => 0])->result();
         }
 
         if (!empty($barang)) {
@@ -455,13 +455,13 @@ class C_barang extends CI_Controller
         }
     }
 
-    public function lokasi()
+    public function lokasi($limit, $start)
     {
         $lokasi = $_GET['lokasi'];
         if ($lokasi == 0) {
-            $barang = $this->db->get('tm_stock')->result();
+            $barang = $this->db->get_where('tm_stock', array('fc_kondisi' => 0), $limit, $start)->result();
         } else {
-            $barang = $this->db->get_where('tm_stock', ['fc_kdlokasi' => $lokasi])->result();
+            $barang = $this->db->get_where('tm_stock', ['fc_kdlokasi' => $lokasi, 'fc_kondisi' => 0])->result();
         }
 
         if (!empty($barang)) {
@@ -489,5 +489,18 @@ class C_barang extends CI_Controller
                 <tr><td align="center">Tidak Ada Data</td></tr>
             <?php
         }
+    }
+
+    public function diambil($id)
+    {
+        $kondisi = 1;
+        $data = $this->M_barang->get_by_id($id);
+        $this->M_barang->update_kondisibrg($kondisi, $id);
+        echo json_encode($data);
+        echo "<script>
+        alert('Data Barang berhasil di ambil');
+        window.location.href = '" . base_url('C_barang') . "';
+        </script>"; //Url tujuan
+
     }
 }
