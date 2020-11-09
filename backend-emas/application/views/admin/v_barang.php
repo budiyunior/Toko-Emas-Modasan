@@ -325,7 +325,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <a href="<?= base_url('C_barang/diambil') ?>" class="btn btn-danger hapus"><i class="fa fa-trash"></i> Hapus</a>
+                                    <button type="submit" class="btn btn-danger hapus"><i class="fa fa-trash"></i> Hapus</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
