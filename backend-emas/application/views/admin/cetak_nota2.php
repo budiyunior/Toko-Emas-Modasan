@@ -90,7 +90,7 @@
                             </div>
                             <div class="col-xs-3">
                                 <label for="">Total</label>
-                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= $nota->fm_total ?>" placeholder="" />
+                                <input type="text" id="form-field-1" class="no-padding-right" value="Rp.<?= number_format($nota->fm_total) ?>" placeholder="" />
                             </div>
                         </div>
                     </div>
