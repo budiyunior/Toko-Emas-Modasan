@@ -46,7 +46,7 @@
                         <img class="nav-user-photo" src="<?php base_url() ?>assets/assets/avatars/user.jpg" alt="Jason's Photo" />
                         <span class="user-info">
                             <small>Welcome,</small>
-                            Jason
+                            <?= $this->session->userdata('fv_username') ?>
                         </span>
 
                         <i class="ace-icon fa fa-caret-down"></i>

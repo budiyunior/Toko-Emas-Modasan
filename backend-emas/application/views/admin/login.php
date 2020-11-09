@@ -44,7 +44,7 @@
                 <div class="col-sm-10 col-sm-offset-1">
                     <div class="login-container">
                         <div class="center" style="margin-top: 10%;">
-                            <img src="<?php echo base_url() ?>assets/assets/img/php.png" width="175" height="100">
+                            <img src="<?php echo base_url() ?>assets/img/logo_modasan.png" width="125" height="175">
                             <h4 class="blue" id="id-company-text">Toko Emas Modasan</h4>
                         </div>
 

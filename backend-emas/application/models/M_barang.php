@@ -39,15 +39,15 @@ class M_barang extends CI_Model
     {
         $this->db->where('fn_id', $id);
         return $this->db->get('tm_stock')->row();
-	}
-	
-	public function get_edit_kelompok($id)
+    }
+
+    public function get_edit_kelompok($id)
     {
         $this->db->where('fn_id', $id);
         return $this->db->get('tm_kelompok')->row();
-	}
-	
-	public function get_edit_lokasi($id)
+    }
+
+    public function get_edit_lokasi($id)
     {
         $this->db->where('fn_id', $id);
         return $this->db->get('tm_lokasi')->row();
@@ -73,47 +73,46 @@ class M_barang extends CI_Model
 
     public function save_barang()
     {
-		$post = $this->input->post();
-		
-		if($post['fn_id']==''){
-			$this->fd_date = $post['fd_date'];
-			$this->fc_barcode = $post['fc_barcode'];
-			$this->fc_kdstock = $post['fc_kdstock'];
-			$this->fv_nmbarang = $post['fv_nmbarang'];
-			$this->fc_kdkelompok = $post['fc_kdkelompok'];
-			$this->fc_kdlokasi = $post['fc_kdlokasi'];
-			$this->fc_salesid = $post['fc_salesid'];
-			$this->ff_berat = $post['ff_berat'];
-			$this->fc_kadar = $post['fc_kadar'];
-			$this->fm_ongkos = $post['fm_ongkos'];
-			$this->fm_hargabeli = $post['fm_hargabeli'];
-			$this->fm_hargajual = $post['fm_hargajual'];
-			$this->f_foto = $this->uploadImage();
-			$this->fc_sts = $post['fc_sts'];
-			$this->fn_stock = $post['fn_stock'];
-	
-			$this->db->insert($this->tabel, $this);
-		}else{
-			$this->fd_date = $post['fd_date'];
-			$this->fc_barcode = $post['fc_barcode'];
-			$this->fc_kdstock = $post['fc_kdstock'];
-			$this->fv_nmbarang = $post['fv_nmbarang'];
-			$this->fc_kdkelompok = $post['fc_kdkelompok'];
-			$this->fc_kdlokasi = $post['fc_kdlokasi'];
-			$this->fc_salesid = $post['fc_salesid'];
-			$this->ff_berat = $post['ff_berat'];
-			$this->fc_kadar = $post['fc_kadar'];
-			$this->fm_ongkos = $post['fm_ongkos'];
-			$this->fm_hargabeli = $post['fm_hargabeli'];
-			$this->fm_hargajual = $post['fm_hargajual'];
-			$this->f_foto = $this->uploadImage();
-			$this->fc_sts = $post['fc_sts'];
-			$this->fn_stock = $post['fn_stock'];
-	
-			$this->db->update('tm_stock', $this, array('fn_id' => $post['fn_id']));
-			return $this->db->affected_rows();
-		}
-      
+        $post = $this->input->post();
+
+        if ($post['fn_id'] == '') {
+            $this->fd_date = $post['fd_date'];
+            $this->fc_barcode = $post['fc_barcode'];
+            $this->fc_kdstock = $post['fc_kdstock'];
+            $this->fv_nmbarang = $post['fv_nmbarang'];
+            $this->fc_kdkelompok = $post['fc_kdkelompok'];
+            $this->fc_kdlokasi = $post['fc_kdlokasi'];
+            $this->fc_salesid = $post['fc_salesid'];
+            $this->ff_berat = $post['ff_berat'];
+            $this->fc_kadar = $post['fc_kadar'];
+            $this->fm_ongkos = $post['fm_ongkos'];
+            $this->fm_hargabeli = $post['fm_hargabeli'];
+            $this->fm_hargajual = $post['fm_hargajual'];
+            $this->f_foto = $this->uploadImage();
+            $this->fc_sts = $post['fc_sts'];
+            $this->fn_stock = $post['fn_stock'];
+            $this->fc_kondisi = 0;
+            $this->db->insert($this->tabel, $this);
+        } else {
+            $this->fd_date = $post['fd_date'];
+            $this->fc_barcode = $post['fc_barcode'];
+            $this->fc_kdstock = $post['fc_kdstock'];
+            $this->fv_nmbarang = $post['fv_nmbarang'];
+            $this->fc_kdkelompok = $post['fc_kdkelompok'];
+            $this->fc_kdlokasi = $post['fc_kdlokasi'];
+            $this->fc_salesid = $post['fc_salesid'];
+            $this->ff_berat = $post['ff_berat'];
+            $this->fc_kadar = $post['fc_kadar'];
+            $this->fm_ongkos = $post['fm_ongkos'];
+            $this->fm_hargabeli = $post['fm_hargabeli'];
+            $this->fm_hargajual = $post['fm_hargajual'];
+            $this->f_foto = $this->uploadImage();
+            $this->fc_sts = $post['fc_sts'];
+            $this->fn_stock = $post['fn_stock'];
+            $this->fc_kondisi = 0;
+            $this->db->update('tm_stock', $this, array('fn_id' => $post['fn_id']));
+            return $this->db->affected_rows();
+        }
     }
 
     public function save_namakelompok()
@@ -280,60 +279,72 @@ class M_barang extends CI_Model
     {
         $this->db->where('link_menu', $menu);
         return $this->db->get('mainmenu')->row();
-	}
-	
-	public function get_nama_toko(){
-		$this->db->where('fc_param','NAMATOKO');
-		return $this->db->get('t_setup')->row();
-	}
+    }
 
-	function max(){
-		return $this->db->query('SELECT max(fc_kdstock) AS maxs FROM tm_stock');
-	}
+    public function get_nama_toko()
+    {
+        $this->db->where('fc_param', 'NAMATOKO');
+        return $this->db->get('t_setup')->row();
+    }
 
-	function max_kelompok(){
-		return $this->db->query('SELECT max(fc_kdkelompok) AS maxs_kelompok FROM tm_kelompok');
-	}
+    function max()
+    {
+        return $this->db->query('SELECT max(fc_kdstock) AS maxs FROM tm_stock');
+    }
 
-	function max_lokasi(){
-		return $this->db->query('SELECT max(fc_kdlokasi) AS maxs_lokasi FROM tm_lokasi');
-	}
+    function max_kelompok()
+    {
+        return $this->db->query('SELECT max(fc_kdkelompok) AS maxs_kelompok FROM tm_kelompok');
+    }
 
-	function ajax_get_kelompok(){
-		return $this->db->get('tm_kelompok');
-	}
+    function max_lokasi()
+    {
+        return $this->db->query('SELECT max(fc_kdlokasi) AS maxs_lokasi FROM tm_lokasi');
+    }
 
-	function ajax_get_lokasi(){
-		return $this->db->get('tm_lokasi');
-	}
+    function ajax_get_kelompok()
+    {
+        return $this->db->get('tm_kelompok');
+    }
 
-	function add_kelompok($data){
-		$this->db->insert('tm_kelompok', $data);
-		return $this->db->insert_id();
-	}
+    function ajax_get_lokasi()
+    {
+        return $this->db->get('tm_lokasi');
+    }
 
-	function add_lokasi($data){
-		$this->db->insert('tm_lokasi', $data);
-		return $this->db->insert_id();
-	}
+    function add_kelompok($data)
+    {
+        $this->db->insert('tm_kelompok', $data);
+        return $this->db->insert_id();
+    }
 
-	function update_kelompok($where, $data){
-		$this->db->update('tm_kelompok', $data, $where);
-		return $this->db->affected_rows();
-	}
+    function add_lokasi($data)
+    {
+        $this->db->insert('tm_lokasi', $data);
+        return $this->db->insert_id();
+    }
 
-	function update_lokasi($where, $data){
-		$this->db->update('tm_lokasi', $data, $where);
-		return $this->db->affected_rows();
-	}
+    function update_kelompok($where, $data)
+    {
+        $this->db->update('tm_kelompok', $data, $where);
+        return $this->db->affected_rows();
+    }
 
-	function delete_by_id_kelompok($id){
-		$this->db->where('fn_id', $id);
-		$this->db->delete('tm_kelompok');
-	}
+    function update_lokasi($where, $data)
+    {
+        $this->db->update('tm_lokasi', $data, $where);
+        return $this->db->affected_rows();
+    }
 
-	function delete_by_id_lokasi($id){
-		$this->db->where('fn_id', $id);
-		$this->db->delete('tm_lokasi');
-	}
+    function delete_by_id_kelompok($id)
+    {
+        $this->db->where('fn_id', $id);
+        $this->db->delete('tm_kelompok');
+    }
+
+    function delete_by_id_lokasi($id)
+    {
+        $this->db->where('fn_id', $id);
+        $this->db->delete('tm_lokasi');
+    }
 }
