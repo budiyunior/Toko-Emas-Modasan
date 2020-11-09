@@ -261,7 +261,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
 							<?php if ($cd == '1') { ?>
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales')"><i class="fa fa-trash"> Hapus</i></button>
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales ?')"><i class="fa fa-trash"> Hapus</i></button>
 							<?php } ?>
 							</div>
                             <?= form_close(); ?>

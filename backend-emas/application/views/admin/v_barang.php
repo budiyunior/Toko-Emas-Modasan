@@ -286,7 +286,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="id" value="<?= $s->fn_id ?>">
+                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -325,7 +325,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger hapus"><i class="fa fa-upload"></i> Diambil</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data barang ?')"><i class="fa fa-upload"></i> Diambil</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -356,7 +356,7 @@
                                                     ?>
                                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                                     <div class="col-sm-7">
-                                                        <input type="text" name="fd_date" id="tgl_1" class="form-control">
+                                                        <input name="fd_date" id="tgl_1" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
