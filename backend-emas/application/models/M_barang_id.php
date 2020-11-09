@@ -16,7 +16,6 @@ class M_barang_id extends CI_Model
 		if ($_REQUEST['length'] != -1) {
 			$this->db->limit($_REQUEST['length'], $_REQUEST['start']);
 		}
-
 		$query = $this->db->get();
 		return $query->result();
 	}
@@ -28,6 +27,7 @@ class M_barang_id extends CI_Model
 		$this->db->join('tm_lokasi c', 'a.fc_kdlokasi=c.fc_kdlokasi', 'left outer');
 		$this->db->join('tm_kelompok b', 'a.fc_kdkelompok=b.fc_kdkelompok', 'left outer');
 		$this->db->where('a.fc_sts', 1);
+		$this->db->where('a.fc_kondisi', 0);
 		$i = 0;
 
 
