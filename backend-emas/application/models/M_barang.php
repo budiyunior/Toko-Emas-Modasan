@@ -72,7 +72,16 @@ class M_barang extends CI_Model
         $this->db->select('*');
         $this->db->from('tm_stock');
         $this->db->where('fc_kondisi', 0);
-        $query = $this->db->get_where('', $limit, $start);
+        $query = $this->db->get('', $limit, $start);
+        return $query->result();
+    }
+
+    public function data_barang()
+    {
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kondisi', 0);
+        $query = $this->db->get_where();
         return $query->result();
     }
 
