@@ -325,7 +325,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger hapus"><i class="fa fa-trash"></i> Hapus</button>
+                                    <button type="submit" class="btn btn-danger hapus"><i class="fa fa-upload"></i> Diambil</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
