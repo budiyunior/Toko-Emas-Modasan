@@ -37,7 +37,7 @@ class M_barang extends CI_Model
 
     public function update_kondisibrg($kondisi, $id)
 	{
-		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fc_kdstock='$id'");
+		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fn_id='$id'");
 	}
 
     public function get_by_id($id)

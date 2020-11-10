@@ -228,6 +228,15 @@ class C_barang extends CI_Controller
         return redirect('C_barang/index');
     }
 
+    public function diambil()
+    {
+        $kondisi = 1;
+        foreach ($_POST['id'] as $id) {
+            $this->M_barang->update_kondisibrg($kondisi, $id);
+        }
+        return redirect('C_barang/index');
+    }
+
     public function save_kelompok()
     {
 
@@ -424,16 +433,16 @@ class C_barang extends CI_Controller
         }
     }
 
-    public function diambil($id)
-    {
-        $kondisi = 1;
-        $data = $this->M_barang->get_by_id($id);
-        $this->M_barang->update_kondisibrg($kondisi, $id);
-        echo json_encode($data);
-        echo "<script>
-        alert('Data Barang berhasil di ambil');
-        window.location.href = '" . base_url('C_barang') . "';
-        </script>"; //Url tujuan
+    // public function diambil($id)
+    // {
+    //     $kondisi = 1;
+    //     $data = $this->M_barang->get_by_id($id);
+    //     $this->M_barang->update_kondisibrg($kondisi, $id);
+    //     echo json_encode($data);
+    //     echo "<script>
+    //     alert('Data Barang berhasil di ambil');
+    //     window.location.href = '" . base_url('C_barang') . "';
+    //     </script>"; //Url tujuan
 
-    }
+    // }
 }

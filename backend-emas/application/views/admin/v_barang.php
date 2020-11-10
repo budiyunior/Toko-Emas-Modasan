@@ -325,7 +325,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data barang ?')"><i class="fa fa-upload"></i> Diambil</button>
+                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin mengambil data barang ?')"><i class="fa fa-upload"></i> Diambil</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
