@@ -306,7 +306,7 @@
                             <div class="row">
                                 <div class="">
                                     <!--Tampilkan pagination-->
-                                    <?php echo $pagination; ?>
+                                    <?php $pagination; ?>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +356,7 @@
                                                     ?>
                                                     <label for="" class="col-sm-3 col-form-label">Tanggal</label>
                                                     <div class="col-sm-7">
-                                                        <input name="fd_date" id="tgl_1" class="form-control">
+                                                        <input type="date" name="fd_date" id="tgl_1" class="form-control" value="<?= $tgl ?>">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">

@@ -189,10 +189,11 @@
 
                 <!-- /section:settings.box -->
                 <div class="page-header">
+
                     <h2 style="color: #07A1C8;">
                         Selamat Datang, <?php echo $this->session->userdata('fv_username') ?>
                     </h2>
-                    <h4 style=" margin-left: 85%;">
+                    <h4 style=" margin-left: 80%;">
                         <script type='text/javascript'>
                             var months = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
 
@@ -214,7 +215,7 @@
 
                             document.write(thisDay + ', ' + day + ' ' + months[month] + ' ' + year);
                         </script>
-                        </h4>
+                    </h4>
                 </div>
                 <!-- /.page-header -->
 

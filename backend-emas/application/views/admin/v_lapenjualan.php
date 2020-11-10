@@ -233,12 +233,13 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         if (isset($_GET['startdate'])) {
                             $tgl = $_GET['startdate'];
                             $tgl2 = $_GET['enddate'];
-                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and fd_tglinv between '$tgl' AND '$tgl2' GROUP BY tm_invoice.fc_noinv");
+                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock, tm_stock.fv_nmbarang, td_invoice.ff_kadar, td_invoice.fm_subtot, tm_invoice.fm_grandtotal, td_invoice.fn_berat  FROM tm_invoice,td_invoice,tm_stock  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdstock=tm_stock.fc_kdstock and td_invoice.ff_kadar = '40%' and fd_tglinv between '$tgl' AND '$tgl2'");
                             // $sql = mysqli_query($koneksi, "SELECT * FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
                             $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
-                            $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  WHERE  fd_tglinv between '$tgl' AND '$tgl2'");
+                            $sql3 = mysqli_query($koneksi, "SELECT COUNT(fc_kdstock) as item FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv and  fd_tglinv between '$tgl' AND '$tgl2'");
                             $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv and  fd_tglinv between '$tgl' AND '$tgl2'");
                             $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_noinv) as transaksi FROM tm_invoice WHERE fd_tglinv between '$tgl' AND '$tgl2'");
+                            $sql6 = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock, tm_stock.fv_nmbarang, td_invoice.ff_kadar, td_invoice.fm_subtot, tm_invoice.fm_grandtotal, td_invoice.fn_berat  FROM tm_invoice,td_invoice,tm_stock  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdstock=tm_stock.fc_kdstock and td_invoice.ff_kadar = '70%' and fd_tglinv between '$tgl' AND '$tgl2'");
                             $gtotal = mysqli_fetch_array($sql2);
                             $stotal = mysqli_fetch_array($sql3);
                             $berat = mysqli_fetch_array($sql4);
@@ -249,15 +250,18 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         //     $shift = $_GET['shift'];
                         //     $sql = mysqli_query($koneksi, "SELECT * FROM tb_transaksi WHERE shift = '$shift' ");
                         else {
-                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock,tm_invoice.fm_subtot,tm_invoice.fm_grandtotal, sum(td_invoice.fn_berat) as berat  FROM tm_invoice,td_invoice  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv GROUP BY tm_invoice.fc_noinv");
-                            $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice ");
-                            $sql3 = mysqli_query($koneksi, "SELECT SUM(fm_subtot) as stotal FROM tm_invoice  ");
-                            $sql4 = mysqli_query($koneksi, "SELECT SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv ");
-                            $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_noinv) as transaksi FROM tm_invoice ");
+                            $sql = mysqli_query($koneksi, "SELECT  td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock, tm_stock.fv_nmbarang, td_invoice.ff_kadar, td_invoice.fm_subtot, tm_invoice.fm_grandtotal, td_invoice.fn_berat  FROM tm_invoice,td_invoice,tm_stock  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdstock=tm_stock.fc_kdstock and td_invoice.ff_kadar = '40%' and fd_tglinv = '$today'");
+                            $sql2 = mysqli_query($koneksi, "SELECT SUM(fm_grandtotal) as gtotal FROM tm_invoice   WHERE  fd_tglinv = '$today'");
+                            $sql3 = mysqli_query($koneksi, "SELECT COUNT(fc_kdstock) as item FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv and  fd_tglinv ='$today' ");
+                            $sql4 = mysqli_query($koneksi, "SELECT SUM(fn_berat) as berat FROM tm_invoice, td_invoice WHERE tm_invoice.fc_noinv=td_invoice.fc_noinv and  fd_tglinv = '$today' ");
+                            $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_noinv) as transaksi FROM tm_invoice WHERE  fd_tglinv = '$today'");
+                            $sql6 = mysqli_query($koneksi, "SELECT td_invoice.id, tm_invoice.fc_noinv, tm_invoice.fd_tglinv, td_invoice.fc_kdstock, tm_stock.fv_nmbarang, td_invoice.ff_kadar, td_invoice.fm_subtot, tm_invoice.fm_grandtotal, td_invoice.fn_berat  FROM tm_invoice,td_invoice,tm_stock  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdstock=tm_stock.fc_kdstock and td_invoice.ff_kadar = '70%' and fd_tglinv = '$today'");
+                            $sql7 = mysqli_query($koneksi, "SELECT  td_invoice.ff_kadar, sum(td_invoice.fm_subtot) as 40total, sum(td_invoice.fn_berat) as 40berat  FROM tm_invoice,td_invoice,tm_stock  WHERE tm_invoice.fc_noinv = td_invoice.fc_noinv and td_invoice.fc_kdstock=tm_stock.fc_kdstock and td_invoice.ff_kadar = '40%' and fd_tglinv = '$today'");
                             $gtotal = mysqli_fetch_array($sql2);
                             $stotal = mysqli_fetch_array($sql3);
                             $berat = mysqli_fetch_array($sql4);
                             $tran = mysqli_fetch_array($sql5);
+                            $total40 = mysqli_fetch_array($sql7);
                         }
                         ?>
                     </div>
@@ -265,12 +269,12 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                     <div class="col-xs-12 col-sm-3">
                         <form>
                             <div>
-                                <label for="form-field-8">Transaksi</label>
+                                <label for="form-field-8">Total Transaksi</label>
                                 <input type="text" class="form-control" readonly value="<?php echo $tran['transaksi'] ?>">
                             </div>
                             <div>
                                 <label for="form-field-9">Berat</label>
-                                <input type="text" class="form-control" readonly value="<?php echo number_format($berat['berat']) ?> gram">
+                                <input type="text" class="form-control" readonly value="<?php echo round($berat['berat'], 3) ?> gram">
                             </div>
                         </form>
                     </div>
@@ -281,8 +285,8 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($gtotal['gtotal']) ?>">
                             </div>
                             <div>
-                                <label for="form-field-9">Sub Total</label>
-                                <input type="text" class="form-control" readonly value="Rp. <?php echo number_format($stotal['stotal']) ?>">
+                                <label for="form-field-9">Item Terjual</label>
+                                <input type="text" class="form-control" readonly value="<?php echo ($stotal['item']) ?> buah">
                             </div>
                         </form>
                     </div>
@@ -292,14 +296,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <!-- PAGE CONTENT BEGINS -->
                         <div class="row">
                             <div class="col-xs-12">
+                                <h3>Kadar 40%</h3>
                                 <div class="table-responsive">
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Detail</th>
+                                                <th>Kode Faktur</th>
+                                                <th>Nama Barang</th>
                                                 <th>Subtotal</th>
-                                                <th>Grand Total</th>
                                                 <th>Berat</th>
                                             </tr>
                                         </thead>
@@ -311,10 +316,52 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                 <tr>
                                                     <td><?php echo $no++ ?></td>
                                                     <td><?php echo $lp['fc_noinv'] ?></td>
+                                                    <td><?php echo $lp['fv_nmbarang'] ?></td>
                                                     <td>Rp. <?php echo number_format($lp['fm_subtot']);  ?></td>
-                                                    <td>Rp. <?php echo number_format($lp['fm_grandtotal']);  ?></td>
                                                     <td>
-                                                        <?php echo $lp['berat'] ?> gram
+                                                        <?php echo round($lp['fn_berat'], 3) ?> gram
+                                                    </td>
+                                                </tr>
+                                            <?php } ?>
+                                            <tr>
+                                                <td></td>
+                                                <th>TOTAL</th>
+                                                <td></td>
+                                                <th>Rp. <?php echo number_format($total40['40total']);  ?></th>
+                                                <th>
+                                                    <?php echo round($total40['40berat'], 3) ?> gram
+                                                </th>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12">
+                                <h3>Kadar 70%</h3>
+                                <div class="table-responsive">
+                                    <table id="simple-table" class="table table-striped table-bordered table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Kode Faktur</th>
+                                                <th>Nama Barang</th>
+                                                <th>Subtotal</th>
+                                                <th>Berat</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            while ($lp7 = mysqli_fetch_array($sql6)) {
+                                            ?>
+                                                <tr>
+                                                    <td><?php echo $no++ ?></td>
+                                                    <td><?php echo $lp7['fc_noinv'] ?></td>
+                                                    <td><?php echo $lp7['fv_nmbarang'] ?></td>
+                                                    <td>Rp. <?php echo number_format($lp7['fm_subtot']);  ?></td>
+                                                    <td>
+                                                        <?php echo round($lp7['fn_berat'], 3) ?> gram
                                                     </td>
                                                 </tr>
                                             <?php } ?>
