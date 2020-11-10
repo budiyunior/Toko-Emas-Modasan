@@ -301,11 +301,22 @@
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
                                     <?php endforeach ?>
+                                    <tr>
+                                        <th class="center">TOTAL</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th class="center"><?= $jmlberat ?> gram</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
                                 </tbody>
-                                <thead class="table table-bordered">
-                                    <th>Total Berat</th>
-                                    <th><?= $jmlberat ?> Gram</th>
-                                </thead>
+
                             </table>
                             <div class="row">
                                 <div class="">
