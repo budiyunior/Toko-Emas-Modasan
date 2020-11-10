@@ -25,6 +25,7 @@ class C_barang extends CI_Controller
         $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi'] = $this->M_barang->get_lokasi();
         $data['lokasi2'] = $this->M_barang->get_lokasi();
+        $data['jmlberat'] = $this->M_barang->jumlahberat();
 
         $data['kode_barcode'] = $this->randomString();
 

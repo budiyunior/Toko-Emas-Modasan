@@ -302,6 +302,10 @@
                                         </tr>
                                     <?php endforeach ?>
                                 </tbody>
+                                <thead class="table table-bordered">
+                                    <th>Total Berat</th>
+                                    <th><?= $jmlberat ?> Gram</th>
+                                </thead>
                             </table>
                             <div class="row">
                                 <div class="">

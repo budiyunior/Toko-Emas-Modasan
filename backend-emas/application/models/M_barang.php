@@ -40,6 +40,12 @@ class M_barang extends CI_Model
 		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fn_id='$id'");
 	}
 
+    public function jumlahberat()
+    {
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0");
+        return $sql->row()->berat; 
+    }
+
     public function get_by_id($id)
     {
         $this->db->where('fn_id', $id);
