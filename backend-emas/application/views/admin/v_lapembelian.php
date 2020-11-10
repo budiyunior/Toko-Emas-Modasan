@@ -238,10 +238,14 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM t_belimst, t_belidtl WHERE t_belimst.fc_nobeli=t_belidtl.fc_nobeli and  fd_tglbeli between '$tgl' AND '$tgl2'");
                             $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_nobeli) as transaksi FROM t_belimst WHERE fd_tglbeli between '$tgl' AND '$tgl2'");
                             $sql6 = mysqli_query($koneksi, "SELECT  t_belimst.id, t_belimst.fc_nobeli, t_belimst.fd_tglbeli, t_belidtl.fc_kdstock,t_belidtl.f_kadar ,tm_stock.fv_nmbarang, t_belidtl.f_kadar, t_belidtl.fm_hargabeli, t_belidtl.fm_potongan, t_belimst.fm_total, t_belidtl.fn_berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock AND t_belidtl.f_kadar = '70%' AND fd_tglbeli between '$tgl' AND '$tgl2'");
+                            $sql7 = mysqli_query($koneksi, "SELECT  t_belimst.fd_tglbeli,t_belidtl.f_kadar, sum(t_belidtl.fm_potongan) as pot, sum(t_belimst.fm_total) as total, sum(t_belidtl.fn_berat) as berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock and t_belidtl.f_kadar = '40%' and fd_tglbeli between '$tgl' AND '$tgl2'");
+                            $sql8 = mysqli_query($koneksi, "SELECT  t_belimst.fd_tglbeli,t_belidtl.f_kadar, sum(t_belidtl.fm_potongan) as pot, sum(t_belimst.fm_total) as total, sum(t_belidtl.fn_berat) as berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock and t_belidtl.f_kadar = '70%' and fd_tglbeli between '$tgl' AND '$tgl2'");
                             $gtotal = mysqli_fetch_array($sql2);
                             $stotal = mysqli_fetch_array($sql3);
                             $berat = mysqli_fetch_array($sql4);
                             $tran = mysqli_fetch_array($sql5);
+                            $total40 = mysqli_fetch_array($sql7);
+                            $total70 = mysqli_fetch_array($sql8);
                         }
 
                         // } else if (isset($_GET['shift'])){
@@ -254,10 +258,14 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             $sql4 = mysqli_query($koneksi, "SELECT  SUM(fn_berat) as berat FROM t_belimst, t_belidtl WHERE t_belimst.fc_nobeli=t_belidtl.fc_nobeli and fd_tglbeli = '$today'");
                             $sql5 = mysqli_query($koneksi, "SELECT COUNT(fc_nobeli) as transaksi FROM t_belimst WHERE fd_tglbeli = '$today' ");
                             $sql6 = mysqli_query($koneksi, "SELECT  t_belimst.id, t_belimst.fc_nobeli, t_belimst.fd_tglbeli, t_belidtl.fc_kdstock,tm_stock.fv_nmbarang, t_belidtl.f_kadar, t_belidtl.fm_hargabeli, t_belidtl.fm_potongan, t_belimst.fm_total, t_belidtl.fn_berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock and t_belidtl.f_kadar = '70%' and fd_tglbeli = '$today'");
+                            $sql7 = mysqli_query($koneksi, "SELECT  t_belimst.fd_tglbeli,t_belidtl.f_kadar, sum(t_belidtl.fm_potongan) as pot, sum(t_belimst.fm_total) as total, sum(t_belidtl.fn_berat) as berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock and t_belidtl.f_kadar = '40%' and fd_tglbeli = '$today'");
+                            $sql8 = mysqli_query($koneksi, "SELECT  t_belimst.fd_tglbeli,t_belidtl.f_kadar, sum(t_belidtl.fm_potongan) as pot, sum(t_belimst.fm_total) as total, sum(t_belidtl.fn_berat) as berat FROM t_belimst,t_belidtl,tm_stock  WHERE t_belimst.fc_nobeli = t_belidtl.fc_nobeli AND tm_stock.fc_kdstock = t_belidtl.fc_kdstock and t_belidtl.f_kadar = '70%' and fd_tglbeli = '$today'");
                             $gtotal = mysqli_fetch_array($sql2);
                             $stotal = mysqli_fetch_array($sql3);
                             $berat = mysqli_fetch_array($sql4);
                             $tran = mysqli_fetch_array($sql5);
+                            $total40 = mysqli_fetch_array($sql7);
+                            $total70 = mysqli_fetch_array($sql8);
                         }
                         ?>
                     </div>
@@ -319,6 +327,14 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                     <td><?php echo round($lp['fn_berat'], 3); ?> gram</td>
                                                 </tr>
                                             <?php } ?>
+                                            <tr>
+                                                <td></td>
+                                                <th>TOTAL</th>
+                                                <td></td>
+                                                <th>Rp. <?php echo number_format($total40['pot']);  ?></th>
+                                                <th>Rp. <?php echo number_format($total40['total']);  ?></th>
+                                                <th><?php echo round($total40['berat'], 3);  ?> gram</th>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -353,12 +369,12 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                                 </tr>
                                             <?php } ?>
                                             <tr>
-                                                <td><?php echo $no++ ?></td>
-                                                <td><?php echo $lp7['fc_nobeli'] ?></td>
-                                                <td><?php echo ($lp7['fv_nmbarang']);  ?></td>
-                                                <td>Rp. <?php echo number_format($lp7['fm_potongan']) ?></td>
-                                                <td>Rp. <?php echo number_format($lp7['fm_total']);  ?></td>
-                                                <td><?php echo round($lp7['fn_berat'], 3); ?> gram</td>
+                                                <td></td>
+                                                <th>TOTAL</th>
+                                                <td></td>
+                                                <th>Rp. <?php echo number_format($total70['pot']);  ?></th>
+                                                <th>Rp. <?php echo number_format($total70['total']);  ?></th>
+                                                <th><?php echo round($total70['berat'], 3);  ?> gram</th>
                                             </tr>
                                         </tbody>
                                     </table>

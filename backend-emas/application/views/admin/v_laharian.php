@@ -272,28 +272,29 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                 <div class="col-sm-12 col-xs-12">
                     <div class="table-responsive">
                         <table id="simple-table" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr class="titlerow">
+                                    <th rowspan="2">Jenis</th>
+                                    <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                    <th class="center" colspan="2" scope="colgroup">Laku</th>
+                                    <th class="center" colspan="2" scope="colgroup">Diambil</th>
+                                    <th class="center" colspan="2" scope="colgroup">Tambahan</th>
+                                    <th class="center" colspan="2" scope="colgroup">Total</th>
 
-                            <tr>
-                                <th rowspan="2">Jenis</th>
-                                <th class="center" colspan="2" scope="colgroup">Kemarin</th>
-                                <th class="center" colspan="2" scope="colgroup">Laku</th>
-                                <th class="center" colspan="2" scope="colgroup">Diambil</th>
-                                <th class="center" colspan="2" scope="colgroup">Tambahan</th>
-                                <th class="center" colspan="2" scope="colgroup">Total</th>
-
-                            </tr>
-                            <tr>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                            </tr>
+                                </tr>
+                                <tr class="titlerow">
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                </tr>
+                            </thead>
                             <?php
                             if (isset($_GET['date'])) {
 
@@ -427,15 +428,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
                                         <td><?php echo $jumlah1['jumlah'] ?> </td>
-                                        <td><?php echo round($berat1['berat'],2) ?> </td>
+                                        <td><?php echo round($berat1['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah2['jumlah'] ?> </td>
-                                        <td><?php echo round($berat2['berat'],2) ?> </td>
+                                        <td><?php echo round($berat2['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah3['jumlah'] ?> </td>
-                                        <td><?php echo round($berat3['berat'],2) ?> </td>
+                                        <td><?php echo round($berat3['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah4['jumlah'] ?> </td>
-                                        <td><?php echo round($berat4['berat'],2) ?> </td>
+                                        <td><?php echo round($berat4['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah5['jumlah'] ?> </td>
-                                        <td><?php echo round($berat5['berat'],2) ?> </td>
+                                        <td><?php echo round($berat5['berat'], 2) ?> </td>
                                     </tr>
                                 <?php }
 
@@ -468,15 +469,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 <tr>
                                     <th scope="row">Total</th>
                                     <th><?php echo $jumlah6['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat6['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat6['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah7['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat7['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat7['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah8['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat8['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat8['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah9['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat9['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat9['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah10['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat10['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat10['berat'], 2) ?> gram</th>
                                 </tr>
                             <?php
                             }
@@ -494,28 +495,29 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                     </h4>
                     <div class="table-responsive">
                         <table id="simple-table" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr class="titlerow">
+                                    <th rowspan="2">Jenis</th>
+                                    <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                    <th class="center" colspan="2" scope="colgroup">Laku</th>
+                                    <th class="center" colspan="2" scope="colgroup">Diambil</th>
+                                    <th class="center" colspan="2" scope="colgroup">Tambahan</th>
+                                    <th class="center" colspan="2" scope="colgroup">Total</th>
 
-                            <tr>
-                                <th rowspan="2">Jenis</th>
-                                <th class="center" colspan="2" scope="colgroup">Kemarin</th>
-                                <th class="center" colspan="2" scope="colgroup">Laku</th>
-                                <th class="center" colspan="2" scope="colgroup">Diambil</th>
-                                <th class="center" colspan="2" scope="colgroup">Tambahan</th>
-                                <th class="center" colspan="2" scope="colgroup">Total</th>
-
-                            </tr>
-                            <tr>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                                <th scope="col">Jumlah</th>
-                                <th scope="col">Berat</th>
-                            </tr>
+                                </tr>
+                                <tr class="titlerow">
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                    <th scope="col">Jumlah</th>
+                                    <th scope="col">Berat</th>
+                                </tr>
+                            </thead>
                             <?php
                             if (isset($_GET['date'])) {
 
@@ -559,15 +561,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
                                         <td><?php echo $jumlah1['jumlah'] ?> </td>
-                                        <td><?php echo round($berat1['berat'],2) ?> </td>
+                                        <td><?php echo round($berat1['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah2['jumlah'] ?> </td>
-                                        <td><?php echo round($berat2['berat'],2) ?> </td>
+                                        <td><?php echo round($berat2['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah3['jumlah'] ?> </td>
-                                        <td><?php echo round($berat3['berat'],2) ?> </td>
+                                        <td><?php echo round($berat3['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah4['jumlah'] ?> </td>
-                                        <td><?php echo round($berat4['berat'],2) ?> </td>
+                                        <td><?php echo round($berat4['berat'], 2) ?> </td>
                                         <td><?php echo $jumlah5['jumlah'] ?> </td>
-                                        <td><?php echo round($berat5['berat'],2) ?> </td>
+                                        <td><?php echo round($berat5['berat'], 2) ?> </td>
                                     </tr>
                                 <?php
                                 }
@@ -604,11 +606,11 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <th><?php echo $jumlah7['jumlah'] ?> buah </th>
                                     <th><?php echo round($berat7['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah8['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat8['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat8['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah9['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat9['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat9['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah10['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat10['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat10['berat'], 2) ?> gram</th>
                                 </tr>
                                 <?php
 
@@ -650,15 +652,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <tr>
                                         <th scope="row"><?php echo $barang['fv_nmkelompok']  ?></th>
                                         <td><?php echo $jumlah1['jumlah'] ?> </td>
-                                        <td><?php echo round($berat1['berat'],2) ?></td>
+                                        <td><?php echo round($berat1['berat'], 2) ?></td>
                                         <td><?php echo $jumlah2['jumlah'] ?> </td>
-                                        <td><?php echo round($berat2['berat'],2) ?></td>
+                                        <td><?php echo round($berat2['berat'], 2) ?></td>
                                         <td><?php echo $jumlah3['jumlah'] ?> </td>
-                                        <td><?php echo round($berat3['berat'],2) ?></td>
+                                        <td><?php echo round($berat3['berat'], 2) ?></td>
                                         <td><?php echo $jumlah4['jumlah'] ?> </td>
-                                        <td><?php echo round($berat4['berat'],2) ?></td>
+                                        <td><?php echo round($berat4['berat'], 2) ?></td>
                                         <td><?php echo $jumlah5['jumlah'] ?> </td>
-                                        <td><?php echo round($berat5['berat'],2) ?></td>
+                                        <td><?php echo round($berat5['berat'], 2) ?></td>
 
                                     </tr>
                                 <?php }
@@ -690,15 +692,15 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 <tr>
                                     <th scope="row">Total</th>
                                     <th><?php echo $jumlah6['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat6['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat6['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah7['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat7['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat7['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah8['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat8['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat8['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah9['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat9['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat9['berat'], 2) ?> gram</th>
                                     <th><?php echo $jumlah10['jumlah'] ?> buah </th>
-                                    <th><?php echo round($berat10['berat'],2) ?> gram</th>
+                                    <th><?php echo round($berat10['berat'], 2) ?> gram</th>
                                 </tr>
                             <?php
                             }
