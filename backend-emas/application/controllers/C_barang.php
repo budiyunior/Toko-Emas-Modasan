@@ -492,6 +492,8 @@ class C_barang extends CI_Controller
             $data['barang'] = $this->M_barang->filterdata2();
             $this->load->view('admin/v_barang', $data);
         }
+        $data['barang'] = $this->M_barang->view_barang();
+        $this->load->view('admin/v_barang', $data);
     }
 
 
