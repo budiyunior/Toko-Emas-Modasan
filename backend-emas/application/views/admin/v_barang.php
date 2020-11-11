@@ -316,14 +316,7 @@
                                         <th></th>
                                     </tr>
                                 </tbody>
-<<<<<<< Updated upstream
-
-=======
-                                <thead class="table table-bordered">
-                                    <th>Total Berat</th>
-                                    <th><?= round($jmlberat,3) ?> Gram</th>
-                                </thead>
->>>>>>> Stashed changes
+                               
                             </table>
                             <div class="row">
                                 <div class="">
