@@ -315,6 +315,7 @@
                                         <th></th>
                                         <th></th>
                                     </tr>
+                                </tbody>
                             </table>
                             <div class="row">
                                 <div class="">
