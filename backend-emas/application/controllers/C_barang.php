@@ -434,6 +434,67 @@ class C_barang extends CI_Controller
         }
     }
 
+    public function filterdata()
+    {
+        $data['title'] = "filer barang";
+        $data['kelompok2'] = $this->M_barang->get_kelompok();
+        $data['lokasi2'] = $this->M_barang->get_lokasi();
+        $data['jmlberat'] = $this->M_barang->jumlahberat();
+        $data['barang'] = $this->M_barang->filterdata2();
+        //$data['barang'] = $this->M_barang->filterdata2();
+        $this->load->view('admin/v_barang', $data);
+    }
+
+    public function cobafilter()
+    {
+        $data = $this->M_barang->filterdata();
+        $data2 = $this->M_barang->filterkk();
+        $data3 = $this->M_barang->filterkl();
+        $data4 = $this->M_barang->filterlk();
+        $data5 = $this->M_barang->filterdata2();
+        if ($data) {
+            $data['title'] = "filer barang";
+            $data['kelompok2'] = $this->M_barang->get_kelompok();
+            $data['lokasi2'] = $this->M_barang->get_lokasi();
+            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['barang'] = $this->M_barang->filterdata();
+            $this->load->view('admin/v_barang', $data);
+        }
+        if ($data2) {
+            $data['title'] = "filer barang";
+            $data['kelompok2'] = $this->M_barang->get_kelompok();
+            $data['lokasi2'] = $this->M_barang->get_lokasi();
+            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['barang'] = $this->M_barang->filterkk();
+            $this->load->view('admin/v_barang', $data);
+        }
+        if ($data3) {
+            $data['title'] = "filer barang";
+            $data['kelompok2'] = $this->M_barang->get_kelompok();
+            $data['lokasi2'] = $this->M_barang->get_lokasi();
+            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['barang'] = $this->M_barang->filterkl();
+            $this->load->view('admin/v_barang', $data);
+        }
+        if ($data4) {
+            $data['title'] = "filer barang";
+            $data['kelompok2'] = $this->M_barang->get_kelompok();
+            $data['lokasi2'] = $this->M_barang->get_lokasi();
+            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['barang'] = $this->M_barang->filterlk();
+            $this->load->view('admin/v_barang', $data);
+        }
+        if ($data5) {
+            $data['title'] = "filer barang";
+            $data['kelompok2'] = $this->M_barang->get_kelompok();
+            $data['lokasi2'] = $this->M_barang->get_lokasi();
+            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['barang'] = $this->M_barang->filterdata2();
+            $this->load->view('admin/v_barang', $data);
+        }
+    }
+
+
     // public function diambil($id)
     // {
     //     $kondisi = 1;

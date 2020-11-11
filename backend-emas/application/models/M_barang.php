@@ -36,14 +36,14 @@ class M_barang extends CI_Model
     }
 
     public function update_kondisibrg($kondisi, $id)
-	{
-		$this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fn_id='$id'");
-	}
+    {
+        $this->db->query("UPDATE `tm_stock` SET `fc_kondisi`= '$kondisi' WHERE tm_stock.fn_id='$id'");
+    }
 
     public function jumlahberat()
     {
         $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0");
-        return $sql->row()->berat; 
+        return $sql->row()->berat;
     }
 
     public function get_by_id($id)
@@ -243,35 +243,35 @@ class M_barang extends CI_Model
         return $query->result();
     }
 
-    // public function filter2($limit, $start)
-    // {
-    //     if ($kadar = $this->input->get('fc_kadar')) {
-    //         $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar), $limit, $start);
-    //         return $query->result();
-    //     } else {
-    //         $query = $this->db->get('tm_stock', $limit, $start);
-    //         return $query->result();
-    //     }
-    //     if ($kelompok = $this->input->get('fc_kdkelompok')) {
-    //         $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
-    //         return $query->result();
-    //     } else {
-    //         $query = $this->db->get('tm_stock', $limit, $start);
-    //         return $query->result();
-    //     }
-    //     if ($kelompok = $this->input->get('fc_kdkelompok')) {
-    //         $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
-    //         return $query->result();
-    //     } else {
-    //         $query = $this->db->get('tm_stock', $limit, $start);
-    //         return $query->result();
-    //     }
-    //     $kadar = $this->input->get('fc_kadar');
-    //     $kelompok = $this->input->get('fc_kdkelompok');
-    //     $lokasi = $this->input->get('fc_kdlokasi');
-    //     $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
-    //     return $query->result();
-    // }
+    public function filter2($limit, $start)
+    {
+        if ($kadar = $this->input->get('fc_kadar')) {
+            $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar), $limit, $start);
+            return $query->result();
+        } else {
+            $query = $this->db->get('tm_stock', $limit, $start);
+            return $query->result();
+        }
+        if ($kelompok = $this->input->get('fc_kdkelompok')) {
+            $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
+            return $query->result();
+        } else {
+            $query = $this->db->get('tm_stock', $limit, $start);
+            return $query->result();
+        }
+        if ($kelompok = $this->input->get('fc_kdkelompok')) {
+            $query = $this->db->get_where('tm_stock', array('fc_kdkelompok' => $kelompok), $limit, $start);
+            return $query->result();
+        } else {
+            $query = $this->db->get('tm_stock', $limit, $start);
+            return $query->result();
+        }
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $query = $this->db->get_where('tm_stock', array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi), $limit, $start);
+        return $query->result();
+    }
 
     // public function filter3($limit, $start)
     // {
@@ -366,5 +366,71 @@ class M_barang extends CI_Model
     {
         $this->db->where('fn_id', $id);
         $this->db->delete('tm_lokasi');
+    }
+
+    public function filterdata()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kadar', $kadar);
+        $this->db->where('fc_kondisi', 0);
+        $this->db->or_like('fc_kdkelompok', $kelompok);
+        $this->db->or_like('fc_kdlokasi', $lokasi);
+        return $this->db->get('')->result();
+    }
+
+    public function filterkk()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        // $lokasi = $this->input->get('fc_kdlokasi');
+        $array = array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok);
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kondisi', 0);
+        $this->db->like($array);
+        return $this->db->get('')->result();
+    }
+
+    public function filterkl()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        //$kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $array = array('fc_kadar' => $kadar, 'fc_kdlokasi' => $lokasi);
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kondisi', 0);
+        $this->db->like($array);
+        return $this->db->get('')->result();
+    }
+
+    public function filterlk()
+    {
+        //$kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $array = array('fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi);
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->where('fc_kondisi', 0);
+        $this->db->like($array);
+        return $this->db->get('')->result();
+    }
+
+    public function filterdata2()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $array = array('fc_kdkelompok' => $kelompok, 'fc_kadar' => $kadar, 'fc_kdlokasi' => $lokasi);
+        $this->db->select('*');
+        $this->db->from('tm_stock');
+        $this->db->like($array);
+        $this->db->where('fc_kondisi', 0);
+        return $this->db->get('')->result();
     }
 }

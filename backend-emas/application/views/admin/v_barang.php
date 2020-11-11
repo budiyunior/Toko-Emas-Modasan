@@ -217,7 +217,7 @@
                     </div>
                     <div class="col-md-2"></div>
                     <div class="col-md-2"></div>
-                    <form action="<?= base_url('C_barang/filter') ?>" method="get">
+                    <form action="<?= base_url('C_barang/cobafilter') ?>" method="get">
                         <div class="col-md-2">
                             <label>Kadar</label>
                             <select class="form-control" id="kadar" name="fc_kadar">
@@ -248,7 +248,7 @@
                         </div>
                         <div class="col-md-1">
                             <br>
-                            <a href="<?= base_url('C_barang') ?>" type="submit" name="refresh" class="btn btn-primary">Refresh</a>
+                            <button type="submit" class="btn btn-primary">Refresh</button>
                         </div>
                     </form>
                 </div>
@@ -308,22 +308,13 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        <th class="center"><?= $jmlberat ?> gram</th>
+                                        <th class="center"><?= round($jmlberat, 3) ?> Gram</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
                                     </tr>
-                                </tbody>
-<<<<<<< Updated upstream
-
-=======
-                                <thead class="table table-bordered">
-                                    <th>Total Berat</th>
-                                    <th><?= round($jmlberat,3) ?> Gram</th>
-                                </thead>
->>>>>>> Stashed changes
                             </table>
                             <div class="row">
                                 <div class="">
