@@ -453,7 +453,22 @@ class C_barang extends CI_Controller
         $data4 = $this->M_barang->filterlk();
         $data5 = $this->M_barang->filterdata2();
         if ($data) {
+            $nota = $this->M_barang->max()->row();
+
+            $kode = $nota->maxs;
+            //tampil data
+    
+            $urut = (int) substr($kode, 0, 5);
+    
+            $urut++;
+    
+            //$char = "BPB";
+    
+            $kode = sprintf("%05s", $urut);
+    
+            $data['kode_barang'] = $kode;
             $data['title'] = "filer barang";
+            $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
@@ -462,6 +477,21 @@ class C_barang extends CI_Controller
         }
         if ($data2) {
             $data['title'] = "filer barang";
+            $nota = $this->M_barang->max()->row();
+
+            $kode = $nota->maxs;
+            //tampil data
+    
+            $urut = (int) substr($kode, 0, 5);
+    
+            $urut++;
+    
+            //$char = "BPB";
+    
+            $kode = sprintf("%05s", $urut);
+    
+            $data['kode_barang'] = $kode;
+            $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
@@ -471,6 +501,20 @@ class C_barang extends CI_Controller
         }
         if ($data3) {
             $data['title'] = "filer barang";
+            $nota = $this->M_barang->max()->row();
+
+            $kode = $nota->maxs;
+            //tampil data
+    
+            $urut = (int) substr($kode, 0, 5);
+    
+            $urut++;
+    
+            //$char = "BPB";
+    
+            $kode = sprintf("%05s", $urut);
+    
+            $data['kode_barang'] = $kode;
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
@@ -480,6 +524,21 @@ class C_barang extends CI_Controller
         }
         if ($data4) {
             $data['title'] = "filer barang";
+            $nota = $this->M_barang->max()->row();
+
+            $kode = $nota->maxs;
+            //tampil data
+    
+            $urut = (int) substr($kode, 0, 5);
+    
+            $urut++;
+    
+            //$char = "BPB";
+    
+            $kode = sprintf("%05s", $urut);
+    
+            $data['kode_barang'] = $kode;
+            $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
@@ -489,6 +548,21 @@ class C_barang extends CI_Controller
         }
         if ($data5) {
             $data['title'] = "filer barang";
+            $nota = $this->M_barang->max()->row();
+
+            $kode = $nota->maxs;
+            //tampil data
+    
+            $urut = (int) substr($kode, 0, 5);
+    
+            $urut++;
+    
+            //$char = "BPB";
+    
+            $kode = sprintf("%05s", $urut);
+    
+            $data['kode_barang'] = $kode;
+            $data['kode_barcode'] = $this->randomString(); 
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
