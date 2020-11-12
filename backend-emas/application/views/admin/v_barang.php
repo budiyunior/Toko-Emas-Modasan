@@ -215,8 +215,7 @@
                             Barang
                         </h2>
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-3"></div>
                     <form action="<?= base_url('C_barang/cobafilter') ?>" method="get">
                         <div class="col-md-2">
                             <label>Kadar</label>
@@ -248,7 +247,11 @@
                         </div>
                         <div class="col-md-1">
                             <br>
-                            <button type="submit" class="btn btn-primary">Refresh</button>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"> Filter</i></button>
+                        </div>
+                        <div class="col-md-1">
+                        <br>
+                            <a href="<?= base_url('C_barang') ?>" class="btn btn-success"><i class="fa fa-undo"> Refresh</i></a>
                         </div>
                     </form>
                 </div>

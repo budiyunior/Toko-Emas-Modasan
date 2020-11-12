@@ -457,15 +457,15 @@ class C_barang extends CI_Controller
             $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
-    
+
             $urut = (int) substr($kode, 0, 5);
-    
+
             $urut++;
-    
+
             //$char = "BPB";
-    
+
             $kode = sprintf("%05s", $urut);
-    
+
             $data['kode_barang'] = $kode;
             $data['title'] = "filer barang";
             $data['kode_barcode'] = $this->randomString();
@@ -481,15 +481,15 @@ class C_barang extends CI_Controller
             $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
-    
+
             $urut = (int) substr($kode, 0, 5);
-    
+
             $urut++;
-    
+
             //$char = "BPB";
-    
+
             $kode = sprintf("%05s", $urut);
-    
+
             $data['kode_barang'] = $kode;
             $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
@@ -505,15 +505,15 @@ class C_barang extends CI_Controller
             $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
-    
+
             $urut = (int) substr($kode, 0, 5);
-    
+
             $urut++;
-    
+
             //$char = "BPB";
-    
+
             $kode = sprintf("%05s", $urut);
-    
+
             $data['kode_barang'] = $kode;
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
@@ -526,15 +526,15 @@ class C_barang extends CI_Controller
             $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
-    
+
             $urut = (int) substr($kode, 0, 5);
-    
+
             $urut++;
-    
+
             //$char = "BPB";
-    
+
             $kode = sprintf("%05s", $urut);
-    
+
             $data['kode_barang'] = $kode;
             $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
@@ -550,17 +550,17 @@ class C_barang extends CI_Controller
             $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
-    
+
             $urut = (int) substr($kode, 0, 5);
-    
+
             $urut++;
-    
+
             //$char = "BPB";
-    
+
             $kode = sprintf("%05s", $urut);
-    
+
             $data['kode_barang'] = $kode;
-            $data['kode_barcode'] = $this->randomString(); 
+            $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jmlberat5();
@@ -568,12 +568,6 @@ class C_barang extends CI_Controller
             //print_r($this->db->last_query());
             //$this->load->view('admin/v_barang', $data);
         }
-        // else {
-        //     echo "<script>
-        //     alert('Data tidak tersedia');
-        //     window.location.href = '" . base_url('C_barang') . "';
-        // </script>";
-        // }
         $this->load->view('admin/v_barang', $data);
         // echo "<script>
         //     alert('Data tidak tersedia');
