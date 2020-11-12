@@ -447,128 +447,141 @@ class C_barang extends CI_Controller
 
     public function cobafilter()
     {
-        $data = $this->M_barang->filterdata();
-        $data2 = $this->M_barang->filterkk();
-        $data3 = $this->M_barang->filterkl();
-        $data4 = $this->M_barang->filterlk();
-        $data5 = $this->M_barang->filterdata2();
-        if ($data) {
-            $nota = $this->M_barang->max()->row();
-            $data['sales'] = $this->M_barang->get_sales();
-            $kode = $nota->maxs;
-            //tampil data
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
 
-            $urut = (int) substr($kode, 0, 5);
+        //$data = $this->M_barang->filterdata($kadar, $kelompok, $lokasi);
 
-            $urut++;
+        // $data2 = $this->M_barang->filterkk();
+        // $data3 = $this->M_barang->filterkl();
+        // $data4 = $this->M_barang->filterlk();
+        // $data5 = $this->M_barang->filterdata2();
+        //if ($data) {
+        $nota = $this->M_barang->max()->row();
+        $data['sales'] = $this->M_barang->get_sales();
+        $kode = $nota->maxs;
+        //tampil data
 
-            //$char = "BPB";
+        $urut = (int) substr($kode, 0, 5);
 
-            $kode = sprintf("%05s", $urut);
+        $urut++;
 
-            $data['kode_barang'] = $kode;
-            $data['title'] = "filer barang";
-            $data['kode_barcode'] = $this->randomString();
-            $data['kelompok2'] = $this->M_barang->get_kelompok();
-            $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jmlberat1();
-            $data['barang'] = $this->M_barang->filterdata();
-            //print_r($this->db->last_query());
-        }
-        if ($data2) {
-            $data['title'] = "filer barang";
-            $nota = $this->M_barang->max()->row();
-            $data['sales'] = $this->M_barang->get_sales();
-            $kode = $nota->maxs;
-            //tampil data
+        //$char = "BPB";
 
-            $urut = (int) substr($kode, 0, 5);
+        $kode = sprintf("%05s", $urut);
 
-            $urut++;
+        $data['kode_barang'] = $kode;
+        $data['title'] = "filer barang";
+        $data['kode_barcode'] = $this->randomString();
+        $data['kelompok2'] = $this->M_barang->get_kelompok();
+        $data['lokasi2'] = $this->M_barang->get_lokasi();
+        $data['text_kadar'] = $this->input->get('fc_kadar');
+        $data['jmlberat'] = $this->M_barang->jmlberat1();
+        $data['barang'] = $this->M_barang->filterdata($kadar, $kelompok, $lokasi);
 
-            //$char = "BPB";
-
-            $kode = sprintf("%05s", $urut);
-
-            $data['kode_barang'] = $kode;
-            $data['kode_barcode'] = $this->randomString();
-            $data['kelompok2'] = $this->M_barang->get_kelompok();
-            $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jmlberat2();
-            $data['barang'] = $this->M_barang->filterkk();
-            //print_r($this->db->last_query());
-            //$this->load->view('admin/v_barang', $data);
-        }
-        if ($data3) {
-            $data['title'] = "filer barang";
-            $nota = $this->M_barang->max()->row();
-            $data['sales'] = $this->M_barang->get_sales();
-            $kode = $nota->maxs;
-            //tampil data
-
-            $urut = (int) substr($kode, 0, 5);
-
-            $urut++;
-
-            //$char = "BPB";
-
-            $kode = sprintf("%05s", $urut);
-
-            $data['kode_barang'] = $kode;
-            $data['kelompok2'] = $this->M_barang->get_kelompok();
-            $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jmlberat3();
-            $data['barang'] = $this->M_barang->filterkl();
-        }
-        if ($data4) {
-            $data['title'] = "filer barang";
-            $nota = $this->M_barang->max()->row();
-            $data['sales'] = $this->M_barang->get_sales();
-            $kode = $nota->maxs;
-            //tampil data
-
-            $urut = (int) substr($kode, 0, 5);
-
-            $urut++;
-
-            //$char = "BPB";
-
-            $kode = sprintf("%05s", $urut);
-
-            $data['kode_barang'] = $kode;
-            $data['kode_barcode'] = $this->randomString();
-            $data['kelompok2'] = $this->M_barang->get_kelompok();
-            $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jmlberat4();
-            $data['barang'] = $this->M_barang->filterlk();
-            //print_r($this->db->last_query());
-            //$this->load->view('admin/v_barang', $data);
-        }
-        if ($data5) {
-            $data['title'] = "filer barang";
-            $nota = $this->M_barang->max()->row();
-            $data['sales'] = $this->M_barang->get_sales();
-            $kode = $nota->maxs;
-            //tampil data
-
-            $urut = (int) substr($kode, 0, 5);
-
-            $urut++;
-
-            //$char = "BPB";
-
-            $kode = sprintf("%05s", $urut);
-
-            $data['kode_barang'] = $kode;
-            $data['kode_barcode'] = $this->randomString();
-            $data['kelompok2'] = $this->M_barang->get_kelompok();
-            $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jmlberat5();
-            $data['barang'] = $this->M_barang->filterdata2();
-            //print_r($this->db->last_query());
-            //$this->load->view('admin/v_barang', $data);
-        }
         $this->load->view('admin/v_barang', $data);
+        //print_r($this->db->last_query());
+        // } else {
+        //     echo "<script>
+        //      alert('Data tidak tersedia');
+        //     window.location.href = '" . base_url('C_barang') . "';
+        //   </script>";
+        // }
+        // if ($data2) {
+        //     $data['title'] = "filer barang";
+        //     $nota = $this->M_barang->max()->row();
+        //     $data['sales'] = $this->M_barang->get_sales();
+        //     $kode = $nota->maxs;
+        //     //tampil data
+
+        //     $urut = (int) substr($kode, 0, 5);
+
+        //     $urut++;
+
+        //     //$char = "BPB";
+
+        //     $kode = sprintf("%05s", $urut);
+
+        //     $data['kode_barang'] = $kode;
+        //     $data['kode_barcode'] = $this->randomString();
+        //     $data['kelompok2'] = $this->M_barang->get_kelompok();
+        //     $data['lokasi2'] = $this->M_barang->get_lokasi();
+        //     $data['jmlberat'] = $this->M_barang->jmlberat2();
+        //     $data['barang'] = $this->M_barang->filterkk();
+        //     //print_r($this->db->last_query());
+        //     //$this->load->view('admin/v_barang', $data);
+        // }
+        // if ($data3) {
+        //     $data['title'] = "filer barang";
+        //     $nota = $this->M_barang->max()->row();
+        //     $data['sales'] = $this->M_barang->get_sales();
+        //     $kode = $nota->maxs;
+        //     //tampil data
+
+        //     $urut = (int) substr($kode, 0, 5);
+
+        //     $urut++;
+
+        //     //$char = "BPB";
+
+        //     $kode = sprintf("%05s", $urut);
+
+        //     $data['kode_barang'] = $kode;
+        //     $data['kelompok2'] = $this->M_barang->get_kelompok();
+        //     $data['lokasi2'] = $this->M_barang->get_lokasi();
+        //     $data['jmlberat'] = $this->M_barang->jmlberat3();
+        //     $data['barang'] = $this->M_barang->filterkl();
+        // }
+        // if ($data4) {
+        //     $data['title'] = "filer barang";
+        //     $nota = $this->M_barang->max()->row();
+        //     $data['sales'] = $this->M_barang->get_sales();
+        //     $kode = $nota->maxs;
+        //     //tampil data
+
+        //     $urut = (int) substr($kode, 0, 5);
+
+        //     $urut++;
+
+        //     //$char = "BPB";
+
+        //     $kode = sprintf("%05s", $urut);
+
+        //     $data['kode_barang'] = $kode;
+        //     $data['kode_barcode'] = $this->randomString();
+        //     $data['kelompok2'] = $this->M_barang->get_kelompok();
+        //     $data['lokasi2'] = $this->M_barang->get_lokasi();
+        //     $data['jmlberat'] = $this->M_barang->jmlberat4();
+        //     $data['barang'] = $this->M_barang->filterlk();
+        //     //print_r($this->db->last_query());
+        //     //$this->load->view('admin/v_barang', $data);
+        // }
+        // if ($data5) {
+        //     $data['title'] = "filer barang";
+        //     $nota = $this->M_barang->max()->row();
+        //     $data['sales'] = $this->M_barang->get_sales();
+        //     $kode = $nota->maxs;
+        //     //tampil data
+
+        //     $urut = (int) substr($kode, 0, 5);
+
+        //     $urut++;
+
+        //     //$char = "BPB";
+
+        //     $kode = sprintf("%05s", $urut);
+
+        //     $data['kode_barang'] = $kode;
+        //     $data['kode_barcode'] = $this->randomString();
+        //     $data['kelompok2'] = $this->M_barang->get_kelompok();
+        //     $data['lokasi2'] = $this->M_barang->get_lokasi();
+        //     $data['jmlberat'] = $this->M_barang->jmlberat5();
+        //     $data['barang'] = $this->M_barang->filterdata2();
+        //     //print_r($this->db->last_query());
+        //     //$this->load->view('admin/v_barang', $data);
+        // }
+
         // echo "<script>
         //     alert('Data tidak tersedia');
         //    window.location.href = '" . base_url('C_barang') . "';

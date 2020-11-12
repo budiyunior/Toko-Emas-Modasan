@@ -377,19 +377,31 @@ class M_barang extends CI_Model
         $this->db->delete('tm_lokasi');
     }
 
-    public function filterdata()
+    public function filterdata($kadar = null, $kelompok = null, $lokasi = null)
     {
-        $kadar = $this->input->get('fc_kadar');
-        $kelompok = $this->input->get('fc_kdkelompok');
-        $lokasi = $this->input->get('fc_kdlokasi');
+
         $this->db->select('*');
+        //$this->db->select_sum('ff_berat');
         $this->db->from('tm_stock');
-        $this->db->where('fc_kadar', $kadar);
+
+        if ($kadar != "") {
+            $this->db->where('fc_kadar', $kadar);
+        }
+
+        if ($kelompok != "") {
+            $this->db->where('fc_kdkelompok', $kelompok);
+        }
+
+        if ($lokasi != "") {
+            $this->db->where('fc_kdlokasi', $lokasi);
+        }
         $this->db->where('fc_kondisi', 0);
-        $this->db->or_like('fc_kdkelompok', $kelompok);
-        $this->db->where('fc_kondisi', 0);
-        $this->db->or_like('fc_kdlokasi', $lokasi);
-        $this->db->where('fc_kondisi', 0);
+        
+        // $this->db->where('fc_kondisi', 0);
+        // $this->db->or_like('fc_kdkelompok', $kelompok);
+        // $this->db->where('fc_kondisi', 0);
+        // $this->db->or_like('fc_kdlokasi', $lokasi);
+        // $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
     }
 
@@ -398,7 +410,7 @@ class M_barang extends CI_Model
         $kadar = $this->input->get('fc_kadar');
         $kelompok = $this->input->get('fc_kdkelompok');
         $lokasi = $this->input->get('fc_kdlokasi');
-        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' OR fc_kdkelompok = '$kelompok' AND fc_kondisi=0 OR fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' AND fc_kdkelompok = '$kelompok' AND fc_kondisi=0 AND fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
         return $sql->row()->berat;
     }
 

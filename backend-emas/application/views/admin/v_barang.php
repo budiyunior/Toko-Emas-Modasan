@@ -220,7 +220,7 @@
                         <div class="col-md-2">
                             <label>Kadar</label>
                             <select class="form-control" id="kadar" name="fc_kadar">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                 <option value="40">40%</option>
                                 <option value="70">70%</option>
                             </select>
@@ -228,7 +228,7 @@
                         <div class="col-md-2">
                             <label>Kelompok</label>
                             <select class="form-control" id="kelompok" name="fc_kdkelompok">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($kelompok2 as $k) : ?>
                                     <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
@@ -238,7 +238,7 @@
                         <div class="col-md-2">
                             <label>Lokasi</label>
                             <select class="form-control" id="lokasi" name="fc_kdlokasi">
-                                <option>--Pilih--</option>
+                                <option value="">--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($lokasi2 as $l) : ?>
                                     <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
@@ -250,7 +250,7 @@
                             <button type="submit" class="btn btn-primary"><i class="fa fa-search"> Filter</i></button>
                         </div>
                         <div class="col-md-1">
-                        <br>
+                            <br>
                             <a href="<?= base_url('C_barang') ?>" class="btn btn-success"><i class="fa fa-undo"> Refresh</i></a>
                         </div>
                     </form>
