@@ -400,13 +400,6 @@ class M_barang extends CI_Model
         $lokasi = $this->input->get('fc_kdlokasi');
         $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' OR fc_kdkelompok = '$kelompok' AND fc_kondisi=0 OR fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
         return $sql->row()->berat;
-        // $this->db->select_sum('ff_berat');
-        // $this->db->from('tm_stock');
-        // $this->db->where('fc_kondisi', 0);
-        // $this->db->where('fc_kadar', $kadar);
-        // $this->db->or_where('fc_kdkelompok', $kelompok);
-        // $this->db->or_where('fc_kdlokasi', $lokasi);
-        // return $this->db->get('')->row();
     }
 
     public function filterkk()
@@ -424,17 +417,35 @@ class M_barang extends CI_Model
         return $this->db->get('')->result();
     }
 
+    public function jmlberat2()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' AND fc_kdkelompok = '$kelompok' AND fc_kondisi=0");
+        return $sql->row()->berat;
+    }
+
     public function filterkl()
     {
         $kadar = $this->input->get('fc_kadar');
         //$kelompok = $this->input->get('fc_kdkelompok');
         $lokasi = $this->input->get('fc_kdlokasi');
-        $array = array('fc_kadar' => $kadar, 'fc_kdlokasi' => $lokasi);
+        //$array = array('fc_kadar' => $kadar, 'fc_kdlokasi' => $lokasi);
         $this->db->select('*');
         $this->db->from('tm_stock');
+        $this->db->where('fc_kadar', $kadar);
         $this->db->where('fc_kondisi', 0);
-        $this->db->like($array);
+        $this->db->like('fc_kdlokasi', $lokasi);
+        $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
+    }
+
+    public function jmlberat3()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' AND fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
+        return $sql->row()->berat;
     }
 
     public function filterlk()
@@ -442,13 +453,22 @@ class M_barang extends CI_Model
         //$kadar = $this->input->get('fc_kadar');
         $kelompok = $this->input->get('fc_kdkelompok');
         $lokasi = $this->input->get('fc_kdlokasi');
-        $array = array('fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi);
+        //$array = array('fc_kdkelompok' => $kelompok, 'fc_kdlokasi' => $lokasi);
         $this->db->select('*');
         $this->db->from('tm_stock');
+        $this->db->where('fc_kdkelompok', $kelompok);
         $this->db->where('fc_kondisi', 0);
-        $this->db->like($array);
+        $this->db->like('fc_kdlokasi', $lokasi);
         $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
+    }
+
+    public function jmlberat4()
+    {
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kdkelompok = '$kelompok' AND fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
+        return $sql->row()->berat;
     }
 
     public function filterdata2()
@@ -462,5 +482,14 @@ class M_barang extends CI_Model
         $this->db->like($array);
         $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
+    }
+
+    public function jmlberat5()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' AND fc_kdkelompok = '$kelompok' AND fc_kdlokasi = '$lokasi'");
+        return $sql->row()->berat;
     }
 }

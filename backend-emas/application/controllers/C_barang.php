@@ -494,7 +494,7 @@ class C_barang extends CI_Controller
             $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['jmlberat'] = $this->M_barang->jmlberat2();
             $data['barang'] = $this->M_barang->filterkk();
             //print_r($this->db->last_query());
             //$this->load->view('admin/v_barang', $data);
@@ -517,10 +517,8 @@ class C_barang extends CI_Controller
             $data['kode_barang'] = $kode;
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['jmlberat'] = $this->M_barang->jmlberat3();
             $data['barang'] = $this->M_barang->filterkl();
-            //print_r($this->db->last_query());
-            //$this->load->view('admin/v_barang', $data);
         }
         if ($data4) {
             $data['title'] = "filer barang";
@@ -541,7 +539,7 @@ class C_barang extends CI_Controller
             $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['jmlberat'] = $this->M_barang->jmlberat4();
             $data['barang'] = $this->M_barang->filterlk();
             //print_r($this->db->last_query());
             //$this->load->view('admin/v_barang', $data);
@@ -565,9 +563,9 @@ class C_barang extends CI_Controller
             $data['kode_barcode'] = $this->randomString(); 
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['jmlberat'] = $this->M_barang->jmlberat5();
             $data['barang'] = $this->M_barang->filterdata2();
-            print_r($this->db->last_query());
+            //print_r($this->db->last_query());
             //$this->load->view('admin/v_barang', $data);
         }
         // else {
