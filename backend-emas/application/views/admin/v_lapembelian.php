@@ -299,7 +299,39 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                         <!-- PAGE CONTENT BEGINS -->
                         <div class="row">
                             <div class="col-xs-12">
-                                <h3>Kadar 40%</h3>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                        <h4 style="color: #07A1C8;">
+                                            Kadar 40%
+                                        </h4>
+                                        <h4 style="color: #07A1C8;">
+
+                                        </h4>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <h5>
+
+                                            <?php
+                                            if (isset($_GET['startdate'])) {
+                                                $tgl = $_GET['startdate'];
+                                                $tgl2 = $_GET['enddate'];
+                                                
+                                                $hari2 = date("d F Y", strtotime($tgl));
+                                                $hari3 = date("d F Y", strtotime($tgl2));
+                                                echo $hari2;
+                                                ?>
+                                                -
+                                                <?php
+                                                echo $hari3;
+                                            } else {
+                                                // $hari = $_GET['date'];
+                                                $hari3 = date("d F Y");
+                                                echo $hari3;
+                                            }
+                                            ?>
+                                        </h5>
+                                    </div>
+                                </div>
                                 <div class="table-responsive">
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
