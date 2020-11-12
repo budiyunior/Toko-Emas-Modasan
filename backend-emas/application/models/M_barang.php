@@ -393,6 +393,22 @@ class M_barang extends CI_Model
         return $this->db->get('')->result();
     }
 
+    public function jmlberat1()
+    {
+        $kadar = $this->input->get('fc_kadar');
+        $kelompok = $this->input->get('fc_kdkelompok');
+        $lokasi = $this->input->get('fc_kdlokasi');
+        $sql = $this->db->query("SELECT SUM(ff_berat) as berat FROM tm_stock WHERE fc_kondisi=0 AND fc_kadar = '$kadar' OR fc_kdkelompok = '$kelompok' AND fc_kondisi=0 OR fc_kdlokasi = '$lokasi' AND fc_kondisi=0");
+        return $sql->row()->berat;
+        // $this->db->select_sum('ff_berat');
+        // $this->db->from('tm_stock');
+        // $this->db->where('fc_kondisi', 0);
+        // $this->db->where('fc_kadar', $kadar);
+        // $this->db->or_where('fc_kdkelompok', $kelompok);
+        // $this->db->or_where('fc_kdlokasi', $lokasi);
+        // return $this->db->get('')->row();
+    }
+
     public function filterkk()
     {
         $kadar = $this->input->get('fc_kadar');

@@ -454,7 +454,7 @@ class C_barang extends CI_Controller
         $data5 = $this->M_barang->filterdata2();
         if ($data) {
             $nota = $this->M_barang->max()->row();
-
+            $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
     
@@ -471,14 +471,14 @@ class C_barang extends CI_Controller
             $data['kode_barcode'] = $this->randomString();
             $data['kelompok2'] = $this->M_barang->get_kelompok();
             $data['lokasi2'] = $this->M_barang->get_lokasi();
-            $data['jmlberat'] = $this->M_barang->jumlahberat();
+            $data['jmlberat'] = $this->M_barang->jmlberat1();
             $data['barang'] = $this->M_barang->filterdata();
             //print_r($this->db->last_query());
         }
         if ($data2) {
             $data['title'] = "filer barang";
             $nota = $this->M_barang->max()->row();
-
+            $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
     
@@ -502,7 +502,7 @@ class C_barang extends CI_Controller
         if ($data3) {
             $data['title'] = "filer barang";
             $nota = $this->M_barang->max()->row();
-
+            $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
     
@@ -525,7 +525,7 @@ class C_barang extends CI_Controller
         if ($data4) {
             $data['title'] = "filer barang";
             $nota = $this->M_barang->max()->row();
-
+            $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
     
@@ -549,7 +549,7 @@ class C_barang extends CI_Controller
         if ($data5) {
             $data['title'] = "filer barang";
             $nota = $this->M_barang->max()->row();
-
+            $data['sales'] = $this->M_barang->get_sales();
             $kode = $nota->maxs;
             //tampil data
     

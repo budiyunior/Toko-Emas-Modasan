@@ -301,7 +301,7 @@
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
                                     <?php endforeach ?>
-                                    <!-- <tr>
+                                    <tr>
                                         <th class="center">TOTAL</th>
                                         <th></th>
                                         <th></th>
@@ -314,7 +314,7 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                    </tr> -->
+                                    </tr>
                                 </tbody>
                             </table>
                             <div class="row">
