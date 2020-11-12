@@ -387,7 +387,9 @@ class M_barang extends CI_Model
         $this->db->where('fc_kadar', $kadar);
         $this->db->where('fc_kondisi', 0);
         $this->db->or_like('fc_kdkelompok', $kelompok);
+        $this->db->where('fc_kondisi', 0);
         $this->db->or_like('fc_kdlokasi', $lokasi);
+        $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
     }
 
@@ -396,11 +398,13 @@ class M_barang extends CI_Model
         $kadar = $this->input->get('fc_kadar');
         $kelompok = $this->input->get('fc_kdkelompok');
         // $lokasi = $this->input->get('fc_kdlokasi');
-        $array = array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok);
+        // $array = array('fc_kadar' => $kadar, 'fc_kdkelompok' => $kelompok);
         $this->db->select('*');
         $this->db->from('tm_stock');
+        $this->db->where('fc_kadar', $kadar);
         $this->db->where('fc_kondisi', 0);
-        $this->db->like($array);
+        $this->db->like('fc_kdkelompok', $kelompok);
+        $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
     }
 
@@ -427,6 +431,7 @@ class M_barang extends CI_Model
         $this->db->from('tm_stock');
         $this->db->where('fc_kondisi', 0);
         $this->db->like($array);
+        $this->db->where('fc_kondisi', 0);
         return $this->db->get('')->result();
     }
 

@@ -436,7 +436,7 @@ class C_barang extends CI_Controller
 
     public function filterdata()
     {
-        $data['title'] = "filer barang";
+        $data['title'] = "Barang";
         $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi2'] = $this->M_barang->get_lokasi();
         $data['jmlberat'] = $this->M_barang->jumlahberat();
@@ -458,7 +458,7 @@ class C_barang extends CI_Controller
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
             $data['barang'] = $this->M_barang->filterdata();
-            $this->load->view('admin/v_barang', $data);
+            //print_r($this->db->last_query());
         }
         if ($data2) {
             $data['title'] = "filer barang";
@@ -466,7 +466,8 @@ class C_barang extends CI_Controller
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
             $data['barang'] = $this->M_barang->filterkk();
-            $this->load->view('admin/v_barang', $data);
+            //print_r($this->db->last_query());
+            //$this->load->view('admin/v_barang', $data);
         }
         if ($data3) {
             $data['title'] = "filer barang";
@@ -474,7 +475,8 @@ class C_barang extends CI_Controller
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
             $data['barang'] = $this->M_barang->filterkl();
-            $this->load->view('admin/v_barang', $data);
+            //print_r($this->db->last_query());
+            //$this->load->view('admin/v_barang', $data);
         }
         if ($data4) {
             $data['title'] = "filer barang";
@@ -482,7 +484,8 @@ class C_barang extends CI_Controller
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
             $data['barang'] = $this->M_barang->filterlk();
-            $this->load->view('admin/v_barang', $data);
+            //print_r($this->db->last_query());
+            //$this->load->view('admin/v_barang', $data);
         }
         if ($data5) {
             $data['title'] = "filer barang";
@@ -490,10 +493,20 @@ class C_barang extends CI_Controller
             $data['lokasi2'] = $this->M_barang->get_lokasi();
             $data['jmlberat'] = $this->M_barang->jumlahberat();
             $data['barang'] = $this->M_barang->filterdata2();
-            $this->load->view('admin/v_barang', $data);
+            print_r($this->db->last_query());
+            //$this->load->view('admin/v_barang', $data);
         }
-        $data['barang'] = $this->M_barang->view_barang();
+        // else {
+        //     echo "<script>
+        //     alert('Data tidak tersedia');
+        //     window.location.href = '" . base_url('C_barang') . "';
+        // </script>";
+        // }
         $this->load->view('admin/v_barang', $data);
+        // echo "<script>
+        //     alert('Data tidak tersedia');
+        //    window.location.href = '" . base_url('C_barang') . "';
+        //  </script>";
     }
 
 
