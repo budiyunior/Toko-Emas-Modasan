@@ -17,9 +17,6 @@ class C_barang extends CI_Controller
     public function index()
     {
         $data['title'] = "Barang";
-        $data['tkd'] = $this->input->get('fc_kadar');
-        $data['tkl'] = $this->input->get('fc_kdkelompok');
-        $data['tlk'] = $this->input->get('fc_kdlokasi');
         $data['menu'] = $this->M_menu->get_menu();
         $data['barang'] = $this->M_barang->get_barang();
         $data['sales'] = $this->M_barang->get_sales();
@@ -113,7 +110,7 @@ class C_barang extends CI_Controller
         $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
 
         //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        $data['barang'] = $this->M_barang->get_barang_all($config["per_page"], $data['page']);
+        $data['barang'] = $this->M_barang->list_barang($config["per_page"], $data['page']);
 
         $data['pagination'] = $this->pagination->create_links();
 
@@ -453,6 +450,13 @@ class C_barang extends CI_Controller
         $kadar = $this->input->get('fc_kadar');
         $kelompok = $this->input->get('fc_kdkelompok');
         $lokasi = $this->input->get('fc_kdlokasi');
+
+        //$data = $this->M_barang->filterdata($kadar, $kelompok, $lokasi);
+
+        // $data2 = $this->M_barang->filterkk();
+        // $data3 = $this->M_barang->filterkl();
+        // $data4 = $this->M_barang->filterlk();
+        // $data5 = $this->M_barang->filterdata2();
         //if ($data) {
         $nota = $this->M_barang->max()->row();
         $data['sales'] = $this->M_barang->get_sales();
@@ -472,46 +476,9 @@ class C_barang extends CI_Controller
         $data['kode_barcode'] = $this->randomString();
         $data['kelompok2'] = $this->M_barang->get_kelompok();
         $data['lokasi2'] = $this->M_barang->get_lokasi();
-        $data['tkd'] = $this->input->get('fc_kadar');
-        $data['tkl'] = $this->input->get('fc_kdkelompok');
-        $data['tlk'] = $this->input->get('fc_kdlokasi');
-        $data['jmlberat'] = $this->M_barang->jmlberat($kadar, $kelompok, $lokasi);
-        //print_r($this->db->last_query());
-        $config['base_url'] = site_url('C_barang/index'); //site url
-        $config['total_rows'] = $this->db->count_all('tm_stock'); //total row
-        $config['per_page'] = 10;  //show record per halaman
-        $config["uri_segment"] = 3;  // uri parameter
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        // Membuat Style pagination dengan Bootstrap
-        $config['first_link']       = 'First';
-        $config['last_link']        = 'Last';
-        $config['next_link']        = 'Next';
-        $config['prev_link']        = 'Prev';
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tagl_close']  = '</span>Next</li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tagl_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tagl_close']  = '</span></li>';
-
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        //$data['barang'] = $this->M_barang->get_barang_all($config["per_page"], $data['page']);
-
-        $data['pagination'] = $this->pagination->create_links();
-        $data['barang'] = $this->M_barang->filterdata($kadar, $kelompok, $lokasi, $config["per_page"], $data['page']);
+        $data['text_kadar'] = $this->input->get('fc_kadar');
+        $data['jmlberat'] = $this->M_barang->jmlberat1();
+        $data['barang'] = $this->M_barang->filterdata($kadar, $kelompok, $lokasi);
 
         $this->load->view('admin/v_barang', $data);
         //print_r($this->db->last_query());
