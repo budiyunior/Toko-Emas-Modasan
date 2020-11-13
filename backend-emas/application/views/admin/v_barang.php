@@ -306,7 +306,7 @@
                                             <td scope="row"><?= $s->fv_nmlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
-                                            <td scope="row"><?= $s->fm_hargabeli ?></td>
+                                            <td scope="row">Rp. <?= number_format($s->fm_hargabeli) ?></td>
                                             <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
