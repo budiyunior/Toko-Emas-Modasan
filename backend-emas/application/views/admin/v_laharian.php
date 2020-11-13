@@ -303,7 +303,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 $tgl3 = date("Y-m-d", strtotime($tgl . '+1 days'));
                                 $row = mysqli_query($koneksi, "SELECT COUNT(fc_kdkelompok) as row FROM tm_kelompok ");
                                 $countrow = mysqli_fetch_array($row);
-                                for ($i = 1; $i <= $countrow['row']; $i++) {
+                                for ($i = 1; $i <= 10; $i++) {
                                     $v = "00$i";
                                     // jenis barang
                                     $sql = mysqli_query($koneksi, "SELECT * FROM tm_kelompok where fc_kdkelompok = '$v'");
@@ -346,7 +346,6 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <td><?php echo round($berat4['berat'], 2) ?></td>
                                         <td><?php echo $jumlah5['jumlah'] ?> </td>
                                         <td><?php echo round($berat5['berat'], 2) ?></td>
-
                                     </tr>
                                 <?php
                                 }
