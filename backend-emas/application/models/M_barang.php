@@ -387,7 +387,7 @@ class M_barang extends CI_Model
     public function filterdata($kadar = null, $kelompok = null, $lokasi = null, $limit, $start)
     {
 
-        $this->db->select('*');
+        $this->db->select('tm_stock.fn_id, tm_stock.fc_kdkelompok, tm_stock.fc_kdlokasi, tm_stock.fc_salesid, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
         //$this->db->select_sum('ff_berat');
         //$this->db->from('tm_stock');
         $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
@@ -399,11 +399,11 @@ class M_barang extends CI_Model
         }
 
         if ($kelompok != "") {
-            $this->db->where('fc_kdkelompok', $kelompok);
+            $this->db->where('tm_stock.fc_kdkelompok', $kelompok);
         }
 
         if ($lokasi != "") {
-            $this->db->where('fc_kdlokasi', $lokasi);
+            $this->db->where('tm_stock.fc_kdlokasi', $lokasi);
         }
         $this->db->where('fc_kondisi', 0);
 
