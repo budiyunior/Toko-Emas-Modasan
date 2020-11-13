@@ -478,7 +478,7 @@ class C_barang extends CI_Controller
         $data['jmlberat'] = $this->M_barang->jmlberat($kadar, $kelompok, $lokasi);
         //print_r($this->db->last_query());
         $config['base_url'] = site_url('C_barang/index'); //site url
-        $config['total_rows'] = $this->db->count_all('tm_stock'); //total row
+        $config['total_rows'] = $this->M_barang->get_count(); //total row
         $config['per_page'] = 10;  //show record per halaman
         $config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];

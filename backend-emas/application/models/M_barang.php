@@ -14,6 +14,12 @@ class M_barang extends CI_Model
         $this->db->delete('tm_stock');
     }
 
+    public function get_count()
+    {
+        $count = $this->db->query("SELECT count(fn_id) as cont FROM tm_stock where fc_kondisi=0");
+        return $count->row()->cont();
+    }
+
     public function get_barang_all($limit, $start)
     {
         $this->db->select('tm_stock.fn_id, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
