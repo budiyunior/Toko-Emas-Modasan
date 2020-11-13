@@ -297,7 +297,7 @@
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="id[]" value="<?= $s->fn_id ?>">
+                                                <input type="checkbox" class="check-item" name="fn_id" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>

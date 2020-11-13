@@ -16,7 +16,7 @@ class M_barang extends CI_Model
 
     public function get_barang_all($limit, $start)
     {
-        $this->db->select('*');
+        $this->db->select('tm_stock.fn_id, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
         $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
         $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
         $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
