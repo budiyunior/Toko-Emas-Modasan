@@ -21,6 +21,7 @@ class M_barang extends CI_Model
         $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
         $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
         $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
+        $this->db->where('fc_kondisi', 0);
         $query = $this->db->get('', $limit, $start);
         return $query->result();
     }
