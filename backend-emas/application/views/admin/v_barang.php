@@ -221,8 +221,12 @@
                             <label>Kadar</label>
                             <select class="form-control" id="kadar" name="fc_kadar">
                                 <option value="">--Pilih--</option>
-                                <option value="40">40%</option>
-                                <option value="70">70%</option>
+                                <option value="40" <?php if ($tkd == "40") {
+                                                        echo "selected=\"selected\"";
+                                                    } ?>>40%</option>
+                                <option value="70" <?php if ($tkd == "70") {
+                                                        echo "selected=\"selected\"";
+                                                    } ?>>70%</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -231,7 +235,9 @@
                                 <option value="">--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($kelompok2 as $k) : ?>
-                                    <option value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
+                                    <option <?php if ($tkl == $k->fc_kdkelompok) {
+                                                echo 'selected="selected"';
+                                            } ?> value="<?= $k->fc_kdkelompok ?>"><?= $k->fv_nmkelompok ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -241,7 +247,9 @@
                                 <option value="">--Pilih--</option>
                                 <?php $i = 1;
                                 foreach ($lokasi2 as $l) : ?>
-                                    <option value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
+                                    <option <?php if ($l->fc_kdlokasi == $tlk) {
+                                                echo 'selected="selected"';
+                                            } ?> value="<?= $l->fc_kdlokasi ?>"><?= $l->fv_nmlokasi ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -294,12 +302,12 @@
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
                                             <td scope="row"><?= $s->fv_nmbarang ?></td>
-                                            <td scope="row"><?= $s->fc_kdkelompok ?></td>
-                                            <td scope="row"><?= $s->fc_kdlokasi ?></td>
+                                            <td scope="row"><?= $s->fv_nmkelompok ?></td>
+                                            <td scope="row"><?= $s->fv_nmlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
                                             <td scope="row"><?= $s->fm_hargabeli ?></td>
-                                            <td scope="row"><?= $s->fc_salesid ?></td>
+                                            <td scope="row"><?= $s->fv_nama ?></td>
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
@@ -311,7 +319,7 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        <th class="center"><?= round($jmlberat, 3) ?> Gram</th>
+                                        <th class="center"><?= round($jmlberat->ff_berat, 3) ?> Gram</th>
                                         <th></th>
                                         <th></th>
                                         <th></th>
@@ -323,7 +331,7 @@
                             <div class="row">
                                 <div class="">
                                     <!--Tampilkan pagination-->
-                                    <?php $pagination; ?>
+                                    <?php echo $pagination; ?>
                                 </div>
                             </div>
                         </div>
