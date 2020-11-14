@@ -331,7 +331,7 @@
                             <div class="row">
                                 <div class="">
                                     <!--Tampilkan pagination-->
-                                    <?php echo $pagination; ?>
+                                    <?php echo $pagination ?>
                                 </div>
                             </div>
                         </div>

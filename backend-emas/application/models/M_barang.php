@@ -16,8 +16,12 @@ class M_barang extends CI_Model
 
     public function get_count()
     {
-        $count = $this->db->query("SELECT count(fn_id) as cont FROM tm_stock where fc_kondisi=0");
-        return $count->row()->cont();
+        $query = $this->db->query("SELECT * FROM tm_stock where fc_kondisi = 0");
+        return $query->num_rows();
+        // $this->db->select('count(fn_id) as count');
+        // $this->db->from('tm_stock');
+        // $this->db->where('fc_kondisi', 0);
+        // return $this->db->get()->row();
     }
 
     public function get_barang_all($limit, $start)

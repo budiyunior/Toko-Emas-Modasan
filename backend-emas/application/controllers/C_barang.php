@@ -83,7 +83,9 @@ class C_barang extends CI_Controller
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_barang/index'); //site url
-        $config['total_rows'] = $this->db->count_all('tm_stock'); //total row
+        $config['total_rows'] = $this->M_barang->get_count();
+        //$config['total_rows'] = $this->M_barang->get_count();
+        //print_r($this->db->last_query()); //total row
         $config['per_page'] = 10;  //show record per halaman
         $config["uri_segment"] = 3;  // uri parameter
         $choice = $config["total_rows"] / $config["per_page"];
@@ -620,18 +622,8 @@ class C_barang extends CI_Controller
         //    window.location.href = '" . base_url('C_barang') . "';
         //  </script>";
     }
-
-
-    // public function diambil($id)
-    // {
-    //     $kondisi = 1;
-    //     $data = $this->M_barang->get_by_id($id);
-    //     $this->M_barang->update_kondisibrg($kondisi, $id);
-    //     echo json_encode($data);
-    //     echo "<script>
-    //     alert('Data Barang berhasil di ambil');
-    //     window.location.href = '" . base_url('C_barang') . "';
-    //     </script>"; //Url tujuan
-
-    // }
+    public function echo()
+    {
+        $this->M_barang->get_count();
+    }
 }
