@@ -307,9 +307,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <h4 style="color: #07A1C8;">
                                             Kadar 40%
                                         </h4>
-                                        <h4 style="color: #07A1C8;">
 
-                                        </h4>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>
@@ -376,7 +374,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             </div>
 
                             <div class="col-xs-12">
-                                <h3>Kadar 70%</h3>
+                                <h4 style="color: #07A1C8;">Kadar 70%</h4>
                                 <div class="table-responsive">
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>

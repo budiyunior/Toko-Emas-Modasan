@@ -304,9 +304,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                         <h4 style="color: #07A1C8;">
                                             Kadar 40%
                                         </h4>
-                                        <h4 style="color: #07A1C8;">
 
-                                        </h4>
                                     </div>
                                     <div class="col-sm-3">
                                         <h5>
@@ -315,13 +313,13 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                             if (isset($_GET['startdate'])) {
                                                 $tgl = $_GET['startdate'];
                                                 $tgl2 = $_GET['enddate'];
-                                                
+
                                                 $hari2 = date("d F Y", strtotime($tgl));
                                                 $hari3 = date("d F Y", strtotime($tgl2));
                                                 echo $hari2;
-                                                ?>
+                                            ?>
                                                 -
-                                                <?php
+                                            <?php
                                                 echo $hari3;
                                             } else {
                                                 // $hari = $_GET['date'];
@@ -372,7 +370,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                 </div>
                             </div>
                             <div class="col-xs-12">
-                                <h3>Kadar 70%</h3>
+                                <h4 style="color: #07A1C8;">Kadar 70%</h4>
                                 <div class="table-responsive">
                                     <table id="simple-table" class="table table-striped table-bordered table-hover">
                                         <thead>
