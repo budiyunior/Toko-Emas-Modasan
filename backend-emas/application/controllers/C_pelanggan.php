@@ -12,8 +12,8 @@ class C_pelanggan extends CI_Controller
         $this->load->library('pagination');
         $this->load->helper('form');
         $this->load->model('M_menu');
-		$this->load->model('M_pelanggan');
-		$this->load->model('M_barang');
+        $this->load->model('M_pelanggan');
+        $this->load->model('M_barang');
     }
 
 
@@ -22,21 +22,21 @@ class C_pelanggan extends CI_Controller
         $data['title'] = "Pelanggan";
         $data['menu'] = $this->M_menu->get_menu();
         // $data['pelanggan'] = $this->M_pelanggan->get();
-		// $this->load->view('admin/v_pelanggan', $data);
-		
-		$pelanggan = $this->M_pelanggan->max_pelanggan()->row();
+        // $this->load->view('admin/v_pelanggan', $data);
 
-		$kode_pelanggan = $pelanggan->maxs_pelanggan;
+        $pelanggan = $this->M_pelanggan->max_pelanggan()->row();
 
-		$urut_pelanggan = (int) substr($kode_pelanggan, 4, 4);
+        $kode_pelanggan = $pelanggan->maxs_pelanggan;
 
-		$urut_pelanggan++;
+        $urut_pelanggan = (int) substr($kode_pelanggan, 4, 4);
 
-		$char = "PLG";
+        $urut_pelanggan++;
 
-		$kode_pelanggan = $char.sprintf("%04s", $urut_pelanggan);
+        $char = "PLG";
 
-		$data['kode_pelanggan'] = $kode_pelanggan;
+        $kode_pelanggan = $char . sprintf("%04s", $urut_pelanggan);
+
+        $data['kode_pelanggan'] = $kode_pelanggan;
 
         //konfigurasi pagination
         $config['base_url'] = site_url('C_pelanggan/index'); //site url
@@ -101,12 +101,11 @@ class C_pelanggan extends CI_Controller
         }
     }
 
-    function delete()
+    function delete($id)
     {
-        foreach ($_POST['id'] as $id) {
-            $this->M_pelanggan->delete($id);
-        }
-        return redirect('C_pelanggan/index');
+        $this->M_pelanggan->delete($id);
+        echo json_encode(array("status" => TRUE));
+        //return redirect('C_pelanggan/index');
     }
 
     public function update()

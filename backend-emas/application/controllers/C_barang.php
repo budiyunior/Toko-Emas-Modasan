@@ -73,51 +73,10 @@ class C_barang extends CI_Controller
         $kode_lokasi = sprintf("%02s", $urut_lokasi);
 
         $data['kode_lokasi'] = $kode_lokasi;
+        $data['barang'] = $this->M_barang->get_barang_all();
+        //print_r($this->db->last_query());
 
-        // $fc_userid = $this->session->userdata('fc_userid');
-
-        // $r = $this->M_barang->getRole($fc_userid, 'r')->r;
-        // $c = $this->M_barang->getRole($fc_userid, 'c')->r;
-        // $u = $this->M_barang->getRole($fc_userid, 'u')->r;
-        // $d = $this->M_barang->getRole($fc_userid, 'd')->r;
-
-        //konfigurasi pagination
-        $config['base_url'] = site_url('C_barang/index'); //site url
-        $config['total_rows'] = $this->M_barang->get_count();
-        //$config['total_rows'] = $this->M_barang->get_count();
-        //print_r($this->db->last_query()); //total row
-        $config['per_page'] = 10;  //show record per halaman
-        $config["uri_segment"] = 3;  // uri parameter
-        $choice = $config["total_rows"] / $config["per_page"];
-        $config["num_links"] = floor($choice);
-
-        // Membuat Style pagination dengan Bootstrap
-        $config['first_link']       = 'First';
-        $config['last_link']        = 'Last';
-        $config['next_link']        = 'Next';
-        $config['prev_link']        = 'Prev';
-        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
-        $config['full_tag_close']   = '</ul></nav></div>';
-        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
-        $config['num_tag_close']    = '</span></li>';
-        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
-        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
-        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
-        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['prev_tagl_close']  = '</span>Next</li>';
-        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
-        $config['first_tagl_close'] = '</span></li>';
-        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
-        $config['last_tagl_close']  = '</span></li>';
-
-        $this->pagination->initialize($config);
-        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-
-        //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
-        $data['barang'] = $this->M_barang->get_barang_all($config["per_page"], $data['page']);
-
-        $data['pagination'] = $this->pagination->create_links();
+        //$data['pagination'] = $this->pagination->create_links();
 
 
         //load view pelanggan view
@@ -234,13 +193,12 @@ class C_barang extends CI_Controller
         return redirect('C_barang/index');
     }
 
-    public function diambil()
+    public function diambil($id)
     {
         $kondisi = 1;
-        foreach ($_POST['id'] as $id) {
-            $this->M_barang->update_kondisibrg($kondisi, $id);
-        }
-        return redirect('C_barang/index');
+        $this->M_barang->update_kondisibrg($kondisi, $id);
+        echo json_encode(array("status" => TRUE));
+        //return redirect('C_barang');
     }
 
     public function save_kelompok()

@@ -241,7 +241,7 @@
                                         foreach ($pelanggan->result() as $p) : ?>
                                             <tr>
                                                 <td class="check">
-                                                    <input type="checkbox" class="check-item" name="id[]" value="<?php echo $p->fc_kdpel ?>">
+                                                    <input type="checkbox" class="check-item" name="id" id="id" value="<?php echo $p->fc_kdpel ?>">
                                                 </td>
                                                 <th scope="row"><?= $no++; ?></th>
                                                 <td><?= $p->fc_kdpel; ?></td>
@@ -275,7 +275,7 @@
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <?php if ($cd == '1') { ?>
-                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Anda Yakin Menghapus Data Pelanggan ?')"><i class="fa fa-trash"></i> Hapus</button>
+                                        <button type="submit" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
                                     <?php } ?>
                                 </div>
                                 <?= form_close(); ?>
@@ -434,6 +434,27 @@
             $('.action-update').prop('disabled', true);
         }
     });
+
+    $('#delete').click(function(e) {
+        e.preventDefault();
+        var arr = [];
+        var checkedValue = $(".check-item:checked").val();
+        console.log('checked', checkedValue);
+
+        if (confirm('Apakah anda yakin akan menghapus data?')) {
+            $.ajax({
+                url: "<?php echo site_url('C_pelanggan/delete') ?>/" + checkedValue,
+                type: "POST",
+                dataType: "JSON",
+                success: function(data) {
+                    window.location.href = "<?php echo site_url('C_pelanggan') ?>";
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log("error");
+                }
+            });
+        }
+    })
 
     $(document).ready(function() { // Ketika halaman sudah siap (sudah selesai di load)
         $("#check-all").click(function() { // Ketika user men-cek checkbox all

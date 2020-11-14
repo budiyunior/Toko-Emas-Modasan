@@ -274,6 +274,7 @@
                 <div class="col-xs-12">
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="center">
+                        <?php echo form_open('C_barang/diambil'); ?>
                         <div class="table-responsive">
                             <table id="myTable" class="display">
                                 <thead>
@@ -295,13 +296,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php echo form_open('C_barang/delete'); ?>
                                     <?php
                                     $no = $this->uri->segment('3') + 1;
                                     foreach ($barang as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" name="fn_id" value="<?= $s->fn_id ?>">
+                                                <input type="checkbox" class="check-item" name="id" id="id" value="<?= $s->fn_id ?>">
                                             </td>
                                             <th scope="col"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_kdstock ?></td>
@@ -316,6 +316,8 @@
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
                                     <?php endforeach ?>
+                                </tbody>
+                                <tfoot>
                                     <tr>
                                         <th class="center">TOTAL</th>
                                         <th></th>
@@ -330,12 +332,12 @@
                                         <th></th>
                                         <th></th>
                                     </tr>
-                                </tbody>
+                                </tfoot>
                             </table>
                             <div class="row">
                                 <div class="">
                                     <!--Tampilkan pagination-->
-                                    
+
                                 </div>
                             </div>
                         </div>
@@ -354,7 +356,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin mengambil data barang ?')"><i class="fa fa-upload"></i> Diambil</button>
+                                    <button type="submit" id="hapus" class="btn btn-danger"><i class="fa fa-upload"></i> Diambil</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -1215,6 +1217,27 @@
                 }
             })
 
+            $('#hapus').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+
+                if (confirm('Apakah anda yakin akan mengambil data?')) {
+                    $.ajax({
+                        url: "<?php echo site_url('C_barang/diambil') ?>/" + checkedValue,
+                        type: "POST",
+                        dataType: "JSON",
+                        success: function(data) {
+                            window.location.href = "<?php echo site_url('C_barang') ?>";
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log("error");
+                        }
+                    });
+                }
+            })
+
             $('.delete_lokasi').click(function(e) {
                 e.preventDefault();
                 var arr = [];
@@ -1252,6 +1275,29 @@
                     });
                 }
             })
+
+            // $(document).ready(function() {
+
+            //     $("#hapus").click(function() {
+            //         e.preventDefault();
+            //         var arr = [];
+            //         var checked = $(".check-item:checked").val();
+            //         console.log('checked', checked);
+            //         $.ajax({
+            //             type: "POST",
+            //             url: "<?php echo base_url('C_barang/diambil') ?>" + checked,
+            //             data: {
+            //                 checkbox: $("#").val()
+            //             },
+            //             dataType: "text",
+            //             cache: false,
+            //             success: function(data) {
+            //                 alert(data); //as a debugging message.
+            //             }
+            //         }); // you have missed this bracket
+            //         return false;
+            //     });
+            // });
 
             $('.update').click(function(e) {
                 e.preventDefault();
@@ -1295,27 +1341,6 @@
                 // var action = $(this).attr('data-href') + '/' + arr.join("-");
                 // window.location.href = action;
             });
-
-            $('.hapus').click(function(e) {
-                e.preventDefault();
-                var arr = [];
-                var checkedValue = $(".check-item:checked").val();
-                console.log('checked', checkedValue);
-                // jQuery.noConflict();
-                // $('#tambah').modal('show');
-                $.ajax({
-                    url: "<?php echo base_url('C_barang/edit/') ?>" + checkedValue,
-                    type: "GET",
-                    dataType: "JSON",
-                    success: function(result) {
-                        $('#fn_idbarang').val(result.fn_id);
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        alert('Data Eror');
-                    }
-                })
-            });
-
 
             function check_lokasi(value) {
                 $.ajax({

@@ -24,7 +24,7 @@ class M_barang extends CI_Model
         // return $this->db->get()->row();
     }
 
-    public function get_barang_all($limit, $start)
+    public function get_barang_all()
     {
         $this->db->select('tm_stock.fn_id, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
         $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
@@ -32,7 +32,7 @@ class M_barang extends CI_Model
         $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
         $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
         $this->db->where('fc_kondisi', 0);
-        $query = $this->db->get('', $limit, $start);
+        $query = $this->db->get();
         return $query->result();
     }
 

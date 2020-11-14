@@ -225,7 +225,7 @@
                                     foreach ($sales as $s) : ?>
                                         <tr>
                                             <td class="check">
-                                                <input type="checkbox" class="check-item" id="id[]" name="id[]" value="<?php echo $s->fc_salesid ?>">
+                                                <input type="checkbox" class="check-item" id="id" name="id" value="<?php echo $s->fc_salesid ?>">
                                             </td>
                                             <th scope="row"><?= $no++ ?></th>
                                             <td scope="row"><?= $s->fc_salesid ?></td>
@@ -261,7 +261,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('anda yakin menghapus data sales ?')"><i class="fa fa-trash"> Hapus</i></button>
+                                    <button type="submit" id="delete" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -489,23 +489,28 @@
 
         <?php $this->load->view('partials/footer.php') ?>
         <?php $this->load->view('partials/js.php') ?>
-        <!-- <script>
-        $(document).ready(function() {
-            $('#search').on('keyup', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: <?php echo base_url('C_sales/search') ?>,
-                    data: {
-                        search: $(this).val()
-                    },
-                    cache: false,
-                    success: function(data) {
-                        $('#tampil').html(data);
-                    }
-                });
-            });
-        });
-    </script> -->
+        <script>
+        $('#delete').click(function(e) {
+                e.preventDefault();
+                var arr = [];
+                var checkedValue = $(".check-item:checked").val();
+                console.log('checked', checkedValue);
+
+                if (confirm('Apakah anda yakin akan menghapus data?')) {
+                    $.ajax({
+                        url: "<?php echo site_url('C_sales/delete') ?>/" + checkedValue,
+                        type: "POST",
+                        dataType: "JSON",
+                        success: function(data) {
+                            window.location.href = "<?php echo site_url('C_sales') ?>";
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.log("error");
+                        }
+                    });
+                }
+            })
+    </script>
 
         <script>
             var keyword = document.getElementById('keywoard');
