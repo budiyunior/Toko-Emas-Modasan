@@ -222,10 +222,8 @@
                                 <table id="myTable" class="display">
                                     <thead>
                                         <tr>
-                                            <th class="check">
-                                                <div class="center">
-                                                    <input type="checkbox" id="check-all">
-                                                </div>
+                                            <th class="center">
+                                                Checklist
                                             </th>
                                             <th scope="col">No </th>
                                             <th scope="col">Kode </th>
@@ -252,14 +250,8 @@
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
-
                                 </table>
-                                <div class="row">
-                                    <div class="">
-                                        <!--Tampilkan pagination-->
-                                        <?php echo $pagination; ?>
-                                    </div>
-                                </div>
+                               
                             </div>
                             <br>
                             <div class="row">
@@ -279,11 +271,7 @@
                                     <?php } ?>
                                 </div>
                                 <?= form_close(); ?>
-                                <div class="col-md-2" style="margin-top: 5px;">
-                                    <form action="">
-                                        <input type="text" class="form-control" placeholder="Cari">
-                                    </form>
-                                </div>
+                                
                                 <!-- ISI DISINI -->
                                 <div class="modal fade" id="tambahpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog ">
@@ -425,7 +413,10 @@
 
 <script>
     $(document).ready(function() {
-        $('#myTable').DataTable();
+        $('#myTable').DataTable({
+            "pageLength": 100,
+            "lengthChange": false
+        });
     })
     $(".check-item").on("click", function() {
         if ($(".check-item:checked").length < 2) {

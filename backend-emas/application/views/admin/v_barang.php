@@ -360,11 +360,7 @@
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
-                            <div class="col-md-2" style="margin-top: 5px;">
-                                <form action="">
-                                    <input type="text" class="form-control" placeholder="Cari">
-                                </form>
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- modal tambah -->
@@ -979,7 +975,10 @@
             });
 
             $(document).ready(function() {
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    "pageLength": 100,
+                    "lengthChange": false
+                });
             })
             //     barang();
             //     kelompok();
