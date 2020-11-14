@@ -280,7 +280,6 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                                     <th class="center" colspan="2" scope="colgroup">Diambil</th>
                                     <th class="center" colspan="2" scope="colgroup">Tambahan</th>
                                     <th class="center" colspan="2" scope="colgroup">Total</th>
-
                                 </tr>
                                 <tr class="titlerow">
                                     <th scope="col">Jumlah</th>
