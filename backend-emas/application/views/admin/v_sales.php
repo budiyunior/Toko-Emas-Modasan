@@ -208,7 +208,7 @@
                                 <thead>
                                     <tr>
                                         <th class="center">
-                                            <input type="checkbox" id="check-all" />
+                                            Check
                                         </th>
                                         <th scope="col">No</th>
                                         <th scope="col">Kode</th>
@@ -238,12 +238,7 @@
                                     <?php endforeach; ?>
                                 </tbody>
                             </table>
-                            <div class="row">
-                                <div class="">
-                                    <!--Tampilkan pagination-->
-                                    
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <br>
@@ -267,14 +262,7 @@
                             <?= form_close(); ?>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
-                            <form>
-                                <div class="col-md-3" style="margin-top: 5px">
-                                    <input class="form-control" name="search" id="search" type="text" placeholder="Cari Data">
-                                </div>
-                                <div class="col-md-1" style="margin-top: 5px;">
-                                    <button type="button" id="btn-search" name="cari" class="btn btn-secondary">Search</button>
-                                </div>
-                            </form>
+                            
                         </div>
 
                         <div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -433,7 +421,11 @@
 
         <script>
             $(document).ready(function() {
-                $('#myTable').DataTable();
+                $('#myTable').DataTable({
+                    "pageLength": 100,
+                    "lengthChange": false
+                });
+
             })
             $(".check-item").on("click", function() {
                 if ($(".check-item:checked").length < 2) {
