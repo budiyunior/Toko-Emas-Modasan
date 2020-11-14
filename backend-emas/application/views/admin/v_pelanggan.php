@@ -251,7 +251,7 @@
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>
-                               
+
                             </div>
                             <br>
                             <div class="row">
@@ -267,11 +267,11 @@
                                 </div>
                                 <div class="col-md-1" style="margin-top: 5px;">
                                     <?php if ($cd == '1') { ?>
-                                        <button type="submit" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</button>
+                                        <button type="submit" id="delete" class="btn btn-danger diambil"><i class="fa fa-trash"></i> Hapus</button>
                                     <?php } ?>
                                 </div>
                                 <?= form_close(); ?>
-                                
+
                                 <!-- ISI DISINI -->
                                 <div class="modal fade" id="tambahpelanggan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog ">
@@ -421,7 +421,9 @@
     $(".check-item").on("click", function() {
         if ($(".check-item:checked").length < 2) {
             $('.action-update').prop('disabled', false);
+            $('.diambil').prop('disabled', false);
         } else {
+            $('.diambil').prop('disabled', true);
             $('.action-update').prop('disabled', true);
         }
     });

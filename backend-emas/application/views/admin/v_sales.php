@@ -256,13 +256,13 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" id="delete" class="btn btn-danger"><i class="fa fa-trash"> Hapus</i></button>
+                                    <button type="submit" id="delete" class="btn btn-danger diambil"><i class="fa fa-trash"> Hapus</i></button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
                             <div class="md-form active-purple active-purple-2 mb-3">
                             </div>
-                            
+
                         </div>
 
                         <div class="modal fade" id="tambah" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -430,7 +430,9 @@
             $(".check-item").on("click", function() {
                 if ($(".check-item:checked").length < 2) {
                     $('.action-update').prop('disabled', false);
+                    $('.diambil').prop('disabled', false);
                 } else {
+                    $('.diambil').prop('disabled', true);
                     $('.action-update').prop('disabled', true);
                 }
             });
@@ -482,7 +484,7 @@
         <?php $this->load->view('partials/footer.php') ?>
         <?php $this->load->view('partials/js.php') ?>
         <script>
-        $('#delete').click(function(e) {
+            $('#delete').click(function(e) {
                 e.preventDefault();
                 var arr = [];
                 var checkedValue = $(".check-item:checked").val();
@@ -502,7 +504,7 @@
                     });
                 }
             })
-    </script>
+        </script>
 
         <script>
             var keyword = document.getElementById('keywoard');
