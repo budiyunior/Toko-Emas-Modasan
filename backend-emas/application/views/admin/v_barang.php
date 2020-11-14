@@ -356,7 +356,7 @@
                             </div>
                             <div class="col-md-1" style="margin-top: 5px;">
                                 <?php if ($cd == '1') { ?>
-                                    <button type="submit" id="hapus" class="btn btn-danger"><i class="fa fa-upload"></i> Diambil</button>
+                                    <button type="submit" id="hapus" class="btn btn-danger diambil"><i class="fa fa-upload"></i> Diambil</button>
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
@@ -969,8 +969,10 @@
             $(".check-item").on("click", function() {
                 if ($(".check-item:checked").length < 2) {
                     $('.update').prop('disabled', false);
+                    $('.diambil').prop('disabled', false);
                 } else {
                     $('.update').prop('disabled', true);
+                    $('.diambil').prop('disabled', true);
                 }
             });
 
