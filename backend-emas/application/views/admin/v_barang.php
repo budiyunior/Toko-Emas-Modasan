@@ -1,5 +1,9 @@
 <?php $this->load->view('partials/header.php') ?>
+<!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" /> -->
 <link id="bsdp-css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css" rel="stylesheet">
+
+<!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
+
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
 <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
 
@@ -271,7 +275,7 @@
                     <!-- PAGE CONTENT BEGINS -->
                     <div class="center">
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="tabel_barang">
+                            <table id="myTable" class="display">
                                 <thead>
                                     <tr>
                                         <th class="center">
@@ -331,7 +335,7 @@
                             <div class="row">
                                 <div class="">
                                     <!--Tampilkan pagination-->
-                                    <?php echo $pagination ?>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -972,7 +976,9 @@
                 }
             });
 
-            // $(document).ready(function() {
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            })
             //     barang();
             //     kelompok();
             //     $("#kadar").change(function() {
