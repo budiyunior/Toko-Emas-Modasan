@@ -89,10 +89,8 @@ class C_sales extends CI_Controller
 
     public function delete($id)
     {
-        foreach ($id as $id) {
-            $this->M_sales->delete($id);
-            echo json_encode(array("status" => TRUE));
-        }
+        $this->M_sales->delete($id);
+        echo json_encode(array("status" => TRUE));
         //return redirect('C_sales');
     }
 
