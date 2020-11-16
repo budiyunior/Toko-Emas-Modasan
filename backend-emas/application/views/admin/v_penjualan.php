@@ -117,46 +117,46 @@
 
 <!-- /section:basics/navbar.layout -->
 <div class="main-container" id="main-container">
-    <script type="text/javascript">
-        try {
-            ace.settings.check('main-container', 'fixed')
-        } catch (e) {}
-    </script>
+	<script type="text/javascript">
+		try {
+			ace.settings.check('main-container', 'fixed')
+		} catch (e) {}
+	</script>
 
-    <!-- #section:basics/sidebar.horizontal -->
-    <div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
-        <script type="text/javascript">
-            try {
-                ace.settings.check('sidebar', 'fixed')
-            } catch (e) {}
-        </script>
-        <ul class="nav nav-list">
+	<!-- #section:basics/sidebar.horizontal -->
+	<div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
+		<script type="text/javascript">
+			try {
+				ace.settings.check('sidebar', 'fixed')
+			} catch (e) {}
+		</script>
+		<ul class="nav nav-list">
+			<?php
+			$id_level = $this->session->userdata('fc_userid');
+			$main_menu = $this->db->join('mainmenu', 'mainmenu.idmenu=tab_akses_mainmenu.id_menu')
+				->where('tab_akses_mainmenu.fc_userid', $id_level)
+				->where('tab_akses_mainmenu.r', '1')
+				->order_by('mainmenu.idmenu', 'asc')
+				->get('tab_akses_mainmenu')
+				->result();
+			foreach ($main_menu as $rs) {
+			?>
 				<?php
-				$id_level=$this->session->userdata('fc_userid');
-				$main_menu=$this->db->join('mainmenu','mainmenu.idmenu=tab_akses_mainmenu.id_menu')
-									->where('tab_akses_mainmenu.fc_userid',$id_level)
-									->where('tab_akses_mainmenu.r','1')
-									->order_by('mainmenu.idmenu','asc')
-									->get('tab_akses_mainmenu')
-									->result();
-				foreach ($main_menu as $rs) {
-				?>
-				<?php
-				$row = $this->db->where('mainmenu_idmenu',$rs->idmenu)->get('submenu')->num_rows();
-					if($row>0){
-						$sub_menu=$this->db->join('submenu','submenu.id_sub=tab_akses_submenu.id_sub_menu')
-										   ->where('submenu.mainmenu_idmenu',$rs->idmenu)
-										   ->where('tab_akses_submenu.fc_userid',$id_level)
-										   ->where('tab_akses_submenu.r','1')
-										   ->get('tab_akses_submenu')
-										   ->result();
+				$row = $this->db->where('mainmenu_idmenu', $rs->idmenu)->get('submenu')->num_rows();
+				if ($row > 0) {
+					$sub_menu = $this->db->join('submenu', 'submenu.id_sub=tab_akses_submenu.id_sub_menu')
+						->where('submenu.mainmenu_idmenu', $rs->idmenu)
+						->where('tab_akses_submenu.fc_userid', $id_level)
+						->where('tab_akses_submenu.r', '1')
+						->get('tab_akses_submenu')
+						->result();
 				?>
 
 					<li class="hover">
 						<a class="dropdown-toggle">
-							<i class="menu-icon <?=$rs->icon_class?>"></i>
+							<i class="menu-icon <?= $rs->icon_class ?>"></i>
 							<span class="menu-text">
-								<?=$rs->nama_menu?>
+								<?= $rs->nama_menu ?>
 							</span>
 
 							<b class="arrow fa fa-angle-down"></b>
@@ -166,122 +166,122 @@
 
 						<?php
 						echo "<ul class='submenu'>";
-						foreach ($sub_menu as $rsub){
+						foreach ($sub_menu as $rsub) {
 						?>
-							<li class="hover">
-								<a href="<?=base_url().$rsub->link_sub?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<?=$rsub->nama_sub?>
-								</a>
+					<li class="hover">
+						<a href="<?= base_url() . $rsub->link_sub ?>">
+							<i class="menu-icon fa fa-caret-right"></i>
+							<?= $rsub->nama_sub ?>
+						</a>
 
-								<b class="arrow"></b>
-							</li>
+						<b class="arrow"></b>
+					</li>
 
 
-						<?php
+				<?php
 						}
-							echo "</ul>";
-						}else{ 
-						?>
-						</li>
-						<li class="hover">
-							<a href="<?=base_url().$rs->link_menu?>">
-								<i class="menu-icon <?=$rs->icon_class?>"></i>
-								<span class="menu-text"><?=$rs->nama_menu?> </span>
-							</a>
+						echo "</ul>";
+					} else {
+				?>
+				</li>
+				<li class="hover">
+					<a href="<?= base_url() . $rs->link_menu ?>">
+						<i class="menu-icon <?= $rs->icon_class ?>"></i>
+						<span class="menu-text"><?= $rs->nama_menu ?> </span>
+					</a>
 
-							<b class="arrow"></b>
-						</li>
-						<?php
-						}
-						}
-						?>
-						<?php
-							if ($id_level==1){?>
-					
-						<?php
-						}
-						?>
-						
+					<b class="arrow"></b>
+				</li>
+		<?php
+					}
+				}
+		?>
+		<?php
+		if ($id_level == 1) { ?>
+
+		<?php
+		}
+		?>
+
 
 		</ul>
 
-        <!-- #section:basics/sidebar.layout.minimize -->
+		<!-- #section:basics/sidebar.layout.minimize -->
 
-        <!-- /section:basics/sidebar.layout.minimize -->
-        <!-- /.nav-list -->
+		<!-- /section:basics/sidebar.layout.minimize -->
+		<!-- /.nav-list -->
 
-        <!-- #section:basics/sidebar.layout.minimize -->
+		<!-- #section:basics/sidebar.layout.minimize -->
 
-        <!-- /section:basics/sidebar.layout.minimize -->
-        <script type="text/javascript">
-            try {
-                ace.settings.check('sidebar', 'collapsed')
-            } catch (e) {}
-        </script>
+		<!-- /section:basics/sidebar.layout.minimize -->
+		<script type="text/javascript">
+			try {
+				ace.settings.check('sidebar', 'collapsed')
+			} catch (e) {}
+		</script>
 
-    </div>
+	</div>
 
-    <!-- /section:basics/sidebar.horizontal -->
-    <div class="main-content">
-        <div class="main-content-inner">
-            <div class="page-content">
-                <div class="page-header">
-                    <h2 style="color: #07A1C8;">
-                        Penjualan
+	<!-- /section:basics/sidebar.horizontal -->
+	<div class="main-content">
+		<div class="main-content-inner">
+			<div class="page-content">
+				<div class="page-header">
+					<h2 style="color: #07A1C8;">
+						Penjualan
 
-                    </h2>
-                </div><!-- /.page-header -->
+					</h2>
+				</div><!-- /.page-header -->
 
-                <div class="row">
-                    <div class="col-xs-12">
-                        <!-- PAGE CONTENT BEGINS -->
+				<div class="row">
+					<div class="col-xs-12">
+						<!-- PAGE CONTENT BEGINS -->
 
-                        <button type="button" data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-success"><i class="fa fa-print"> Penjualan</i></button>
+						<button type="button" data-toggle="modal" data-target="#tampilPenjualan" class="btn btn-success"><i class="fa fa-print"> Penjualan</i></button>
 
-                        <!-- Modal -->
-                        <div class="modal fade" id="tampilPenjualan" tabindex="-1">
-                            <div class="modal-dialog modal-lg" style='width: 1100px;'>
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h3 class="modal-title" id="exampleModalLabel">Penjualan</h3>
-                                    </div>
-                                    <div class="modal-body">
-									<form method='post' action='<?php echo base_url('C_penjualan/simpan_penjualan')?>'>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                               
-                                                    <div class="col-md-5">
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <br>
-                                                        <div class="form-group row">
+						<!-- Modal -->
+						<div class="modal fade" id="tampilPenjualan" tabindex="-1">
+							<div class="modal-dialog modal-lg" style='width: 1100px;'>
+								<div class="modal-content">
+									<div class="modal-header">
+										<h3 class="modal-title" id="exampleModalLabel">Penjualan</h3>
+									</div>
+									<div class="modal-body">
+										<form method='post' action='<?php echo base_url('C_penjualan/simpan_penjualan') ?>'>
+											<div class="row">
+												<div class="col-xs-12">
+
+													<div class="col-md-5">
+														<br>
+														<br>
+														<br>
+														<br>
+														<br>
+														<br>
+														<div class="form-group row">
 
 
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-1 ">
+														</div>
+													</div>
+													<div class="col-md-1 ">
 
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group row">
-                                                            <label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" name="fc_noinv" class="form-control" id="no_nota" placeholder="">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label for="inputPassword" class="col-sm-4 col-form-label">Tanggal</label>
-                                                            <?php
-                                                            $tgl = date("Y-m-d");
-                                                            ?>
-                                                            <div class="col-sm-8">
-                                                                <input type="text" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
-                                                            </div>
-                                                        </div>
+													</div>
+													<div class="col-md-6">
+														<div class="form-group row">
+															<label for="inputPassword" class="col-sm-4 col-form-label">Faktur</label>
+															<div class="col-sm-8">
+																<input type="text" name="fc_noinv" class="form-control" id="no_nota" placeholder="">
+															</div>
+														</div>
+														<div class="form-group row">
+															<label for="inputPassword" class="col-sm-4 col-form-label">Tanggal</label>
+															<?php
+															$tgl = date("Y-m-d");
+															?>
+															<div class="col-sm-8">
+																<input type="text" class="form-control" name="fd_tgliv" id="inputPassword" value="<?= $tgl ?>">
+															</div>
+														</div>
 														<div class="form-group row">
 															<label for="inputPassword" class="col-sm-4 col-form-label">Sales</label>
 															<div class="col-sm-8">
@@ -474,7 +474,7 @@
 										<div class="row">
 											<div class="col-xs-12">
 												<div class="col-md-12">
-													<table class="table table-bordered">
+													<table id="myTable" class="display">
 														<thead>
 															<tr>
 																<th class="center">
@@ -1411,7 +1411,13 @@
 			return 'Non Aktif';
 		}
 	}
+
+	$(document).ready(function() {
+		$('#myTable').DataTable({
+			"pageLength": 10,
+			"lengthChange": false
+		});
+	})
 </script>
 <?php $this->load->view('partials/footer.php') ?>
 <?php $this->load->view('partials/js.php') ?>
-

@@ -3,9 +3,11 @@
 <link rel="stylesheet" type="text/css" href="http://www.rsigondanglegi.com/laris/assets/public/themes/admin-lte/plugin/datatables/extensions/Responsive/css/responsive.bootstrap.min.css"> -->
 <!-- <link href="<?php echo base_url('assets') ?>/table/bootstrap-table.css" rel="stylesheet">
 <script src="<?php echo base_url('assets') ?>/table/bootstrap-table.js"></script> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css" />
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <link href="http://www.rsigondanglegi.com/laris/assets/table/bootstrap-table.css" rel="stylesheet">
-
 <script src="<?php echo base_url('assets') ?>/assets/js/sprintf.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
     /* .table>tbody>tr>td{
 		vertical-align: middle;
@@ -146,80 +148,80 @@
             } catch (e) {}
         </script>
         <ul class="nav nav-list">
-				<?php
-				$id_level=$this->session->userdata('fc_userid');
-				$main_menu=$this->db->join('mainmenu','mainmenu.idmenu=tab_akses_mainmenu.id_menu')
-									->where('tab_akses_mainmenu.fc_userid',$id_level)
-									->where('tab_akses_mainmenu.r','1')
-									->order_by('mainmenu.idmenu','asc')
-									->get('tab_akses_mainmenu')
-									->result();
-				foreach ($main_menu as $rs) {
-				?>
-				<?php
-				$row = $this->db->where('mainmenu_idmenu',$rs->idmenu)->get('submenu')->num_rows();
-					if($row>0){
-						$sub_menu=$this->db->join('submenu','submenu.id_sub=tab_akses_submenu.id_sub_menu')
-										   ->where('submenu.mainmenu_idmenu',$rs->idmenu)
-										   ->where('tab_akses_submenu.fc_userid',$id_level)
-										   ->where('tab_akses_submenu.r','1')
-										   ->get('tab_akses_submenu')
-										   ->result();
-				?>
+            <?php
+            $id_level = $this->session->userdata('fc_userid');
+            $main_menu = $this->db->join('mainmenu', 'mainmenu.idmenu=tab_akses_mainmenu.id_menu')
+                ->where('tab_akses_mainmenu.fc_userid', $id_level)
+                ->where('tab_akses_mainmenu.r', '1')
+                ->order_by('mainmenu.idmenu', 'asc')
+                ->get('tab_akses_mainmenu')
+                ->result();
+            foreach ($main_menu as $rs) {
+            ?>
+                <?php
+                $row = $this->db->where('mainmenu_idmenu', $rs->idmenu)->get('submenu')->num_rows();
+                if ($row > 0) {
+                    $sub_menu = $this->db->join('submenu', 'submenu.id_sub=tab_akses_submenu.id_sub_menu')
+                        ->where('submenu.mainmenu_idmenu', $rs->idmenu)
+                        ->where('tab_akses_submenu.fc_userid', $id_level)
+                        ->where('tab_akses_submenu.r', '1')
+                        ->get('tab_akses_submenu')
+                        ->result();
+                ?>
 
-					<li class="hover">
-						<a class="dropdown-toggle">
-							<i class="menu-icon <?=$rs->icon_class?>"></i>
-							<span class="menu-text">
-								<?=$rs->nama_menu?>
-							</span>
+                    <li class="hover">
+                        <a class="dropdown-toggle">
+                            <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                            <span class="menu-text">
+                                <?= $rs->nama_menu ?>
+                            </span>
 
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
+                            <b class="arrow fa fa-angle-down"></b>
+                        </a>
 
-						<b class="arrow"></b>
+                        <b class="arrow"></b>
 
-						<?php
-						echo "<ul class='submenu'>";
-						foreach ($sub_menu as $rsub){
-						?>
-							<li class="hover">
-								<a href="<?=base_url().$rsub->link_sub?>">
-									<i class="menu-icon fa fa-caret-right"></i>
-									<?=$rsub->nama_sub?>
-								</a>
+                        <?php
+                        echo "<ul class='submenu'>";
+                        foreach ($sub_menu as $rsub) {
+                        ?>
+                    <li class="hover">
+                        <a href="<?= base_url() . $rsub->link_sub ?>">
+                            <i class="menu-icon fa fa-caret-right"></i>
+                            <?= $rsub->nama_sub ?>
+                        </a>
 
-								<b class="arrow"></b>
-							</li>
+                        <b class="arrow"></b>
+                    </li>
 
 
-						<?php
-						}
-							echo "</ul>";
-						}else{ 
-						?>
-						</li>
-						<li class="hover">
-							<a href="<?=base_url().$rs->link_menu?>">
-								<i class="menu-icon <?=$rs->icon_class?>"></i>
-								<span class="menu-text"><?=$rs->nama_menu?> </span>
-							</a>
+                <?php
+                        }
+                        echo "</ul>";
+                    } else {
+                ?>
+                </li>
+                <li class="hover">
+                    <a href="<?= base_url() . $rs->link_menu ?>">
+                        <i class="menu-icon <?= $rs->icon_class ?>"></i>
+                        <span class="menu-text"><?= $rs->nama_menu ?> </span>
+                    </a>
 
-							<b class="arrow"></b>
-						</li>
-						<?php
-						}
-						}
-						?>
-						<?php
-							if ($id_level==1){?>
-					
-						<?php
-						}
-						?>
-						
+                    <b class="arrow"></b>
+                </li>
+        <?php
+                    }
+                }
+        ?>
+        <?php
+        if ($id_level == 1) { ?>
 
-		</ul>
+        <?php
+        }
+        ?>
+
+
+        </ul>
 
         <!-- #section:basics/sidebar.layout.minimize -->
 
@@ -265,18 +267,18 @@
                                         <h3 class="modal-title" id="exampleModalLabel">Pembelian</h3>
                                     </div>
                                     <div class="modal-body">
-									<form method='post' action='<?php echo base_url('C_pembelian/simpan_pembelian')?>'>
-                                        <div class="row">
-                                            
+                                        <form method='post' action='<?php echo base_url('C_pembelian/simpan_pembelian') ?>'>
+                                            <div class="row">
+
                                                 <div class=" col-md-3">
                                                     <label for="form-field-9">No Faktur Lama</label>
                                                     <button type="button" onclick="faktur()" class="btn btn-success"><i class="fa fa-search"></i> Cari No Faktur Lama</i></button>
-													
+
                                                 </div>
                                                 <div class="col-md-3 ">
                                                     <label for="form-field-9">Transaksi Terdahulu</label>
                                                     <input id="tags" type="text" name="fc_noinv_view" class="form-control">
-													<span id="invoice_penjualan"></span>
+                                                    <span id="invoice_penjualan"></span>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group row">
@@ -325,28 +327,28 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                               
-												<table id="pembayaran_hutang_table_det" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc">
-														<thead>
-																<tr>
-																	<th data-formatter="runningFormatter" data-align="right">No.</th>
-																	<th data-field="Id|fc_kdstock" data-sortable="true" data-formatter="kodestok">Kode</th>
-																	<th data-field="fv_nmbarang"  data-sortable="true" >Uraian Barang</th>
-																	<th data-field="fn_berat|Id" data-sortable="true" data-formatter="berat">Berat</th>
-																	<th data-field="ff_kadar|Id"  data-sortable="true" data-formatter="kadar">Kadar</th>
-																	<th data-field="Id|fm_price" data-sortable="true" data-formatter="hargalama">Harga Lama</th>
-																	<th data-field="Id" data-sortable="true" data-formatter="kondisi">Kondisi</th>
-																	<th data-field="Id" data-sortable="true" data-formatter="potongan">Potongan</th>
-																	<th data-field="Id" data-sortable="true" data-formatter="hargabeli">Harga Beli</th>
-																</tr>
-														</thead>
-												</table><br />
                                             </div>
-                                        </div>
-                                      
+                                            <div class="row">
+                                                <div class="col-xs-12">
+
+                                                    <table id="pembayaran_hutang_table_det" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc">
+                                                        <thead>
+                                                            <tr>
+                                                                <th data-formatter="runningFormatter" data-align="right">No.</th>
+                                                                <th data-field="Id|fc_kdstock" data-sortable="true" data-formatter="kodestok">Kode</th>
+                                                                <th data-field="fv_nmbarang" data-sortable="true">Uraian Barang</th>
+                                                                <th data-field="fn_berat|Id" data-sortable="true" data-formatter="berat">Berat</th>
+                                                                <th data-field="ff_kadar|Id" data-sortable="true" data-formatter="kadar">Kadar</th>
+                                                                <th data-field="Id|fm_price" data-sortable="true" data-formatter="hargalama">Harga Lama</th>
+                                                                <th data-field="Id" data-sortable="true" data-formatter="kondisi">Kondisi</th>
+                                                                <th data-field="Id" data-sortable="true" data-formatter="potongan">Potongan</th>
+                                                                <th data-field="Id" data-sortable="true" data-formatter="hargabeli">Harga Beli</th>
+                                                            </tr>
+                                                        </thead>
+                                                    </table><br />
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-3">
                                                 <div>
                                                     <!-- <button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#pilihbarang">
@@ -385,13 +387,13 @@
                                                     <div class="form-group row">
                                                         <label class="col-sm-2 col-form-label">Terbilang</label>
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" readonly placeholder=""  name="terbilang" id="terbilang">
+                                                            <input type="text" class="form-control" readonly placeholder="" name="terbilang" id="terbilang">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        <button type="submit" class="btn btn-primary ">Simpan</button>
-										</form>
+                                            <button type="submit" class="btn btn-primary ">Simpan</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -412,20 +414,20 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="col-md-12 center">
-                                               
-												<table id="pembayaran_hutang_table" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc">
-														<thead>
-																<tr>
-																	<th data-formatter="runningFormatter" data-align="right">No.</th>
-																	<th data-field="fc_noinv" data-sortable="true" >Faktur</th>
-																	<th data-field="tanggal"  data-sortable="true" >Tanggal</th>
-																	<th data-field="fv_nmpelanggan" data-sortable="true" >Pelanggan</th>
-																	<th data-field="fm_grandtotal"  data-sortable="true">Grand Total</th>
-																	<th data-field="fc_sts" data-sortable="true" data-formatter="get_status">Status</th>
-																	<th data-field="fc_noinv" data-formatter="actiondetail">Action</th>
-																</tr>
-														</thead>
-												</table>            
+
+                                                <table id="pembayaran_hutang_table" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc">
+                                                    <thead>
+                                                        <tr>
+                                                            <th data-formatter="runningFormatter" data-align="right">No.</th>
+                                                            <th data-field="fc_noinv" data-sortable="true">Faktur</th>
+                                                            <th data-field="tanggal" data-sortable="true">Tanggal</th>
+                                                            <th data-field="fv_nmpelanggan" data-sortable="true">Pelanggan</th>
+                                                            <th data-field="fm_grandtotal" data-sortable="true">Grand Total</th>
+                                                            <th data-field="fc_sts" data-sortable="true" data-formatter="get_status">Status</th>
+                                                            <th data-field="fc_noinv" data-formatter="actiondetail">Action</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -447,7 +449,7 @@
                                     <div class="row">
                                         <div class="col-xs-12">
                                             <div class="col-md-12">
-                                                <table class="table table-bordered">
+                                                <table id="mytable8" class="display">
                                                     <thead>
                                                         <tr>
                                                             <th class="center">
@@ -456,10 +458,10 @@
                                                             <th>
                                                                 Nama Pelanggan
                                                             </th>
-															<th>
-                                                               Alamat
+                                                            <th>
+                                                                Alamat
                                                             </th>
-															<th>
+                                                            <th>
                                                                 No Telp
                                                             </th>
                                                         </tr>
@@ -475,8 +477,8 @@
                                                                     </label>
                                                                 </td>
                                                                 <td><?= $p->fv_nmpelanggan ?> </td>
-																<td><?= $p->f_alamat ?> </td>
-																<td><?= $p->fc_telp ?> </td>
+                                                                <td><?= $p->f_alamat ?> </td>
+                                                                <td><?= $p->fc_telp ?> </td>
                                                             </tr>
                                                         <?php endforeach; ?>
                                                     </tbody>
@@ -577,7 +579,7 @@
                     <div class="col-xs-12">
                         <form>
                             <div class="col-md-12">
-                                <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
                                 <div class="center">
                                     <div class="table-responsive">
                                         <table class="table table-bordered" id="tableBarang" style="width: 100%">
@@ -628,21 +630,36 @@
 </div><!-- /.main-container -->
 <script>
     let dataBarang;
-	var table2;
-	function faktur(){
-		$('#tampilFaktur').modal('show');
-		$('#pembayaran_hutang_table').bootstrapTable('refresh', {url: '<?php echo base_url()?>C_pembelian/get_list_penjualan/'});
-		// var $pembayaran_hutang_table = $('#penjualan_table');
-        // $pembayaran_hutang_table.bootstrapTable('refresh', {
-        //     url: '<?php echo base_url()?>C_pembelian/get_list_penjualan/'
-        // });
-	}
+    var table2;
 
-	function myFunction() {
-		console.log('iki');
-	}
+
+
+    function faktur() {
+        $('#tampilFaktur').modal('show');
+        $('#pembayaran_hutang_table').bootstrapTable('refresh', {
+            url: '<?php echo base_url() ?>C_pembelian/get_list_penjualan/'
+        });
+        // var $pembayaran_hutang_table = $('#penjualan_table');
+        // $pembayaran_hutang_table.bootstrapTable('refresh', {
+        //     url: '<?php echo base_url() ?>C_pembelian/get_list_penjualan/'
+        // });
+    }
+
+    function myFunction() {
+        console.log('iki');
+    }
 
     $(document).ready(function() {
+        $('#pembayaran_hutang_table').DataTable({
+            "pageLength": 10,
+            "lengthChange": false
+        });
+        $('#mytable8').DataTable({
+            "pageLength": 10,
+            "lengthChange": false
+
+        });
+        table.destroy();
         // getDataBarang();
         // BarisBaru();
         //detail_barang();
@@ -684,31 +701,33 @@
                 $('#no_nota').val(invoice);
             }
         });
-	});
-	
-	function runningFormatter(value, row, index) {
-		return index + 1;
-	}
+    });
 
-	function get_status(value){
-		if(value=='1'){
-			return 'Terjual';
-		}
-	}
+    function runningFormatter(value, row, index) {
+        return index + 1;
+    }
 
-	function actiondetail(value, row, index){
-		return '<div class="btn-group" role="group" aria-label="..."><a href="#" onclick="detailnya( \''+row.fc_noinv+'\')" type="button" class="btn btn-primary"><span aria-hidden="true"></span>Pilih</a></div>';
-	}	
+    function get_status(value) {
+        if (value == '1') {
+            return 'Terjual';
+        }
+    }
 
-	function detailnya(fc_noinv){
-		$('#pembayaran_hutang_table_det').bootstrapTable('refresh', {url: '<?php echo base_url()?>C_pembelian/get_list_penjualan_det/'+fc_noinv});
+    function actiondetail(value, row, index) {
+        return '<div class="btn-group" role="group" aria-label="..."><a href="#" onclick="detailnya( \'' + row.fc_noinv + '\')" type="button" class="btn btn-primary"><span aria-hidden="true"></span>Pilih</a></div>';
+    }
+
+    function detailnya(fc_noinv) {
+        $('#pembayaran_hutang_table_det').bootstrapTable('refresh', {
+            url: '<?php echo base_url() ?>C_pembelian/get_list_penjualan_det/' + fc_noinv
+        });
         $.ajax({
             url: "<?php echo base_url('C_pembelian/tampil_faktur2/') ?>" + fc_noinv,
             type: "GET",
             dataType: "JSON",
             success: function(result) {
                 $('[name="fc_noinv_view"]').val(result.fc_noinv);
-				$('#invoice_penjualan').html('<b>No Pelanggan: </b>'+result.fc_kdpel+'<br />'+'<b>Pelanggan: </b>' + result.fv_nmpelanggan + '<br />' + '<b>Alamat: </b>' + result.f_alamat + '<br />' + '<b>No Telp: </b>' + result.fc_telp);
+                $('#invoice_penjualan').html('<b>No Pelanggan: </b>' + result.fc_kdpel + '<br />' + '<b>Pelanggan: </b>' + result.fv_nmpelanggan + '<br />' + '<b>Alamat: </b>' + result.f_alamat + '<br />' + '<b>No Telp: </b>' + result.fc_telp);
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -716,160 +735,159 @@
             }
         })
         $('#tampilFaktur').modal('hide');
-	}
-	
+    }
 
-	function hargalama(value, row, index){
-		return '<input type="text" class="form-control hargalama'+row.Id+'" value="'+row.fm_price+'" name="hargalama[]" id="hargalama" onkeyup="potongan_harga('+row.Id+')">';
-	}
 
-	function kondisi(value, row, index){
-		return '<input name="kondisi[]" type="text" class="form-control kondisi'+row.Id+'" value="" id_kondisi>';
-	}
+    function hargalama(value, row, index) {
+        return '<input type="text" class="form-control hargalama' + row.Id + '" value="' + row.fm_price + '" name="hargalama[]" id="hargalama" onkeyup="potongan_harga(' + row.Id + ')">';
+    }
 
-	function potongan(value, row, index){
-		return '<input name="potongan[]" type="text" class="form-control potongan'+row.Id+'" id="potongan" value="" onkeyup="potongan_harga('+row.Id+')">';
-	}
+    function kondisi(value, row, index) {
+        return '<input name="kondisi[]" type="text" class="form-control kondisi' + row.Id + '" value="" id_kondisi>';
+    }
 
-	function berat(value, row, index){
-		return '<input name="berat_emas[]" type="text" class="form-control berat_emas'+row.Id+'" value="'+row.fn_berat+'" >';
-	}
+    function potongan(value, row, index) {
+        return '<input name="potongan[]" type="text" class="form-control potongan' + row.Id + '" id="potongan" value="" onkeyup="potongan_harga(' + row.Id + ')">';
+    }
 
-	function kadar(value, row, index){
-		return '<input name="kadar_emas[]" type="text" class="form-control kadar_emas'+row.Id+'" value="'+row.ff_kadar+'" >';
-	}
+    function berat(value, row, index) {
+        return '<input name="berat_emas[]" type="text" class="form-control berat_emas' + row.Id + '" value="' + row.fn_berat + '" >';
+    }
 
-	function hargabeli(value, row, index){
-		return '<input name="hargabeli[]" type="text" class="form-control hargabeli'+row.Id+'" id="hargabeli" value="">';
-	}
+    function kadar(value, row, index) {
+        return '<input name="kadar_emas[]" type="text" class="form-control kadar_emas' + row.Id + '" value="' + row.ff_kadar + '" >';
+    }
 
-	function kodestok(value, row, index){
-		return ''+row.fc_kdstock+'<input name="kode_stok[]" type="hidden" class="form-control kode_stok'+row.Id+'" value="'+row.fc_kdstock+'" id="kode_stok"><input name="Id[]" type="hidden" class="form-control Id'+row.Id+'" value="'+row.Id+'" id="Idne">';
-	}
+    function hargabeli(value, row, index) {
+        return '<input name="hargabeli[]" type="text" class="form-control hargabeli' + row.Id + '" id="hargabeli" value="">';
+    }
 
-	function potongan_harga(Id){
-		var harga_lama = $(".hargalama"+Id).val();
-		console.log(harga_lama);
-		var potongan = $(".potongan"+Id).val();
-		console.log(potongan);
+    function kodestok(value, row, index) {
+        return '' + row.fc_kdstock + '<input name="kode_stok[]" type="hidden" class="form-control kode_stok' + row.Id + '" value="' + row.fc_kdstock + '" id="kode_stok"><input name="Id[]" type="hidden" class="form-control Id' + row.Id + '" value="' + row.Id + '" id="Idne">';
+    }
 
-		var harga_beli = parseInt(harga_lama)-parseInt(potongan);
-		console.log(harga_beli);
-		if (!isNaN(harga_beli)) {
-			$('.hargabeli'+Id).val(harga_beli);
-		}
-		var Total = 0;
-		var TotalPotongan = 0;
-        $('#pembayaran_hutang_table_det tbody tr').each(function(){
-          if($(this).find('td:nth-child(9) input').val() > 0)
-          {
-              var SubTotal = $(this).find('td:nth-child(9) input').val();
-              console.log('salah'+SubTotal);   
-              Total = parseInt(Total) + parseInt(SubTotal);
-              
-          } 
-		}); 
+    function potongan_harga(Id) {
+        var harga_lama = $(".hargalama" + Id).val();
+        console.log(harga_lama);
+        var potongan = $(".potongan" + Id).val();
+        console.log(potongan);
 
-		$('#pembayaran_hutang_table_det tbody tr').each(function() {
-			if ($(this).find('td:nth-child(8) input#potongan').val() > 0) {
-				var SubTotalPotongan = $(this).find('td:nth-child(8) input#potongan').val();
-				TotalPotongan = parseInt(TotalPotongan) + parseInt(SubTotalPotongan);
-			}
-		});
-		
-		$('#TotalBayar').val(Total);
-		$('#SubTotalBayar').val(Total);
+        var harga_beli = parseInt(harga_lama) - parseInt(potongan);
+        console.log(harga_beli);
+        if (!isNaN(harga_beli)) {
+            $('.hargabeli' + Id).val(harga_beli);
+        }
+        var Total = 0;
+        var TotalPotongan = 0;
+        $('#pembayaran_hutang_table_det tbody tr').each(function() {
+            if ($(this).find('td:nth-child(9) input').val() > 0) {
+                var SubTotal = $(this).find('td:nth-child(9) input').val();
+                console.log('salah' + SubTotal);
+                Total = parseInt(Total) + parseInt(SubTotal);
 
-		$('#TotalBayar2').val(Total);
-		$('#SubTotalBayar2').val(Total);
+            }
+        });
 
-		$('#TotalPotongan').val(TotalPotongan);
+        $('#pembayaran_hutang_table_det tbody tr').each(function() {
+            if ($(this).find('td:nth-child(8) input#potongan').val() > 0) {
+                var SubTotalPotongan = $(this).find('td:nth-child(8) input#potongan').val();
+                TotalPotongan = parseInt(TotalPotongan) + parseInt(SubTotalPotongan);
+            }
+        });
 
-		$('#terbilang').val(sayit(Total));
-	}
+        $('#TotalBayar').val(Total);
+        $('#SubTotalBayar').val(Total);
 
-	function to_rupiah(angka) {
-		var rev = parseInt(angka, 10).toString().split('').reverse().join('');
-		var rev2 = '';
-		for (var i = 0; i < rev.length; i++) {
-			rev2 += rev[i];
-			if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
-				rev2 += '.';
-			}
-		}
-		return rev2.split('').reverse().join('');
-	}
+        $('#TotalBayar2').val(Total);
+        $('#SubTotalBayar2').val(Total);
 
-	var thoudelim = ".";
-	var decdelim = ",";
-	var curr = "Rp ";
-	var d = document;
+        $('#TotalPotongan').val(TotalPotongan);
 
-	// format(1000000.5,3) : 1.000.000,500
-	// format(1000000.55555,3) : 1.000.000,556
+        $('#terbilang').val(sayit(Total));
+    }
 
-	function format(s, r) {
-		s = Math.round(s * Math.pow(10, r)) / Math.pow(10, r);
-		s = String(s);
-		s = s.split(".");
-		var l = s[0].length;
-		var t = "";
-		var c = 0;
-		while (l > 0) {
-			t = s[0][l - 1] + (c % 3 == 0 && c != 0 ? thoudelim : "") + t;
-			l--;
-			c++;
-		}
-		s[1] = s[1] == undefined ? "0" : s[1];
-		for (i = s[1].length; i < r; i++) {
-			s[1] += "0";
-		}
-		return curr + t + decdelim + s[1];
-	}
+    function to_rupiah(angka) {
+        var rev = parseInt(angka, 10).toString().split('').reverse().join('');
+        var rev2 = '';
+        for (var i = 0; i < rev.length; i++) {
+            rev2 += rev[i];
+            if ((i + 1) % 3 === 0 && i !== (rev.length - 1)) {
+                rev2 += '.';
+            }
+        }
+        return rev2.split('').reverse().join('');
+    }
 
-	function threedigit(word) {
-		eja = Array("Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan");
-		while (word.length < 3) word = "0" + word;
-		word = word.split("");
-		a = word[0];
-		b = word[1];
-		c = word[2];
-		word = "";
-		word += (a != "0" ? (a != "1" ? eja[parseInt(a)] : "Se") : "") + (a != "0" ? (a != "1" ? " Ratus" : "ratus") : "");
-		word += " " + (b != "0" ? (b != "1" ? eja[parseInt(b)] : "Se") : "") + (b != "0" ? (b != "1" ? " Puluh" : "puluh") : "");
-		word += " " + (c != "0" ? eja[parseInt(c)] : "");
-		word = word.replace(/Sepuluh ([^ ]+)/gi, "$1 Belas");
-		word = word.replace(/Satu Belas/gi, "Sebelas");
-		word = word.replace(/^[ ]+$/gi, "");
+    var thoudelim = ".";
+    var decdelim = ",";
+    var curr = "Rp ";
+    var d = document;
 
-		return word;
-	}
+    // format(1000000.5,3) : 1.000.000,500
+    // format(1000000.55555,3) : 1.000.000,556
 
-	function sayit(s) {
-		var thousand = Array("", "Ribu", "Juta", "Milyar", "Trilyun");
-		s = Math.round(s * Math.pow(10, 2)) / Math.pow(10, 2);
-		s = String(s);
-		s = s.split(".");
-		var word = s[0];
-		var cent = s[1] ? s[1] : "0";
-		if (cent.length < 2) cent += "0";
+    function format(s, r) {
+        s = Math.round(s * Math.pow(10, r)) / Math.pow(10, r);
+        s = String(s);
+        s = s.split(".");
+        var l = s[0].length;
+        var t = "";
+        var c = 0;
+        while (l > 0) {
+            t = s[0][l - 1] + (c % 3 == 0 && c != 0 ? thoudelim : "") + t;
+            l--;
+            c++;
+        }
+        s[1] = s[1] == undefined ? "0" : s[1];
+        for (i = s[1].length; i < r; i++) {
+            s[1] += "0";
+        }
+        return curr + t + decdelim + s[1];
+    }
 
-		var subword = "";
-		i = 0;
-		while (word.length > 3) {
-			subdigit = threedigit(word.substr(word.length - 3, 3));
-			subword = subdigit + (subdigit != "" ? " " + thousand[i] + " " : "") + subword;
-			word = word.substring(0, word.length - 3);
-			i++;
-		}
-		subword = threedigit(word) + " " + thousand[i] + " " + subword;
-		subword = subword.replace(/^ +$/gi, "");
+    function threedigit(word) {
+        eja = Array("Nol", "Satu", "Dua", "Tiga", "Empat", "Lima", "Enam", "Tujuh", "Delapan", "Sembilan");
+        while (word.length < 3) word = "0" + word;
+        word = word.split("");
+        a = word[0];
+        b = word[1];
+        c = word[2];
+        word = "";
+        word += (a != "0" ? (a != "1" ? eja[parseInt(a)] : "Se") : "") + (a != "0" ? (a != "1" ? " Ratus" : "ratus") : "");
+        word += " " + (b != "0" ? (b != "1" ? eja[parseInt(b)] : "Se") : "") + (b != "0" ? (b != "1" ? " Puluh" : "puluh") : "");
+        word += " " + (c != "0" ? eja[parseInt(c)] : "");
+        word = word.replace(/Sepuluh ([^ ]+)/gi, "$1 Belas");
+        word = word.replace(/Satu Belas/gi, "Sebelas");
+        word = word.replace(/^[ ]+$/gi, "");
 
-		word = (subword == "" ? "NOL" : subword.toUpperCase()) + " RUPIAH";
-		subword = threedigit(cent);
-		cent = (subword == "" ? "" : " ") + subword.toUpperCase() + (subword == "" ? "" : " SEN");
-		return word + cent;
-	}
+        return word;
+    }
+
+    function sayit(s) {
+        var thousand = Array("", "Ribu", "Juta", "Milyar", "Trilyun");
+        s = Math.round(s * Math.pow(10, 2)) / Math.pow(10, 2);
+        s = String(s);
+        s = s.split(".");
+        var word = s[0];
+        var cent = s[1] ? s[1] : "0";
+        if (cent.length < 2) cent += "0";
+
+        var subword = "";
+        i = 0;
+        while (word.length > 3) {
+            subdigit = threedigit(word.substr(word.length - 3, 3));
+            subword = subdigit + (subdigit != "" ? " " + thousand[i] + " " : "") + subword;
+            word = word.substring(0, word.length - 3);
+            i++;
+        }
+        subword = threedigit(word) + " " + thousand[i] + " " + subword;
+        subword = subword.replace(/^ +$/gi, "");
+
+        word = (subword == "" ? "NOL" : subword.toUpperCase()) + " RUPIAH";
+        subword = threedigit(cent);
+        cent = (subword == "" ? "" : " ") + subword.toUpperCase() + (subword == "" ? "" : " SEN");
+        return word + cent;
+    }
 
     $(".check").on("click", function() {
         if ($(".check:checked").length < 2) {
@@ -1048,14 +1066,14 @@
     });
 
 
-    var table = document.getElementById("data-table"),
-        sumHsl = 0;
-    for (var t = 1; t < table.rows.length; t++) {
-        sumHsl = sumHsl + parseInt(table.rows[t].cells[5].innerHTML);
+    // var table = document.getElementById("data-table"),
+    //     sumHsl = 0;
+    // for (var t = 1; t < table.rows.length; t++) {
+    //     sumHsl = sumHsl + parseInt(table.rows[t].cells[5].innerHTML);
 
-    }
-    document.getElementById("hasil").innerHTML = sumHsl;
-    console.log(sumHsl);
+    // }
+    // document.getElementById("hasil").innerHTML = sumHsl;
+    // console.log(sumHsl);
 
     function sum() {
         var txtFirstNumberValue = document.getElementsById('fm_hargajual').value;
@@ -1067,6 +1085,13 @@
     }
 
     $('#save')
+
+    $(document).ready(function() {
+
+    })
+    // $(document).ready(function() {
+
+    // })
 </script>
 
 <?php $this->load->view('partials/footer.php') ?>
