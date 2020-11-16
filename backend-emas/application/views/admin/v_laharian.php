@@ -275,7 +275,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             <thead>
                                 <tr class="titlerow">
                                     <th rowspan="2">Jenis</th>
-                                    <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                    <th class="center" colspan="2" scope="colgroup">Belum Laku</th>
                                     <th class="center" colspan="2" scope="colgroup">Laku</th>
                                     <th class="center" colspan="2" scope="colgroup">Diambil</th>
                                     <th class="center" colspan="2" scope="colgroup">Tambahan</th>
@@ -496,7 +496,7 @@ $koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
                             <thead>
                                 <tr class="titlerow">
                                     <th rowspan="2">Jenis</th>
-                                    <th class="center" colspan="2" scope="colgroup">Kemarin</th>
+                                    <th class="center" colspan="2" scope="colgroup">Belum Laku</th>
                                     <th class="center" colspan="2" scope="colgroup">Laku</th>
                                     <th class="center" colspan="2" scope="colgroup">Diambil</th>
                                     <th class="center" colspan="2" scope="colgroup">Tambahan</th>
