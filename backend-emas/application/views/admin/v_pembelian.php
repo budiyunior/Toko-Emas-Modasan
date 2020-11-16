@@ -655,12 +655,7 @@
         //     "lengthChange": false
 
         // });
-        $('#mytable8').DataTable({
-            "pageLength": 10,
-            "lengthChange": false
 
-        });
-        table.destroy();
         // getDataBarang();
         // BarisBaru();
         //detail_barang();
@@ -703,6 +698,7 @@
             }
         });
     });
+
 
     function runningFormatter(value, row, index) {
         return index + 1;
@@ -1087,12 +1083,22 @@
 
     $('#save')
 
-    $(document).ready(function() {
 
-    })
+
     // $(document).ready(function() {
 
     // })
+</script>
+<script>
+    $(document).ready(function() {
+
+        $('#mytable8').DataTable({
+            "pageLength": 10,
+            "lengthChange": false
+
+        });
+        table.destroy();
+    })
 </script>
 
 <?php $this->load->view('partials/footer.php') ?>
