@@ -415,7 +415,7 @@
                                         <div class="col-xs-12">
                                             <div class="col-md-12 center">
 
-                                                <table id="pembayaran_hutang_table" class="display" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc">
+                                                <table id="pembayaran_hutang_table" class="tabelfaktur" data-toggle="table" data-select-item-name="toolbar1" data-sort-name="id_jurnal" data-sort-order="desc" data-pagination="true" data-search="true">
                                                     <thead>
                                                         <tr>
                                                             <th data-formatter="runningFormatter" data-align="right">No.</th>
@@ -650,11 +650,11 @@
     }
 
     $(document).ready(function() {
-        $('#pembayaran_hutang_table').DataTable({
-            "pageLength": 10,
-            "lengthChange": false
+        // $('#pembayaran_hutang_table').DataTable({
+        //     "pageLength": 10,
+        //     "lengthChange": false
 
-        });
+        // });
         $('#mytable8').DataTable({
             "pageLength": 10,
             "lengthChange": false
