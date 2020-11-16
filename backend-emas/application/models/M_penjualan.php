@@ -52,6 +52,7 @@ class M_penjualan extends CI_Model
 		$this->db->from('tm_stock');
 		$this->db->join('tm_lokasi', 'tm_stock.fc_kdlokasi=tm_lokasi.fc_kdlokasi', 'left outer');
 		$this->db->join('tm_kelompok', 'tm_stock.fc_kdkelompok=tm_kelompok.fc_kdkelompok', 'left outer');
+		$this->db->where('fc_kondisi', 0);
 		$this->db->where('fc_sts', 1);
 
 		$barang = $this->db->get();
