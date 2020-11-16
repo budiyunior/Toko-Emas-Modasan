@@ -182,14 +182,14 @@ class C_pembelian extends CI_Controller
 
             $id_pembelian_detail = $this->M_pembelian->insertdata_detail($data_detail_pembelian);
 
-		
-		$data1 = array('fc_sts' => '2');
-		$this->M_pembelian->update_status($data1,array('fc_noinv' => $this->input->post('no_faktur_penjualan')));
-		
-        // echo "<script>
-		// alert('Transaksi berhasil di simpan !!');
-		// window.history.back();
-		// </script>";
+
+            $data1 = array('fc_sts' => '2');
+            $this->M_pembelian->update_status($data1, array('fc_noinv' => $this->input->post('no_faktur_penjualan')));
+
+            // echo "<script>
+            // alert('Transaksi berhasil di simpan !!');
+            // window.history.back();
+            // </script>";
         }
         redirect('C_pembelian/cetak_nota/' . $this->input->post('no_faktur_penjualan'));
     }
