@@ -1,7 +1,5 @@
 <?php $this->load->view('partials/header.php') ?>
-<?php
-$koneksi =  mysqli_connect("localhost", "root", "", "tokoemas");
-?>
+
 
 
 <!-- /section:basics/sidebar.horizontal -->
