@@ -5,7 +5,7 @@
 <!-- <script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script> -->
 
 <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
-<script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script>
+<!-- <script type="text/javascript" src=" https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js "></script> -->
 
 <div id="navbar" class="navbar navbar-default    navbar-collapse       h-navbar">
     <script type="text/javascript">
@@ -493,9 +493,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 center">
+                                            <!-- <div class="col-md-4 center">
                                                 <div id="camBox" style="width:100%;height:100%;">
-                                                    <!--POPUP DIALOG BOX TO SHOW LIVE WEBCAM.-->
+                                                  
                                                     <div class="revdivshowimg" style="top:20%;text-align:center;margin:0 auto;">
                                                         <div id="camera" style="height:auto;text-align:center;margin:0 auto;"></div>
                                                         <p>
@@ -509,7 +509,7 @@
                                                     <div style="margin-bottom: 10px;" id="div_alpha"></div>
                                                     <input type="button" value="Cam" class="btn btn-primary" id="alpha" onclick="takeSnapshot(this)">
                                                 </div>
-                                            </div>
+                                            </div> -->
                                         </div>
                                         <div class="modal-footer">
                                             <div class="row">
