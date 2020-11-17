@@ -11,7 +11,13 @@ class C_pengaturan extends CI_Controller
         $this->load->helper('form');
 		$this->load->model('M_menu');
 		$this->load->model('M_barang');
-        $this->load->model('M_pengaturan');
+		$this->load->model('M_pengaturan');
+		if (empty($this->session->userdata('fv_username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('C_login') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index($kode=null)

@@ -10,6 +10,12 @@ class C_home extends CI_Controller
         $this->load->helper('url');
         $this->load->helper('form');
         $this->load->model('M_menu');
+        if (empty($this->session->userdata('fv_username'))) {
+            echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '" . base_url('C_login') . "';
+            </script>"; //Url tujuan
+        }
     }
 
     public function index()

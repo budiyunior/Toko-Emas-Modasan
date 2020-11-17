@@ -3,6 +3,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class C_Login extends CI_Controller
 {
+    function __construct(){
+		parent::__construct();		
+		//$this->load->model('M_login');
+		$this->load->helper(array('url'));
+		// if($this->session->userdata('status') == "admin"){
+		// 	echo "<script>
+        //         alert('Anda sudah login');
+        //         window.location.href = '".base_url('C_login')."';
+        //     </script>";//Url tujuan
+		// }
+	}
 
     public function index()
     {
@@ -83,6 +94,7 @@ class C_Login extends CI_Controller
                 $data = [
                     'fv_username' => $admin['fv_username'],
                     'fc_userid' => $admin['fc_userid'],
+                    'status' => 'admin',
                     //'foto' => $pengguna['foto']
 				];
 				print_r($data);
@@ -106,7 +118,7 @@ class C_Login extends CI_Controller
 
     public function logout()
     {
-        $this->session->unset_userdata('username');
+        $this->session->sess_destroy();
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah logout</div>');
         redirect('C_login');
     }

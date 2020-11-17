@@ -12,6 +12,12 @@ class C_barang extends CI_Controller
         $this->load->model('M_menu');
         $this->load->model('M_barang');
         $this->load->library('pagination');
+        if(empty($this->session->userdata('fv_username'))){
+			echo "<script>
+                alert('Anda harus login terlebih dahulu');
+                window.location.href = '".base_url('C_login')."';
+            </script>";//Url tujuan
+		}
     }
 
     public function index()
