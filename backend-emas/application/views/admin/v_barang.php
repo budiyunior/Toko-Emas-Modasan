@@ -225,12 +225,18 @@
                             <label>Kadar</label>
                             <select class="form-control" id="kadar" name="fc_kadar">
                                 <option value="">--Pilih--</option>
-                                <option value="40" <?php if ($tkd == "40") {
+                                <option value="375" <?php if ($tkd == "375") {
                                                         echo "selected=\"selected\"";
-                                                    } ?>>40%</option>
-                                <option value="70" <?php if ($tkd == "70") {
+                                                    } ?>>375%</option>
+                                <option value="420" <?php if ($tkd == "420") {
                                                         echo "selected=\"selected\"";
-                                                    } ?>>70%</option>
+                                                    } ?>>420%</option>
+                                <option value="700" <?php if ($tkd == "700") {
+                                                        echo "selected=\"selected\"";
+                                                    } ?>>700%</option>
+                                <option value="99.9" <?php if ($tkd == "99.9") {
+                                                            echo "selected=\"selected\"";
+                                                        } ?>>99.9%</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -360,7 +366,7 @@
                                 <?php } ?>
                             </div>
                             <?= form_close(); ?>
-                            
+
                         </div>
                     </div>
                     <!-- modal tambah -->
@@ -452,8 +458,10 @@
                                                     <div class="col-sm-7">
                                                         <select class="form-control" name="fc_kadar" id="fc_kadar">
                                                             <option value="">Pilih </option>
-                                                            <option value="40">40</option>
-                                                            <option value="70">70</option>
+                                                            <option value="375">375</option>
+                                                            <option value="420">420</option>
+                                                            <option value="700">700</option>
+                                                            <option value="99.9">99.9</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -715,9 +723,11 @@
                                         <label for="" class="col-sm-3 col-form-label">Kadar</label>
                                         <div class="col-sm-7">
                                             <select class="form-control" required name="fc_kadar_edit">
-                                                <option>Pilih </option>
-                                                <option value="40">40</option>
-                                                <option value="70">70</option>
+                                                <option value="">Pilih </option>
+                                                <option value="375">375</option>
+                                                <option value="420">420</option>
+                                                <option value="700">700</option>
+                                                <option value="99.9">99.9</option>
                                             </select>
                                         </div>
                                     </div>

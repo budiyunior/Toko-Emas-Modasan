@@ -26,12 +26,19 @@ class M_barang extends CI_Model
 
     public function get_barang_all()
     {
+
         $this->db->select('tm_stock.fn_id, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
-        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
-        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
-        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
-        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
+
+        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales', 'left outer');
+
+        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok', 'left outer');
+
+        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi', 'left outer');
+
+        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid', 'left outer');
+
         $this->db->where('fc_kondisi', 0);
+
         $query = $this->db->get();
         return $query->result();
     }
@@ -88,14 +95,21 @@ class M_barang extends CI_Model
 
     public function list_barang($limit, $start)
     {
-        $this->db->select('*');
-        //$this->db->from('tm_stock');
-        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
-        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
-        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
-        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
+
+        $this->db->select('tm_stock.fn_id, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
+
+        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales', 'left outer');
+
+        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok', 'left outer');
+
+        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi', 'left outer');
+
+        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid', 'left outer');
+
         $this->db->where('fc_kondisi', 0);
-        $query = $this->db->get('', $limit, $start);
+
+        $query = $this->db->get();
+
         return $query->result();
     }
 
@@ -394,16 +408,24 @@ class M_barang extends CI_Model
         $this->db->delete('tm_lokasi');
     }
 
-    public function filterdata($kadar = null, $kelompok = null, $lokasi = null, $limit, $start)
+    public function filterdata($kadar = null, $kelompok = null, $lokasi = null)
     {
 
         $this->db->select('tm_stock.fn_id, tm_stock.fc_kdkelompok, tm_stock.fc_kdlokasi, tm_stock.fc_salesid, tm_stock.fc_kdstock, tm_stock.fv_nmbarang, tm_kelompok.fv_nmkelompok, tm_lokasi.fv_nmlokasi, tm_stock.ff_berat, tm_stock.fc_kadar, tm_stock.fm_hargabeli, t_sales.fv_nama, tm_stock.fc_sts, tm_stock.fd_date');
         //$this->db->select_sum('ff_berat');
         //$this->db->from('tm_stock');
-        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales');
-        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok');
-        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi');
-        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid');
+
+
+
+        $this->db->from('tm_stock', 'tm_kelompok', 'tm_lokasi', 't_sales', 'left outer');
+
+        $this->db->join('tm_kelompok', 'tm_kelompok.fc_kdkelompok = tm_stock.fc_kdkelompok', 'left outer');
+
+        $this->db->join('tm_lokasi', 'tm_lokasi.fc_kdlokasi = tm_stock.fc_kdlokasi', 'left outer');
+
+        $this->db->join('t_sales', 't_sales.fc_salesid = tm_stock.fc_salesid', 'left outer');
+
+
         if ($kadar != "") {
             $this->db->where('fc_kadar', $kadar);
         }
@@ -422,7 +444,7 @@ class M_barang extends CI_Model
         // $this->db->where('fc_kondisi', 0);
         // $this->db->or_like('fc_kdlokasi', $lokasi);
         // $this->db->where('fc_kondisi', 0);
-        return $this->db->get('', $limit, $start)->result();
+        return $this->db->get()->result();
     }
 
     public function jmlberat($kadar = null, $kelompok = null, $lokasi = null)
