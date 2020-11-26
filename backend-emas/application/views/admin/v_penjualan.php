@@ -649,6 +649,7 @@
 	$(document).ready(function() {
 		getDataBarang();
 		BarisBaru();
+		gambarbaru()
 		//detail_barang();
 		$('html, body').animate({
 			scrollTop: 0
@@ -811,6 +812,15 @@
 			$(this).find('td:nth-child(2) input').focus();
 		});
 	}
+
+	$(document).ready(function() {
+		$("#btn1").click(function() {
+			$("p").append(" <b>Appended text</b>.");
+		});
+		$("#btn2").click(function() {
+			$("ol").append("<li>Appended item</li>");
+		});
+	});
 
 	function getDataBarang() {
 		$.ajax({
