@@ -340,9 +340,9 @@
 												<div class="col-xs-12">
 													<div class="col-md-3">
 														<div>
-															<!-- <button type="button" class="btn-sm btn-primary" dayableta-toggle="modal" data-target="#pilihbarang">
-                                                                <i class="ace-icon glyphicon glyphicon-plus"> Baris Baru</i>
-                                                            </button> -->
+															<div id="foto">
+
+															</div>
 															<button type="button" class="btn-sm btn-primary" id="BarisBaru">
 																<i class="ace-icon glyphicon glyphicon-plus"> Baris Baru</i>
 															</button>
@@ -727,7 +727,7 @@
 		// Baris += '<span></span>';
 		// Baris += "</td>";
 		// 5
-		Baris += "<td><input type='text' name='ongkoskirim[]' id='ongkoskirim' class='form-control ongkos_kirim" + Nomor + "' readonly></td>";
+		Baris += "<td><input type='number' name='ongkoskirim[]' id='ongkoskirim' class='form-control ongkos_kirim" + Nomor + "'></td>";
 
 		//6
 		Baris += "<td><input type='number' name='diskon[]' id='diskon' class='form-control diskon" + Nomor + "'></td>";
@@ -743,6 +743,7 @@
 
 		Baris += "<td><button  class='btn btn-danger' id='HapusBaris'><i class='fa fa-times' style='color:white;'></i></button></td>";
 		Baris += "</tr>";
+		Baris += "<td><img src='' id='' ></td>";
 
 		$('#tableTransaksi').append(Baris);
 		// Fokus Input
@@ -1032,7 +1033,7 @@
 		var Berat_emas = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#berat_emas').val();
 		var Ongkir = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(7) input#ongkoskirim').val();
 		var Harga_emas = $(this).val();
-		var Diskon = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(8) input#diskon').val();;
+		var Diskon = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(8) input#diskon').val();
 
 		var SubTotal = parseFloat(Berat_emas) * parseInt(Harga_emas);
 		if (SubTotal > 0) {
@@ -1051,11 +1052,41 @@
 			SubTotal2 = '';
 			var SubTotalVal2 = 0;
 		}
-
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(SubTotalVal2);
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(SubTotal);
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal));
 		HitungTotalBayar();
 	});
+
+	$(document).on('keyup', '#ongkoskirim', function() {
+		var Indexnya = $(this).parent().parent().index();
+		var Berat_emas = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#berat_emas').val();
+		// var Ongkir = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(7) input#ongkoskirim').val();
+		var Harga_emas = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(6) input#harga_pergram').val();
+		var Ongkir = $(this).val();
+		var Diskon = $('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(8) input#diskon').val();
+
+		var SubTotal = (parseFloat(Berat_emas) * parseInt(Harga_emas)) + (parseInt(Ongkir));
+		if (SubTotal > 0) {
+			var SubTotalVal = SubTotal;
+			SubTotal = to_rupiah(SubTotal);
+		} else {
+			SubTotal = '';
+			var SubTotalVal = 0;
+		}
+
+		var SubTotal2 = (parseFloat(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir)) - (parseInt(Diskon));
+		if (SubTotal2 > 0) {
+			var SubTotalVal2 = SubTotal2;
+			SubTotal2 = to_rupiah(SubTotal2);
+		} else {
+			SubTotal2 = '';
+			var SubTotalVal2 = 0;
+		}
+
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal));
+		HitungTotalBayar();
+	})
 
 	$(document).on('keyup', '#diskon', function() {
 		var Indexnya = $(this).parent().parent().index();
@@ -1083,10 +1114,11 @@
 			var SubTotalVal2 = 0;
 		}
 
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(SubTotalVal2);
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(SubTotal);
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2+'000'));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal+'000'));
 		HitungTotalBayar();
 	})
+
 
 	function HitungTotalBayar() {
 		var Total = 0;

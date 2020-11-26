@@ -11,18 +11,6 @@ class M_pelanggan extends CI_Model
         return $query;
     }
 
-    // public function get_pelanggan()
-    // {
-    //     return $this->db->get($this->tabel)->result();
-    // }
-
-    // public function get()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('tm_pelanggan');
-    //     $query = $this->db->get()->result();
-    //     return $query;
-    // }
 
     public function save_pelanggan()
     {
