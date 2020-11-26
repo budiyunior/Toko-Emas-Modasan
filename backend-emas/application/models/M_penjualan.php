@@ -4,16 +4,28 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class M_penjualan extends CI_Model
 {
 	private $tbpelanggan = "tm_pelanggan";
+	private $tbsales = "tm_sales";
 
 	function get_pelanggan()
 	{
 		return $this->db->get($this->tbpelanggan)->result();
 	}
 
+	function get_sales()
+	{
+		return $this->db->get('t_sales')->result();
+	}
+
 	public function get_by_id($id)
 	{
 		$this->db->where('fc_kdpel', $id);
 		return $this->db->get('tm_pelanggan')->row();
+	}
+
+	public function get_by_sales($id)
+	{
+		$this->db->where('fc_salesid', $id);
+		return $this->db->get('t_sales')->row();
 	}
 
 	public function get_by_barang($id)
@@ -91,10 +103,7 @@ class M_penjualan extends CI_Model
 		return $this->db->query('SELECT fc_noinv AS maxs FROM tm_invoice order by fc_noinv desc limit 1 ');
 	}
 
-	function get_sales()
-	{
-		return $this->db->get('t_sales')->result();
-	}
+	
 
 	function insert($where)
 	{

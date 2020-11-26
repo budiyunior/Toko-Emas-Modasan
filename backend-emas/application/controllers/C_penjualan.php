@@ -68,6 +68,12 @@ class C_penjualan extends CI_Controller
         echo json_encode($data);
     }
 
+    public function tampil_sales($id)
+    {
+        $data = $this->M_penjualan->get_by_sales($id);
+        echo json_encode($data);
+    }
+
     public function tampil_barang($id)
     {
         $data = $this->M_penjualan->get_by_barang($id);
@@ -159,7 +165,7 @@ class C_penjualan extends CI_Controller
             'fd_tglinv'        => $this->input->post('fd_tgliv'),
             'fd_tglinput'                  => date('Y-m-d'), //$this->input->post('tanggal_penjualan'), 
             'fc_kdpel'                  => $this->input->post('fc_kdpel_view'),
-            'fc_salesid'             => $this->input->post('fc_salesid'),
+            'fc_salesid'             => $this->input->post('fc_salesid_view'),
             'fc_userid'               => '1',
             'fc_ppn'           => 0,
             'fc_sts'               => '1',

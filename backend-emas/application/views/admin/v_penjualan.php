@@ -283,14 +283,23 @@
 															</div>
 														</div>
 														<div class="form-group row">
-															<label for="inputPassword" class="col-sm-4 col-form-label">Sales</label>
-															<div class="col-sm-8">
-																<select class="form-control" name="fc_salesid">
-																	<?php foreach ($sales as $s) { ?>
-																		<option value='<?php echo $s->fc_salesid ?>'><?php echo $s->fv_nama ?></option>
-																	<?php } ?>
-																</select>
+															<label for="inputPassword" class="col-sm-2 col-form-label">Sales</label>
+															<!-- <div class="col-sm-8"> -->
+															<div class="col-sm-2">
+																<input type="hidden" class="form-control pull-right" id="inputPassword" name="fc_salesid_view" placeholder="Kode">
 															</div>
+															<div class="col-sm-5">
+																<!-- <input type="text" class="form-control" id="inputPassword" name="fv_nmpelanggan_view" placeholder="Nama"> -->
+																<span id='nama_sales'></span>
+															</div>
+															<div class="col-sm-3">
+																<div class="col-sm-6">
+																	<button type="button" class="btn-sm btn-primary" data-toggle="modal" data-target="#carisales">
+																		<i class=" ace-icon glyphicon glyphicon-search"></i>
+																	</button>
+																</div>
+															</div>
+															<!-- </div> -->
 														</div>
 														<div class="form-group row">
 															<label for="inputPassword" class="col-sm-2 col-form-label">Pelanggan</label>
@@ -464,6 +473,58 @@
 							<!-- PAGE CONTENT ENDS -->
 						</div>
 
+
+						<div class="modal fade" id="carisales" tabindex="-1">
+							<div class="modal-dialog ">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLabel">Cari Sales</h5>
+									</div>
+									<div class="modal-body">
+										<div class="row">
+											<div class="col-xs-12">
+												<div class="col-md-12">
+													<table id="myTable2" class="display">
+														<thead>
+															<tr>
+																<th class="center">
+																	Ceklist
+																</th>
+																<th>
+																	Nama Sales
+																</th>
+
+															</tr>
+														</thead>
+														<tbody>
+															<?php $i = 1;
+															foreach ($sales as $s) : ?>
+																<tr>
+																	<td class="center">
+																		<label class="pos-rel check-sales">
+																			<input type="checkbox" class="check-sales" value="<?= $s->fc_salesid ?>" />
+																			<span class="lbl"></span>
+																		</label>
+																	</td>
+																	<td><?= $s->fv_nama ?> </td>
+																</tr>
+															<?php endforeach; ?>
+														</tbody>
+													</table>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-2" style="margin-top: 5px;">
+												<button type="button" data-dismiss="modal" class="btn btn-primary action-select-sales">Pilih</button>
+
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 						<div class="modal fade" id="caripelanggan" tabindex="-1">
 							<div class="modal-dialog ">
 								<div class="modal-content">
@@ -514,7 +575,7 @@
 										<div class="row">
 											<div class="col-md-2" style="margin-top: 5px;">
 												<button type="button" data-dismiss="modal" class="btn btn-primary action-select">Pilih</button>
-												<!-- <button type="button" class="btn btn-primary action-select">Pilih</button> -->
+
 											</div>
 										</div>
 									</div>
@@ -1255,6 +1316,14 @@
 		}
 	});
 
+	$(".check-sales").on("click", function() {
+		if ($(".check-sales:checked").length < 2) {
+			$('.action-select-sales').prop('disabled', false);
+		} else {
+			$('.action-select-sales').prop('disabled', true);
+		}
+	});
+
 	$(window).click(function() {
 		var Indexnya = $(this).parent().parent().index();
 		$('.hasil_pencarian').hide();
@@ -1316,6 +1385,27 @@
 				//$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
 				$('[name="fc_kdpel_view"]').val(result.fc_kdpel);
 				$('[name="f_alamat_view"]').val(result.f_alamat);
+			},
+			error: function(jqXHR, textStatus, errorThrown) {
+				alert('Data Eror');
+			}
+		})
+	});
+
+	$('.action-select-sales').click(function(e) {
+		e.preventDefault();
+		var arr = [];
+		var checkedValue = $(".check-sales:checked").val();
+		console.log('checked', checkedValue);
+		$('#tampilPenjualan').modal('show');
+		$.ajax({
+			url: "<?php echo base_url('C_penjualan/tampil_sales/') ?>" + checkedValue,
+			type: "GET",
+			dataType: "JSON",
+			success: function(result) {
+				$('#nama_sales').html('<b>Nama: </b>' + result.fv_nama);
+				//$('[id="fv_nmpelanggan_view"]').val(result.fv_nmpelanggan);
+				$('[name="fc_salesid_view"]').val(result.fc_salesid);
 			},
 			error: function(jqXHR, textStatus, errorThrown) {
 				alert('Data Eror');
@@ -1449,6 +1539,13 @@
 
 	$(document).ready(function() {
 		$('#myTable').DataTable({
+			"pageLength": 10,
+			"lengthChange": false
+		});
+	})
+
+	$(document).ready(function() {
+		$('#myTable2').DataTable({
 			"pageLength": 10,
 			"lengthChange": false
 		});
