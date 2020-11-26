@@ -295,8 +295,8 @@
                                         <th scope="col">Lokasi</th>
                                         <th scope="col">Berat Gram</th>
                                         <th scope="col">Kadar %</th>
-                                        <th scope="col">Harga Beli</th>
-                                        <th scope="col">Sales</th>
+                                        <!-- <th scope="col">Harga Beli</th> -->
+                                        <!-- <th scope="col">Sales</th> -->
                                         <th scope="col">Status</th>
                                         <th scope="col">Tanggal</th>
                                     </tr>
@@ -316,8 +316,8 @@
                                             <td scope="row"><?= $s->fv_nmlokasi ?></td>
                                             <td scope="row"><?= $s->ff_berat ?></td>
                                             <td scope="row"><?= $s->fc_kadar ?></td>
-                                            <td scope="row">Rp. <?= number_format($s->fm_hargabeli) ?></td>
-                                            <td scope="row"><?= $s->fv_nama ?></td>
+                                            <!-- <td scope="row">Rp. <?= number_format($s->fm_hargabeli) ?></td> -->
+                                            <!-- <td scope="row"><?= $s->fv_nama ?></td> -->
                                             <td scope="row"><?= $s->fc_sts ?></td>
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
@@ -333,8 +333,8 @@
                                         <th></th>
                                         <th class="center"><?= round($jmlberat->ff_berat, 3) ?> Gram</th>
                                         <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        <!-- <th></th> -->
+                                        <!-- <th></th> -->
                                         <th></th>
                                         <th></th>
                                     </tr>
@@ -426,7 +426,7 @@
                                                         <i class="fa fa-search-plus"></i>
                                                     </button>
                                                 </div>
-                                                <div class="form-group row">
+                                                <!-- <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Sales</label>
                                                     <div class="col-sm-7">
                                                         <select class="form-control" name="fc_salesid" id="fc_salesidne">
@@ -437,10 +437,7 @@
                                                             <?php endforeach; ?>
                                                         </select>
                                                     </div>
-                                                    <!-- <button class="btn btn-primary btn-sm" style="margin-top: 5px;" data-toggle="modal" data-target="#sales">
-                                                        <i class="fa fa-search-plus"></i>
-                                                    </button> -->
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Ongkos</label>
                                                     <div class="col-sm-7">
@@ -465,7 +462,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row">
+                                                <!-- <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Harga Beli</label>
                                                     <div class="col-sm-7">
                                                         <input type="text" name="fm_hargabeli" id="fm_hargabeli" class="form-control" placeholder="Harga Beli">
@@ -476,7 +473,7 @@
                                                     <div class="col-sm-7">
                                                         <input type="text" name="fm_hargajual" id="fm_hargajual" class="form-control" placeholder="Harga Jual">
                                                     </div>
-                                                </div>
+                                                </div> -->
                                                 <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Foto</label>
                                                     <div class="col-sm-7 custome-file">
