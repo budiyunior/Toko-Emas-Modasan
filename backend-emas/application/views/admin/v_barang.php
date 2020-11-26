@@ -297,7 +297,7 @@
                                         <th scope="col">Kadar %</th>
                                         <!-- <th scope="col">Harga Beli</th> -->
                                         <!-- <th scope="col">Sales</th> -->
-                                        <th scope="col">Status</th>
+                                        <!-- <th scope="col">Status</th> -->
                                         <th scope="col">Tanggal</th>
                                     </tr>
                                 </thead>
@@ -318,7 +318,7 @@
                                             <td scope="row"><?= $s->fc_kadar ?></td>
                                             <!-- <td scope="row">Rp. <?= number_format($s->fm_hargabeli) ?></td> -->
                                             <!-- <td scope="row"><?= $s->fv_nama ?></td> -->
-                                            <td scope="row"><?= $s->fc_sts ?></td>
+                                            <!-- <td scope="row"><?= $s->fc_sts ?></td> -->
                                             <td scope="row"><?= $s->fd_date ?></td>
                                         </tr>
                                     <?php endforeach ?>
@@ -335,7 +335,7 @@
                                         <th></th>
                                         <!-- <th></th> -->
                                         <!-- <th></th> -->
-                                        <th></th>
+                                        <!-- <th></th> -->
                                         <th></th>
                                     </tr>
                                 </tfoot>
@@ -481,7 +481,7 @@
                                                     </div>
 
                                                 </div>
-                                                <div class="form-group row">
+                                                <!-- <div class="form-group row">
                                                     <label for="" class="col-sm-3 col-form-label">Status</label>
                                                     <div class="col-sm-7">
                                                         <select class="form-control" required name="fc_sts" id="fc_sts">
@@ -496,7 +496,7 @@
                                                     <div class="col-sm-7">
                                                         <input type="text" name="fn_stock" id="fn_stock" class="form-control" placeholder="Stok">
                                                     </div>
-                                                </div>
+                                                </div> -->
                                             </div>
                                             <!-- <div class="col-md-4 center">
                                                 <div id="camBox" style="width:100%;height:100%;">

@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>403 Forbidden</title>
+  <title>Custom Pembulatan Javascript</title>
 </head>
 <body>
+<a href="#" onclick="round()">Cek</a>
 
-<p>Directory access is forbidden.</p>
+<script type="text/javascript">
 
+//   function custom_pembulatan(nilai, pembulat)
+//   {
+//     var hasil = (Math.ceil(parseInt(nilai))%parseInt(pembulat) == 0) ? Math.ceil(parseInt(nilai)) : Math.round((parseInt(nilai)+parseInt(pembulat)/2)/parseInt(pembulat))*parseInt(pembulat);
+//   console.log(hasil);
+//   }
+  function round() {
+	  var subtotal = 122922;
+	//   var decimals = 2 ;
+	//   var value = Math.round(subtotal / 1000) * 1000;
+
+  hasil =  Number(Math.round((Math.round(subtotal / 1000) * 1000)+'e2')+'e-2');
+  console.log(hasil);
+  
+}
+
+// round(1.005, 2); // 1.01
+</script>
 </body>
 </html>

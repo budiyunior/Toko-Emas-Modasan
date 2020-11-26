@@ -1043,7 +1043,7 @@
 			SubTotal = '';
 			var SubTotalVal = 0;
 		}
-
+		// var SubTotalVal = Math.round(SubTotal / 1000) * 1000;
 		var SubTotal2 = parseFloat(Berat_emas) * parseInt(Harga_emas) + parseInt(Ongkir);
 		if (SubTotal2 > 0) {
 			var SubTotalVal2 = SubTotal2;
@@ -1054,6 +1054,13 @@
 		}
 		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2));
 		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal));
+
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(SubTotalVal2);
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(SubTotal);
+		// console.log(Number(Math.round((Math.round(SubTotalVal / 1000) * 1000) + 'e2') + 'e-2'))
+		// console.log(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'))
+		console.log(SubTotal)
+		console.log(SubTotalVal2)
 		HitungTotalBayar();
 	});
 
