@@ -1052,11 +1052,8 @@
 			SubTotal2 = '';
 			var SubTotalVal2 = 0;
 		}
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2));
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal));
-
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(SubTotalVal2);
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(SubTotal);
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'));
 		// console.log(Number(Math.round((Math.round(SubTotalVal / 1000) * 1000) + 'e2') + 'e-2'))
 		// console.log(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'))
 		console.log(SubTotal)
@@ -1090,8 +1087,8 @@
 			var SubTotalVal2 = 0;
 		}
 
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2));
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2')));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'));
 		HitungTotalBayar();
 	})
 
@@ -1121,8 +1118,8 @@
 			var SubTotalVal2 = 0;
 		}
 
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Math.round(SubTotalVal2+'000'));
-		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Math.round(SubTotal+'000'));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) input#sub_total').val(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'));
+		$('#tableTransaksi tbody tr:eq(' + Indexnya + ') td:nth-child(9) span').html(Number(Math.round((Math.round(SubTotalVal2 / 1000) * 1000) + 'e2') + 'e-2'));
 		HitungTotalBayar();
 	})
 
