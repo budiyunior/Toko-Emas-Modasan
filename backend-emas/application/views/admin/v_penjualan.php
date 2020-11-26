@@ -743,7 +743,6 @@
 
 		Baris += "<td><button  class='btn btn-danger' id='HapusBaris'><i class='fa fa-times' style='color:white;'></i></button></td>";
 		Baris += "</tr>";
-		Baris += "<td><img src='' id='' ></td>";
 
 		$('#tableTransaksi').append(Baris);
 		// Fokus Input
