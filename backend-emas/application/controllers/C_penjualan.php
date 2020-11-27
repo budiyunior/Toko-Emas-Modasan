@@ -132,8 +132,9 @@ class C_penjualan extends CI_Controller
             $row[] = $orde->fv_nmkelompok;
             $row[] = $orde->ff_berat;
             $row[] = $orde->fc_kadar;
+            //$row[] = $orde->f_foto;
 
-            $row[] = ' <button type="button" class="btn btn-primary " onclick="pencarian_kode(\'' . $orde->fc_barcode . '\',\'' . $orde->fc_kdstock . '\',\'' . $orde->fv_nmbarang . '\',\'' . $orde->fc_kdkelompok . '\',\'' . $orde->fc_kdlokasi . '\',\'' . $orde->ff_berat . '\',\'' . $orde->fc_kadar . '\',\'' . $orde->fm_ongkos . '\',\'' . $orde->fm_hargabeli . '\',\'' . $orde->fm_hargajual . '\',\'' . $Nomor . '\')">Pilih</button>';
+            $row[] = ' <button type="button" class="btn btn-primary " onclick="pencarian_kode(\'' . $orde->fc_barcode . '\',\'' . $orde->fc_kdstock . '\',\'' . $orde->fv_nmbarang . '\',\'' . $orde->fc_kdkelompok . '\',\'' . $orde->fc_kdlokasi . '\',\'' . $orde->ff_berat . '\',\'' . $orde->fc_kadar . '\',\'' . $orde->fm_ongkos . '\',\'' . $orde->fm_hargabeli . '\',\'' . $orde->fm_hargajual . '\',\'' . $orde->f_foto . '\',\'' . $Nomor . '\')">Pilih</button>';
 
 
             $data[] = $row;

@@ -22,7 +22,7 @@ class M_barang_id extends CI_Model
 
 	private function _get_datatables_queryid()
 	{
-		$this->db->select('a.fn_id,a.fd_date,a.fc_barcode,a.fc_kdstock,a.fv_nmbarang,a.fc_kdkelompok,b.fv_nmkelompok,a.fc_kdlokasi,c.fv_nmlokasi,a.ff_berat, a.fc_kadar,a.fm_ongkos,a.fm_hargabeli,a.fm_hargajual');
+		$this->db->select('a.fn_id,a.fd_date,a.fc_barcode,a.fc_kdstock,a.fv_nmbarang,a.fc_kdkelompok,b.fv_nmkelompok,a.fc_kdlokasi,c.fv_nmlokasi,a.ff_berat, a.fc_kadar,a.fm_ongkos,a.f_foto,a.fm_hargabeli,a.fm_hargajual');
 		$this->db->from("tm_stock a");
 		$this->db->join('tm_lokasi c', 'a.fc_kdlokasi=c.fc_kdlokasi', 'left outer');
 		$this->db->join('tm_kelompok b', 'a.fc_kdkelompok=b.fc_kdkelompok', 'left outer');

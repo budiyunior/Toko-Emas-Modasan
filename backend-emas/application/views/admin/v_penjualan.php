@@ -349,8 +349,7 @@
 												<div class="col-xs-12">
 													<div class="col-md-3">
 														<div>
-															<div id="foto">
-
+															<div id="form_foto">
 															</div>
 															<button type="button" class="btn-sm btn-primary" id="BarisBaru">
 																<i class="ace-icon glyphicon glyphicon-plus"> Baris Baru</i>
@@ -649,7 +648,6 @@
 	$(document).ready(function() {
 		getDataBarang();
 		BarisBaru();
-		gambarbaru()
 		//detail_barang();
 		$('html, body').animate({
 			scrollTop: 0
@@ -1082,7 +1080,7 @@
 
 	});
 
-	function pencarian_kode(fc_barcode, fc_kdstock, fv_nmbarang, fc_kdkelompok, fc_kdlokasi, ff_berat, fc_kadar, fm_ongkos, fm_hargabeli, fm_hargajual, Nomor) {
+	function pencarian_kode(fc_barcode, fc_kdstock, fv_nmbarang, fc_kdkelompok, fc_kdlokasi, ff_berat, fc_kadar, fm_ongkos, fm_hargabeli, fm_hargajual, f_foto, Nomor) {
 		$('.kode_barang' + Nomor).val(fc_kdstock);
 		$('.nama_barang' + Nomor).html(fv_nmbarang);
 		$('.berat' + Nomor).html(ff_berat + ' Gram');
@@ -1095,6 +1093,11 @@
 		$('.kode_kelompok' + Nomor).val(fc_kdkelompok);
 		//HitungTotalBayar();	
 		$('#pilihbarang').modal('hide');
+		//$('#nm_foto').val(f_foto);
+		var form = '<img id="foto_brg" class"foto_brg" src="#" style="height: 64px;border: 1px solid #DDC; margin-bottom: 10px;" /><br>'
+		var img = '<?= base_url(); ?>assets/img/foto_barang/' + f_foto;
+		$('#foto_brg').attr('src', img);
+		$('#form_foto').append(form);
 	}
 
 	$(document).on('keyup', '#harga_pergram', function() {
