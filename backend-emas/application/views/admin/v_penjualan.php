@@ -1098,6 +1098,8 @@
 		var img = '<?= base_url(); ?>assets/img/foto_barang/' + f_foto;
 		$('#foto_brg').attr('src', img);
 		$('#form_foto').append(form);
+		var x = document.getElementById("foto_brg").removeAttribute;
+		x.querySelector(".foto_brg").innerHTML(form);
 	}
 
 	$(document).on('keyup', '#harga_pergram', function() {

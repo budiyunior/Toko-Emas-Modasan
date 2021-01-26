@@ -280,9 +280,6 @@ class C_barang extends CI_Controller
 
         //panggil function list_pelanggan yang ada pada mmodel M_pelanggan 
         $data['barang'] = $this->M_barang->filternew($config["per_page"], $data['page']);
-        // $data['barang'] = $this->M_barang->filter2($config["per_page"], $data['page']);
-        // $data['barang'] = $this->M_barang->filter3($config["per_page"], $data['page']);
-        // $data['barang'] = $this->M_barang->filter4($config["per_page"], $data['page']);
         $data['pagination'] = $this->pagination->create_links();
         $this->load->view('admin/v_barang', $data);
     }

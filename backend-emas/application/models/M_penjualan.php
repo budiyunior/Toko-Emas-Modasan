@@ -54,7 +54,7 @@ class M_penjualan extends CI_Model
 	public function query_nota2($noinv)
 	{
 		$query = $this->db->query("SELECT td_invoice.fc_kdstock, tm_stock.fv_nmbarang, tm_stock.f_foto, tm_stock.fc_kadar, tm_stock.ff_berat, td_invoice.fm_ongkos, td_invoice.fm_subtot, td_invoice.fm_price FROM td_invoice, tm_stock WHERE tm_stock.fc_kdstock = td_invoice.fc_kdstock AND td_invoice.fc_noinv = '$noinv'");
-		return $query->result();
+		return $query->result(); 
 	}
 
 	public function ambilBarang()
@@ -102,8 +102,6 @@ class M_penjualan extends CI_Model
 	{
 		return $this->db->query('SELECT fc_noinv AS maxs FROM tm_invoice order by fc_noinv desc limit 1 ');
 	}
-
-	
 
 	function insert($where)
 	{

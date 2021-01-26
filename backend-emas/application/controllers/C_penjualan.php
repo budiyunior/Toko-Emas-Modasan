@@ -202,14 +202,7 @@ class C_penjualan extends CI_Controller
             $kondisi = '2';
             $this->M_penjualan->update_stsbrg($kondisi, $kdstock);
 
-
-            //redirect('admin/Dashboard/datauserbaru');)
         }
-
-        // echo "<script>
-        // alert('Transaksi berhasil di simpan !!');
-        // window.location.href = '" . base_url('C_penjualan/cetak_nota') . "';
-        // </script>";
         redirect('C_penjualan/cetak_nota/' . $this->input->post('fc_noinv'));
     }
 

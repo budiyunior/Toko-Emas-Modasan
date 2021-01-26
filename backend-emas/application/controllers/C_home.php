@@ -25,7 +25,10 @@ class C_home extends CI_Controller
         $this->load->view('admin/home', $data);
     }
 
-    public function home()
+    public function perhitungan()
     {
+        $data['title'] = 'perhitungan';
+        $data['menu'] = $this->M_menu->get_menu();
+        $this->load->view('coba/perhitungan', $data);
     }
 }
